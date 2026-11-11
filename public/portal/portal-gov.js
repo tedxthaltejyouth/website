@@ -455,7 +455,10 @@ VIEWS.registrar=async function(){
     $('#view').innerHTML=hero('Office of the Registrar','Issue letters, certificates and IDs on the official letterhead, signed by the Organizer & Licensee and sealed by this Office. Every document gets a register number and a code anyone can check at /verify.',
       `<img src="/assets/letterhead/seal.png" alt="" style="width:110px;border-radius:50%;background:#fff;border:3px solid #fff">`)+
       (j.hasSignature?'':'<div class="banner"><b>The Organizer’s signature is not set up yet.</b> Documents will carry the printed name only until it is added under “Signature & seal”.</div>')+
-      tabs(T,regTab,'rgT')+'<div id="rgB"></div>';
+      '<div id="rgTodo"></div>'+tabs(T,regTab,'rgT')+'<div id="rgB"></div>';
+    api('govBoot').then(g=>{const m=g.motions.filter(x=>x.status==='Threshold met'),e=g.elections.filter(x=>x.phase==='Counting'&&!x.verified_at);if(!m.length&&!e.length||!$('#rgTodo'))return;
+      $('#rgTodo').innerHTML=`<div class="banner" style="cursor:pointer" id="rgTodoB"><b>Waiting for your verification:</b> ${m.map(x=>esc(x.id+' · '+x.title)).concat(e.map(x=>esc(x.id+' · '+x.title+' (vote count)'))).join('; ')}. Click to open Charter &amp; Council.</div>`;
+      $('#rgTodoB').onclick=()=>{govTab=m.length?'mo':'el';go('charter');};}).catch(()=>{});
     $('#rgT').querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{regTab=b.dataset.t;draw();});
     ({issue,register,requests,sig})[regTab]();};
 
