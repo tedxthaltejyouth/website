@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TEDxThaltej Youth — The Zenith · 26 June 2027 · Ahmedabad</title>
+<meta name="description" content="TEDxThaltej Youth is a youth-led TEDx event in Ahmedabad. Next edition: The Zenith — Where the Unseen Connects, 26 June 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="/assets/config.js"></script>
+<style>
+  :root{--red:#EB0028;--y:#FFC83D;--b:#2D6BFF;--p:#FF4F8B;--n:#101B3D;--c:#FFF4E2;--g:#F4EFE6;--disp:Anton,Impact,'Arial Narrow',sans-serif;--ease:cubic-bezier(.2,.7,.1,1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,Helvetica,Arial,sans-serif;color:var(--n);background:var(--c);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5}
+  a{color:inherit;text-decoration:none}
+  button,input,textarea{font:inherit;color:inherit}
+  :focus-visible{outline:3px solid var(--red);outline-offset:3px}
+  .wrap{width:min(1240px,100% - 40px);margin:0 auto}
+  .k{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+  .k:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--red)}
+  .d{font-family:var(--disp);font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:.92}
+  h2.d{font-size:clamp(46px,7vw,104px);margin-top:14px}
+  .btn{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;font-weight:800;font-size:16px;border:2.5px solid var(--n);background:var(--n);color:#fff;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s}
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--n)}
+  .btn.red{background:var(--red);border-color:var(--n)}.btn.y{background:var(--y);color:var(--n)}.btn.w{background:#fff;color:var(--n)}
+  .rv{opacity:0;transform:translateY(36px);transition:opacity .9s var(--ease),transform 1s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  section{position:relative}
+  .pad{padding:clamp(80px,10vw,140px) 0}
+  @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}*{animation:none!important}}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:var(--c);border-bottom:2.5px solid var(--n)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+  .logo{font-weight:900;font-size:21px;letter-spacing:-.03em;white-space:nowrap}.logo b{color:var(--red)}.logo span{font-weight:500}
+  .links{display:flex;gap:6px;align-items:center}
+  .links a{font-weight:700;font-size:15px;padding:9px 14px;border-radius:999px;transition:background .2s}
+  .links a:hover{background:var(--y)}
+  .links .btn{height:44px;padding:0 20px;font-size:15px}
+  .burger{display:none;width:46px;height:46px;border-radius:50%;border:2.5px solid var(--n);background:var(--y);font-size:18px;cursor:pointer}
+  .drawer{position:fixed;inset:72px 0 0 0;background:var(--y);z-index:49;padding:20px;display:none;flex-direction:column;gap:4px;overflow:auto}
+  .drawer.on{display:flex}
+  .drawer a{font-family:var(--disp);font-size:44px;text-transform:uppercase;line-height:1.15;border-bottom:2.5px solid var(--n);padding:6px 0}
+  @media(max-width:1000px){.links{display:none}.burger{display:block}}
+
+  /* HERO */
+  .hero{padding:clamp(28px,4vw,56px) 0 0;overflow:hidden}
+  .hgrid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,3vw,48px);align-items:center}
+  .hero h1{font-size:clamp(84px,12.5vw,196px);color:var(--n);margin-top:16px}
+  .hero h1 span{display:block;font-size:.42em;color:var(--red);letter-spacing:.02em}
+  .hero .tag{font-size:clamp(20px,2.2vw,28px);font-weight:800;letter-spacing:-.02em;margin-top:18px;max-width:460px}
+  .hero .tag em{font-style:normal;background:var(--y);padding:0 .2em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .ticket{margin-top:28px;display:grid;grid-template-columns:auto 1fr;border:2.5px solid var(--n);border-radius:20px;background:#fff;max-width:520px;overflow:hidden;box-shadow:6px 6px 0 var(--n)}
+  .ticket .dt{background:var(--red);color:#fff;padding:16px 20px;text-align:center;border-right:2.5px dashed var(--n)}
+  .ticket .dt b{display:block;font-family:var(--disp);font-size:52px;line-height:1}
+  .ticket .dt small{font-weight:800;letter-spacing:.14em;font-size:12px}
+  .ticket .cd{display:flex;align-items:center;justify-content:space-around;padding:12px 10px;gap:6px}
+  .ticket .cd div{text-align:center}
+  .ticket .cd b{display:block;font-family:var(--disp);font-size:34px;line-height:1;font-variant-numeric:tabular-nums}
+  .ticket .cd small{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#6a6f86}
+  .hcta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+  .dome{position:relative;width:100%;aspect-ratio:1/0.82}
+  .dome svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .badge{transform-box:fill-box;transform-origin:center;animation:bob 6s ease-in-out infinite}
+  @keyframes bob{50%{transform:translateY(-10px)}}
+  .spin{transform-box:fill-box;transform-origin:center;animation:spin 30s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .blink{transform-box:fill-box;transform-origin:center;animation:blink 5s infinite}
+  @keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+  .dash{stroke-dasharray:6 10;animation:dash 3s linear infinite}
+  @keyframes dash{to{stroke-dashoffset:-32}}
+  .pulse{transform-box:fill-box;transform-origin:center;animation:pulse 3s ease-in-out infinite}
+  @keyframes pulse{50%{transform:scale(1.08)}}
+  @media(max-width:900px){.hgrid{grid-template-columns:1fr}.dome{order:-1;margin-top:6px}}
+
+  /* MARQUEE */
+  .marq{background:var(--n);color:var(--c);border-top:2.5px solid var(--n);border-bottom:2.5px solid var(--n);overflow:hidden;white-space:nowrap}
+  .marq .in{display:inline-flex;animation:mq 40s linear infinite;padding:16px 0}
+  .marq span{font-family:var(--disp);font-size:clamp(26px,3vw,40px);text-transform:uppercase;padding:0 28px;display:inline-flex;align-items:center;gap:56px}
+  .marq span:after{content:"✦";color:var(--y);font-family:Inter}
+  .marq span:nth-child(3n+2){color:var(--y)}.marq span:nth-child(3n+3){color:var(--p)}
+  @keyframes mq{to{transform:translateX(-50%)}}
+
+  /* ABOUT / STATS */
+  .about .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(30px,5vw,80px);align-items:end}
+  .about p.lead{font-size:clamp(18px,1.7vw,22px);font-weight:500;margin-top:20px;max-width:640px}
+  .about .lic{margin-top:18px;font-size:14px;color:#545a73;border-left:4px solid var(--red);padding-left:12px;max-width:640px}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .stat{border:2.5px solid var(--n);border-radius:22px;padding:18px 20px;background:#fff}
+  .stat b{display:block;font-family:var(--disp);font-size:clamp(48px,5vw,72px);line-height:1}
+  .stat span{font-weight:700;font-size:14px}
+  .stat:nth-child(1){background:var(--y)}.stat:nth-child(2){background:var(--p);color:#fff}.stat:nth-child(3){background:var(--b);color:#fff}.stat:nth-child(4){background:#fff}
+  .iso{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-weight:700;font-size:15px}
+  .iso i{font-style:normal;border:2.5px solid var(--n);border-radius:999px;padding:6px 14px;background:#fff}
+  @media(max-width:860px){.about .grid{grid-template-columns:1fr}}
+
+  /* EDITIONS */
+  .eds{background:#fff;border-top:2.5px solid var(--n);border-bottom:2.5px solid var(--n)}
+  .egrid{margin-top:clamp(36px,5vw,60px);display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .ed{border:2.5px solid var(--n);border-radius:26px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s;background:#fff}
+  .ed:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--n)}
+  .ed .art{aspect-ratio:4/3;border-bottom:2.5px solid var(--n);position:relative;overflow:hidden}
+  .ed .art svg{position:absolute;inset:0;width:100%;height:100%}
+  .ed .tx{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .ed .no{font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+  .ed h3{font-family:var(--disp);font-weight:400;text-transform:uppercase;font-size:clamp(30px,2.7vw,40px);line-height:.98}
+  .ed p{font-size:14px;color:#545a73}
+  .ed .go{margin-top:auto;font-weight:800;display:flex;justify-content:space-between;align-items:center}
+  .ed .go i{font-style:normal;width:38px;height:38px;border-radius:50%;border:2.5px solid var(--n);display:grid;place-items:center;background:var(--y)}
+  .ed.now{background:var(--n);color:#fff}.ed.now p{color:#c9cde0}.ed.now .no{color:var(--y)}.ed.now .go i{color:var(--n)}
+  @media(max-width:900px){.egrid{grid-template-columns:1fr}}
+
+  /* VIDEO */
+  .vid{margin-top:34px;position:relative;aspect-ratio:16/9;border:2.5px solid var(--n);border-radius:26px;overflow:hidden;background:var(--n);box-shadow:8px 8px 0 var(--n)}
+  .vid img{width:100%;height:100%;object-fit:cover;opacity:.88}
+  .vid button{position:absolute;inset:0;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+  .vid button span{width:96px;height:96px;border-radius:50%;background:var(--red);border:3px solid var(--n);display:grid;place-items:center;box-shadow:4px 4px 0 var(--n)}
+  .vid button span:after{content:"";border-left:26px solid #fff;border-top:16px solid transparent;border-bottom:16px solid transparent;margin-left:7px}
+  .vid .cap{position:absolute;left:18px;bottom:16px;background:var(--y);border:2.5px solid var(--n);border-radius:999px;padding:6px 14px;font-weight:800}
+  .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .vtabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+  .vtabs button{border:2.5px solid var(--n);background:#fff;border-radius:999px;padding:8px 16px;font-weight:800;cursor:pointer}
+  .vtabs button.on{background:var(--n);color:#fff}
+
+  /* SPEAKERS */
+  .spk{background:var(--n);color:#fff}
+  .spk .k:before{background:var(--y)}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
+  .tabs button{border:2.5px solid #fff;background:transparent;color:#fff;border-radius:999px;padding:9px 18px;font-weight:800;cursor:pointer}
+  .tabs button[aria-selected="true"]{background:var(--y);color:var(--n);border-color:var(--y)}
+  .sgrid{margin-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .sp{border-radius:22px;overflow:hidden;background:#fff;color:var(--n);border:2.5px solid #fff;transition:transform .3s var(--ease)}
+  .sp:hover{transform:translateY(-6px) rotate(-.6deg)}
+  .sp .ph{aspect-ratio:1;position:relative;overflow:hidden;display:grid;place-items:center}
+  .sp .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .sp .ph svg{position:absolute;inset:0;width:100%;height:100%}
+  .sp .ph .ini{position:relative;font-family:var(--disp);font-size:64px;color:var(--n);background:#fff;border:2.5px solid var(--n);width:110px;height:110px;border-radius:50%;display:grid;place-items:center}
+  .sp .tx{padding:14px 16px 18px}
+  .sp .tx small{font-weight:800;font-size:11px;letter-spacing:.14em;color:var(--red)}
+  .sp .tx b{display:block;font-size:18px;font-weight:900;letter-spacing:-.02em;line-height:1.2;margin-top:4px}
+  .sp .tx p{font-size:13px;color:#545a73;margin-top:4px;line-height:1.4}
+  .tba{grid-column:1/-1;border:2.5px dashed rgba(255,255,255,.5);border-radius:22px;padding:48px 24px;text-align:center}
+  .tba b{display:block;font-family:var(--disp);font-size:44px;text-transform:uppercase;color:var(--y)}
+  @media(max-width:1000px){.sgrid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:700px){.sgrid{grid-template-columns:1fr 1fr}}
+
+  /* BENTO */
+  .bento{margin-top:clamp(36px,5vw,60px);display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(220px,auto);gap:16px}
+  .bx{border:2.5px solid var(--n);border-radius:26px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s}
+  .bx:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--n)}
+  .bx h3{font-family:var(--disp);font-weight:400;text-transform:uppercase;font-size:clamp(34px,3.4vw,52px);line-height:.95;position:relative}
+  .bx p{font-weight:500;font-size:15px;max-width:420px;position:relative;margin-top:10px}
+  .bx .tag{font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;position:relative}
+  .bx .go{position:relative;margin-top:18px;font-weight:800;display:inline-flex;gap:8px;align-items:center}
+  .bx .go:after{content:"→";width:34px;height:34px;border-radius:50%;border:2.5px solid currentColor;display:grid;place-items:center}
+  .bx svg.deco{position:absolute;right:-20px;bottom:-20px;width:180px;height:180px;opacity:.95}
+  .b1{grid-column:span 3;grid-row:span 2;background:var(--red);color:#fff}
+  .b2{grid-column:span 3;background:var(--y)}
+  .b3{grid-column:span 3;background:var(--n);color:#fff}
+  .b4{grid-column:span 2;background:var(--b);color:#fff}
+  .b5{grid-column:span 2;background:var(--p);color:#fff}
+  .b6{grid-column:span 2;background:#fff}
+  @media(max-width:900px){.bento{grid-template-columns:1fr}.bx{grid-column:auto!important;grid-row:auto!important;min-height:220px}}
+
+  /* FORMS */
+  .forms{background:var(--y);border-top:2.5px solid var(--n)}
+  .fgrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,5vw,70px);align-items:start}
+  .card{background:#fff;border:2.5px solid var(--n);border-radius:26px;padding:clamp(20px,3vw,34px);box-shadow:8px 8px 0 var(--n)}
+  form{display:grid;gap:14px}
+  .r2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  label.f{display:grid;gap:6px;font-weight:800;font-size:13px}
+  .f input,.f textarea{width:100%;padding:13px 15px;border:2.5px solid var(--n);border-radius:14px;background:var(--c);font-size:16px;font-weight:500}
+  .f input:focus,.f textarea:focus{outline:none;background:#fff;box-shadow:3px 3px 0 var(--n)}
+  .f textarea{min-height:110px;resize:vertical}
+  .hp{position:absolute;left:-9999px}
+  .msg{display:none;border:2.5px solid var(--n);border-radius:14px;padding:12px 14px;font-weight:700}
+  .msg.ok{display:block;background:#c9f2d8}.msg.err{display:block;background:#ffd0d8}
+  .ftabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+  .ftabs button{border:2.5px solid var(--n);background:#fff;border-radius:999px;padding:8px 16px;font-weight:800;cursor:pointer}
+  .ftabs button.on{background:var(--n);color:#fff}
+  .steps3{margin-top:26px;display:grid;gap:12px}
+  .steps3 div{display:flex;gap:14px;align-items:flex-start;font-weight:600;font-size:17px}
+  .steps3 b{flex:none;width:36px;height:36px;border-radius:50%;background:var(--n);color:var(--y);display:grid;place-items:center;font-family:var(--disp);font-size:20px;font-weight:400}
+  .closed{font-weight:700}
+  @media(max-width:900px){.fgrid{grid-template-columns:1fr}.r2{grid-template-columns:1fr}}
+  .contact{background:var(--c)}
+
+  /* FOOTER */
+  footer{background:var(--n);color:#c9cde0;padding:70px 0 34px;border-top:2.5px solid var(--n)}
+  .fbig{font-family:var(--disp);font-size:clamp(56px,10vw,150px);text-transform:uppercase;line-height:.9;color:#fff}
+  .fbig span{color:var(--y)}.fbig i{font-style:normal;color:var(--red)}
+  .fcols{margin-top:50px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+  footer h5{color:var(--y);font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px}
+  footer .fcols a{display:block;padding:4px 0;font-weight:600}footer .fcols a:hover{color:#fff}
+  .soc{display:flex;gap:10px;margin-top:16px}
+  .soc a{border:2px solid #c9cde0;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:800}
+  .soc a:hover{background:var(--y);color:var(--n);border-color:var(--y)}
+  .fine{margin-top:44px;padding-top:20px;border-top:1px solid rgba(255,255,255,.18);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px}
+  .fine b{color:#fff}
+  @media(max-width:860px){.fcols{grid-template-columns:1fr 1fr}.fcols>div:first-child{grid-column:1/-1}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav">
+    <a class="logo" href="/" aria-label="TEDxThaltej Youth home"><img src="/assets/logo-black.png" alt="TEDxThaltej Youth" width="218" height="24" style="height:24px;width:auto;display:block"></a>
+    <div class="links">
+      <a href="#editions">Editions</a><a href="#speakers">Speakers</a><a href="/ais">Idea Search</a><a href="/virasat">Virasat</a><a href="/partner">Partner</a><a href="/team">Team</a>
+      <a class="btn red" href="#attend">Attend</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</nav>
+<div class="drawer" id="drawer">
+  <a href="#editions">Editions</a><a href="#speakers">Speakers</a><a href="/ais">Idea Search</a><a href="/virasat">Virasat</a><a href="/partner">Partner</a><a href="/team">Team</a><a href="/speaker">Speaker portal</a><a href="#attend" style="color:var(--red)">Attend →</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap hgrid">
+    <div>
+      <span class="k" id="edK">TEDxThaltej Youth · Edition 03</span>
+      <h1 class="d"><span>The</span><b id="theme" style="font-weight:400">Zenith</b></h1>
+      <p class="tag" id="tagline">Where the <em>unseen</em> connects.</p>
+      <div class="ticket">
+        <div class="dt"><b id="tDay">26</b><small id="tMon">JUN 2027</small></div>
+        <div class="cd" id="cd"><div><b id="cD">--</b><small>Days</small></div><div><b id="cH">--</b><small>Hrs</small></div><div><b id="cM">--</b><small>Min</small></div><div><b id="cS">--</b><small>Sec</small></div></div>
+      </div>
+      <div class="hcta"><a class="btn red" href="#attend">Register to attend →</a><a class="btn w" href="/2027" id="themeLink">Explore the theme</a></div>
+    </div>
+
+    <!-- The dome: sky arc over Amdavad, sun at its zenith, ideas orbiting along the arc -->
+    <div class="dome" aria-hidden="true">
+      <svg viewBox="0 0 640 525">
+        <defs>
+          <clipPath id="domeClip"><path d="M20 455 A300 300 0 0 1 620 455 Z"/></clipPath>
+        </defs>
+        <!-- sky -->
+        <path d="M20 455 A300 300 0 0 1 620 455 Z" fill="#2D6BFF" stroke="#101B3D" stroke-width="5"/>
+        <g clip-path="url(#domeClip)">
+          <circle cx="320" cy="455" r="240" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="3" stroke-dasharray="4 12"/>
+          <circle cx="320" cy="455" r="180" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="3"/>
+          <circle cx="320" cy="455" r="120" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="3"/>
+          <g fill="#fff"><circle cx="110" cy="330" r="3"/><circle cx="520" cy="300" r="3"/><circle cx="230" cy="250" r="2.5"/><circle cx="430" cy="230" r="2.5"/><circle cx="560" cy="400" r="2"/><circle cx="80" cy="410" r="2"/></g>
+          <!-- constellation linking the ideas to the sun -->
+          <polyline class="dash" points="95,360 175,235 320,175 465,235 545,360" fill="none" stroke="#FFC83D" stroke-width="4" stroke-linecap="round"/>
+          <!-- skyline of Amdavad: Teen Darwaza arches, Jhulta Minar, pol houses -->
+          <g fill="#101B3D">
+            <rect x="20" y="400" width="70" height="60"/><path d="M20 400 L55 378 L90 400Z"/>
+            <rect x="96" y="372" width="18" height="88"/><path d="M96 372 Q105 352 114 372Z"/>
+            <rect x="160" y="372" width="18" height="88"/><path d="M160 372 Q169 352 178 372Z"/>
+            <rect x="114" y="404" width="46" height="56"/>
+            <rect x="200" y="386" width="190" height="74"/>
+            <path d="M216 460 V428 A20 20 0 0 1 256 428 V460Z M275 460 V422 A20 22 0 0 1 315 422 V460Z M334 460 V428 A20 20 0 0 1 374 428 V460Z" fill="#FFC83D"/>
+            <rect x="196" y="378" width="198" height="10"/>
+            <rect x="404" y="410" width="60" height="50"/><rect x="470" y="396" width="56" height="64"/><path d="M470 396 L498 376 L526 396Z"/>
+            <rect x="534" y="414" width="86" height="46"/>
+          </g>
+          <g fill="#FFC83D"><rect x="30" y="418" width="12" height="14"/><rect x="66" y="418" width="12" height="14"/><rect x="480" y="410" width="12" height="14"/><rect x="506" y="410" width="12" height="14"/><rect x="548" y="426" width="12" height="12"/><rect x="590" y="426" width="12" height="12"/></g>
+        </g>
+        <path d="M20 455 A300 300 0 0 1 620 455" fill="none" stroke="#101B3D" stroke-width="5"/>
+        <rect x="0" y="453" width="640" height="10" rx="5" fill="#101B3D"/>
+        <!-- the sun at the zenith -->
+        <g class="pulse">
+          <g class="spin"><g stroke="#FFC83D" stroke-width="8" stroke-linecap="round"><path d="M320 92v20M320 238v20M237 175h20M383 175h20M261 116l14 14M365 220l14 14M379 116l-14 14M275 220l-14 14"/></g></g>
+          <circle cx="320" cy="175" r="50" fill="#EB0028" stroke="#101B3D" stroke-width="5"/>
+          <circle cx="306" cy="160" r="12" fill="#fff" opacity=".85"/>
+        </g>
+        <!-- idea badges along the arc -->
+        <g class="badge" style="animation-delay:-1s">
+          <circle cx="95" cy="360" r="44" fill="#FFC83D" stroke="#101B3D" stroke-width="5"/>
+          <g class="blink"><path d="M64 360 Q95 332 126 360 Q95 388 64 360Z" fill="#fff" stroke="#101B3D" stroke-width="5" stroke-linejoin="round"/><circle cx="95" cy="360" r="11" fill="#101B3D"/></g>
+        </g>
+        <g class="badge" style="animation-delay:-3s">
+          <circle cx="175" cy="235" r="40" fill="#FF4F8B" stroke="#101B3D" stroke-width="5"/>
+          <g fill="none" stroke="#fff" stroke-width="4"><circle cx="175" cy="235" r="24"/><circle cx="175" cy="235" r="12"/></g><circle cx="199" cy="235" r="6" fill="#FFC83D" class="spin" style="transform-origin:175px 235px;transform-box:view-box;animation-duration:6s"/>
+        </g>
+        <g class="badge" style="animation-delay:-2s">
+          <circle cx="465" cy="235" r="40" fill="#fff" stroke="#101B3D" stroke-width="5"/>
+          <path d="M440 254 L465 214 L490 254Z" fill="#101B3D"/><path d="M465 214 L456 228 L465 225 L474 228Z" fill="#fff"/><circle cx="478" cy="214" r="7" fill="#EB0028"/>
+        </g>
+        <g class="badge" style="animation-delay:-4s">
+          <circle cx="545" cy="360" r="44" fill="#101B3D" stroke="#101B3D" stroke-width="5"/>
+          <g fill="none" stroke="#FFC83D" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M525 378 L545 358 L565 378"/><path d="M525 356 L545 336 L565 356"/></g>
+        </g>
+        <!-- ticket stub on the horizon -->
+        <g transform="translate(250 478)"><rect width="140" height="40" rx="20" fill="#FFC83D" stroke="#101B3D" stroke-width="4"/><text x="70" y="27" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="20" fill="#101B3D" id="stub">26.06.2027</text></g>
+      </svg>
+    </div>
+  </div>
+  <div class="marq" style="margin-top:clamp(30px,4vw,56px)"><div class="in" id="marq"></div></div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section class="about pad">
+  <div class="wrap grid">
+    <div class="rv">
+      <span class="k">Since 2025 · Ahmedabad</span>
+      <h2 class="d">Young minds.<br>Big <span style="color:var(--red)">ideas.</span></h2>
+      <p class="lead" id="aboutTxt">TEDxThaltej Youth is a youth-led TEDx event from Thaltej, Ahmedabad: a stage built by young people for the ideas their city is quietly producing, with live heritage performances and a year-round search for ideas.</p>
+      <p class="lic">In the spirit of ideas worth spreading, TEDx is a program of local, self-organized events. This independent TEDx event is operated under license from TED.</p>
+    </div>
+    <div class="rv">
+      <div class="stats">
+        <div class="stat"><b data-c="3">0</b><span>Editions</span></div>
+        <div class="stat"><b data-c="15" id="sSpk">0</b><span>Speakers so far</span></div>
+        <div class="stat"><b data-c="5">0</b><span>Live performances</span></div>
+        <div class="stat"><b data-c="2">0</b><span>ISO certifications</span></div>
+      </div>
+      <div class="iso"><i>ISO 9001:2015</i><i>ISO 20121:2024</i><span>Gujarat’s first youth-led TEDx event certified for both.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDITIONS ================= -->
+<section class="eds pad" id="editions">
+  <div class="wrap">
+    <div class="rv"><span class="k">Three editions</span><h2 class="d">Every year,<br>a new way of seeing.</h2></div>
+    <div class="egrid" id="egrid"></div>
+    <div id="film">
+      <div class="vid rv" id="vid"></div>
+      <div class="vtabs" id="vtabs"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SPEAKERS ================= -->
+<section class="spk pad" id="speakers">
+  <div class="wrap">
+    <div class="rv"><span class="k">On our stage</span><h2 class="d">Voices worth<br><span style="color:var(--y)">spreading.</span></h2></div>
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="sgrid" id="sgrid"></div>
+  </div>
+</section>
+
+<!-- ================= ECOSYSTEM (bento) ================= -->
+<section class="pad">
+  <div class="wrap">
+    <div class="rv"><span class="k">More than one day</span><h2 class="d">The event is one day.<br><span style="color:var(--red)">The work is all year.</span></h2></div>
+    <div class="bento">
+      <a class="bx b1 rv" href="/ais">
+        <div><span class="tag">Ahmedabad Idea Search</span><h3 style="margin-top:12px">Listening<br>to Amdavad.</h3><p>A year-round search for ideas in the city’s classrooms, labs, studios and pols. A pathway, never the gate.</p></div>
+        <span class="go">Explore AIS</span>
+        <svg class="deco" viewBox="0 0 180 180" style="width:260px;height:260px;right:-30px;bottom:-30px"><circle cx="90" cy="90" r="80" fill="#FFC83D" stroke="#101B3D" stroke-width="5"/><circle cx="80" cy="80" r="34" fill="#fff" stroke="#101B3D" stroke-width="7"/><path d="M104 104 L140 140" stroke="#101B3D" stroke-width="14" stroke-linecap="round"/></svg>
+      </a>
+      <a class="bx b2 rv" href="/ais/apply">
+        <div><span class="tag">Steward Desk</span><h3 style="margin-top:10px">Know someone<br>with an idea?</h3><p>Become an Idea Steward and refer them, in Gujarati, Hindi or English.</p></div>
+        <span class="go">Become a Steward</span>
+        <svg class="deco" viewBox="0 0 180 180"><path d="M30 170 V80 A60 60 0 0 1 150 80 V170Z" fill="#EB0028" stroke="#101B3D" stroke-width="5"/><circle cx="90" cy="110" r="16" fill="#FFC83D" stroke="#101B3D" stroke-width="5"/></svg>
+      </a>
+      <a class="bx b3 rv" href="/virasat">
+        <div><span class="tag" style="color:var(--y)">Virasat · Arts and Culture Space</span><h3 style="margin-top:10px">Heritage on<br>the same stage.</h3><p>The best performers, with original music made from scratch. Never AI.</p></div>
+        <span class="go">See Virasat</span>
+        <svg class="deco" viewBox="0 0 180 180"><g fill="#FF4F8B" stroke="#101B3D" stroke-width="4"><ellipse cx="90" cy="45" rx="20" ry="38"/><ellipse cx="90" cy="135" rx="20" ry="38"/><ellipse cx="45" cy="90" rx="38" ry="20"/><ellipse cx="135" cy="90" rx="38" ry="20"/></g><circle cx="90" cy="90" r="22" fill="#FFC83D" stroke="#101B3D" stroke-width="4"/></svg>
+      </a>
+      <a class="bx b4 rv" href="/partner"><div><span class="tag">Partnerships</span><h3 style="margin-top:10px">Partner<br>with us.</h3></div><span class="go">Get a proposal</span></a>
+      <a class="bx b5 rv" href="/story"><div><span class="tag">New to TEDx?</span><h3 style="margin-top:10px">The story<br>of an idea.</h3></div><span class="go">EN · ગુ · हि</span></a>
+      <a class="bx b6 rv" href="/team"><div><span class="tag" style="color:var(--red)">Our team</span><h3 style="margin-top:10px">The people<br>behind it.</h3></div><span class="go">Meet the team</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ATTEND ================= -->
+<section class="forms pad" id="attend">
+  <div class="wrap fgrid">
+    <div class="rv">
+      <span class="k">Attend</span>
+      <h2 class="d">Take your<br>seat.</h2>
+      <p style="font-size:19px;font-weight:600;margin-top:18px" id="regNote">Seats are limited. Every registration is reviewed and confirmed by email.</p>
+      <div class="steps3"><div><b>1</b>Register with your details.</div><div><b>2</b>Our team reviews registrations in batches.</div><div><b>3</b>If you are approved, your ticket code arrives by email.</div></div>
+    </div>
+    <div class="card rv" id="regWrap">
+      <form id="regForm" novalidate>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="r2"><label class="f">Full name<input name="name" required maxlength="100" autocomplete="name"></label><label class="f">Email<input name="email" type="email" required maxlength="120" autocomplete="email"></label></div>
+        <div class="r2"><label class="f">Phone<input name="phone" type="tel" required maxlength="30" placeholder="+91" autocomplete="tel"></label><label class="f">Age<input name="age" type="number" min="10" max="99"></label></div>
+        <div class="r2"><label class="f">School, college or organisation<input name="institution" maxlength="150"></label><label class="f">City<input name="city" maxlength="80" value="Ahmedabad"></label></div>
+        <label class="f">Why do you want to attend?<textarea name="why" maxlength="1500"></textarea></label>
+        <div><button class="btn red" type="submit">Submit registration →</button></div>
+        <div class="msg" id="regMsg" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="contact pad" id="contact">
+  <div class="wrap fgrid">
+    <div class="rv">
+      <span class="k">Get in touch</span>
+      <h2 class="d">Build it<br>with us.</h2>
+      <p style="font-size:19px;font-weight:600;margin-top:18px">Volunteer, write to us as press, or just say hello. For partnerships, <a href="/partner" style="color:var(--red);text-decoration:underline">get a proposal</a>. Speaking with us already? <a href="/speaker" style="color:var(--red);text-decoration:underline">Open the speaker portal</a>.</p>
+    </div>
+    <div class="card rv">
+      <div class="ftabs" id="ftabs"></div>
+      <form id="subForm" novalidate>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="type" value="Contact">
+        <div class="r2"><label class="f">Full name<input name="name" required maxlength="100" autocomplete="name"></label><label class="f">Email<input name="email" type="email" required maxlength="120" autocomplete="email"></label></div>
+        <div class="r2"><label class="f">Phone<input name="phone" type="tel" maxlength="30"></label><label class="f" id="orgLbl">Organisation<input name="organisation" maxlength="150"></label></div>
+        <label class="f">Subject<input name="subject" maxlength="200"></label>
+        <label class="f">Message<textarea name="message" required maxlength="3000"></textarea></label>
+        <div><button class="btn" type="submit">Send message →</button></div>
+        <div class="msg" id="subMsg" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbig">Ideas worth<br><span>spreading</span><i>.</i></div>
+    <div class="fcols">
+      <div><img src="/assets/logo-white.png" alt="TEDxThaltej Youth" width="254" height="28" style="height:28px;width:auto;display:block"><p style="margin-top:10px;max-width:340px">A youth-led TEDx event from Thaltej, Ahmedabad. x = independently organised TED event.</p><div class="soc" id="soc"></div></div>
+      <div><h5>Editions</h5><a href="/2025">2025 · A Light Towards Wisdom</a><a href="/2026">2026 · Kaleidoscope</a><a href="/2027">2027 · The Zenith</a></div>
+      <div><h5>Programmes</h5><a href="/ais">Ahmedabad Idea Search</a><a href="/ais/apply">Steward Desk</a><a href="/virasat">Virasat</a><a href="/story">The story of an idea</a></div>
+      <div><h5>Organisation</h5><a href="/team">Our team</a><a href="/partner">Partner with us</a><a href="/speaker">Speaker portal</a><a href="/portal">Team portal</a></div>
+    </div>
+    <div class="fine"><b>This independent TEDx event is operated under license from TED.</b><span>© <span id="yr"></span> TEDxThaltej Youth · Ahmedabad, India</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var API=window.TXTY_API||'';
+  function $(s){return document.querySelector(s);}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function safe(u){return /^(https?:\/\/|\/)/i.test(String(u||''))?u:'';}
+  function ytId(u){var m=String(u||'').match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/);return m?m[1]:'';}
+  function pd(d){var p=String(d).slice(0,10).split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+  function longDate(d){return d?pd(d).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'';}
+  var today=new Date().toISOString().slice(0,10);
+
+  var FALLBACK={
+    settings:{venue:'Ahmedabad, India',tagline:'Where the Unseen Connects',registration_open:'TRUE',highlight_video:'3nWF4UE4RL4',
+      instagram:'https://www.instagram.com/tedxthaltejyouth',linkedin:'https://www.linkedin.com/company/tedxthaltej-youth/',youtube:'https://youtu.be/GG64ZSxIqtQ'},
+    editions:[
+      {id:'ED-2025',number:'01',date:'2025-06-15',title:'The Future of Education: A Light Towards Wisdom',theme:'A Light Towards Wisdom',venue:'JG Auditorium, Ahmedabad',page_url:'/2025',video_url:'https://youtu.be/sezR_5jnGq0'},
+      {id:'ED-2026',number:'02',date:'2026-06-25',title:'The Kaleidoscope of Perspectives',theme:'The Kaleidoscope of Perspectives',venue:'Apple Global School Auditorium, Ahmedabad',page_url:'/2026',video_url:'https://youtu.be/07l8K1AiDB8'},
+      {id:'ED-2027',number:'03',date:'2027-06-26',title:'The Zenith — Where the Unseen Connects',theme:'The Zenith',venue:'Ahmedabad',page_url:'/2027'}],
+    speakers:[['ED-2025','Dr. Darshak Dasadiya','Medical doctor, yoga practitioner and holistic development advocate'],['ED-2025','Dr. Kavita Sharma','Pioneering educator and principal'],['ED-2025','Dr. Shivani Mehta','Global educator and principal'],['ED-2025','Apoorv Jha','Podcaster, digital marketer and healthcare advocate'],['ED-2025','Hemanshi Agrawal','Social entrepreneur'],['ED-2025','Saumya Sheth','Student and advocate for social justice'],
+      ['ED-2026','Dr. Archana Chowdhry','Ophthalmic surgeon, entrepreneur and advocate for women’s leadership'],['ED-2026','Dr. CA Achyut Dani','Entrepreneur, educator and strategic management mentor'],['ED-2026','Dr. Vijay Rao','Educator, entrepreneur and financial literacy professional'],['ED-2026','Nitesh Bhardwaj','Social entrepreneur and community development practitioner'],['ED-2026','Falgun Rathod','Cyber security expert, ethical hacker, author and entrepreneur'],['ED-2026','Raju Dandigam','Staff Software Engineer and AI engineering leader at Navan'],['ED-2026','Shabd Shaurya','Author and Guinness World Record holder'],['ED-2026','Shuvajit Payne','Education innovator and social impact leader'],['ED-2026','Hemangi Prajapati','Creator, author and youth development advocate']
+    ].map(function(s,i){return {id:'S'+i,edition_id:s[0],name:s[1],designation:s[2]};})
+  };
+  function load(){ if(!API) return Promise.resolve(FALLBACK);
+    return fetch(API+'?action=site').then(function(r){return r.json();}).then(function(j){ return j.ok&&j.data&&(j.data.editions||[]).length?j.data:FALLBACK; }).catch(function(){ return FALLBACK; }); }
+
+  /* poster art per edition (flat, colourful) */
+  var PAL=['#EB0028','#FFC83D','#2D6BFF','#FF4F8B','#101B3D'];
+  function art(year,seed){
+    var R=function(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646;}, s='';
+    if(year==='2025'){ // A Light Towards Wisdom: rising sun rays
+      s='<rect width="400" height="300" fill="#FFC83D"/>';
+      for(var i=0;i<14;i++){var a=Math.PI+i*Math.PI/13;s+='<path d="M200 300 L'+(200+Math.cos(a-0.06)*460).toFixed(0)+' '+(300+Math.sin(a-0.06)*460).toFixed(0)+' L'+(200+Math.cos(a+0.06)*460).toFixed(0)+' '+(300+Math.sin(a+0.06)*460).toFixed(0)+'Z" fill="'+(i%2?'#fff':'#FF4F8B')+'" opacity=".55"/>';}
+      s+='<circle cx="200" cy="300" r="110" fill="#EB0028" stroke="#101B3D" stroke-width="6"/><path d="M150 260 h100 M165 230 h70 M180 200 h40" stroke="#FFC83D" stroke-width="10" stroke-linecap="round"/>';
+    } else if(year==='2026'){ // Kaleidoscope: mirrored shards
+      s='<rect width="400" height="300" fill="#2D6BFF"/><g transform="translate(200 150)">';
+      for(var k=0;k<12;k++){ s+='<g transform="rotate('+(k*30)+')"><path d="M0 0 L40 -12 L120 0Z" fill="'+PAL[k%4]+'" stroke="#101B3D" stroke-width="3"/><circle cx="150" cy="0" r="8" fill="#fff" stroke="#101B3D" stroke-width="3"/></g>'; }
+      s+='<circle r="26" fill="#FFC83D" stroke="#101B3D" stroke-width="5"/></g>';
+    } else { // Zenith: sun at the top of a dome
+      s='<rect width="400" height="300" fill="#101B3D"/><path d="M40 300 A160 160 0 0 1 360 300Z" fill="#FF4F8B" stroke="#FFC83D" stroke-width="5"/><polyline points="70,280 120,200 200,160 280,200 330,280" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="6 9"/>'+
+        '<g fill="#fff" stroke="#101B3D" stroke-width="3"><circle cx="70" cy="280" r="10"/><circle cx="120" cy="200" r="10"/><circle cx="280" cy="200" r="10"/><circle cx="330" cy="280" r="10"/></g><circle cx="200" cy="120" r="40" fill="#EB0028" stroke="#FFC83D" stroke-width="6"/>';
+    }
+    return '<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">'+s+'</svg>';
+  }
+  function hash(s){var h=7;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))%2147483647;return h||1;}
+  function ini(n){return String(n).replace(/^(Dr\.|CA)\s+/g,'').replace(/^CA\s+/,'').split(/\s+/).map(function(w){return w[0];}).slice(0,2).join('').toUpperCase();}
+
+  function render(d){
+    var s=d.settings||{}, eds=(d.editions||[]).slice().sort(function(a,b){return String(a.date).localeCompare(String(b.date));});
+    var cur=eds.filter(function(e){return String(e.date).slice(0,10)>=today;})[0]||eds[eds.length-1]||{};
+    // hero
+    if(cur.date){ var dt=pd(cur.date); $('#tDay').textContent=dt.getDate(); $('#tMon').textContent=dt.toLocaleDateString('en-GB',{month:'short'}).toUpperCase()+' '+dt.getFullYear();
+      $('#stub').textContent=String(dt.getDate()).padStart(2,'0')+'.'+String(dt.getMonth()+1).padStart(2,'0')+'.'+dt.getFullYear(); countdown(cur.date,s.event_time); }
+    $('#edK').textContent='TEDxThaltej Youth · Edition '+(cur.number||'03');
+    $('#theme').textContent=String(cur.theme||'The Zenith').replace(/^The\s+/i,'');
+    if(s.tagline) $('#tagline').innerHTML=esc(s.tagline).replace(/unseen/i,function(m){return '<em>'+m+'</em>';})+'.';
+    if(safe(cur.page_url)) $('#themeLink').href=cur.page_url;
+    if(s.about) $('#aboutTxt').textContent=s.about;
+    if(s.registration_note) $('#regNote').textContent=s.registration_note;
+    if(String(s.registration_open).toUpperCase()==='FALSE') $('#regWrap').innerHTML='<p class="closed">Registrations open soon. Follow us on Instagram for the announcement.</p>';
+    $('#soc').innerHTML=[['instagram','Instagram'],['linkedin','LinkedIn'],['youtube','YouTube']].filter(function(k){return safe(s[k[0]]);}).map(function(k){return '<a href="'+esc(s[k[0]])+'" target="_blank" rel="noopener">'+k[1]+'</a>';}).join('');
+    // marquee
+    var words=['Ideas worth spreading','Amdavad','The Zenith','Where the unseen connects','અમદાવાદ','Youth-led','अमदावाद','Since 2025'];
+    var m=words.map(function(w){return '<span>'+esc(w)+'</span>';}).join(''); $('#marq').innerHTML=m+m;
+    // editions
+    $('#egrid').innerHTML=eds.slice().reverse().map(function(e){ var y=String(e.date).slice(0,4), now=e.id===cur.id, n=(d.speakers||[]).filter(function(x){return x.edition_id===e.id;}).length;
+      return '<a class="ed rv'+(now?' now':'')+'" href="'+esc(safe(e.page_url)||'#')+'"><div class="art">'+art(y,hash(e.id))+'</div><div class="tx"><span class="no">Edition '+esc(e.number)+' · '+y+(now?' · Next':'')+'</span><h3>'+esc(e.theme||e.title)+'</h3><p>'+esc(longDate(e.date))+(e.venue?' · '+esc(e.venue):'')+(n?' · '+n+' speakers':'')+'</p><span class="go">'+(now?'Explore the theme':'Relive the edition')+'<i>→</i></span></div></a>'; }).join('');
+    // video
+    var vids=eds.filter(function(e){return ytId(e.video_url);}).reverse().map(function(e){return {id:ytId(e.video_url),label:String(e.date).slice(0,4)+' · '+(e.theme||e.title)};});
+    if(s.highlight_video) vids.push({id:s.highlight_video,label:'Our vision in action'});
+    if(!vids.length) $('#film').hidden=true; else {
+      var showV=function(v){ $('#vid').innerHTML='<img src="https://i.ytimg.com/vi/'+v.id+'/maxresdefault.jpg" alt="" onerror="this.style.display=\'none\'"><button type="button" aria-label="Play '+esc(v.label)+'"><span></span></button><div class="cap">'+esc(v.label)+'</div>';
+        $('#vid button').onclick=function(){ $('#vid').innerHTML='<iframe src="https://www.youtube.com/embed/'+v.id+'?autoplay=1&rel=0&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="'+esc(v.label)+'"></iframe>'; }; };
+      $('#vtabs').innerHTML=vids.map(function(v,i){return '<button type="button" class="'+(i?'':'on')+'" data-i="'+i+'">'+esc(v.label)+'</button>';}).join('');
+      $('#vtabs').onclick=function(e){var b=e.target.closest('button');if(!b)return;[].forEach.call($('#vtabs').children,function(x){x.classList.toggle('on',x===b);});showV(vids[+b.dataset.i]);};
+      showV(vids[0]); }
+    // speakers
+    var sp=d.speakers||[]; if(sp.length) $('#sSpk').dataset.c=sp.length;
+    var tabs=[{id:'all',label:'All'}].concat(eds.slice().reverse().map(function(e){return {id:e.id,label:String(e.date).slice(0,4)+' · '+(e.theme||e.title)};})), active='all';
+    var COL=['#FFC83D','#FF4F8B','#2D6BFF','#EB0028'];
+    function paintS(){
+      $('#tabs').innerHTML=tabs.map(function(t){return '<button type="button" role="tab" aria-selected="'+(t.id===active)+'" data-id="'+esc(t.id)+'">'+esc(t.label)+'</button>';}).join('');
+      var list=sp.filter(function(x){return active==='all'||x.edition_id===active;}), eOf=function(id){return eds.filter(function(e){return e.id===id;})[0]||{};};
+      $('#sgrid').innerHTML=list.length?list.map(function(x,i){ var e=eOf(x.edition_id), p=safe(x.photo_url), c=COL[hash(x.name)%4];
+        return '<a class="sp" href="'+esc(safe(e.page_url)||'#')+'#speakers"><div class="ph" style="background:'+c+'">'+(p?'<img src="'+esc(p)+'" alt="'+esc(x.name)+'" loading="lazy">':'<svg viewBox="0 0 200 200"><circle cx="'+(30+hash(x.name)%140)+'" cy="40" r="60" fill="#fff" opacity=".25"/><path d="M0 200 L60 130 L110 170 L160 110 L200 150 V200Z" fill="#101B3D" opacity=".18"/></svg><span class="ini">'+esc(ini(x.name))+'</span>')+'</div>'+
+          '<div class="tx"><small>'+String(e.date||'').slice(0,4)+'</small><b>'+esc(x.name)+'</b><p>'+esc(x.designation||'')+'</p></div></a>'; }).join('')
+        :'<div class="tba"><b>Speakers announcing soon</b><p>Speakers join by invitation, or are discovered through the <a href="/ais" style="text-decoration:underline">Ahmedabad Idea Search</a>.</p></div>';
+    }
+    paintS(); $('#tabs').onclick=function(e){var b=e.target.closest('button');if(!b)return;active=b.dataset.id;paintS();};
+    observe();
+  }
+
+  var cdT; function countdown(date,time){ clearInterval(cdT); var t=new Date(String(date).slice(0,10)+'T'+(time||'10:00')+':00+05:30').getTime();
+    function tick(){ var ms=t-Date.now(); if(ms<0){ $('#cd').innerHTML='<div><b>Live!</b></div>'; clearInterval(cdT); return; }
+      var D=Math.floor(ms/864e5);ms%=864e5;var H=Math.floor(ms/36e5);ms%=36e5;var M=Math.floor(ms/6e4),S=Math.floor(ms%6e4/1e3);
+      $('#cD').textContent=D;$('#cH').textContent=String(H).padStart(2,'0');$('#cM').textContent=String(M).padStart(2,'0');$('#cS').textContent=String(S).padStart(2,'0'); }
+    tick(); cdT=setInterval(tick,1000); }
+
+  var io; function observe(){ io=io||new IntersectionObserver(function(en){en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); e.target.querySelectorAll&&e.target.querySelectorAll('[data-c]').forEach(count); io.unobserve(e.target);} });},{threshold:.15});
+    document.querySelectorAll('.rv:not(.in)').forEach(function(el){io.observe(el);}); }
+  function count(el){ var to=+el.dataset.c, t0=performance.now(); (function f(t){ var k=Math.min(1,(t-t0)/1000); el.textContent=String(Math.round(to*(1-Math.pow(1-k,3)))).padStart(2,'0'); if(k<1) requestAnimationFrame(f); })(t0); }
+
+  var dr=$('#drawer'), bu=$('#burger');
+  bu.onclick=function(){ var on=!dr.classList.contains('on'); dr.classList.toggle('on',on); bu.textContent=on?'×':'☰'; bu.setAttribute('aria-expanded',on); };
+  dr.onclick=function(e){ if(e.target.closest('a')){ dr.classList.remove('on'); bu.textContent='☰'; } };
+
+  /* forms → team portal */
+  var TYPES=['Contact','Volunteer','Media'];
+  $('#ftabs').innerHTML=TYPES.map(function(t,i){return '<button type="button" class="'+(i?'':'on')+'" data-t="'+t+'">'+(t==='Media'?'Press':t)+'</button>';}).join('');
+  function pick(t){ [].forEach.call($('#ftabs').children,function(b){b.classList.toggle('on',b.dataset.t===t);}); var f=$('#subForm'); f.type.value=t; $('#orgLbl').firstChild.textContent=t==='Volunteer'?'School or college':'Organisation'; }
+  $('#ftabs').onclick=function(e){ if(e.target.dataset.t) pick(e.target.dataset.t); };
+  function post(p){ if(!API) return new Promise(function(r){ setTimeout(function(){ r({ok:true,preview:true}); },500); }); return fetch(API,{method:'POST',body:JSON.stringify(p)}).then(function(r){return r.json();}); }
+  function wire(fid,mid,action,okText){ var f=$(fid),m=$(mid); f.addEventListener('submit',function(e){ e.preventDefault(); m.className='msg';
+    if(!f.checkValidity()){ m.className='msg err'; m.textContent='Please fill in the required fields with valid details.'; f.reportValidity(); return; }
+    var b=f.querySelector('button[type=submit]'),t=b.textContent; b.disabled=true; b.textContent='Sending…'; var data={}; new FormData(f).forEach(function(v,k){data[k]=v;}); data.action=action;
+    post(data).then(function(j){ if(!j.ok) throw new Error(j.error||'Something went wrong.'); m.className='msg ok'; m.textContent=okText(j)+(j.preview?' (Preview: nothing was sent.)':''); f.reset(); if(action==='submit') pick('Contact'); })
+      .catch(function(err){ m.className='msg err'; m.textContent=err.message; }).then(function(){ b.disabled=false; b.textContent=t; }); }); }
+  wire('#regForm','#regMsg','register',function(j){ return j.status==='Waitlisted'?'All seats are taken for now. You’re on the waitlist, and we’ll email you if a seat opens.':'Registration received! Check your inbox for a confirmation.'; });
+  wire('#subForm','#subMsg','submit',function(){ return 'Thank you! Your message reached our team.'; });
+
+  $('#yr').textContent=new Date().getFullYear();
+  load().then(render); observe();
+})();
+</script>
+</body>
+</html>

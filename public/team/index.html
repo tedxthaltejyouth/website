@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team · TEDxThaltej Youth</title>
+<meta name="description" content="The team behind TEDxThaltej Youth, edition by edition.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="/assets/config.js"></script>
+<script>
+/* =====================================================================
+   SETTINGS — paste your Apps Script web app URL here (ends in /exec).
+   Everything else comes from the Google Sheet.
+   ===================================================================== */
+/* One shared backend for the whole site (set in /assets/config.js). Until it is set, the old Team script keeps working. */
+var TEAM_API = window.TXTY_API ? window.TXTY_API + '?action=team' : 'https://script.google.com/macros/s/AKfycbxeeAus9EFRdJdU2yJqxD9k1xYkuZ5OkhPyL6VfKK7fswxBlkpj97EyaOw_2oGUx3USqQ/exec';
+var CONTACT_EMAIL = 'info@tedxthaltejyouth.in';
+</script>
+<style>
+  :root{--red:#EB0028;--ease:cubic-bezier(.2,.7,.1,1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#fff;color:#000;font-family:'Inter',Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5}
+  a{color:inherit}
+  button{font-family:inherit}
+  :focus-visible{outline:3px solid var(--red);outline-offset:3px}
+  .wrap{width:min(1200px,100% - 40px);margin:0 auto}
+  .k{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--red)}
+  .k:before{content:"";width:26px;height:3px;background:var(--red)}
+
+  /* HERO */
+  .hero{background:#000;color:#fff;position:relative;overflow:hidden;padding:clamp(120px,16vw,190px) 0 clamp(70px,9vw,110px)}
+  .hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+  .hero .wrap{position:relative;z-index:2}
+  .hero h1{margin-top:22px;font-size:clamp(48px,8.5vw,128px);font-weight:900;letter-spacing:-.055em;line-height:.92;max-width:11ch}
+  .hero h1 em{font-style:normal;color:var(--red)}
+  .hero p{margin-top:26px;max-width:560px;font-size:clamp(17px,1.5vw,20px);color:#b3b3b3}
+  .stats{margin-top:46px;display:flex;gap:clamp(30px,6vw,80px);flex-wrap:wrap}
+  .stats div b{display:block;font-size:clamp(40px,5vw,64px);font-weight:900;letter-spacing:-.04em;line-height:1}
+  .stats div span{display:block;margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8c8c8c}
+  .topbar{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:20px 26px}
+  .topbar b{font-size:15px;font-weight:800}
+  .topbar a{font-size:14px;color:#bdbdbd;text-decoration:none}
+  .topbar a:hover{color:#fff}
+
+  /* SWITCHER */
+  .bar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid #e6e6e6}
+  .bar .wrap{display:flex;align-items:center;gap:16px;padding:14px 0}
+  .tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;flex:1;padding:2px}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;cursor:pointer;border:2px solid #000;background:#fff;color:#000;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:700;white-space:nowrap;transition:background .2s,color .2s}
+  .tab:hover{background:#f2f2f2}
+  .tab[aria-selected="true"]{background:#000;color:#fff}
+  .tab[aria-selected="true"]:after{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);margin-left:9px;vertical-align:middle}
+  .search{flex:none;width:min(260px,40vw);position:relative}
+  .search input{width:100%;font:600 15px Inter,Arial,sans-serif;padding:11px 14px 11px 40px;border:2px solid #000;border-radius:999px;background:#fff;color:#000}
+  .search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%)}
+  @media (max-width:700px){.bar .wrap{flex-direction:column;align-items:stretch;gap:10px}.search{width:100%}}
+
+  /* EDITIONS */
+  main{padding:clamp(40px,6vw,80px) 0 clamp(90px,10vw,140px)}
+  .ed{padding-top:clamp(50px,6vw,80px)}
+  .ed:first-child{padding-top:10px}
+  .ed-head{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;padding-bottom:26px;border-bottom:3px solid #000}
+  .ed-head h2{font-size:clamp(32px,4.6vw,60px);font-weight:900;letter-spacing:-.04em;line-height:1}
+  .ed-head h2 span{color:var(--red)}
+  .ed-head p{margin-top:10px;font-size:18px;font-weight:600;color:#4d4d4d}
+  .ed-head .count{font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
+  .ed-head .count b{font-size:28px;letter-spacing:-.02em;margin-right:6px;color:var(--red)}
+  .grid{margin-top:30px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+  .card{position:relative;border:1.5px solid #e0e0e0;border-radius:20px;padding:22px 22px 24px;display:flex;gap:16px;align-items:center;background:#fff;
+        opacity:0;transform:translateY(18px);animation:up .7s var(--ease) forwards;transition:border-color .25s,transform .25s,box-shadow .25s}
+  .card:hover{border-color:#000;transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(0,0,0,.45)}
+  @keyframes up{to{opacity:1;transform:none}}
+  .mono{flex:none;width:56px;height:56px;border-radius:50%;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800;letter-spacing:-.02em;transition:background .25s}
+  .card:hover .mono{background:var(--red)}
+  .card.lead .mono{background:var(--red)}
+  .who{min-width:0}
+  .who h3{font-size:18px;font-weight:800;letter-spacing:-.015em;line-height:1.25}
+  .who p{margin-top:4px;font-size:14px;font-weight:500;color:#5c5c5c;line-height:1.4}
+  .empty,.state{margin-top:30px;padding:40px;border:2px dashed #cfcfcf;border-radius:20px;text-align:center;color:#5c5c5c;font-weight:600}
+  .state a{color:var(--red)}
+  mark{background:rgba(235,0,40,.14);color:inherit;border-radius:3px;padding:0 1px}
+
+  /* skeleton */
+  .sk{height:102px;border-radius:20px;background:linear-gradient(90deg,#f2f2f2 0,#e6e6e6 50%,#f2f2f2 100%);background-size:200% 100%;animation:sh 1.3s linear infinite}
+  @keyframes sh{to{background-position:-200% 0}}
+
+  /* JOIN */
+  .join{background:#000;color:#fff;padding:clamp(80px,10vw,130px) 0}
+  .join h2{margin-top:18px;font-size:clamp(34px,5vw,66px);font-weight:900;letter-spacing:-.04em;line-height:1}
+  .join h2 em{font-style:normal;color:var(--red)}
+  .join p{margin-top:18px;color:#b3b3b3;font-size:18px;max-width:560px}
+  .btn{margin-top:30px;display:inline-flex;gap:10px;align-items:center;background:var(--red);color:#fff;text-decoration:none;font-weight:700;padding:16px 26px;border-radius:999px;transition:transform .25s var(--ease)}
+  .btn:hover{transform:translateY(-2px)}
+  footer{background:#000;color:#fff;border-top:1px solid #1f1f1f;padding:30px 0 40px}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:14px}
+  footer .lic{font-weight:600}
+  footer span{color:#8c8c8c}
+  @media (prefers-reduced-motion:reduce){.card{animation:none;opacity:1;transform:none}.sk{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="topbar"><b>TEDxThaltej Youth</b><a href="/" target="_top">tedxthaltejyouth.in ↗</a></div>
+  <div class="wrap">
+    <span class="k">Our team</span>
+    <h1>The people behind <em>the ideas.</em></h1>
+    <p>Every edition of TEDxThaltej Youth is built by a team of young people from Ahmedabad. These are the people who made each one happen.</p>
+    <div class="stats"><div><b id="sPeople">–</b><span>Team members</span></div><div><b id="sEds">–</b><span>Editions</span></div></div>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="tabs" id="tabs" role="tablist" aria-label="Choose an edition"></div>
+    <label class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Search name or role" aria-label="Search the team"></label>
+  </div>
+</div>
+
+<main class="wrap" id="list" aria-live="polite">
+  <div class="grid"><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+</main>
+
+<section class="join">
+  <div class="wrap">
+    <span class="k">Join the team</span>
+    <h2>Want to build the <em>next edition?</em></h2>
+    <p>We look for curious, committed young people across design, content, operations, partnerships and more.</p>
+    <a class="btn" id="joinBtn" href="#">Write to us →</a>
+  </div>
+</section>
+
+<footer><div class="wrap"><p class="lic">This independent TEDx event is operated under license from TED.</p><span>TEDxThaltej Youth · Ahmedabad</span></div></footer>
+
+<script>
+(function(){
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var CK='tty_team_cache_v2', data=null, active='all', query='';
+  var list=document.getElementById('list'), tabs=document.getElementById('tabs'), q=document.getElementById('q');
+  document.getElementById('joinBtn').href='mailto:'+CONTACT_EMAIL+'?subject='+encodeURIComponent('Joining the TEDxThaltej Youth team');
+
+  /* ---------- helpers ---------- */
+  function h(tag,cls,text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+  function initials(n){ var p=n.replace(/^(dr|mr|ms|mrs)\.?\s+/i,'').split(/\s+/).filter(Boolean); return ((p[0]||'')[0]||'').toUpperCase()+((p.length>1?p[p.length-1][0]:'')||'').toUpperCase(); }
+  function isLead(d){ return /organi[sz]er|licensee|curator|director|head|lead|chair/i.test(d||''); }
+  function norm(s){ return (s||'').toLowerCase(); }
+  function slug(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+  // highlight search matches safely (text nodes only)
+  function hl(el,text){
+    if(!query){ el.textContent=text; return; }
+    var i=norm(text).indexOf(query); if(i<0){ el.textContent=text; return; }
+    el.appendChild(document.createTextNode(text.slice(0,i)));
+    el.appendChild(h('mark',null,text.slice(i,i+query.length)));
+    el.appendChild(document.createTextNode(text.slice(i+query.length)));
+  }
+  function count(el,to){
+    if(reduce){ el.textContent=to; return; }
+    var t0=performance.now(); (function f(t){ var k=Math.min(1,(t-t0)/1100); el.textContent=Math.round(to*(1-Math.pow(1-k,3))); if(k<1) requestAnimationFrame(f); })(t0);
+  }
+
+  /* ---------- render ---------- */
+  function renderTabs(){
+    tabs.innerHTML='';
+    var opts=[{id:'all',label:'All editions'}].concat(data.editions.map(function(e){ return {id:slug(e.name),label:e.name}; }));
+    opts.forEach(function(o){
+      var b=h('button','tab',o.label); b.type='button'; b.setAttribute('role','tab'); b.setAttribute('aria-selected',String(o.id===active));
+      b.onclick=function(){ active=o.id; renderTabs(); render(); try{ history.replaceState(null,'',o.id==='all'?location.pathname:'#'+o.id); }catch(e){} window.scrollTo({top:document.querySelector('.bar').offsetTop,behavior:reduce?'auto':'smooth'}); };
+      tabs.appendChild(b);
+    });
+  }
+  function render(){
+    list.innerHTML='';
+    var eds=data.editions.filter(function(e){ return active==='all'||slug(e.name)===active; });
+    var shown=0;
+    eds.forEach(function(e){
+      var ms=e.members.filter(function(m){ return !query||norm(m.name).indexOf(query)>=0||norm(m.designation).indexOf(query)>=0; });
+      if(query && !ms.length) return;
+      var sec=h('section','ed'); sec.id=slug(e.name);
+      var head=h('div','ed-head'), left=h('div'), t=h('h2');
+      var m=e.name.match(/^(.*?)(\s*[-–—]?\s*)(\d{4})$/);
+      if(m){ t.appendChild(document.createTextNode(m[1].replace(/[-–—\s]+$/,'')+' ')); t.appendChild(h('span',null,m[3])); } else t.textContent=e.name;
+      left.appendChild(t); if(e.theme) left.appendChild(h('p',null,e.theme));
+      var c=h('div','count'); c.appendChild(h('b',null,String(ms.length))); c.appendChild(document.createTextNode(ms.length===1?'member':'members'));
+      head.appendChild(left); head.appendChild(c); sec.appendChild(head);
+      if(!ms.length){ sec.appendChild(h('div','empty','Team announcements coming soon.')); }
+      else {
+        var g=h('div','grid');
+        ms.forEach(function(p,i){
+          var card=h('article','card'+(isLead(p.designation)?' lead':'')); card.style.animationDelay=Math.min(i*40,600)+'ms';
+          card.appendChild(h('div','mono',initials(p.name)));
+          var w=h('div','who'), n=h('h3'), d=h('p'); hl(n,p.name); hl(d,p.designation||'');
+          w.appendChild(n); if(p.designation) w.appendChild(d); card.appendChild(w); g.appendChild(card);
+        });
+        sec.appendChild(g);
+      }
+      shown+=ms.length; list.appendChild(sec);
+    });
+    if(!list.children.length) list.appendChild(h('div','state', query?'No one matches “'+q.value+'”.':'No editions yet.'));
+  }
+  function apply(d,fromCache){
+    data=d; if(!d||!d.editions) return;
+    var hash=location.hash.slice(1); if(hash && d.editions.some(function(e){return slug(e.name)===hash;})) active=hash;
+    var people=0; d.editions.forEach(function(e){ people+=e.members.length; });
+    if(!fromCache||document.getElementById('sPeople').textContent==='–'){ count(document.getElementById('sPeople'),people); count(document.getElementById('sEds'),d.editions.length); }
+    else { document.getElementById('sPeople').textContent=people; document.getElementById('sEds').textContent=d.editions.length; }
+    renderTabs(); render();
+  }
+  function fail(msg){
+    if(data) return; list.innerHTML=''; var s=h('div','state'); s.textContent=msg; list.appendChild(s);
+  }
+
+  /* ---------- load: cached copy first (instant), then live from the Sheet ---------- */
+  try{ var c=JSON.parse(localStorage.getItem(CK)||'null'); if(c&&c.editions) apply(c,true); }catch(e){}
+  function got(d){ try{ localStorage.setItem(CK,JSON.stringify(d)); }catch(e){} apply(d,false); }
+  function jsonp(){
+    var cb='__team'+Date.now(), s=document.createElement('script');
+    window[cb]=function(d){ got(d); delete window[cb]; s.remove(); };
+    s.onerror=function(){ fail('We could not load the team right now. Please try again in a moment.'); };
+    s.src=TEAM_API+(TEAM_API.indexOf('?')<0?'?':'&')+'callback='+cb; document.body.appendChild(s);
+  }
+  if(!/^https:\/\/script\.google(usercontent)?\.com\//.test(TEAM_API)){
+    fail('Team list not connected yet: paste the Apps Script web app URL into TEAM_API at the top of this file.');
+  } else {
+    fetch(TEAM_API,{redirect:'follow'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(got).catch(jsonp);
+  }
+
+  q.addEventListener('input',function(){ query=norm(q.value.trim()); if(data) render(); });
+
+  /* ---------- hero: a quiet network of people-dots ---------- */
+  var cv=document.getElementById('net'), x=cv.getContext('2d'), pts=[], W,H,DPR;
+  function size(){ DPR=Math.min(2,devicePixelRatio||1); W=cv.clientWidth; H=cv.clientHeight; cv.width=W*DPR; cv.height=H*DPR; x.setTransform(DPR,0,0,DPR,0,0);
+    pts=[]; var n=Math.round(W*H/14000); for(var i=0;i<n;i++) pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:Math.random()<.12}); }
+  function draw(){
+    x.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){ var a=pts[i]; if(!reduce){ a.x+=a.vx; a.y+=a.vy; if(a.x<0||a.x>W) a.vx*=-1; if(a.y<0||a.y>H) a.vy*=-1; }
+      for(var j=i+1;j<pts.length;j++){ var b=pts[j], dx=a.x-b.x, dy=a.y-b.y, d=dx*dx+dy*dy; if(d<13000){ x.strokeStyle='rgba(255,255,255,'+(0.12*(1-d/13000))+')'; x.lineWidth=1; x.beginPath(); x.moveTo(a.x,a.y); x.lineTo(b.x,b.y); x.stroke(); } } }
+    pts.forEach(function(p){ x.fillStyle=p.r?'#EB0028':'rgba(255,255,255,.55)'; x.beginPath(); x.arc(p.x,p.y,p.r?3:1.8,0,6.283); x.fill(); });
+    // fade the left side so the headline stays readable
+    var g=x.createLinearGradient(0,0,W,0); g.addColorStop(0,'rgba(0,0,0,.92)'); g.addColorStop(.55,'rgba(0,0,0,.55)'); g.addColorStop(1,'rgba(0,0,0,0)'); x.fillStyle=g; x.fillRect(0,0,W,H);
+    if(!reduce) requestAnimationFrame(draw);
+  }
+  size(); draw(); addEventListener('resize',function(){ size(); if(reduce) draw(); });
+})();
+</script>
+</body>
+</html>
