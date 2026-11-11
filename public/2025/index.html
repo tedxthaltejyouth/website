@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Future of Education: A Light Towards Wisdom — TEDxThaltej Youth 2025</title>
+<meta name="description" content="The Future of Education: A Light Towards Wisdom — the first edition of TEDxThaltej Youth, held on 15 June 2025 in Ahmedabad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#EB0028;--g4:#8c8c8c;--g5:#b3b3b3;--ease:cubic-bezier(.2,.7,.1,1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#101B3D;color:#fff;font-family:'Inter',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5}
+  a{color:inherit}
+  .wrap{width:min(1200px,100% - 48px);margin:0 auto}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red)}
+  .pad{padding:clamp(96px,14vw,180px) 0}
+  section{position:relative}
+  h2.big{font-size:clamp(36px,5.4vw,76px);font-weight:800;letter-spacing:-.035em;line-height:1.02;margin-top:22px}
+  .lead{font-size:clamp(17px,1.5vw,20px);line-height:1.65}
+
+  /* NAV */
+  nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:1px solid transparent;background:linear-gradient(rgba(16,27,61,.75),rgba(16,27,61,0));transition:background .4s,border-color .4s}
+  nav.solid{background:rgba(16,27,61,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:#1f1f1f}
+  .brand{font-weight:700;font-size:16px;text-decoration:none}
+  .brand span{font-weight:400;color:var(--g5)}
+  .navlinks{display:flex;gap:28px;font-size:14px;color:var(--g5)}
+  .navlinks a{text-decoration:none;transition:color .2s}.navlinks a:hover{color:#fff}
+  .navtag{white-space:nowrap;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;border:1px solid #fff;padding:7px 14px;border-radius:999px}
+  .navtag i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--red);margin-right:8px;vertical-align:1px}
+  @media (max-width:900px){.navlinks{display:none}}
+  @media (max-width:520px){nav{padding:14px 18px}nav .brand span{display:none}.navtag .full{display:none}}
+
+  /* SCENE */
+  #scene{height:480vh;background:#101B3D}
+  #scene .stick{position:sticky;top:0;height:100vh;overflow:hidden}
+  #light{position:absolute;inset:0;width:100%;height:100%}
+  .hero-title{position:absolute;left:0;right:0;top:44%;transform:translateY(-50%);text-align:center;pointer-events:none;padding:0 20px}
+  .hero-title .eyebrow{display:block;margin-bottom:24px}
+  .hero-title .pre{font-size:clamp(18px,2.2vw,28px);font-weight:300;color:var(--g5);letter-spacing:-.01em}
+  .hero-title h1{margin-top:12px;font-size:clamp(46px,9vw,148px);font-weight:900;letter-spacing:-.05em;line-height:.92}
+  .hero-title h1 span{display:block;font-weight:300;letter-spacing:-.04em}
+  .hero-title h1 i{font-style:normal;color:var(--red)}
+  .hero-meta{margin-top:36px;display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+  .hero-meta b{width:5px;height:5px;background:var(--red);border-radius:50%;align-self:center}
+  .scrollcue{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--g4);display:flex;flex-direction:column;align-items:center;gap:12px}
+  .scrollcue i{width:1px;height:46px;background:linear-gradient(#fff,transparent);animation:cue 2.2s var(--ease) infinite;transform-origin:top}
+  @keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+  .step{position:absolute;left:0;right:0;top:22%;text-align:center;padding:0 24px;opacity:0;transform:translateY(24px);transition:opacity .6s var(--ease),transform .8s var(--ease);pointer-events:none}
+  .step.on{opacity:1;transform:none}
+  .step .eyebrow{display:block;margin-bottom:16px}
+  .step h2{font-size:clamp(30px,4.6vw,62px);font-weight:700;letter-spacing:-.03em;line-height:1.08;max-width:980px;margin:0 auto;text-shadow:0 2px 30px rgba(16,27,61,.8)}
+  .step h2 em{font-style:normal;color:var(--red)}
+  .progress{position:absolute;right:28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px}
+  .progress span{width:3px;height:26px;background:#2a2a2a;transition:background .4s}
+  .progress span.on{background:var(--red)}
+  @media (max-width:700px){.progress{display:none}}
+
+  .rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+  /* VIDEO */
+  .video{background:#101B3D}
+  .video .head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+  .video .head p{max-width:440px;color:var(--g5)}
+  .frame{margin-top:clamp(40px,5vw,64px);position:relative;aspect-ratio:16/9;width:100%;background:#0c1531;border:1px solid #262626}
+  .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .poster{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;background:#0c1531;cursor:pointer;display:block;overflow:hidden;font-family:inherit;color:#fff}
+  .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+  .poster:hover img{transform:scale(1.03)}
+  .poster .shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(16,27,61,.75),rgba(16,27,61,.1) 55%)}
+  .poster .play{position:absolute;left:50%;top:50%;width:clamp(72px,9vw,112px);height:clamp(72px,9vw,112px);transform:translate(-50%,-50%);border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 0 rgba(235,0,40,.5);animation:pulse 2.4s infinite;transition:transform .4s var(--ease)}
+  .poster:hover .play{transform:translate(-50%,-50%) scale(1.08)}
+  .poster .play svg{width:42%;height:42%;margin-left:6%}
+  .poster .plabel{position:absolute;left:clamp(20px,3vw,40px);bottom:clamp(18px,3vw,36px);font-size:13px;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(235,0,40,.5)}70%{box-shadow:0 0 0 28px rgba(235,0,40,0)}100%{box-shadow:0 0 0 0 rgba(235,0,40,0)}}
+  .yt{display:inline-flex;gap:10px;align-items:center;margin-top:22px;font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--g5);border-bottom:1px solid #444;padding-bottom:6px;transition:color .2s,border-color .2s}
+  .yt:hover{color:#fff;border-color:var(--red)}
+  .yt span{color:var(--red)}
+  .frame:before{content:"";position:absolute;left:-1px;top:-1px;width:64px;height:5px;background:var(--red);z-index:2}
+
+  /* GLANCE */
+  .glance{background:#fff;color:#000}
+  .ggrid{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid #000}
+  .gcell{padding:32px 28px 36px 0;border-bottom:1px solid #d9d9d9}
+  .gcell + .gcell{padding-left:28px;border-left:1px solid #d9d9d9}
+  .gcell .k{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+  .gcell .v{margin-top:12px;font-size:clamp(36px,4.4vw,64px);font-weight:900;letter-spacing:-.04em;line-height:1}
+  .gcell .s{margin-top:10px;font-size:16px;color:#4d4d4d;line-height:1.45}
+  .first{margin-top:clamp(56px,7vw,88px);display:grid;grid-template-columns:auto 1fr;gap:clamp(28px,5vw,64px);align-items:center;background:#101B3D;color:#fff;padding:clamp(32px,4vw,56px)}
+  .first .badge{display:flex;gap:10px;flex-direction:column}
+  .pill{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border:1px solid #fff;padding:9px 16px;border-radius:999px;white-space:nowrap;text-align:center}
+  .first h3{font-size:clamp(24px,2.8vw,38px);font-weight:800;letter-spacing:-.025em;line-height:1.15}
+  .first h3 em{font-style:normal;color:var(--red)}
+  .first p{margin-top:12px;color:var(--g5);font-size:17px;line-height:1.6}
+  @media (max-width:900px){.ggrid{grid-template-columns:1fr 1fr}.gcell:nth-child(3){padding-left:0;border-left:0}.first{grid-template-columns:1fr}.first .badge{flex-direction:row;flex-wrap:wrap}}
+  @media (max-width:520px){.ggrid{grid-template-columns:1fr}.gcell + .gcell{padding-left:0;border-left:0}}
+
+  /* IDEA */
+  .idea{background:#101B3D}
+  .idea .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,110px);align-items:center}
+  .idea .lead{color:var(--g5);margin-top:28px}
+  .idea .lead + .lead{margin-top:16px}
+  .idea .lead strong{color:#fff;font-weight:600}
+  #lamp{width:100%;aspect-ratio:1;display:block}
+  .idea .cap{margin-top:14px;text-align:center;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--g4)}
+  @media (max-width:900px){.idea .grid{grid-template-columns:1fr}}
+
+  /* PATH */
+  .path{background:#fff;color:#000}
+  .path .head{max-width:900px}
+  .stairs{margin-top:clamp(56px,7vw,96px);display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:end}
+  .stair{position:relative;padding:28px 26px 30px;border-top:4px solid;transition:transform 1.1s var(--ease),opacity 1s var(--ease);opacity:0;transform:translateY(60px)}
+  .stairs.in .stair{opacity:1;transform:none}
+  .stairs.in .stair:nth-child(2){transition-delay:.15s}.stairs.in .stair:nth-child(3){transition-delay:.3s}.stairs.in .stair:nth-child(4){transition-delay:.45s}
+  .stair:nth-child(1){height:220px;background:#f2f2f2;border-color:#bdbdbd}
+  .stair:nth-child(2){height:290px;background:#e3e3e3;border-color:#7a7a7a}
+  .stair:nth-child(3){height:360px;background:#1a1a1a;color:#fff;border-color:#fff}
+  .stair:nth-child(4){height:430px;background:#101B3D;color:#fff;border-color:var(--red)}
+  .stair .n{font-size:12px;font-weight:700;letter-spacing:.22em;color:var(--red)}
+  .stair h3{margin-top:10px;font-size:clamp(24px,2.4vw,34px);font-weight:800;letter-spacing:-.025em}
+  .stair p{margin-top:8px;font-size:16px;line-height:1.5;opacity:.75}
+  .stair .glow{position:absolute;right:22px;top:24px;width:14px;height:14px;border-radius:50%;background:var(--red);box-shadow:0 0 24px 6px rgba(235,0,40,.55)}
+  .path .coda{margin-top:48px;font-size:clamp(20px,2.2vw,28px);color:#4d4d4d;max-width:900px;line-height:1.45}
+  .path .coda strong{color:#000}
+  @media (max-width:800px){.stairs{grid-template-columns:1fr 1fr}.stair{height:auto!important;min-height:180px}}
+  @media (max-width:480px){.stairs{grid-template-columns:1fr}}
+
+  /* BEYOND */
+  .beyond{background:#101B3D}
+  .beyond .top{text-align:center;max-width:960px;margin:0 auto}
+  .beyond .top h2{font-size:clamp(40px,6.4vw,92px);font-weight:900;letter-spacing:-.045em;line-height:.98;margin-top:22px}
+  .beyond .top h2 em{font-style:normal;color:var(--red)}
+  .beyond .top p{margin-top:28px;color:var(--g5)}
+  .bgrid{margin-top:clamp(56px,7vw,96px);display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #2a2a2a;border-left:1px solid #2a2a2a}
+  .bcard{padding:40px 34px 44px;border-right:1px solid #2a2a2a;border-bottom:1px solid #2a2a2a;transition:background .5s}
+  .bcard:hover{background:#131f47}
+  .bcard svg{width:56px;height:56px;display:block}
+  .bcard h3{margin-top:26px;font-size:28px;font-weight:800;letter-spacing:-.02em}
+  .bcard p{margin-top:10px;font-size:17px;color:var(--g5);line-height:1.55}
+  .beyond .note{margin-top:56px;text-align:center;font-size:clamp(22px,2.8vw,36px);font-weight:300;color:var(--g5);letter-spacing:-.015em}
+  .beyond .note strong{color:#fff;font-weight:700}
+  @media (max-width:900px){.bgrid{grid-template-columns:1fr}}
+
+  /* STATEMENT */
+  .statement{background:#fff;color:#000;text-align:center}
+  .statement .bigtxt{margin-top:28px;font-size:clamp(34px,6vw,86px);font-weight:900;letter-spacing:-.045em;line-height:1.02;max-width:1100px;margin-left:auto;margin-right:auto}
+  .statement .bigtxt span{color:#cfcfcf;transition:color .45s}
+  .statement .bigtxt span.lit{color:#000}
+  .statement .bigtxt span.red.lit{color:var(--red)}
+  .vals{margin-top:clamp(64px,8vw,110px);display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:left}
+  .val{border-top:2px solid #000;padding-top:24px}
+  .val .a{font-size:clamp(24px,2.4vw,32px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+  .val p{margin-top:10px;font-size:17px;color:#4d4d4d;line-height:1.55}
+  @media (max-width:800px){.vals{grid-template-columns:1fr}}
+
+  /* SPEAKERS */
+  .speakers{background:#101B3D}
+  .speakers .head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+  .speakers .head p{max-width:420px;color:var(--g5)}
+  .sgrid{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .sp{background:#0c1531;border:1px solid #222;display:flex;flex-direction:column;transition:border-color .4s,transform .6s var(--ease)}
+  .sp:hover{border-color:#555;transform:translateY(-4px)}
+  .sp .art{position:relative;aspect-ratio:16/10;background:#0c1430;overflow:hidden;border-bottom:1px solid #222}
+  .sp .art svg{position:absolute;inset:0;width:100%;height:100%}
+  .sp .body{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1}
+  .sp .n{font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--red)}
+  .sp h3{margin-top:10px;font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+  .sp .role{margin-top:8px;font-size:15px;color:var(--g5);line-height:1.45}
+  .sp details{margin-top:auto;padding-top:22px}
+  .sp summary{list-style:none;cursor:pointer;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:10px;border-top:1px solid #333;padding-top:16px;width:100%}
+  .sp summary::-webkit-details-marker{display:none}
+  .sp summary:after{content:"+";font-size:20px;font-weight:400;color:var(--red);margin-left:auto;transition:transform .3s}
+  .sp details[open] summary:after{transform:rotate(45deg)}
+  .sp details p{margin-top:14px;font-size:15px;color:#cfcfcf;line-height:1.65}
+  @media (max-width:980px){.sgrid{grid-template-columns:1fr 1fr}}
+  @media (max-width:620px){.sgrid{grid-template-columns:1fr}}
+
+  /* PERFORMANCES */
+  .perf{background:#fff;color:#000}
+  .perf .grid{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(40px,7vw,110px);align-items:start}
+  .perf .lead{margin-top:28px;color:#4d4d4d}
+  .pcard{display:grid;grid-template-columns:72px 1fr;gap:20px;border-top:1px solid #d0d0d0;padding:28px 0 30px}
+  .pcard:first-child{border-top:2px solid #000}
+  .pcard .num{font-size:44px;font-weight:900;letter-spacing:-.04em;color:var(--red);line-height:1}
+  .pcard h3{font-size:clamp(26px,2.8vw,36px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+  .pcard p{margin-top:10px;font-size:17px;color:#4d4d4d;line-height:1.6}
+  @media (max-width:900px){.perf .grid{grid-template-columns:1fr}}
+
+  /* TEAM */
+  .team{background:#101B3D}
+  .team .grid{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(40px,7vw,110px);align-items:start}
+  .team .lead{margin-top:28px;color:var(--g5)}
+  .tlist{border-top:2px solid #fff}
+  .trow{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:22px 0;border-bottom:1px solid #262626}
+  .trow b{font-size:clamp(20px,2vw,26px);font-weight:700;letter-spacing:-.015em}
+  .trow span{font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g4);white-space:nowrap}
+  .trow.lead-row span{color:var(--red)}
+  @media (max-width:900px){.team .grid{grid-template-columns:1fr}}
+
+  /* MOVEMENT */
+  .move{background:#fff;color:#000;text-align:center}
+  .move h2{font-size:clamp(38px,6vw,88px);font-weight:900;letter-spacing:-.045em;line-height:1;max-width:1100px;margin:22px auto 0}
+  .move h2 em{font-style:normal;color:var(--red)}
+  .move .lead{margin:32px auto 0;max-width:720px;color:#4d4d4d}
+
+  /* CLOSE */
+  .close{background:#101B3D;overflow:hidden}
+  .close canvas{position:absolute;inset:0;width:100%;height:100%}
+  .close .inner{position:relative;z-index:1;text-align:center}
+  .close .pre{font-size:clamp(22px,2.6vw,34px);font-weight:300;color:var(--g5);letter-spacing:-.015em}
+  .close h2{margin:18px auto 0;font-size:clamp(40px,7.2vw,108px);font-weight:900;letter-spacing:-.05em;line-height:.98;max-width:1100px}
+  .close h2 em{font-style:normal;color:var(--red)}
+  .journey{margin-top:clamp(72px,9vw,120px);display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #fff;text-align:left}
+  .jcell{padding:28px 30px 30px;text-decoration:none;display:block;transition:background .35s,color .35s}
+  .jcell + .jcell{border-left:1px solid #fff}
+  .jcell .lab{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--g4)}
+  .jcell .val{margin-top:8px;font-size:clamp(20px,2vw,28px);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+  .jcell .val small{display:block;font-size:14px;font-weight:400;color:var(--g4);margin-top:6px;letter-spacing:0}
+  .jcell.here{background:#fff;color:#000}
+  .jcell.here .lab{color:var(--red)}
+  a.jcell:hover{background:#111}
+  a.jcell .lab{color:var(--red)}
+  @media (max-width:760px){.journey{grid-template-columns:1fr}.jcell + .jcell{border-left:0;border-top:1px solid #fff}}
+
+  footer{background:#101B3D;border-top:1px solid #1f1f1f;padding:44px 0 56px}
+  footer .row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  footer .brand{font-size:18px}
+  footer p{font-size:14px;color:var(--g4)}
+  footer .lic{margin-top:28px;font-size:14px;color:#fff;font-weight:500}
+
+  @media (prefers-reduced-motion:reduce){.rv,.step,.stair{transition:none!important}.rv,.stair{opacity:1;transform:none}.scrollcue i{animation:none}}
+</style>
+<script src="/assets/site.js" defer data-hide="#nav, body > footer" data-sub="#nav" data-title="2025 · A Light Towards Wisdom"></script>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="brand" href="/">TEDxThaltej Youth <span>· A Light Towards Wisdom · 2025</span></a>
+  <div class="navlinks">
+    <a href="#film">Aftermovie</a>
+    <a href="#idea">The idea</a>
+    <a href="#speakers">Speakers</a>
+    <a href="#performances">Performances</a>
+    <a href="#team">Team</a>
+  </div>
+  <span class="navtag"><i></i><span class="full">Edition 01 · </span>15.06.2025</span>
+</nav>
+
+<!-- ================= SCENE ================= -->
+<section id="scene" aria-label="The Future of Education: A Light Towards Wisdom">
+  <a id="top"></a>
+  <div class="stick">
+    <canvas id="light" aria-hidden="true"></canvas>
+
+    <div class="hero-title" id="heroTitle">
+      <span class="eyebrow">TEDxThaltej Youth 2025 · Edition 01</span>
+      <p class="pre">The Future of Education</p>
+      <h1><span>A Light Towards</span>Wisdom<i>.</i></h1>
+      <div class="hero-meta"><span>15 June 2025</span><b></b><span>Ahmedabad</span><b></b><span>Where it began</span></div>
+    </div>
+
+    <div class="step" data-from=".16" data-to=".36"><span class="eyebrow">In the dark</span><h2>Information can be handed over in an instant.</h2></div>
+    <div class="step" data-from=".38" data-to=".58"><span class="eyebrow">A spark</span><h2>Understanding has to be <em>lit from within.</em></h2></div>
+    <div class="step" data-from=".60" data-to=".80"><span class="eyebrow">The glow</span><h2>From knowledge to understanding, to <em>growth, empathy and impact.</em></h2></div>
+    <div class="step" data-from=".82" data-to="1.01"><span class="eyebrow">The light</span><h2>Education, not as a transfer of information, but as <em>a light towards wisdom.</em></h2></div>
+
+    <div class="progress" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="scrollcue" id="cue">Scroll<i></i></div>
+  </div>
+</section>
+
+<!-- ================= VIDEO ================= -->
+<section class="video pad" id="film">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow rv">The aftermovie</span>
+        <h2 class="big rv d1">Relive where it began.</h2>
+      </div>
+      <p class="lead rv d2">Six speakers, three performances and the first light of TEDxThaltej Youth. Here is how 15 June 2025 unfolded.</p>
+    </div>
+    <div class="frame rv d2">
+      <button class="poster" id="poster" type="button" aria-label="Play the aftermovie">
+        <img id="posterImg" src="https://i.ytimg.com/vi/sezR_5jnGq0/maxresdefault.jpg" alt="TEDxThaltej Youth, 15 June 2025, aftermovie">
+        <span class="shade"></span>
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span>
+        <span class="plabel">Play the aftermovie</span>
+      </button>
+    </div>
+    <a class="yt rv" href="https://youtu.be/sezR_5jnGq0" target="_blank" rel="noopener">Watch on YouTube <span>↗</span></a>
+  </div>
+</section>
+
+
+<!-- ================= GLANCE ================= -->
+<section class="glance pad">
+  <div class="wrap">
+    <span class="eyebrow rv">The edition at a glance</span>
+    <h2 class="big rv d1">Where our story began.</h2>
+    <div class="ggrid">
+      <div class="gcell rv"><div class="k">Date</div><div class="v">15.06</div><div class="s">Sunday, 15 June 2025</div></div>
+      <div class="gcell rv d1"><div class="k">Venue</div><div class="v">JG</div><div class="s">JG Auditorium, JG Campus of Excellence, Sola Road, Ahmedabad</div></div>
+      <div class="gcell rv d2"><div class="k">Speakers</div><div class="v">06</div><div class="s">Doctors, principals, a podcaster, a social entrepreneur and a student</div></div>
+      <div class="gcell rv d3"><div class="k">Performances</div><div class="v">03</div><div class="s">Bharatanatyam, a drumming session and a soulful singing performance</div></div>
+    </div>
+    <div class="first rv">
+      <div class="badge"><span class="pill">ISO 9001:2015</span><span class="pill">ISO 20121:2024</span></div>
+      <div>
+        <h3>The first youth-led TEDx event in Gujarat to be <em>certified for both.</em></h3>
+        <p>Quality Management and Sustainable Event Management. These standards guided our commitment to excellence and responsibility in everything, from curating content to running the day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= IDEA ================= -->
+<section class="idea pad" id="idea">
+  <div class="wrap grid">
+    <div>
+      <span class="eyebrow rv">The idea</span>
+      <h2 class="big rv d1">From knowledge to true understanding.</h2>
+      <p class="lead rv d2">“A Light Towards Wisdom” illuminates the journey from knowledge to true understanding, sparking a deeper commitment to <strong>growth, empathy and meaningful impact.</strong></p>
+      <p class="lead rv d3">It celebrates education as a transformative force: not only for personal advancement, but for shaping <strong>a thoughtful, resilient and compassionate society.</strong></p>
+    </div>
+    <div class="rv d2">
+      <canvas id="lamp" aria-label="A glowing point of light illuminating scattered particles"></canvas>
+      <p class="cap">One light · many minds</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PATH ================= -->
+<section class="path pad">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow rv">The journey</span>
+      <h2 class="big rv d1">Every step brings more light.</h2>
+    </div>
+    <div class="stairs" id="stairs">
+      <div class="stair"><div class="n">01</div><h3>Information</h3><p>What we are told.</p></div>
+      <div class="stair"><div class="n">02</div><h3>Knowledge</h3><p>What we learn and remember.</p></div>
+      <div class="stair"><div class="n">03</div><h3>Understanding</h3><p>What we can explain, question and connect.</p></div>
+      <div class="stair"><span class="glow"></span><div class="n">04</div><h3>Wisdom</h3><p>What we live by: growth, empathy and meaningful impact.</p></div>
+    </div>
+    <p class="coda rv">The future of education, we believed, lies in <strong>climbing the whole staircase</strong>, not stopping at the first step.</p>
+  </div>
+</section>
+
+<!-- ================= BEYOND ================= -->
+<section class="beyond pad">
+  <div class="wrap">
+    <div class="top">
+      <span class="eyebrow rv">Beyond the transfer of information</span>
+      <h2 class="rv d1">What education <em>can</em> become.</h2>
+      <p class="lead rv d2">Through the voices of visionaries, educators, reformers and young changemakers, we explored how the future of education can become something far larger than a syllabus.</p>
+    </div>
+    <div class="bgrid">
+      <div class="bcard rv"><svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" fill="none" stroke="#fff" stroke-width="2"/><path d="M28 40 L28 16 M19 25 L28 16 L37 25" stroke="#EB0028" stroke-width="2.5" fill="none"/></svg><h3>A tool for empowerment</h3><p>Education that gives every learner the confidence and capacity to shape their own path.</p></div>
+      <div class="bcard rv d1"><svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" fill="none" stroke="#fff" stroke-width="2"/><circle cx="28" cy="28" r="5" fill="#EB0028"/><path d="M28 12 L28 18 M28 38 L28 44 M12 28 L18 28 M38 28 L44 28 M17 17 L21 21 M35 35 L39 39 M39 17 L35 21 M17 39 L21 35" stroke="#fff" stroke-width="2"/></svg><h3>A spark for creativity</h3><p>Education that makes room for imagination, curiosity and new ways of thinking.</p></div>
+      <div class="bcard rv d2"><svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" fill="none" stroke="#fff" stroke-width="2"/><circle cx="21" cy="28" r="7" fill="none" stroke="#fff" stroke-width="2"/><circle cx="35" cy="28" r="7" fill="none" stroke="#EB0028" stroke-width="2.5"/></svg><h3>A bridge for human connection</h3><p>Education that builds empathy, and brings people and communities closer together.</p></div>
+    </div>
+    <p class="note rv">Not just the transfer of information. <strong>A light that lasts.</strong></p>
+  </div>
+</section>
+
+<!-- ================= STATEMENT ================= -->
+<section class="statement pad">
+  <div class="wrap">
+    <span class="eyebrow rv">What we believe</span>
+    <p class="bigtxt" id="litText"></p>
+    <div class="vals">
+      <div class="val rv"><div class="a">Thoughtful</div><p>A society that pauses to understand before it acts.</p></div>
+      <div class="val rv d1"><div class="a">Resilient</div><p>A society that learns, adapts and grows through change.</p></div>
+      <div class="val rv d2"><div class="a">Compassionate</div><p>A society where knowledge is guided by empathy.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SPEAKERS ================= -->
+<section class="speakers pad" id="speakers">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow rv">The speakers</span>
+        <h2 class="big rv d1">Six voices. Six sources of light.</h2>
+      </div>
+      <p class="lead rv d2">Doctors, educators, a podcaster, a social entrepreneur and a student, each lighting a different path. Tap a card to read their story.</p>
+    </div>
+    <div class="sgrid" id="sgrid"></div>
+  </div>
+</section>
+
+<!-- ================= PERFORMANCES ================= -->
+<section class="perf pad" id="performances">
+  <div class="wrap grid">
+    <div>
+      <span class="eyebrow rv">Virasat · Arts and Culture Space</span>
+      <h2 class="big rv d1">Wisdom, in rhythm and song.</h2>
+      <p class="lead rv d2">Between the talks, three performances carried the theme through a different language: heritage, rhythm and voice.</p>
+    </div>
+    <div>
+      <div class="pcard rv"><div class="num">01</div><div><h3>Bharatanatyam</h3><p>A classical dance form rooted in centuries of tradition, where every gesture and expression tells a story.</p></div></div>
+      <div class="pcard rv d1"><div class="num">02</div><div><h3>A drumming session</h3><p>Rhythm that filled the auditorium, and a reminder that some lessons are felt before they are understood.</p></div></div>
+      <div class="pcard rv d2"><div class="num">03</div><div><h3>A soulful singing performance</h3><p>A moment of stillness and voice, bringing the audience together in a single shared experience.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEAM ================= -->
+<section class="team pad" id="team">
+  <div class="wrap grid">
+    <div>
+      <span class="eyebrow rv">The organising team</span>
+      <h2 class="big rv d1">The people who lit the first lamp.</h2>
+      <p class="lead rv d2">A youth-led team that turned an idea into Gujarat’s first youth-led TEDx event certified for both quality and sustainability.</p>
+    </div>
+    <div class="tlist rv d1">
+      <div class="trow lead-row"><b>Fenil Shah</b><span>Organiser</span></div>
+      <div class="trow lead-row"><b>Bindu Raphael</b><span>Co-organiser</span></div>
+      <div class="trow"><b>Stephen Philip</b><span>Team member</span></div>
+      <div class="trow"><b>Yashvi Mehta</b><span>Team member</span></div>
+      <div class="trow"><b>Vinchy Makwana</b><span>Team member</span></div>
+      <div class="trow"><b>Darshini Patel</b><span>Team member</span></div>
+      <div class="trow"><b>Pranjal Koisa</b><span>Team member</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MOVEMENT ================= -->
+<section class="move pad">
+  <div class="wrap">
+    <span class="eyebrow rv">More than an event</span>
+    <h2 class="rv d1">A youth-powered movement to reimagine education as <em>a light towards lasting wisdom.</em></h2>
+  </div>
+</section>
+
+<!-- ================= CLOSE ================= -->
+<section class="close pad">
+  <canvas id="closeLight" aria-hidden="true"></canvas>
+  <div class="wrap inner">
+    <p class="pre rv">One light, lit in June 2025.</p>
+    <h2 class="rv d1">It has kept <em>growing ever since.</em></h2>
+    <div class="journey rv d2">
+      <div class="jcell here"><div class="lab">You are here · 2025</div><div class="val">A Light Towards Wisdom<small>15 June 2025 · Edition 01</small></div></div>
+      <div class="jcell"><div class="lab">2026</div><div class="val">The Kaleidoscope of Perspectives<small>25 June 2026 · Edition 02</small></div></div>
+      <a class="jcell" href="/2027" target="_top"><div class="lab">Next · 2027 →</div><div class="val">The Zenith<small>26 June 2027 · Where the Unseen Connects</small></div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <span class="brand">TEDxThaltej Youth <span>· The Future of Education: A Light Towards Wisdom · 2025</span></span>
+      <p>Held on 15 June 2025 · JG Auditorium, Ahmedabad</p>
+    </div>
+    <p class="lic">This independent TEDx event is operated under license from TED.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DPR = Math.min(window.devicePixelRatio||1, 2);
+  function clamp(v,a,b){return v<a?a:v>b?b:v;}
+  function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+  function rng(seed){return function(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646;};}
+  function hash(s){var h=7;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))%2147483647;return h||1;}
+
+  /* ---------- VIDEO (click to play) ---------- */
+  var poster=document.getElementById('poster'), pimg=document.getElementById('posterImg');
+  pimg.addEventListener('error',function(){ if(pimg.src.indexOf('hqdefault')<0) pimg.src='https://i.ytimg.com/vi/sezR_5jnGq0/hqdefault.jpg'; else pimg.style.display='none'; });
+  poster.addEventListener('click',function(){
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube.com/embed/sezR_5jnGq0?autoplay=1&rel=0&playsinline=1';
+    f.title='TEDxThaltej Youth | 15 June 2025 | Aftermovie';
+    f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.referrerPolicy='strict-origin-when-cross-origin';
+    f.allowFullscreen=true;
+    poster.replaceWith(f);
+  });
+
+
+  /* ---------- SPEAKERS ---------- */
+  var SPEAKERS = [
+    ["Dr. Darshak Dasadiya","Medical doctor, yoga practitioner and holistic development advocate","Dr. Darshak Dasadiya is a medical doctor, yoga practitioner, educator, and holistic development advocate dedicated to redefining human potential through a blend of science and spirituality. An MBBS graduate from Government Medical College, Bhavnagar, he has explored diverse fields, from healthcare management in Canada to yogic sciences in India. His experiences range from working as a Preventive and Social Medicine Tutor and a Child and Youth Development Worker to immersing himself in advanced yoga and meditation programs at the Isha Yoga Center. Passionate about integrating medical science with yogic science, he is deeply inspired by the potential of ancient wisdom and contemporary science to transform lives. From his perspective, education can be transformed into a system that nurtures not just professional growth but also the holistic evolution of individuals into fully blossomed human beings."],
+    ["Dr. Kavita Sharma","Pioneering educator and principal","Dr. Kavita Sharma is an experienced and passionate educator with over 30 years in teaching and school leadership. She started her career after completing a B.Sc. + B.Ed. at the Regional Institute of Education, Mysore, and holds Master’s degrees in Zoology and Education, as well as a Ph.D. in Education. She has earned multiple awards, including “Progressive Principal of India 2017” and “Principal of the Year” by Times of India. Dr. Sharma believes in creating learning environments that encourage critical thinking, creativity, and teamwork. She introduced nonviolent communication to help students become compassionate leaders. Known for her dedication and innovative teaching methods, she is committed to helping students grow and succeed. Inspired by the wisdom of Kabir, she lives by the motto: “Awake, arise, and stop not till thy goal is achieved.”"],
+    ["Dr. Shivani Mehta","Global educator and principal","Across continents and classrooms, Dr. Shivani Mehta has quietly redefined what it means to lead in education for the past 24 years. Her journey spans international schools in Southeast Asia to pioneering a healthy work culture with an international mindset in India, reflecting a lifelong commitment to nurturing wisdom, not just knowledge. With deep roots in cross-cultural pedagogy and academic leadership, she crafts learning environments where curiosity thrives, empathy is central, and learners are empowered to think expansively. A recipient of the state-level Shreshta Shikshak Award and holder of an Organizational Leadership certification from Harvard, she weaves global best practices with soulful purpose. Her work is a testament to the quiet revolutions that unfold in classrooms every day, shaping minds, shifting perspectives, and planting the seeds of a more thoughtful world."],
+    ["Apoorv Jha","Podcaster, digital marketer and healthcare advocate","Apoorv Jha, a 20-year-old podcaster, entrepreneur, and patient advocate from India, is making waves with his contributions to podcasting, digital marketing, and healthcare advocacy. As the founder of the “Kya Haal Chaal Podcast,” Apoorv dives into global issues through meaningful conversations, hosting over 50 insightful interviews with experts across fields. His podcast fosters curiosity, connection, and understanding, tackling a range of topics. Certified in Advanced Corporate Strategy from IIM Bangalore, he uses his digital marketing expertise to grow his platform and reach audiences effectively. Beyond podcasting, he is a passionate advocate for Type 1 Diabetes (T1D) awareness, actively working to bridge knowledge gaps in India and globally. Representing India at international conferences and as a member of the International Diabetes Federation, Apoorv’s leadership and advocacy inspire young people to drive change."],
+    ["Hemanshi Agrawal","Social entrepreneur","Hemanshi pursued her undergraduate degree in Politics and Society from Ashoka University and earned her master’s in Political Communication from the London School of Economics. She also conducted research on how language shapes thought at the University of California, Berkeley. As the founder of The Padate Project, she works to make menstrual hygiene a right, not a privilege, ensuring that comfort, sustainability, and disposal are prioritised when addressing period poverty. Through innovative programmes like “PadSisters,” she bridges the urban-rural gap, creating a direct impact model where donors take part in tangible change. Her experiences in community service have humbled and inspired her, offering insights into diverse sub-cultures and communities. She also provides CSR guidance to companies and is deeply passionate about the art and importance of communication."],
+    ["Saumya Sheth","Student and advocate for social justice","Saumya is a 17-year-old student, social worker, writer, and above all, an optimist who believes change in this challenging world is possible. Committed to creating equitable opportunities, she balances academics with advocating for marginalised communities through her NGO, Sahayta Square. As a YRSI research scholar, she realised that dismantling entrenched belief systems and societal structures requires change from the very root, achievable most effectively through education. With a fierce passion for law, climate justice, and storytelling, Saumya envisions an energetic youth driven by knowledge and empathy. She used the TEDx platform to encourage the audience to critically confront and rethink internalised beliefs, and take compassion-driven action."]
+  ];
+
+  // Per-speaker light burst (SVG): rays from a point, seeded by name
+  function burst(name){
+    var R = rng(hash(name)), cx = -80 + R()*160, cy = -40 + R()*80, rays = '', n = 26 + Math.floor(R()*18);
+    for (var i=0;i<n;i++){
+      var a = (i/n)*Math.PI*2 + R()*0.2, len = 60 + R()*220, w = 0.6 + R()*1.6;
+      var x2 = cx + Math.cos(a)*len, y2 = cy + Math.sin(a)*len;
+      rays += '<line x1="'+cx.toFixed(1)+'" y1="'+cy.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'" stroke="url(#rg'+hash(name)+')" stroke-width="'+w.toFixed(2)+'"/>';
+    }
+    var dots='';
+    for (var d=0;d<40;d++){ var dx=-160+R()*320, dy=-100+R()*200, dist=Math.hypot(dx-cx,dy-cy), op=Math.max(0.08, 1-dist/200); dots+='<circle cx="'+dx.toFixed(1)+'" cy="'+dy.toFixed(1)+'" r="'+(0.6+R()*1.4).toFixed(2)+'" fill="#fff" fill-opacity="'+op.toFixed(2)+'"/>'; }
+    var id = 'rg'+hash(name), gid = 'gg'+hash(name);
+    return '<svg viewBox="-160 -100 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
+      '<defs><radialGradient id="'+id+'" gradientUnits="userSpaceOnUse" cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="220"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>'+
+      '<radialGradient id="'+gid+'" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".35" stop-color="#EB0028" stop-opacity=".35"/><stop offset="1" stop-color="#EB0028" stop-opacity="0"/></radialGradient></defs>'+
+      rays + dots +
+      '<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="46" fill="url(#'+gid+')"/>'+
+      '<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="4" fill="#fff"/></svg>';
+  }
+
+  var sg = document.getElementById('sgrid');
+  SPEAKERS.forEach(function(s,i){
+    var el = document.createElement('article');
+    el.className = 'sp rv' + (i%3===1?' d1':i%3===2?' d2':'');
+    el.innerHTML = '<div class="art">'+burst(s[0])+'</div>'+
+      '<div class="body"><div class="n">0'+(i+1)+'</div><h3>'+s[0]+'</h3><p class="role">'+s[1]+'</p>'+
+      '<details><summary>Read the story</summary><p>'+s[2]+'</p></details></div>';
+    sg.appendChild(el);
+  });
+
+  /* ---------- LIGHT FIELD ENGINE ---------- */
+  function Field(canvas, seed, count, opts){
+    this.c = canvas; this.ctx = canvas.getContext('2d'); this.opts = opts||{};
+    var R = rng(seed); this.p = [];
+    for (var i=0;i<count;i++) this.p.push({x:R(), y:R(), s:0.5+R()*1.8, ph:R()*6.283, vy:0.2+R()*0.8, red:R()<0.04});
+    this.rays = []; for (var r=0;r<36;r++) this.rays.push({a:(r/36)*6.283 + R()*0.15, l:0.6+R()*0.6, w:R()});
+  }
+  Field.prototype.size = function(){ var c=this.c; this.W=c.clientWidth; this.H=c.clientHeight; c.width=this.W*DPR; c.height=this.H*DPR; this.ctx.setTransform(DPR,0,0,DPR,0,0); };
+  // radius: 0..1 of how far the light reaches; lift: upward drift; t: time
+  Field.prototype.draw = function(radius, lift, t, cxK, cyK, rayK){
+    var ctx=this.ctx, W=this.W, H=this.H, cx=W*cxK, cy=H*cyK, maxR=Math.hypot(W,H)*0.75, Rl=Math.max(6, radius*maxR);
+    ctx.clearRect(0,0,W,H);
+    // glow
+    var g = ctx.createRadialGradient(cx,cy,0,cx,cy,Rl);
+    g.addColorStop(0,'rgba(255,255,255,'+(0.22+0.2*radius)+')');
+    g.addColorStop(0.12,'rgba(255,255,255,'+(0.08+0.08*radius)+')');
+    g.addColorStop(0.45,'rgba(235,0,40,'+(0.05*radius)+')');
+    g.addColorStop(1,'rgba(16,27,61,0)');
+    ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+    // rays
+    if (rayK>0){
+      ctx.save(); ctx.translate(cx,cy); ctx.rotate(reduce?0:t*0.00003);
+      for (var r=0;r<this.rays.length;r++){
+        var ry=this.rays[r], L=Rl*ry.l*1.1, a=ry.a;
+        var lg = ctx.createLinearGradient(0,0,Math.cos(a)*L,Math.sin(a)*L);
+        lg.addColorStop(0,'rgba(255,255,255,'+(0.16*rayK*(0.4+ry.w))+')'); lg.addColorStop(1,'rgba(255,255,255,0)');
+        ctx.strokeStyle = lg; ctx.lineWidth = 1 + ry.w*1.5;
+        ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(Math.cos(a)*L,Math.sin(a)*L); ctx.stroke();
+      }
+      ctx.restore();
+    }
+    // particles
+    for (var i=0;i<this.p.length;i++){
+      var q=this.p[i];
+      var y = ((q.y - lift*q.vy) % 1 + 1) % 1;
+      var px = q.x*W, py = y*H;
+      var d = Math.hypot(px-cx, py-cy);
+      var lit = clamp(1 - d/Rl, 0, 1);
+      var tw = reduce?1:0.7+0.3*Math.sin(t*0.002+q.ph);
+      var a2 = 0.05 + 0.95*lit*tw;
+      var rad = q.s*(0.6 + lit*1.1);
+      if (q.red && lit>0.2){ ctx.fillStyle='rgba(235,0,40,'+a2+')'; }
+      else ctx.fillStyle = 'rgba(255,255,255,'+a2+')';
+      ctx.beginPath(); ctx.arc(px,py,rad,0,6.283); ctx.fill();
+    }
+    // core
+    var core = 3 + radius*9;
+    var cg = ctx.createRadialGradient(cx,cy,0,cx,cy,core*4);
+    cg.addColorStop(0,'rgba(255,255,255,1)'); cg.addColorStop(0.25,'rgba(255,255,255,.85)'); cg.addColorStop(0.5,'rgba(235,0,40,.35)'); cg.addColorStop(1,'rgba(235,0,40,0)');
+    ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(cx,cy,core*4,0,6.283); ctx.fill();
+  };
+
+  var mobile = innerWidth < 700;
+  var big = new Field(document.getElementById('light'), 15062025, mobile?170:320);
+  var lamp = new Field(document.getElementById('lamp'), 2025, 120);
+  var closeF = new Field(document.getElementById('closeLight'), 1506, mobile?110:200);
+
+  var scene = document.getElementById('scene'), nav = document.getElementById('nav');
+  var heroTitle = document.getElementById('heroTitle'), cue = document.getElementById('cue');
+  var steps = [].slice.call(document.querySelectorAll('.step')), bars = [].slice.call(document.querySelectorAll('.progress span'));
+  function sceneP(){ var r=scene.getBoundingClientRect(), total=scene.offsetHeight-innerHeight; return clamp(-r.top/total,0,1); }
+
+  var visLamp=false, visClose=false;
+  new IntersectionObserver(function(e){visLamp=e[0].isIntersecting;}).observe(lamp.c);
+  new IntersectionObserver(function(e){visClose=e[0].isIntersecting;}).observe(closeF.c);
+  function resize(){ big.size(); lamp.size(); closeF.size(); }
+  addEventListener('resize', resize); resize();
+
+  function frame(now){
+    var p = sceneP();
+    // light grows from a spark to a flood; source rises from low to the middle
+    var grow = ease(clamp((p-0.08)/0.8,0,1));
+    var radius = 0.035 + grow*0.95;
+    var cy = 0.82 - grow*0.2;
+    big.draw(radius, reduce?0:(p*0.35 + now*0.000008), now, 0.5, cy, clamp((p-0.3)/0.4,0,1));
+    heroTitle.style.opacity = clamp(1-p/0.12,0,1);
+    heroTitle.style.transform = 'translateY(calc(-50% - '+(p*260)+'px)) scale('+(1-p*0.35)+')';
+    cue.style.opacity = clamp(1-p/0.04,0,1);
+    steps.forEach(function(el){ el.classList.toggle('on', p>=+el.dataset.from && p<+el.dataset.to); });
+    var idx = p<.16?0:p<.38?1:p<.60?2:p<.82?3:4;
+    bars.forEach(function(b,i){ b.classList.toggle('on', i<=idx); });
+
+    if (visLamp) lamp.draw(0.42 + (reduce?0:0.04*Math.sin(now*0.0012)), reduce?0:now*0.00002, now, 0.5, 0.5, 0.8);
+    if (visClose) closeF.draw(0.55, reduce?0:now*0.000015, now, 0.5, 1.02, 0.6);
+    nav.classList.toggle('solid', scrollY>40);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* ---------- REVEALS ---------- */
+  var io = new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); }, {threshold:.15, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.rv, #stairs').forEach(function(el){ io.observe(el); });
+
+  /* ---------- LIT STATEMENT ---------- */
+  var lit = document.getElementById('litText');
+  'Education is not only a force for personal advancement. It is how we shape a wiser society.'.split(' ').forEach(function(w){
+    var s=document.createElement('span'); s.textContent=w+' ';
+    if (/wiser|society/i.test(w)) s.className='red';
+    lit.appendChild(s);
+  });
+  var spans=[].slice.call(lit.children);
+  function litUpdate(){ var r=lit.getBoundingClientRect(), vh=innerHeight; var t=clamp((vh*0.85-r.top)/(r.height+vh*0.35),0,1); var n=Math.round(t*spans.length*1.2); spans.forEach(function(s,i){s.classList.toggle('lit',i<n);}); }
+  if (reduce) spans.forEach(function(s){s.classList.add('lit');}); else addEventListener('scroll', litUpdate, {passive:true});
+  litUpdate();
+})();
+</script>
+</body>
+</html>
