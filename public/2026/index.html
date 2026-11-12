@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Kaleidoscope of Perspectives — TEDxThaltej Youth 2026</title>
+<meta name="description" content="The Kaleidoscope of Perspectives — TEDxThaltej Youth 2026, held on 25 June 2026 in Ahmedabad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#EB0028;--g3:#333;--g4:#8c8c8c;--g5:#b3b3b3;--ease:cubic-bezier(.2,.7,.1,1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#101B3D;color:#fff;font-family:'Inter',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5}
+  a{color:inherit}
+  .wrap{width:min(1200px,100% - 48px);margin:0 auto}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red)}
+  .pad{padding:clamp(96px,14vw,180px) 0}
+  section{position:relative}
+  h2.big{font-size:clamp(36px,5.4vw,76px);font-weight:800;letter-spacing:-.035em;line-height:1.02;margin-top:22px}
+  .lead{font-size:clamp(17px,1.5vw,20px);line-height:1.65}
+
+  /* NAV */
+  nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:1px solid transparent;background:linear-gradient(rgba(16,27,61,.75),rgba(16,27,61,0));transition:background .4s,border-color .4s}
+  nav.solid{background:rgba(16,27,61,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:#1f1f1f}
+  .brand{font-weight:700;font-size:16px;text-decoration:none}
+  .brand span{font-weight:400;color:var(--g5)}
+  .navlinks{display:flex;gap:28px;font-size:14px;color:var(--g5)}
+  .navlinks a{text-decoration:none;transition:color .2s}.navlinks a:hover{color:#fff}
+  .navtag{white-space:nowrap;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;border:1px solid #fff;padding:7px 14px;border-radius:999px}
+  .navtag i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--red);margin-right:8px;vertical-align:1px}
+  @media (max-width:900px){.navlinks{display:none}}
+  @media (max-width:520px){nav{padding:14px 18px}nav .brand span{display:none}.navtag .full{display:none}}
+
+  /* SCENE */
+  #scene{height:480vh;background:#101B3D}
+  #scene .stick{position:sticky;top:0;height:100vh;overflow:hidden}
+  #kal{position:absolute;inset:0;width:100%;height:100%}
+  .veil{position:absolute;inset:0;background:radial-gradient(ellipse 58% 46% at 50% 50%,rgba(16,27,61,.92) 0%,rgba(16,27,61,.72) 45%,rgba(16,27,61,0) 100%);pointer-events:none}
+  .hero-title{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;pointer-events:none;padding:0 20px}
+  .hero-title .eyebrow{display:block;margin-bottom:24px}
+  .hero-title h1{font-size:clamp(44px,8.6vw,138px);font-weight:900;letter-spacing:-.045em;line-height:.92}
+  .hero-title h1 span{display:block;font-weight:300;letter-spacing:-.035em}
+  .hero-title h1 i{font-style:normal;color:var(--red)}
+  .hero-meta{margin-top:36px;display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+  .hero-meta b{width:5px;height:5px;background:var(--red);border-radius:50%;align-self:center}
+  .scrollcue{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--g4);display:flex;flex-direction:column;align-items:center;gap:12px}
+  .scrollcue i{width:1px;height:46px;background:linear-gradient(#fff,transparent);animation:cue 2.2s var(--ease) infinite;transform-origin:top}
+  @keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+  .step{position:absolute;left:0;right:0;top:50%;transform:translateY(calc(-50% + 24px));text-align:center;padding:0 24px;opacity:0;transition:opacity .6s var(--ease),transform .8s var(--ease);pointer-events:none}
+  .step.on{opacity:1;transform:translateY(-50%)}
+  .step .eyebrow{display:block;margin-bottom:16px}
+  .step h2{font-size:clamp(30px,4.6vw,62px);font-weight:700;letter-spacing:-.03em;line-height:1.08;max-width:980px;margin:0 auto}
+  .step h2 em{font-style:normal;color:var(--red)}
+  .progress{position:absolute;right:28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px}
+  .progress span{width:3px;height:26px;background:#2a2a2a;transition:background .4s}
+  .progress span.on{background:var(--red)}
+  @media (max-width:700px){.progress{display:none}}
+
+  .rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+  /* VIDEO */
+  .video{background:#101B3D}
+  .video .head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+  .video .head p{max-width:440px;color:var(--g5)}
+  .frame{margin-top:clamp(40px,5vw,64px);position:relative;aspect-ratio:16/9;width:100%;background:#0c1531;border:1px solid #262626}
+  .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .poster{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;background:#0c1531;cursor:pointer;display:block;overflow:hidden;font-family:inherit;color:#fff}
+  .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+  .poster:hover img{transform:scale(1.03)}
+  .poster .shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(16,27,61,.75),rgba(16,27,61,.1) 55%)}
+  .poster .play{position:absolute;left:50%;top:50%;width:clamp(72px,9vw,112px);height:clamp(72px,9vw,112px);transform:translate(-50%,-50%);border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 0 rgba(235,0,40,.5);animation:pulse 2.4s infinite;transition:transform .4s var(--ease)}
+  .poster:hover .play{transform:translate(-50%,-50%) scale(1.08)}
+  .poster .play svg{width:42%;height:42%;margin-left:6%}
+  .poster .plabel{position:absolute;left:clamp(20px,3vw,40px);bottom:clamp(18px,3vw,36px);font-size:13px;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(235,0,40,.5)}70%{box-shadow:0 0 0 28px rgba(235,0,40,0)}100%{box-shadow:0 0 0 0 rgba(235,0,40,0)}}
+  .yt{display:inline-flex;gap:10px;align-items:center;margin-top:22px;font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--g5);border-bottom:1px solid #444;padding-bottom:6px;transition:color .2s,border-color .2s}
+  .yt:hover{color:#fff;border-color:var(--red)}
+  .yt span{color:var(--red)}
+  .frame:before{content:"";position:absolute;left:-1px;top:-1px;width:64px;height:5px;background:var(--red);z-index:2}
+
+  /* GLANCE */
+  .glance{background:#fff;color:#000}
+  .ggrid{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid #000}
+  .gcell{padding:32px 28px 36px 0;border-bottom:1px solid #d9d9d9}
+  .gcell + .gcell{padding-left:28px;border-left:1px solid #d9d9d9}
+  .gcell .k{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+  .gcell .v{margin-top:12px;font-size:clamp(36px,4.4vw,64px);font-weight:900;letter-spacing:-.04em;line-height:1}
+  .gcell .s{margin-top:10px;font-size:16px;color:#4d4d4d;line-height:1.45}
+  .glance .iso{margin-top:48px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+  .glance .iso p{font-size:clamp(17px,1.5vw,20px);color:#333;max-width:820px;line-height:1.6}
+  .pill{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;background:#101B3D;color:#fff;padding:9px 16px;border-radius:999px;white-space:nowrap}
+  @media (max-width:900px){.ggrid{grid-template-columns:1fr 1fr}.gcell:nth-child(3){padding-left:0;border-left:0}}
+  @media (max-width:520px){.ggrid{grid-template-columns:1fr}.gcell + .gcell{padding-left:0;border-left:0}}
+
+  /* IDEA */
+  .idea{background:#101B3D}
+  .idea .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,110px);align-items:center}
+  .idea .lead{color:var(--g5);margin-top:28px}
+  .idea .lead + .lead{margin-top:16px}
+  .idea .lead strong{color:#fff;font-weight:600}
+  #miniKal{width:100%;aspect-ratio:1;display:block}
+  .idea .cap{margin-top:14px;text-align:center;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--g4)}
+  @media (max-width:900px){.idea .grid{grid-template-columns:1fr}}
+
+  /* BINARIES */
+  .bin{background:#fff;color:#000}
+  .bin .head{max-width:900px}
+  .blist{margin-top:clamp(48px,6vw,80px);border-top:2px solid #000}
+  .brow{display:grid;grid-template-columns:1fr 2fr 1fr;align-items:center;padding:clamp(18px,2.4vw,28px) 0;border-bottom:1px solid #e0e0e0}
+  .brow .l,.brow .r{font-size:clamp(20px,3.2vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1}
+  .brow .l{text-align:right}
+  .spec{position:relative;height:12px;margin:0 clamp(14px,2.4vw,36px);display:flex;gap:3px}
+  .spec i{flex:1;height:100%;background:#101B3D;transform:scaleY(0);transition:transform .7s var(--ease)}
+  .brow.in .spec i{transform:scaleY(1)}
+  .spec .slash{position:absolute;left:50%;top:50%;width:0;height:2px;background:var(--red);transform:translate(-50%,-50%)}
+  .bin .coda{margin-top:56px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:baseline}
+  .bin .coda h3{font-size:clamp(34px,5vw,72px);font-weight:900;letter-spacing:-.045em;line-height:1}
+  .bin .coda h3 em{font-style:normal;color:var(--red)}
+  .bin .coda p{color:#4d4d4d}
+  @media (max-width:800px){.bin .coda{grid-template-columns:1fr;gap:16px}}
+
+  /* LENSES */
+  .lenses{background:#101B3D}
+  .lenses .top{text-align:center;max-width:900px;margin:0 auto}
+  .lenses .top h2{font-size:clamp(40px,6.4vw,92px);font-weight:900;letter-spacing:-.045em;line-height:.98;margin-top:22px}
+  .lenses .top h2 em{font-style:normal;color:var(--red)}
+  .lenses .top p{margin-top:28px;color:var(--g5)}
+  .lgrid{margin-top:clamp(56px,7vw,96px);display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid #2a2a2a;border-left:1px solid #2a2a2a}
+  .lcard{padding:36px 30px 40px;border-right:1px solid #2a2a2a;border-bottom:1px solid #2a2a2a;transition:background .5s}
+  .lcard:hover{background:#131f47}
+  .lcard svg{width:56px;height:56px;display:block}
+  .lcard h3{margin-top:26px;font-size:26px;font-weight:800;letter-spacing:-.02em}
+  .lcard p{margin-top:10px;font-size:17px;color:var(--g5);line-height:1.55}
+  .lcard p b{color:#fff;font-weight:600}
+  .lenses .note{margin-top:56px;text-align:center;font-size:clamp(22px,2.8vw,36px);font-weight:300;color:var(--g5);letter-spacing:-.015em}
+  .lenses .note strong{color:#fff;font-weight:700}
+  @media (max-width:900px){.lgrid{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.lgrid{grid-template-columns:1fr}}
+
+  /* STATEMENT */
+  .statement{background:#fff;color:#000;text-align:center}
+  .statement .bigtxt{margin-top:28px;font-size:clamp(34px,6vw,86px);font-weight:900;letter-spacing:-.045em;line-height:1.02;max-width:1100px;margin-left:auto;margin-right:auto}
+  .statement .bigtxt span{color:#c9c9c9;transition:color .45s}
+  .statement .bigtxt span.lit{color:#000}
+  .statement .bigtxt span.red.lit{color:var(--red)}
+  .vals{margin-top:clamp(64px,8vw,110px);display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:left}
+  .val{border-top:2px solid #000;padding-top:24px}
+  .val .a{font-size:clamp(24px,2.4vw,32px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+  .val .a span{color:#9a9a9a;font-weight:400}
+  .val p{margin-top:10px;font-size:17px;color:#4d4d4d;line-height:1.55}
+  @media (max-width:800px){.vals{grid-template-columns:1fr}}
+
+  /* SPEAKERS */
+  .speakers{background:#101B3D}
+  .speakers .head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+  .speakers .head p{max-width:420px;color:var(--g5)}
+  .sgrid{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .sp{background:#0c1531;border:1px solid #222;display:flex;flex-direction:column;transition:border-color .4s,transform .6s var(--ease)}
+  .sp:hover{border-color:#555;transform:translateY(-4px)}
+  .sp .art{position:relative;aspect-ratio:16/10;background:#0c1430;overflow:hidden;border-bottom:1px solid #222}
+  .sp .art svg{position:absolute;inset:0;width:100%;height:100%}
+  .sp .art .ini{position:absolute;left:24px;bottom:18px;font-size:44px;font-weight:900;letter-spacing:-.04em;color:#fff;mix-blend-mode:difference}
+  .sp .body{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1}
+  .sp .n{font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--red)}
+  .sp h3{margin-top:10px;font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+  .sp .role{margin-top:8px;font-size:15px;color:var(--g5);line-height:1.45}
+  .sp details{margin-top:auto;padding-top:22px}
+  .sp summary{list-style:none;cursor:pointer;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;border-top:1px solid #333;padding-top:16px;width:100%}
+  .sp summary::-webkit-details-marker{display:none}
+  .sp summary:after{content:"+";font-size:20px;font-weight:400;color:var(--red);margin-left:auto;transition:transform .3s}
+  .sp details[open] summary:after{transform:rotate(45deg)}
+  .sp details p{margin-top:14px;font-size:15px;color:#cfcfcf;line-height:1.65}
+  @media (max-width:980px){.sgrid{grid-template-columns:1fr 1fr}}
+  @media (max-width:620px){.sgrid{grid-template-columns:1fr}}
+
+  /* PERFORMANCES */
+  .perf{background:#fff;color:#000}
+  .perf .grid{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(40px,7vw,110px);align-items:start}
+  .perf .lead{margin-top:28px;color:#4d4d4d}
+  .pcard{border-top:2px solid #000;padding:28px 0 36px}
+  .pcard + .pcard{border-top:1px solid #d0d0d0}
+  .pcard .k{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+  .pcard h3{margin-top:10px;font-size:clamp(28px,3vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+  .pcard p{margin-top:12px;font-size:17px;color:#4d4d4d;line-height:1.6}
+  @media (max-width:900px){.perf .grid{grid-template-columns:1fr}}
+
+  /* YOUTH */
+  .youth{background:#101B3D;text-align:center}
+  .youth h2{font-size:clamp(38px,6vw,88px);font-weight:900;letter-spacing:-.045em;line-height:1;max-width:1050px;margin:22px auto 0}
+  .youth h2 em{font-style:normal;color:var(--red)}
+  .youth .lead{margin:32px auto 0;max-width:720px;color:var(--g5)}
+
+  /* CLOSE */
+  .close{background:#101B3D;text-align:center;overflow:hidden;border-top:1px solid #1a1a1a}
+  .close canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.4}
+  .close:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(16,27,61,.9),rgba(16,27,61,.3));pointer-events:none}
+  .close .inner{z-index:1}
+  .close .inner{position:relative}
+  .close .pre{font-size:clamp(22px,2.6vw,34px);font-weight:300;color:var(--g5);letter-spacing:-.015em}
+  .close h2{margin:18px auto 0;font-size:clamp(40px,7.2vw,108px);font-weight:900;letter-spacing:-.05em;line-height:.98;max-width:1100px}
+  .close h2 em{font-style:normal;color:var(--red)}
+  .next{margin:clamp(72px,9vw,120px) auto 0;display:inline-flex;align-items:center;gap:28px;border:1px solid #fff;padding:26px 34px;text-align:left;text-decoration:none;transition:background .35s,color .35s}
+  .next:hover{background:#fff;color:#000}
+  .next .lab{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--red)}
+  .next .val{margin-top:6px;font-size:clamp(22px,2.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+  .next .val small{display:block;font-size:15px;font-weight:400;color:var(--g4);margin-top:6px;letter-spacing:0}
+  .next .arr{font-size:34px;font-weight:300}
+
+  footer{background:#101B3D;border-top:1px solid #1f1f1f;padding:44px 0 56px}
+  footer .row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  footer .brand{font-size:18px}
+  footer p{font-size:14px;color:var(--g4)}
+  footer .lic{margin-top:28px;font-size:14px;color:#fff;font-weight:500}
+
+  @media (prefers-reduced-motion:reduce){.rv,.step{transition:none!important}.rv{opacity:1;transform:none}.scrollcue i{animation:none}.brow .spec i{transition:none}}
+</style>
+<script src="/assets/site.js" defer data-hide="#nav, body > footer" data-sub="#nav" data-title="2026 · Kaleidoscope"></script>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="brand" href="/">TEDxThaltej Youth <span>· Kaleidoscope · 2026</span></a>
+  <div class="navlinks">
+    <a href="#film">Highlights</a>
+    <a href="#idea">The idea</a>
+    <a href="#speakers">Speakers</a>
+    <a href="#performances">Performances</a>
+  </div>
+  <span class="navtag"><i></i><span class="full">Concluded · </span>25.06.2026</span>
+</nav>
+
+<!-- ================= SCENE ================= -->
+<section id="scene" aria-label="The Kaleidoscope of Perspectives">
+  <a id="top"></a>
+  <div class="stick">
+    <canvas id="kal" aria-hidden="true"></canvas>
+    <div class="veil" id="veil"></div>
+
+    <div class="hero-title" id="heroTitle">
+      <span class="eyebrow">TEDxThaltej Youth 2026 · Edition 02</span>
+      <h1><span>The Kaleidoscope</span>of Perspectives<i>.</i></h1>
+      <div class="hero-meta"><span>25 June 2026</span><b></b><span>Ahmedabad</span><b></b><span>Concluded</span></div>
+    </div>
+
+    <div class="step" data-from=".18" data-to=".38"><span class="eyebrow">The pieces</span><h2>A kaleidoscope does not alter the pieces within it.</h2></div>
+    <div class="step" data-from=".40" data-to=".58"><span class="eyebrow">The arrangement</span><h2>It alters the arrangement, and <em>the way they are seen.</em></h2></div>
+    <div class="step" data-from=".60" data-to=".78"><span class="eyebrow">The shift</span><h2>With every shift comes a new pattern. With every pattern, <em>deeper understanding.</em></h2></div>
+    <div class="step" data-from=".80" data-to="1.01"><span class="eyebrow">The perspective</span><h2>The world remains the same. <em>Our perception of it expands.</em></h2></div>
+
+    <div class="progress" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="scrollcue" id="cue">Scroll<i></i></div>
+  </div>
+</section>
+
+<!-- ================= VIDEO ================= -->
+<section class="video pad" id="film">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow rv">Highlights</span>
+        <h2 class="big rv d1">Relive the morning.</h2>
+      </div>
+      <p class="lead rv d2">Nine speakers, two performances and one auditorium full of perspectives. Here is how 25 June 2026 unfolded.</p>
+    </div>
+    <div class="frame rv d2">
+      <button class="poster" id="poster" type="button" aria-label="Play the event highlights video">
+        <img id="posterImg" src="https://i.ytimg.com/vi/07l8K1AiDB8/maxresdefault.jpg" alt="TEDxThaltej Youth, 25 June 2026, event highlights">
+        <span class="shade"></span>
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span>
+        <span class="plabel">Play the highlights</span>
+      </button>
+    </div>
+    <a class="yt rv" href="https://youtu.be/07l8K1AiDB8" target="_blank" rel="noopener">Watch on YouTube <span>↗</span></a>
+  </div>
+</section>
+
+<!-- ================= GLANCE ================= -->
+<section class="glance pad">
+  <div class="wrap">
+    <span class="eyebrow rv">The edition at a glance</span>
+    <h2 class="big rv d1">One morning. Many lenses.</h2>
+    <div class="ggrid">
+      <div class="gcell rv"><div class="k">Date</div><div class="v">25.06</div><div class="s">Thursday, 25 June 2026<br>7:45 AM – 11:05 AM IST</div></div>
+      <div class="gcell rv d1"><div class="k">Venue</div><div class="v">AGS</div><div class="s">Apple Global School Auditorium, Ahmedabad</div></div>
+      <div class="gcell rv d2"><div class="k">Speakers</div><div class="v">09</div><div class="s">From medicine and cyber security to AI, education and grassroots change</div></div>
+      <div class="gcell rv d3"><div class="k">Performances</div><div class="v">02</div><div class="s">Classical dance and Kathak, presented by Virasat, our Arts and Culture Space</div></div>
+    </div>
+    <div class="iso rv">
+      <span class="pill">ISO 9001:2015</span><span class="pill">ISO 20121:2024</span>
+      <p>This edition continued our journey as Gujarat’s first youth-led TEDx event certified for both quality management and sustainable event management.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= IDEA ================= -->
+<section class="idea pad" id="idea">
+  <div class="wrap grid">
+    <div>
+      <span class="eyebrow rv">The idea</span>
+      <h2 class="big rv d1">Truth is never singular.</h2>
+      <p class="lead rv d2">Truth, insight and progress are layered, refracted and constantly evolving. A kaleidoscope takes fragments and turns them into patterns of colour and symmetry.</p>
+      <p class="lead rv d3">In the same way, perspectives shaped by <strong>culture, experience, memory, belief, identity and imagination</strong> come together to create meaning far richer than any single viewpoint.</p>
+      <p class="lead rv d4">They do not demand that one truth replace another. <strong>They ask for a shift in lens.</strong></p>
+    </div>
+    <div class="rv d2">
+      <canvas id="miniKal" aria-label="A slowly turning kaleidoscope pattern"></canvas>
+      <p class="cap">Same pieces · new arrangement</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BINARIES ================= -->
+<section class="bin pad">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow rv">Beyond binaries</span>
+      <h2 class="big rv d1">Conversations are often reduced to two sides.</h2>
+    </div>
+    <div class="blist">
+      <div class="brow"><div class="l">Right</div><div class="spec"></div><div class="r">Wrong</div></div>
+      <div class="brow"><div class="l">Success</div><div class="spec"></div><div class="r">Failure</div></div>
+      <div class="brow"><div class="l">Tradition</div><div class="spec"></div><div class="r">Modernity</div></div>
+    </div>
+    <div class="coda rv">
+      <h3>Life exists in <em>nuance.</em></h3>
+      <p class="lead">This theme invited everyone to step beyond rigid thinking and embrace complexity. It values curiosity over certainty and dialogue over division.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LENSES ================= -->
+<section class="lenses pad">
+  <div class="wrap">
+    <div class="top">
+      <span class="eyebrow rv">Many lenses</span>
+      <h2 class="rv d1">One reality. <em>Many</em> dimensions.</h2>
+      <p class="lead rv d2">Every individual carries a distinct worldview shaped by lived experience. Each perspective reveals a different dimension of the same challenge.</p>
+    </div>
+    <div class="lgrid">
+      <div class="lcard rv"><svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" fill="none" stroke="#fff" stroke-width="2"/><path d="M10 38 L20 30 L28 34 L38 18 L46 22" stroke="#EB0028" stroke-width="2.5" fill="none"/></svg><h3>A scientist</h3><p>interprets a challenge through <b>data and experimentation.</b></p></div>
+      <div class="lcard rv d1"><svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" fill="none" stroke="#fff" stroke-width="2"/><path d="M14 36 C20 14, 36 14, 42 36" stroke="#EB0028" stroke-width="2.5" fill="none"/><circle cx="28" cy="36" r="3" fill="#fff"/></svg><h3>An artist</h3><p>approaches it through <b>emotion and symbolism.</b></p></div>
+      <div class="lcard rv d2"><svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" fill="none" stroke="#fff" stroke-width="2"/><path d="M28 42 L28 14 M18 24 L28 14 L38 24" stroke="#EB0028" stroke-width="2.5" fill="none"/></svg><h3>An entrepreneur</h3><p>may see <b>opportunity.</b></p></div>
+      <div class="lcard rv d3"><svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" fill="none" stroke="#fff" stroke-width="2"/><path d="M28 14 L28 32" stroke="#EB0028" stroke-width="3"/><circle cx="28" cy="40" r="2.5" fill="#EB0028"/></svg><h3>An activist</h3><p>may see <b>urgency.</b></p></div>
+    </div>
+    <p class="note rv">None is complete in isolation. <strong>Together, they form a more meaningful whole.</strong></p>
+  </div>
+</section>
+
+<!-- ================= STATEMENT ================= -->
+<section class="statement pad">
+  <div class="wrap">
+    <span class="eyebrow rv">What we believe</span>
+    <p class="bigtxt" id="litText"></p>
+    <div class="vals">
+      <div class="val rv"><div class="a">Curiosity <span>over</span> certainty</div><p>The courage to question assumptions, and the humility to accept that understanding keeps evolving.</p></div>
+      <div class="val rv d1"><div class="a">Dialogue <span>over</span> division</div><p>When contrasting ideas coexist, they do not weaken one another. They create dialogue, and dialogue drives progress.</p></div>
+      <div class="val rv d2"><div class="a">Listen <span>to</span> understand</div><p>Not to respond. Disagreement can be constructive, and difference can be powerful.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SPEAKERS ================= -->
+<section class="speakers pad" id="speakers">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow rv">The speakers</span>
+        <h2 class="big rv d1">Nine voices. Nine fragments of colour.</h2>
+      </div>
+      <p class="lead rv d2">Each speaker brought a different lens to the stage. Tap a card to read their story.</p>
+    </div>
+    <div class="sgrid" id="sgrid"></div>
+  </div>
+</section>
+
+<!-- ================= PERFORMANCES ================= -->
+<section class="perf pad" id="performances">
+  <div class="wrap grid">
+    <div>
+      <span class="eyebrow rv">Virasat · Arts and Culture Space</span>
+      <h2 class="big rv d1">Ideas, in movement.</h2>
+      <p class="lead rv d2">Between the talks, classical dance brought another perspective to the stage: one told through rhythm, expression and heritage rather than words.</p>
+    </div>
+    <div>
+      <div class="pcard rv"><div class="k">Performance 01 · Classical dance</div><h3>Saanvi Soni</h3><p>A performer who believes in the power of the performing arts to inspire, connect and evoke emotion. Her performance brought creativity and expression to the stage, and celebrated the role of art in fostering reflection, imagination and human connection.</p></div>
+      <div class="pcard rv d1"><div class="k">Performance 02 · Kathak</div><h3>Tatkaar Kathak Institute Ahmedabad</h3><p>A classical dance academy in Ahmedabad specialising in pure Kathak, deeply rooted in the Jaipur Gharana, with structured training for every age, from foundational levels to advanced certification and stage performance.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= YOUTH ================= -->
+<section class="youth pad">
+  <div class="wrap">
+    <span class="eyebrow rv">Youth as a force of transformation</span>
+    <h2 class="rv d1">Young minds are not confined by <em>fixed narratives.</em></h2>
+    <p class="lead rv d2">They can reimagine systems, redefine success and reshape conversations. By embracing many perspectives, young thinkers learn that complexity is not something to avoid, but something to explore.</p>
+  </div>
+</section>
+
+<!-- ================= CLOSE ================= -->
+<section class="close pad">
+  <canvas id="closeKal" aria-hidden="true"></canvas>
+  <div class="wrap inner">
+    <p class="pre rv">Understanding is not a destination, but an ongoing process.</p>
+    <h2 class="rv d1">As perspectives shift, <em>so does possibility.</em></h2>
+    <a class="next rv d2" href="/2027" target="_top">
+      <div><div class="lab">Next edition · 26 June 2027</div><div class="val">The Zenith<small>Where the Unseen Connects</small></div></div>
+      <span class="arr">→</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <span class="brand">TEDxThaltej Youth <span>· The Kaleidoscope of Perspectives · 2026</span></span>
+      <p>Held on 25 June 2026 · Apple Global School Auditorium, Ahmedabad</p>
+    </div>
+    <p class="lic">This independent TEDx event is operated under license from TED.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DPR = Math.min(window.devicePixelRatio||1, 2);
+  function clamp(v,a,b){return v<a?a:v>b?b:v;}
+  function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+  function rng(seed){return function(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646;};}
+
+  /* ---------- VIDEO (click to play) ---------- */
+  var poster=document.getElementById('poster'), pimg=document.getElementById('posterImg');
+  pimg.addEventListener('error',function(){ if(pimg.src.indexOf('hqdefault')<0) pimg.src='https://i.ytimg.com/vi/07l8K1AiDB8/hqdefault.jpg'; else pimg.style.display='none'; });
+  poster.addEventListener('click',function(){
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube.com/embed/07l8K1AiDB8?autoplay=1&rel=0&playsinline=1';
+    f.title='TEDxThaltej Youth | 25th June 2026 | Event Highlights';
+    f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.referrerPolicy='strict-origin-when-cross-origin';
+    f.allowFullscreen=true;
+    poster.replaceWith(f);
+  });
+
+  /* ---------- SPEAKERS DATA ---------- */
+  var SPEAKERS = [
+    ["Dr. Archana Chowdhry","Ophthalmic surgeon, entrepreneur and advocate for women’s leadership","Dr. Archana Chowdhry is an accomplished ophthalmic surgeon with more than two decades of experience in eye care and healthcare leadership. She serves as the Medical Director of Ruby Hospital and is the Founder of Arogyam Eye Clinic, where she has worked towards providing accessible and patient-centred ophthalmic care. In addition to her contributions to medicine, Dr. Chowdhry has represented India on international platforms and has been recognised for her achievements in leadership and personal excellence. Her work focuses on resilience, women’s empowerment, leadership, and the pursuit of personal and professional growth."],
+    ["Dr. CA Achyut Dani","Entrepreneur, educator and strategic management mentor","Dr. CA Achyut Dani is an entrepreneur, academic leader, and mentor with more than twenty-five years of experience in advanced education and strategic management. He currently serves as the Director General and Provost (Vice Chancellor) of JG University and is the Chairman of Braincraft Eduserve and Vector Infrastructure. A practising Chartered Accountant since 2003 and a doctoral scholar in Management and Commerce, Dr. Dani has mentored thousands of students in the fields of Chartered Accountancy and Company Secretaryship. He has also contributed extensively to the entrepreneurial ecosystem through startup investments and mentorship across sectors including education technology, financial technology, artificial intelligence, and business innovation."],
+    ["Dr. Vijay Rao","Educator, entrepreneur and financial literacy professional","Dr. Vijay Rao is an educator, entrepreneur, and financial markets professional with multidisciplinary experience in technology, academia, research, and entrepreneurship. He has served as an Assistant Professor for more than eight years and has contributed to teaching, mentoring, and academic development in engineering education. Over the years, Dr. Rao has worked across the financial and insurance sectors while actively mentoring individuals in stock market education and financial literacy. He is the Founder of VS Pro Trading Academy and serves as Chief Trustee of VS Educare Foundation, through which he promotes awareness of financial education among students and young professionals."],
+    ["Nitesh Bhardwaj","Social entrepreneur and community development practitioner","Nitesh Bhardwaj is a social entrepreneur and Founder of Ulgulan for Social Change Foundation, an organisation focused on community development and grassroots engagement. A graduate of Doon University, an SBI Youth for India Fellow, and an Acumen India Fellow, he has worked extensively with tribal communities across Maharashtra, Gujarat, and Jharkhand. His work focuses on community media, development communication, and local leadership. By supporting grassroots journalism and youth entrepreneurship, he has contributed to strengthening community participation and improving access to information and opportunities in underserved regions."],
+    ["Falgun Rathod","Cyber security expert, ethical hacker, author and entrepreneur","Falgun Rathod is a cyber security professional, ethical hacker, author, and entrepreneur with more than seventeen years of experience in cyber security, cybercrime investigation, and digital risk management. He is the Founder and Managing Director of Cyber Octet Pvt. Ltd., where he has worked extensively in cyber awareness, digital safety training, and professional mentorship. Recognised for his contributions to cyber security education, he is the author of A Guide to Cyber Security and Data Privacy. Through his work, he promotes awareness regarding responsible digital practices, cyber resilience, and online safety."],
+    ["Raju Dandigam","Staff Software Engineer and AI engineering leader at Navan","Raju Dandigam is a Staff Software Engineer and AI engineering leader with over 15 years of experience building reliable, scalable software systems. His work focuses on designing AI-powered applications and agentic systems that combine technical innovation with practical engineering principles. Passionate about responsible AI, Raju explores how human oversight, observability, and thoughtful system design can help transform powerful AI models into trustworthy tools that people can confidently use in everyday life."],
+    ["Shabd Shaurya","Author and Guinness World Record holder","Shabd Shaurya is recognised as the youngest TEDx speaker in the world and holds a Guinness World Record for delivering a TEDx talk at the age of four years and thirty-one days. He is also the author of The Great Shabd Safari, a children’s book available on major publishing platforms. His achievements have been featured in numerous publications, including The Indian Express, Dainik Bhaskar, and The Hans India. Through storytelling and communication, Shabd encourages curiosity, learning, and imagination among young audiences."],
+    ["Shuvajit Payne","Education innovator and social impact leader","Shuvajit Payne is the Founder of ImpactOnus Consulting, a social enterprise that develops learning and impact solutions for underserved communities. An alumnus of IIM Lucknow, he began his professional career with IBM before dedicating his work to education, employability, and social development. Over the past fifteen years, he has worked with organisations and institutions focused on skill development, education, and youth empowerment. His work has been recognised internationally, including being named among the Top 50 Global Educators by the Varkey Foundation in 2020. He has contributed to discussions on education and digital learning at forums organised by UNESCO and other institutions."],
+    ["Hemangi Prajapati","Creator, author and youth development advocate","Hemangi Prajapati is a young creator, author, and Founder of The Genius Wealth. Through workshops, digital platforms, and educational content, she focuses on helping young individuals develop clarity, confidence, and purposeful decision-making. Through her podcasts and educational initiatives, Hemangi explores themes related to mindset, identity, personal growth, and ambition. Her work seeks to make self-development practical and accessible for young audiences."]
+  ];
+
+  function initials(name){
+    return name.replace(/^(Dr\.|CA)\s+/g,'').replace(/^(CA)\s+/,'').split(/\s+/).filter(function(w){return /^[A-Z]/.test(w);}).map(function(w){return w[0];}).slice(0,2).join('');
+  }
+  function hash(s){var h=7;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))%2147483647;return h||1;}
+
+  // Per-speaker kaleidoscope rosette (SVG)
+  function rosette(name){
+    var R = rng(hash(name)), seg = 6 + 2*Math.floor(R()*4), shards = '', ang = 360/seg;
+    for (var k=0;k<7;k++){
+      var r1=20+R()*120, r2=r1+20+R()*70, a1=R()*ang*0.9, a2=a1+R()*ang*0.5+4;
+      var p = [[0,0]];
+      var pts = [[r1,a1],[r2,(a1+a2)/2],[r1+ (r2-r1)*0.4,a2]].map(function(q){var t=q[1]*Math.PI/180;return (q[0]*Math.cos(t)).toFixed(1)+','+(q[0]*Math.sin(t)).toFixed(1);}).join(' ');
+      var red = R()<0.18;
+      var op = (0.12+R()*0.5).toFixed(2);
+      shards += '<polygon points="'+pts+'" fill="'+(red?'#EB0028':'#ffffff')+'" fill-opacity="'+(red?0.9:op)+'" stroke="#fff" stroke-opacity="0.35" stroke-width="0.8"/>';
+    }
+    var g = '';
+    for (var s=0;s<seg;s++){
+      g += '<g transform="rotate('+(s*ang)+')'+(s%2?' scale(1,-1) rotate('+(-ang)+')':'')+'">'+shards+'</g>';
+    }
+    return '<svg viewBox="-160 -100 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="spin">'+g+'</g><circle r="3" fill="#EB0028"/></svg>';
+  }
+
+  var sg = document.getElementById('sgrid');
+  SPEAKERS.forEach(function(s,i){
+    var el = document.createElement('article');
+    el.className = 'sp rv' + (i%3===1?' d1':i%3===2?' d2':'');
+    el.innerHTML =
+      '<div class="art">'+rosette(s[0])+'</div>'+
+      '<div class="body"><div class="n">'+(i<9?'0':'')+(i+1)+'</div><h3>'+s[0]+'</h3><p class="role">'+s[1]+'</p>'+
+      '<details><summary>Read the story</summary><p>'+s[2]+'</p></details></div>';
+    sg.appendChild(el);
+  });
+
+  /* ---------- KALEIDOSCOPE ENGINE ---------- */
+  function Kaleido(canvas, seed, count){
+    var R = rng(seed), shards = [];
+    for (var i=0;i<count;i++){
+      var r = Math.pow(R(),0.8), a = R(), size = 0.05+R()*0.16, sides = 3+Math.floor(R()*2);
+      var verts = [];
+      for (var v=0;v<sides;v++){ var t=(v/sides)*6.283 + R()*0.8; var rr=size*(0.6+R()*0.6); verts.push([Math.cos(t)*rr, Math.sin(t)*rr]); }
+      var red = R()<0.07;
+      shards.push({r:r, a:a, verts:verts, red:red, op:0.1+R()*0.55, dr:(R()-.5)*0.9, da:(R()-.5)*1.4, spin:(R()-.5)*3});
+    }
+    this.c = canvas; this.ctx = canvas.getContext('2d'); this.shards = shards; this.seg = 12;
+  }
+  Kaleido.prototype.size = function(){ var c=this.c; this.W=c.clientWidth; this.H=c.clientHeight; c.width=this.W*DPR; c.height=this.H*DPR; this.ctx.setTransform(DPR,0,0,DPR,0,0); };
+  Kaleido.prototype.draw = function(shift, rot, bright, radiusK){
+    var ctx=this.ctx, W=this.W, H=this.H, seg=this.seg, wedge=Math.PI*2/seg;
+    ctx.clearRect(0,0,W,H);
+    var R = Math.hypot(W,H)*0.5*(radiusK||1);
+    ctx.save(); ctx.translate(W/2,H/2);
+    for (var s=0;s<seg;s++){
+      ctx.save();
+      ctx.rotate(s*wedge + rot);
+      if (s%2){ ctx.scale(1,-1); ctx.rotate(-wedge); }
+      ctx.beginPath(); ctx.moveTo(0,0); ctx.arc(0,0,R,-0.002,wedge+0.002); ctx.closePath(); ctx.clip();
+      for (var i=0;i<this.shards.length;i++){
+        var sh=this.shards[i];
+        var rr = ((sh.r + sh.dr*shift) % 1 + 1) % 1;
+        var aa = ((sh.a + sh.da*shift) % 1 + 1) % 1;
+        var x = Math.cos(aa*wedge)*rr*R, y = Math.sin(aa*wedge)*rr*R;
+        var sc = R*(0.7+rr*0.6), sp = sh.spin*shift;
+        var cs=Math.cos(sp), sn=Math.sin(sp);
+        ctx.beginPath();
+        for (var v=0;v<sh.verts.length;v++){
+          var vx=sh.verts[v][0]*sc, vy=sh.verts[v][1]*sc;
+          var px = x + vx*cs - vy*sn, py = y + vx*sn + vy*cs;
+          if(v) ctx.lineTo(px,py); else ctx.moveTo(px,py);
+        }
+        ctx.closePath();
+        ctx.fillStyle = sh.red ? 'rgba(235,0,40,'+(0.7*bright)+')' : 'rgba(255,255,255,'+(sh.op*0.8*bright)+')';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,'+(0.28*bright)+')'; ctx.lineWidth = 0.8; ctx.stroke();
+      }
+      ctx.restore();
+    }
+    ctx.restore();
+  };
+
+  var big = new Kaleido(document.getElementById('kal'), 25062026, 34);
+  var mini = new Kaleido(document.getElementById('miniKal'), 2026, 26);
+  var closeK = new Kaleido(document.getElementById('closeKal'), 777, 22);
+
+  /* ---------- SCENE ---------- */
+  var scene = document.getElementById('scene'), nav = document.getElementById('nav');
+  var heroTitle = document.getElementById('heroTitle'), cue = document.getElementById('cue'), veil = document.getElementById('veil');
+  var steps = [].slice.call(document.querySelectorAll('.step')), bars = [].slice.call(document.querySelectorAll('.progress span'));
+  function sceneP(){ var r=scene.getBoundingClientRect(), total=scene.offsetHeight-innerHeight; return clamp(-r.top/total,0,1); }
+
+  var visMini=false, visClose=false;
+  new IntersectionObserver(function(e){visMini=e[0].isIntersecting;}).observe(mini.c);
+  new IntersectionObserver(function(e){visClose=e[0].isIntersecting;}).observe(closeK.c);
+
+  function resize(){ big.size(); mini.size(); closeK.size(); }
+  window.addEventListener('resize', resize); resize();
+
+  function frame(now){
+    var t = reduce?0:now*0.00004;
+    var p = sceneP();
+    if (p<1 || !reduce){
+      var bright = 0.95;
+      big.draw(ease(p)*2.2 + t*0.6, p*Math.PI*0.9 + t*2, bright, 1.02);
+    }
+    heroTitle.style.opacity = clamp(1-p/0.12,0,1);
+    heroTitle.style.transform = 'translateY(calc(-50% - '+(p*260)+'px)) scale('+(1-p*0.35)+')';
+    cue.style.opacity = clamp(1-p/0.04,0,1);
+    steps.forEach(function(el){ el.classList.toggle('on', p>=+el.dataset.from && p<+el.dataset.to); });
+    var idx = p<.18?0:p<.40?1:p<.60?2:p<.80?3:4;
+    bars.forEach(function(b,i){ b.classList.toggle('on', i<=idx); });
+
+    if (visMini) mini.draw(reduce?0.3:now*0.00007, reduce?0:now*0.00008, 1, 0.72);
+    if (visClose) closeK.draw(reduce?0.5:now*0.00003, reduce?0:-now*0.00004, 0.8, 1);
+    nav.classList.toggle('solid', scrollY>40);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* ---------- REVEALS ---------- */
+  var io = new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); }, {threshold:.15, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.rv, .brow').forEach(function(el){ io.observe(el); });
+
+  // binary spectrum bars
+  document.querySelectorAll('.spec').forEach(function(sp){
+    var n = 14, html='';
+    for (var i=0;i<n;i++){
+      var shade = Math.round(20 + (i/(n-1))*190);
+      var red = (i===Math.floor(n/2));
+      html += '<i style="background:'+(red?'#EB0028':'rgb('+shade+','+shade+','+shade+')')+';transition-delay:'+(0.04*Math.abs(i-(n-1)/2)).toFixed(2)+'s"></i>';
+    }
+    sp.innerHTML = html;
+  });
+
+  /* ---------- LIT STATEMENT ---------- */
+  var lit = document.getElementById('litText');
+  'Diversity of thought is not fragmentation. It is enrichment.'.split(' ').forEach(function(w){
+    var s=document.createElement('span'); s.textContent=w+' ';
+    if (/enrichment/i.test(w)) s.className='red';
+    lit.appendChild(s);
+  });
+  var spans=[].slice.call(lit.children);
+  function litUpdate(){ var r=lit.getBoundingClientRect(), vh=innerHeight; var t=clamp((vh*0.85-r.top)/(r.height+vh*0.35),0,1); var n=Math.round(t*spans.length*1.2); spans.forEach(function(s,i){s.classList.toggle('lit',i<n);}); }
+  if (reduce) spans.forEach(function(s){s.classList.add('lit');}); else addEventListener('scroll', litUpdate, {passive:true});
+  litUpdate();
+})();
+</script>
+</body>
+</html>
