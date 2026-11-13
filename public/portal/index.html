@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team Portal · TEDxThaltej Youth</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="/assets/config.js"></script>
+<style>
+:root{--red:#EB0028;--ink:#111;--bg:#f5f5f4;--card:#fff;--line:#e7e5e1;--mute:#6b6b6b;--ok:#13804b;--warn:#b7791f;--bad:#c53030;--r:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+.logo{font-weight:800;font-size:18px;letter-spacing:-.02em}.logo b{color:var(--red)}.logo span{font-weight:400}
+.btn{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:10px;padding:9px 14px;background:var(--ink);color:#fff;font-weight:600;cursor:pointer;white-space:nowrap}
+.btn:hover{opacity:.88}.btn:disabled{opacity:.5;cursor:default}
+.btn.red{background:var(--red)}.btn.light{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.sm{padding:6px 10px;font-size:13px;border-radius:8px}.btn.ok{background:var(--ok)}.btn.bad{background:var(--bad)}.btn.warn{background:var(--warn)}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+textarea{min-height:90px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--ink);outline-offset:0;border-color:transparent}
+label{display:grid;gap:5px;font-size:12px;font-weight:600;color:#444}
+.chk{display:flex;align-items:center;gap:8px;font-weight:500;font-size:13px}.chk input{width:auto}
+.hide{display:none!important}
+
+/* auth */
+.auth{min-height:100vh;display:grid;place-items:center;padding:20px;background:#000 radial-gradient(circle at 50% 18%,rgba(235,0,40,.28),transparent 45%)}
+.auth .box{background:#fff;border-radius:20px;padding:34px;width:min(400px,100%);display:grid;gap:14px}
+.auth h1{font-size:30px;font-weight:900;letter-spacing:-.04em}
+.auth .kk{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--red)}.auth p{color:var(--mute)}
+.link{background:none;border:0;color:var(--red);cursor:pointer;font-weight:600;padding:0;justify-self:start}
+.err{color:var(--bad);font-size:13px;min-height:18px}
+
+/* shell */
+.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+aside{background:#000;color:#ddd;padding:20px 14px;position:sticky;top:0;height:100vh;overflow:auto;display:flex;flex-direction:column}
+aside .logo{color:#fff;padding:4px 10px 18px}
+aside nav{display:grid;gap:2px}
+aside nav .grp{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#777;padding:14px 10px 6px}
+aside nav a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;color:#cfcfcf;text-decoration:none;cursor:pointer;font-weight:500}
+aside nav a:hover{background:#1b1b1f;color:#fff}
+aside nav a.on{background:#fff;color:#111}
+aside nav a .ct{margin-left:auto;background:var(--red);color:#fff;font-size:11px;border-radius:99px;padding:0 7px;font-weight:700}
+aside nav a.soon{opacity:.45;cursor:default}
+aside .me{margin-top:auto;padding:14px 10px;border-top:1px solid #222;font-size:13px}
+aside .me b{display:block;color:#fff}aside .me small{color:#888}
+aside .me .row{display:flex;gap:6px;margin-top:10px}
+main{padding:26px clamp(14px,3vw,36px) 60px;min-width:0}
+.top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.top h2{font-size:30px;font-weight:900;letter-spacing:-.04em}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tools input,.tools select{width:auto;min-width:160px;padding:8px 12px}
+.mob{display:none}
+@media(max-width:860px){.app{grid-template-columns:1fr}aside{position:fixed;inset:0 30% 0 0;z-index:40;transform:translateX(-100%);transition:transform .25s;height:100%}aside.open{transform:none}.mob{display:inline-flex}}
+
+/* cards / tables */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin-bottom:22px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.stat small{color:var(--mute);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.stat b{display:block;font-size:30px;letter-spacing:-.03em;margin-top:4px}
+.stat span{color:var(--mute);font-size:12px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.panel h3{font-size:14px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding:10px 14px;border-bottom:1px solid var(--line);background:#fafaf9;white-space:nowrap}
+.tbl td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tbody tr:hover{background:#fafaf9}
+.tbl tr.click{cursor:pointer}
+.scroll{overflow-x:auto}
+.empty{padding:40px;text-align:center;color:var(--mute)}
+.badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:600;background:#eee;white-space:nowrap}
+.b-New,.b-Pending,.b-To.do{background:#e8f0fe;color:#1a56db}
+.b-Approved,.b-Replied,.b-Done,.b-yes{background:#e6f6ec;color:var(--ok)}
+.b-Waitlisted,.b-In.progress,.b-Medium{background:#fff4e0;color:var(--warn)}
+.b-Rejected,.b-Cancelled,.b-Blocked,.b-Urgent,.b-no{background:#fdeaea;color:var(--bad)}
+.b-High{background:#ffe9e0;color:#c2410c}.b-Low,.b-Closed{background:#f1f1f1;color:#666}
+.b-super{background:#111;color:#fff}.b-lead{background:var(--red);color:#fff}.b-editor{background:#e8f0fe;color:#1a56db}.b-member{background:#f1f1f1}
+.muted{color:var(--mute)}.mono{font-family:ui-monospace,Menlo,monospace}
+.thumb{width:34px;height:34px;border-radius:8px;object-fit:cover;background:#eee}
+
+/* board */
+.board{display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));gap:12px;overflow-x:auto}
+.col{background:#ecebe8;border-radius:var(--r);padding:10px;min-height:200px}
+.col h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#555;padding:4px 6px 10px;display:flex;justify-content:space-between}
+.tk{background:#fff;border-radius:10px;padding:12px;margin-bottom:8px;border:1px solid var(--line);cursor:pointer;display:grid;gap:6px}
+.tk:hover{border-color:#bbb}
+.tk b{font-size:14px}.tk .meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--mute)}
+.tk.over{border-left:3px solid var(--bad)}
+@media(max-width:900px){.board{grid-template-columns:repeat(4,260px)}}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;place-items:center;padding:16px;z-index:60}
+.modal.show{display:grid}
+.modal .box{background:#fff;border-radius:18px;width:min(640px,100%);max-height:92vh;overflow:auto}
+.modal .box.wide{width:min(1100px,100%)}
+.para{display:grid;grid-template-columns:34px 1fr auto;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-family:Georgia,serif;font-size:15px;line-height:1.6}
+.para b{font-family:Inter,sans-serif;color:var(--red);font-size:12px;padding-top:3px}
+.para .add{font-family:Inter,sans-serif}
+.pcm{grid-column:2/-1;font-family:Inter,sans-serif;font-size:13px;background:#fff5f6;border-left:3px solid var(--red);padding:6px 10px;border-radius:6px;display:flex;justify-content:space-between;gap:8px}
+.tabsx{display:flex;gap:6px;margin-bottom:6px}.tabsx button{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:7px 14px;font-weight:700;cursor:pointer}.tabsx button.on{background:#111;color:#fff;border-color:#111}
+.sigpad{border:2px dashed #ccc;border-radius:12px;width:100%;height:140px;touch-action:none;background:#fff}
+.b-Invited,.b-Draft.submitted{background:#e8f0fe;color:#1a56db}.b-Agreements.signed,.b-Awaiting.organizer{background:#fff4e0;color:var(--warn)}.b-Countersigned,.b-Approved{background:#e6f6ec;color:var(--ok)}.b-Changes.requested{background:#fdeaea;color:var(--bad)}.b-Not.invited{background:#f1f1f1;color:#666}
+.modal .hd{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:1}
+.modal .hd h3{font-size:17px}
+.modal .bd{padding:20px 22px;display:grid;gap:14px}
+.modal .ft{padding:14px 22px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end;position:sticky;bottom:0;background:#fff;flex-wrap:wrap}
+.modal .ft .left{margin-right:auto}
+.x{background:none;border:0;font-size:24px;cursor:pointer;line-height:1}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.grid2{grid-template-columns:1fr}}
+.kv{display:grid;grid-template-columns:120px 1fr;gap:6px 12px;font-size:14px}.kv dt{color:var(--mute)}
+.log{background:#fafaf9;border:1px solid var(--line);border-radius:10px;padding:12px;white-space:pre-wrap;font-size:13px;max-height:220px;overflow:auto}
+.scopes{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:#111;color:#fff;padding:11px 18px;border-radius:12px;font-weight:600;transition:transform .25s;z-index:80}
+.toast.show{transform:translateX(-50%)}.toast.bad{background:var(--bad)}
+.banner{background:#fff4e0;color:#7a4a00;border:1px solid #f5d9a8;border-radius:12px;padding:10px 14px;margin-bottom:16px;font-size:13px}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="auth" id="vLogin">
+  <a href="/" style="position:fixed;top:18px;left:20px;font-weight:700;color:#101B3D;text-decoration:none">← Back to the site</a>
+  <form class="box" id="fLogin">
+    <div class="logo"><img src="/assets/logo-black.png" alt="TEDxThaltej Youth" style="height:22px;width:auto;display:block"></div>
+    <span class="kk">Team Portal</span>
+    <h1>Welcome back.</h1>
+    <p>Sign in with the email your organiser or department head added you with.</p>
+    <label>Email<input name="email" type="email" required autocomplete="username"></label>
+    <label>Password<input name="password" type="password" required autocomplete="current-password"></label>
+    <div class="err" id="eLogin"></div>
+    <button class="btn red" type="submit">Sign in</button>
+    <div id="gLoginWrap" class="hide" style="display:grid;gap:10px;justify-items:center"><div style="display:flex;align-items:center;gap:10px;width:100%;color:#6b6b6b;font-size:12px;font-weight:700"><span style="flex:1;height:1px;background:#e3dccd"></span>OR<span style="flex:1;height:1px;background:#e3dccd"></span></div><div id="gLogin"></div></div>
+    <button class="link" type="button" onclick="show('vForgot')">Forgot password?</button>
+  </form>
+</div>
+
+<!-- CONNECT GOOGLE (required once the Organizer turns it on) -->
+<div class="auth hide" id="vGoogle">
+  <div class="box">
+    <div class="logo"><img src="/assets/logo-black.png" alt="TEDxThaltej Youth" style="height:22px;width:auto;display:block"></div>
+    <span class="kk">One-time step</span>
+    <h1>Connect your Google account.</h1>
+    <p>From now on you can sign in with Google. Any Google account works; it doesn’t have to match your portal email. We only see your name and email address, never your Gmail or Drive.</p>
+    <div id="gConnect" style="display:flex;justify-content:center;min-height:44px"></div>
+    <div class="err" id="eGoogle"></div>
+    <div id="gSuper" class="hide" style="font-size:13px;background:#fff4e0;border-radius:12px;padding:10px 12px">Organizer: if the Google button doesn’t appear, the Client ID may be wrong. <button class="link" type="button" id="gOff" style="display:inline;padding:0">Turn off the requirement for now</button></div>
+    <button class="link" type="button" onclick="logout()">Sign out</button>
+  </div>
+</div>
+
+<!-- 2-STEP CODE -->
+<div class="auth hide" id="vCode">
+  <form class="box" id="fCode">
+    <div class="logo"><img src="/assets/logo-black.png" alt="TEDxThaltej Youth" style="height:22px;width:auto;display:block"></div>
+    <span class="kk">2-step sign-in</span>
+    <h1>Check your email.</h1>
+    <p id="pCode">We sent a 6-digit code to your email.</p>
+    <label>Code<input name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" required style="font-size:26px;letter-spacing:.3em;text-align:center"></label>
+    <label class="chk" style="display:flex;gap:8px;align-items:center;font-weight:600"><input type="checkbox" name="trust" style="width:auto"> Trust this device for 30 days</label>
+    <div class="err" id="eCode"></div>
+    <button class="btn red" type="submit">Verify and sign in</button>
+    <button class="link" type="button" onclick="show('vLogin')">← Back</button>
+  </form>
+</div>
+
+<!-- FORGOT -->
+<div class="auth hide" id="vForgot">
+  <form class="box" id="fForgot">
+    <div class="logo"><img src="/assets/logo-black.png" alt="TEDxThaltej Youth" style="height:22px;width:auto;display:block"></div>
+    <h1>Reset password</h1>
+    <p id="pForgot">We’ll email you a 6-digit code.</p>
+    <label>Email<input name="email" type="email" required></label>
+    <div id="otpFields" class="hide" style="display:grid;gap:14px">
+      <label>Code from email<input name="code" inputmode="numeric" maxlength="6"></label>
+      <label>New password<input name="password" type="password" minlength="8" autocomplete="new-password"></label>
+    </div>
+    <div class="err" id="eForgot"></div>
+    <button class="btn red" type="submit" id="bForgot">Send code</button>
+    <button class="link" type="button" onclick="show('vLogin')">← Back to sign in</button>
+  </form>
+</div>
+
+<!-- MUST CHANGE -->
+<div class="auth hide" id="vChange">
+  <form class="box" id="fChange">
+    <div class="logo"><img src="/assets/logo-black.png" alt="TEDxThaltej Youth" style="height:22px;width:auto;display:block"></div>
+    <h1>Set your password</h1>
+    <p>Choose your own password: at least 8 characters, with letters and numbers.</p>
+    <label>Temporary / current password<input name="current" type="password" required></label>
+    <label>New password<input name="password" type="password" required minlength="8" autocomplete="new-password"></label>
+    <label>Confirm new password<input name="confirm" type="password" required minlength="8"></label>
+    <div class="err" id="eChange"></div>
+    <button class="btn red" type="submit">Save password</button>
+  </form>
+</div>
+
+<!-- APP -->
+<div class="app hide" id="vApp">
+  <aside id="side">
+    <div class="logo"><img src="/assets/logo-white.png" alt="TEDxThaltej Youth" style="height:20px;width:auto;display:block"></div>
+    <nav id="menu"></nav>
+    <div class="me"><b id="meName"></b><small id="meRole"></small>
+      <div class="row"><button class="btn sm light" onclick="openChangePw()">Password</button><button class="btn sm light" onclick="logout()">Sign out</button></div>
+    </div>
+  </aside>
+  <main>
+    <div class="top">
+      <div style="display:flex;gap:10px;align-items:center"><button class="btn sm light mob" onclick="side.classList.toggle('open')">☰</button><h2 id="ttl">Dashboard</h2></div>
+      <div class="tools" id="tools"></div>
+    </div>
+    <div id="demoBanner"></div>
+    <div id="view"></div>
+  </main>
+</div>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeM()"><div class="box" id="mBox"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ════════ CONFIG: paste your Apps Script web-app URL here ════════ */
+const API_URL = window.TXTY_API || '';   /* set once for the whole site in /assets/config.js */
+/* ═════════════════════════════════════════════════════════════════ */
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const truthy=v=>['true','yes','1','y'].includes(String(v).toLowerCase());
+const badge=v=>v?`<span class="badge b-${esc(String(v).replace(/\s+/g,' '))}">${esc(v)}</span>`:''; /* "To do" → classes b-To + do, matched by .b-To.do */
+const fmt=d=>{ if(!d) return ''; const s=String(d); return s.length>10? s.replace('T',' ').slice(0,16) : new Date(s+'T00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); };
+const today=()=>new Date().toISOString().slice(0,10);
+const store={get(k){try{return sessionStorage.getItem(k)}catch(e){return store._m[k]}},set(k,v){try{sessionStorage.setItem(k,v)}catch(e){store._m[k]=v}},del(k){try{sessionStorage.removeItem(k)}catch(e){delete store._m[k]}},_m:{}};
+let TOKEN=store.get('txty_t'), ME=null, CUR='dashboard', CACHE={};
+
+function toast(t,bad){const el=$('#toast');el.textContent=t;el.className='toast show'+(bad?' bad':'');clearTimeout(el._t);el._t=setTimeout(()=>el.className='toast',2600);}
+function show(id){['vLogin','vCode','vForgot','vChange','vGoogle','vApp'].forEach(v=>$('#'+v).classList.toggle('hide',v!==id));}
+
+async function api(action,data={}){
+  const body=Object.assign({action,token:TOKEN},data);
+  let j;
+  if(!API_URL) j=await MOCK(body);
+  else { const r=await fetch(API_URL,{method:'POST',body:JSON.stringify(body)}); j=await r.json(); }
+  if(!j.ok){ if(j.auth){ TOKEN=null; store.del('txty_t'); show('vLogin'); } throw new Error(j.error||'Something went wrong'); }
+  return j;
+}
+
+/* ─────────── AUTH ─────────── */
+function afterLogin(j){const f=$('#fLogin');
+  if(j.step==='code'){CODE_T=j.ticket;$('#pCode').textContent='We sent a 6-digit code to '+j.hint+'. It expires in 10 minutes.';$('#eCode').textContent='';$('#fCode').reset();show('vCode');setTimeout(()=>$('#fCode').code.focus(),50);f.password.value='';return;}
+  TOKEN=j.token;store.set('txty_t',TOKEN);ME=j.me;f.reset();
+  if(j.mustChange){show('vChange');return;} boot();}
+const devId=()=>{try{return localStorage.getItem('txty_dev')||'';}catch(x){return '';}};
+$('#fLogin').onsubmit=async e=>{e.preventDefault();const f=e.target;$('#eLogin').textContent='';
+  try{afterLogin(await api('login',{email:f.email.value,password:f.password.value,device:devId()}));}catch(err){$('#eLogin').textContent=err.message;}};
+
+/* ─── Sign in with Google (Google Identity Services: only name + email, no Gmail access) ─── */
+let G_CID='';
+function loadGis(){return new Promise((res,rej)=>{if(window.google&&google.accounts&&google.accounts.id)return res();const s=document.createElement('script');s.src='https://accounts.google.com/gsi/client';s.async=true;s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
+function gButton(el,text,cb){
+  if(!API_URL){el.innerHTML=`<button type="button" class="btn light" style="width:260px">G&nbsp; ${text==='continue_with'?'Continue':'Sign in'} with Google (preview)</button>`;el.firstChild.onclick=()=>cb('preview.google.token');return;}
+  loadGis().then(()=>{google.accounts.id.initialize({client_id:G_CID,callback:r=>cb(r.credential),ux_mode:'popup',auto_select:false});
+    el.innerHTML='';google.accounts.id.renderButton(el,{theme:'outline',size:'large',shape:'pill',text,width:Math.min(320,el.parentElement.clientWidth||300)});})
+    .catch(()=>{el.textContent='Google sign-in could not load. Check your connection.';});}
+(async()=>{try{const j=API_URL?await api('googleConfig'):{client_id:'preview'};G_CID=j.client_id;
+  if(G_CID){$('#gLoginWrap').classList.remove('hide');gButton($('#gLogin'),'signin_with',async cred=>{$('#eLogin').textContent='';try{afterLogin(await api('loginGoogle',{credential:cred,device:devId()}));}catch(err){$('#eLogin').textContent=err.message;}});}}catch(e){}})();
+function showGoogleConnect(){show('vGoogle');$('#eGoogle').textContent='';$('#gSuper').classList.toggle('hide',ME.role!=='super');
+  $('#gOff').onclick=async()=>{await api('googleSettings',{required:false});ME=null;boot();};
+  const go=()=>gButton($('#gConnect'),'continue_with',async cred=>{try{const j=await api('googleLink',{credential:cred});ME=j.me;toast('Google connected ✓');boot();}catch(err){$('#eGoogle').textContent=err.message;}});
+  if(G_CID)go();else api('googleConfig').then(j=>{G_CID=j.client_id;go();}).catch(()=>{});}
+let CODE_T='';
+$('#fCode').onsubmit=async e=>{e.preventDefault();const f=e.target;$('#eCode').textContent='';
+  try{const j=await api('login2',{ticket:CODE_T,code:f.code.value,trust:f.trust.checked,ua:navigator.userAgent.replace(/\s*\(KHTML.*$/,'').slice(0,150)});
+    if(j.device){try{localStorage.setItem('txty_dev',j.device);}catch(x){}}
+    TOKEN=j.token;store.set('txty_t',TOKEN);ME=j.me;f.reset();$('#fLogin').reset();
+    if(j.mustChange){show('vChange');return;} boot();}catch(err){$('#eCode').textContent=err.message;}};
+let otpStage=false;
+$('#fForgot').onsubmit=async e=>{e.preventDefault();const f=e.target;$('#eForgot').textContent='';
+  try{ if(!otpStage){await api('forgot',{email:f.email.value});otpStage=true;$('#otpFields').classList.remove('hide');$('#bForgot').textContent='Reset password';$('#pForgot').textContent='If that email has an account, a code is on its way. It expires in 10 minutes.';}
+    else{await api('reset',{email:f.email.value,code:f.code.value,password:f.password.value});toast('Password updated. Please sign in.');otpStage=false;f.reset();$('#otpFields').classList.add('hide');$('#bForgot').textContent='Send code';show('vLogin');}
+  }catch(err){$('#eForgot').textContent=err.message;}};
+$('#fChange').onsubmit=async e=>{e.preventDefault();const f=e.target;$('#eChange').textContent='';
+  if(f.password.value!==f.confirm.value){$('#eChange').textContent='Passwords don’t match.';return;}
+  try{await api('changePassword',{current:f.current.value,password:f.password.value});f.reset();toast('Password saved');boot();}catch(err){$('#eChange').textContent=err.message;}};
+function openChangePw(){
+  modal('Change password',`<label>Current password<input id="pc" type="password"></label><label>New password<input id="pn" type="password" minlength="8"></label>`,
+    [['Save',async()=>{await api('changePassword',{current:$('#pc').value,password:$('#pn').value});toast('Password changed');closeM();}]]);
+}
+async function logout(){try{await api('logout');}catch(e){} TOKEN=null;store.del('txty_t');show('vLogin');}
+
+/* ─────────── SECTIONS ─────────── */
+const SECTIONS=[
+  {id:'dashboard',name:'Dashboard',ico:'◎',grp:'Overview',always:true},
+  {id:'mytasks',name:'My tasks',ico:'✓',grp:'Overview',always:true},
+  {id:'tasks',name:'Task allocation',ico:'☷',grp:'Team'},
+  {id:'team',name:'Team members',ico:'☺',grp:'Team'},
+  {id:'departments',name:'Departments',ico:'▦',grp:'Team'},
+  {id:'admins',name:'Portal users',ico:'⚿',grp:'Team'},
+  {id:'registrations',name:'Registrations',ico:'✦',grp:'Event'},
+  {id:'submissions',name:'Inbox',ico:'✉',grp:'Event'},
+  {id:'referrals',name:'Referrals',ico:'❋',grp:'Ahmedabad Idea Search'},
+  {id:'stewards',name:'Idea Stewards',ico:'⌂',grp:'Ahmedabad Idea Search'},
+  {id:'speakers',name:'Speakers',ico:'◐',grp:'Speakers'},
+  {id:'editions',name:'Editions',ico:'❖',grp:'Website'},
+  {id:'sponsors',name:'Partners',ico:'★',grp:'Website'},
+  {id:'settings',name:'Site settings',ico:'⚙',grp:'Website'},
+  {id:'audit',name:'Audit log',ico:'≡',grp:'System'},
+];
+const ROLE_LABEL={super:'Super-admin · Licensee',lead:'Department head',editor:'Editor',viewer:'Viewer',member:'Team member'};
+
+async function boot(){
+  try{ if(!ME){ const j=await api('me'); ME=j.me; } if(ME.must_change){show('vChange');return;} if(ME.needs_google){showGoogleConnect();return;} }catch(e){show('vLogin');return;}
+  show('vApp');
+  $('#meName').textContent=ME.name||ME.email; $('#meRole').textContent=ROLE_LABEL[ME.role]||ME.role;
+  $('#demoBanner').innerHTML=API_URL?'':'<div class="banner">Preview mode: sample data in your browser only. Paste the Apps Script URL into <b>API_URL</b> to go live.</div>';
+  let last='';
+  $('#menu').innerHTML=SECTIONS.filter(s=>s.always||(s.show&&s.show())||ME.scopes.includes(s.id)||(s.id==='speakers'&&ME.ambassador_of)).map(s=>{const g=s.grp!==last?`<div class="grp">${s.grp}</div>`:'';last=s.grp;
+    return g+`<a data-s="${s.id}"><span>${s.ico}</span>${s.name}<span class="ct hide" id="ct-${s.id}"></span></a>`;}).join('')
+    + `<div class="grp">Website</div><a href="/" target="_blank" rel="noopener"><span>↗</span>Open the site</a>`;
+  $('#menu').onclick=e=>{const a=e.target.closest('a[data-s]');if(a){go(a.dataset.s);$('#side').classList.remove('open');}};
+  go(CUR);
+}
+function go(id){CUR=id;document.querySelectorAll('#menu a').forEach(a=>a.classList.toggle('on',a.dataset.s===id));
+  const s=SECTIONS.find(x=>x.id===id);$('#ttl').textContent=s?s.name:'';$('#tools').innerHTML='';$('#view').innerHTML='<div class="empty">Loading…</div>';
+  (VIEWS[id]||VIEWS.generic)(id).catch(err=>{$('#view').innerHTML=`<div class="empty">${esc(err.message)}</div>`;});}
+
+/* ─────────── FIELD DEFINITIONS for generic CRUD ─────────── */
+const opt=(list,keyId='id',keyName='name')=>(list||[]).map(x=>typeof x==='string'?{v:x,t:x}:{v:x[keyId],t:x[keyName]});
+const DEF={
+  editions:{cols:[['number','#'],['title','Title'],['date','Date',fmt],['venue','Venue'],['published','Live',v=>badge(truthy(v)?'yes':'no')]],
+    fields:L=>[['number','Edition no.'],['date','Date','date'],['title','Full title',null,1],['theme','Short theme (e.g. The Zenith)'],['page_url','Edition page (e.g. /2027)'],['venue','Venue',null,1],['description','One-line description','textarea',1],['image_url','Image URL'],['video_url','Highlights / aftermovie YouTube URL'],['published','Show on website','bool']]},
+  speakers:{cols:[['photo_url','',v=>v?`<img class="thumb" src="${esc(v)}">`:''],['name','Name'],['talk_title','Talk'],['edition_id','Edition',(v,L)=>esc((L.editions.find(e=>e.id===v)||{}).name||'')],['published','Live',v=>badge(truthy(v)?'yes':'no')]],
+    fields:L=>[['name','Name'],['designation','Designation / one-liner'],['talk_title','Talk title',null,1],['edition_id','Edition','select',0,opt(L.editions)],['sort','Display order','number'],['photo_url','Photo URL'],['video_url','Talk video URL'],['bio','Bio','textarea',1],['published','Show on website','bool']]},
+  sponsors:{cols:[['logo_url','',v=>v?`<img class="thumb" style="object-fit:contain" src="${esc(v)}">`:''],['name','Sponsor'],['tier','Tier',badge],['edition_id','Edition',(v,L)=>esc((L.editions.find(e=>e.id===v)||{}).name||'All editions')],['published','Live',v=>badge(truthy(v)?'yes':'no')]],
+    fields:L=>[['name','Sponsor name'],['tier','Tier','select',0,opt(L.sponsorTiers)],['edition_id','Edition (blank = always show)','select',0,[{v:'',t:'— All editions —'}].concat(opt(L.editions))],['sort','Display order','number'],['logo_url','Logo URL'],['website','Website'],['description','Notes','textarea',1],['published','Show on website','bool']]},
+  departments:{cols:[['name','Department'],['lead','Head'],['sort','Order']],
+    fields:L=>[['name','Name',null,1],['lead','Department head (name)'],['sort','Display order','number'],['description','Description','textarea',1]]},
+  team:{cols:[['photo_url','',v=>v?`<img class="thumb" src="${esc(v)}">`:''],['name','Name'],['role','Role'],['edition_id','Edition',(v,L)=>esc(((L.editions.find(e=>e.id===v)||{}).name||'Current').replace(/ — .*/,''))],['department_id','Department',(v,L)=>esc((L.departments.find(d=>d.id===v)||{}).name||'')],['email','Email'],['published','On site',v=>badge(truthy(v)?'yes':'no')]],
+    fields:L=>[['name','Full name'],['role','Role / title (shown on /team)'],['edition_id','Edition team','select',0,[{v:'',t:'— Current edition —'}].concat(opt(L.editions))],['department_id','Department','select',0,[{v:'',t:'—'}].concat(opt(L.departments))],['sort','Display order','number'],['email','Email (private)'],['phone','Phone (private)'],['photo_url','Photo URL'],['linkedin','LinkedIn URL'],['bio','Short bio','textarea',1],['published','Show on website','bool']]},
+  stewards:{noAdd:true,cols:[['id','ID',v=>`<span class="mono">${esc(v)}</span>`],['name','Steward',(v,_,r)=>`<b>${esc(v)}</b><div class="muted">${esc(r.email)}</div>`],['city','City'],['community','Community'],['active','Active',v=>badge(truthy(v)?'yes':'no')],['created_at','Joined',fmt],['last_login','Last sign-in',fmt]],
+    fields:L=>[['name','Name'],['phone','Phone'],['city','City'],['community','Community or institution'],['active','Active (untick to pause this Steward)','bool',1]]},
+  audit:{cols:[['time','Time',fmt],['email','User'],['action','Action'],['detail','Detail']],readonly:true},
+};
+
+function formHTML(fields,rec){
+  return `<div class="grid2">${fields.map(([k,lab,type,full,opts])=>{const v=rec[k]??'';const st=full?' style="grid-column:1/-1"':'';
+    if(type==='bool') return `<label class="chk"${st}><input type="checkbox" data-k="${k}" ${truthy(v)||(rec.id===undefined&&k==='published')?'checked':''}> ${lab}</label>`;
+    if(type==='textarea') return `<label${st}>${lab}<textarea data-k="${k}">${esc(v)}</textarea></label>`;
+    if(type==='select') return `<label${st}>${lab}<select data-k="${k}">${opts.map(o=>`<option value="${esc(o.v)}" ${String(o.v)===String(v)?'selected':''}>${esc(o.t)}</option>`).join('')}</select></label>`;
+    return `<label${st}>${lab}<input data-k="${k}" type="${type||'text'}" value="${esc(v)}"></label>`;}).join('')}</div>`;
+}
+function readForm(root){const o={};root.querySelectorAll('[data-k]').forEach(el=>o[el.dataset.k]=el.type==='checkbox'?(el.checked?'TRUE':'FALSE'):el.value);return o;}
+
+function tableHTML(rows,cols,L,clickable){
+  if(!rows.length) return '<div class="empty">Nothing here yet.</div>';
+  return `<div class="scroll"><table class="tbl"><thead><tr>${cols.map(c=>`<th>${c[1]}</th>`).join('')}</tr></thead><tbody>${rows.map((r,i)=>`<tr class="${clickable?'click':''}" data-i="${i}">${cols.map(c=>`<td>${c[2]?c[2](r[c[0]],L,r):esc(r[c[0]])}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+}
+function searchBox(ph,onInput){const i=document.createElement('input');i.placeholder=ph||'Search…';i.oninput=()=>onInput(i.value.toLowerCase());$('#tools').appendChild(i);return i;}
+function addBtn(label,fn){const b=document.createElement('button');b.className='btn red';b.textContent=label;b.onclick=fn;$('#tools').appendChild(b);}
+function selectBox(opts,onChange,first='All'){const s=document.createElement('select');s.innerHTML=`<option value="">${first}</option>`+opts.map(o=>`<option>${esc(o)}</option>`).join('');s.onchange=()=>onChange(s.value);$('#tools').appendChild(s);return s;}
+const match=(r,q)=>!q||Object.values(r).join(' ').toLowerCase().includes(q);
+
+/* ─────────── VIEWS ─────────── */
+const VIEWS={
+  async generic(id){
+    const d=DEF[id]; const j=await api('list',{module:id}); const L=j.lists; let q='';
+    const paint=()=>{const rows=j.rows.filter(r=>match(r,q));$('#view').innerHTML=`<div class="panel">${tableHTML(rows,d.cols,L,!d.readonly&&j.canWrite)}</div>`;
+      if(!d.readonly&&j.canWrite) $('#view').querySelectorAll('tr[data-i]').forEach(tr=>tr.onclick=()=>edit(rows[tr.dataset.i]));};
+    const edit=rec=>{
+      modal((rec.id?'Edit ':'New ')+SECTIONS.find(s=>s.id===id).name.replace(/s$/,'').toLowerCase(),formHTML(d.fields(L),rec),[
+        rec.id&&['Delete',async()=>{if(!confirm('Delete this record?'))return;await api('remove',{module:id,id:rec.id});toast('Deleted');closeM();go(id);},'bad left'],
+        ['Save',async()=>{await api('save',{module:id,record:Object.assign({id:rec.id},readForm($('#mBox')))});toast('Saved');closeM();go(id);}]]);};
+    searchBox('Search…',v=>{q=v;paint();}); if(!d.readonly&&!d.noAdd&&j.canWrite) addBtn('+ Add',()=>edit({}));
+    paint();
+  },
+
+  async dashboard(){
+    const j=await api('dashboard'); const c=j.counts; const e=j.event||{};
+    const days=e.date?Math.ceil((new Date(e.date+'T10:00:00+05:30')-Date.now())/864e5):null;
+    const s=[];
+    if(days!==null) s.push(['Event in',days>0?days+' days':'Today',e.name||'']);
+    s.push(['My open tasks',j.myTasks.open,j.myTasks.done+' done']);
+    if(c.registrations) s.push(['Registrations',c.registrations.total,`${c.registrations.Approved||0} approved · ${c.registrations.Pending||0} pending`+(e.capacity?` · cap ${e.capacity}`:'')]);
+    if(c.submissions) s.push(['Inbox',c.submissions.new,'new of '+c.submissions.total]);
+    if(c.referrals) s.push(['AIS referrals',c.referrals.new||0,'new of '+c.referrals.total+(c.stewards?' · '+c.stewards.total+' Stewards':'')]);
+    if(c.tasks) s.push(['Team tasks',c.tasks.total-(c.tasks.Done||0),'open · '+(c.tasks.overdue||0)+' overdue']);
+    if(c.speakers) s.push(['Speakers',c.speakers.total,'across editions']);
+    if(c.sponsors) s.push(['Sponsors',c.sponsors.total,'']);
+    if(c.team) s.push(['Team members',c.team.total,'']);
+    if(c.submissions&&c.submissions.new){const el=$('#ct-submissions');if(el){el.textContent=c.submissions.new;el.classList.remove('hide');}}
+    if(c.referrals&&c.referrals.new){const el=$('#ct-referrals');if(el){el.textContent=c.referrals.new;el.classList.remove('hide');}}
+    if(j.myTasks.open){const el=$('#ct-mytasks');if(el){el.textContent=j.myTasks.open;el.classList.remove('hide');}}
+    const recent=(t,rows,cols)=>`<div class="panel"><h3>${t}</h3>${tableHTML(rows||[],cols,{})}</div>`;
+    $('#view').innerHTML=`<div class="cards">${s.map(x=>`<div class="stat"><small>${x[0]}</small><b>${esc(x[1])}</b><span>${esc(x[2])}</span></div>`).join('')}</div>
+      <div class="two">${c.registrations?recent('Latest registrations',c.registrations.recent,[['name','Name'],['status','Status',badge],['created_at','When',fmt]]):''}
+      ${c.submissions?recent('Latest messages',c.submissions.recent,[['name','From'],['type','Type'],['status','Status',badge]]):''}</div>`;
+  },
+
+  async mytasks(){
+    const j=await api('myTasks'); let filter='open';
+    const S=j.lists.taskStatuses;
+    const sel=selectBox(['open','all','Done'],v=>{filter=v||'open';paint();},'Open'); sel.value='';
+    const paint=()=>{const rows=j.rows.filter(t=>filter==='all'||(filter==='Done'?t.status==='Done':t.status!=='Done')).sort((a,b)=>String(a.due_date||'9').localeCompare(String(b.due_date||'9')));
+      $('#view').innerHTML=rows.length?`<div class="cards" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">${rows.map((t,i)=>taskCard(t,i,j.lists)).join('')}</div>`:'<div class="panel"><div class="empty">No tasks here. You’re all caught up ✦</div></div>';
+      $('#view').querySelectorAll('[data-i]').forEach(el=>el.onclick=()=>openMyTask(rows[el.dataset.i],S));};
+    paint();
+  },
+
+  async tasks(){
+    const j=await api('list',{module:'tasks'}); const L=j.lists; const A=j.assignees||[]; let q='',who='',dep='';
+    const nameOf=e=>(A.find(a=>a.email===String(e).toLowerCase())||{}).name||e||'Unassigned';
+    searchBox('Search tasks…',v=>{q=v;paint();});
+    if(A.length>1) selectBox(A.map(a=>a.name),v=>{who=v;paint();},'Everyone');
+    if(!ME.department_id||ME.role==='super') selectBox(L.departments.map(d=>d.name),v=>{dep=(L.departments.find(d=>d.name===v)||{}).id||'';paint();},'All departments');
+    if(j.canWrite) addBtn('+ Assign task',()=>edit({}));
+    const paint=()=>{const rows=j.rows.filter(t=>match(t,q)&&(!who||nameOf(t.assigned_to)===who)&&(!dep||t.department_id===dep));
+      $('#view').innerHTML=`<div class="board">${L.taskStatuses.map(st=>{const col=rows.filter(t=>(t.status||'To do')===st);
+        return `<div class="col"><h4>${st}<span>${col.length}</span></h4>${col.map(t=>{const over=t.status!=='Done'&&t.due_date&&t.due_date<today();
+          return `<div class="tk ${over?'over':''}" data-id="${esc(t.id)}"><b>${esc(t.title)}</b><div class="meta">${badge(t.priority)}${t.due_date?`<span>${over?'⚠ ':''}Due ${fmt(t.due_date)}</span>`:''}</div><div class="meta">→ ${esc(nameOf(t.assigned_to))}${t.department_id?' · '+esc((L.departments.find(d=>d.id===t.department_id)||{}).name||''):''}</div></div>`;}).join('')}</div>`;}).join('')}</div>`;
+      $('#view').querySelectorAll('.tk').forEach(el=>el.onclick=()=>edit(j.rows.find(t=>t.id===el.dataset.id)));};
+    const edit=rec=>{
+      const fields=[['title','Task',null,1],['description','Details','textarea',1],
+        ['assigned_to','Assign to','select',0,[{v:'',t:'— Unassigned —'}].concat(A.map(a=>({v:a.email,t:a.name+(a.department_id?' · '+((L.departments.find(d=>d.id===a.department_id)||{}).name||''):'')})))],
+        ['due_date','Due date','date'],['priority','Priority','select',0,opt(L.taskPriorities)],['status','Status','select',0,opt(L.taskStatuses)]];
+      if(!ME.department_id||ME.role==='super') fields.splice(3,0,['department_id','Department','select',0,[{v:'',t:'— From assignee —'}].concat(opt(L.departments))]);
+      const r=Object.assign({priority:'Medium',status:'To do'},rec);
+      const info=rec.id?`<div class="muted" style="font-size:12px">Assigned by ${esc(nameOf(rec.assigned_by))} · created ${fmt(rec.created_at)}</div>${rec.comments?`<div><b style="font-size:12px">Updates</b><div class="log">${esc(rec.comments)}</div></div>`:''}`:'';
+      const apv=String(r.approvers||'').split(',').filter(Boolean),pool=j.approverPool||A;
+      const apHTML=j.canWrite?`<div style="margin:6px 0 10px"><b style="font-size:12px">Needs approval from (optional, in this order)</b><p class="muted" style="font-size:12px;margin:2px 0 6px">After you accept the work, each person signs off in turn. Use this for anything public or sensitive.</p>
+        <div id="apList" style="display:flex;flex-wrap:wrap;gap:6px">${apv.map(e=>`<span class="badge" data-e="${esc(e)}" style="cursor:pointer">${esc((pool.find(p=>p.email===e)||{}).name||e)} ✕</span>`).join('')}</div>
+        <select id="apAdd" style="margin-top:6px"><option value="">+ Add an approver…</option>${pool.map(p=>`<option value="${esc(p.email)}">${esc(p.name)}${p.role==='super'?' (Organizer)':p.role==='lead'?' (Head)':''}</option>`).join('')}</select></div>`:'';
+      const apState=apv.slice();
+      modal(rec.id?'Edit task':'Assign a task',(j.canWrite?formHTML(fields,r):'')+apHTML+info+(rec.id?`<label>Add an update<textarea id="tc" placeholder="Optional comment"></textarea></label>`:''),[
+        rec.id&&j.canWrite&&['Delete',async()=>{if(!confirm('Delete this task?'))return;await api('remove',{module:'tasks',id:rec.id});toast('Deleted');closeM();go('tasks');},'bad left'],
+        rec.id&&['Post update',async()=>{const c=$('#tc').value;if(!c)return toast('Write an update first',1);await api('updateTask',{id:rec.id,comment:c});toast('Update posted');closeM();go('tasks');},'light'],
+        j.canWrite&&['Save',async()=>{const f=readForm($('#mBox'));if(!f.title)return toast('Give the task a title',1);f.approvers=apState.join(',');const res=await api('save',{module:'tasks',record:Object.assign({id:rec.id},f)});toast(rec.id?'Task updated':'Task assigned'+(f.assigned_to?' & emailed':''));closeM();go('tasks');}]]);
+      const paintAp=()=>{const box=$('#apList');if(!box)return;box.innerHTML=apState.map((e,i)=>`<span class="badge" data-i="${i}" style="cursor:pointer;background:#101B3D;color:#fff">${i+1}. ${esc((pool.find(p=>p.email===e)||{}).name||e)} ✕</span>`).join('')||'<span class="muted" style="font-size:12px">No approval needed</span>';
+        box.querySelectorAll('[data-i]').forEach(x=>x.onclick=()=>{apState.splice(+x.dataset.i,1);paintAp();});};
+      if($('#apAdd')){$('#apAdd').onchange=e=>{const v=e.target.value;if(v&&!apState.includes(v)&&apState.length<5)apState.push(v);e.target.value='';paintAp();};paintAp();}};
+    paint();
+  },
+
+  async registrations(){
+    const j=await api('list',{module:'registrations'}); const L=j.lists; let q='',st='';
+    searchBox('Search name, email, ticket…',v=>{q=v;paint();});
+    selectBox(L.regStatuses,v=>{st=v;paint();},'All statuses');
+    const ex=document.createElement('button');ex.className='btn light';ex.textContent='Export CSV';ex.onclick=()=>csv('registrations',j.rows);$('#tools').appendChild(ex);
+    const paint=()=>{const rows=j.rows.filter(r=>match(r,q)&&(!st||r.status===st)).reverse();
+      $('#view').innerHTML=`<div class="panel">${tableHTML(rows,[['name','Name',(v,_,r)=>`<b>${esc(v)}</b><div class="muted">${esc(r.email)}</div>`],['phone','Phone'],['institution','Institution',(v,_,r)=>esc(v)+(r.city?`<div class="muted">${esc(r.city)}</div>`:'')],['status','Status',badge],['ticket_code','Ticket',v=>`<span class="mono">${esc(v)}</span>`],['checked_in','In',v=>truthy(v)?'✅':''],['created_at','Registered',fmt]],L,true)}</div>`;
+      $('#view').querySelectorAll('tr[data-i]').forEach(tr=>tr.onclick=()=>openReg(rows[tr.dataset.i],j.canWrite));};
+    paint();
+  },
+
+  async submissions(){
+    const j=await api('list',{module:'submissions'}); const L=j.lists; let q='',ty='',st='';
+    searchBox('Search inbox…',v=>{q=v;paint();});
+    selectBox(L.submissionTypes,v=>{ty=v;paint();},'All types'); selectBox(L.submissionStatuses,v=>{st=v;paint();},'All statuses');
+    const paint=()=>{const rows=j.rows.filter(r=>match(r,q)&&(!ty||r.type===ty)&&(!st||r.status===st)).reverse();
+      $('#view').innerHTML=`<div class="panel">${tableHTML(rows,[['status','',badge],['type','Type'],['name','From',(v,_,r)=>`<b>${esc(v)}</b><div class="muted">${esc(r.email)}</div>`],['subject','Subject',(v,_,r)=>esc(v||String(r.message).slice(0,70))],['department_id','Routed to',v=>esc((L.departments.find(d=>d.id===v)||{}).name||'')],['created_at','Received',fmt]],L,true)}</div>`;
+      $('#view').querySelectorAll('tr[data-i]').forEach(tr=>tr.onclick=()=>openSub(rows[tr.dataset.i],L,j.canWrite));};
+    paint();
+  },
+
+  async settings(){
+    const j=await api('list',{module:'settings'}); const canW=j.canWrite;
+    const LABELS={event_name:'Event name',event_date:'Event date (YYYY-MM-DD)',event_time:'Start time (HH:MM, IST)',theme:'Theme',tagline:'Tagline',venue:'Venue',registration_open:'Registrations open (TRUE/FALSE)',capacity:'Seat capacity',registration_note:'Registration note',contact_email:'Public contact email',notify_email:'Notify this email on new inbox messages (private)',fin_staff_limit:'Finance can give final approval up to this amount (₹). Above it, the Organizer approves',two_factor:'2-step sign-in: privileged (Organizer, Registrar, Finance, people managers) · all · off',login_alerts:'Email people when someone keeps getting their password wrong (TRUE/FALSE)',maintenance_mode:'Maintenance mode: pause sign-in for everyone except the Organizer (TRUE/FALSE)',maintenance_message:'Maintenance message shown at sign-in',idc_chair_email:'IDC Chairperson email (Constitutional Reviews)',instagram:'Instagram URL',youtube:'YouTube URL',linkedin:'LinkedIn URL',ais_url:'AIS website URL',about:'About text',highlight_video:'Home page video (YouTube ID)',ais_referral_limit:'AIS: referrals per Steward per cycle',ais_cycle:'AIS: current cycle code (e.g. 2627)',ais_notify_email:'AIS: email new referrals to'};
+    const keys=[...new Set(Object.keys(LABELS).concat(j.rows.map(r=>r.key)))]; const val=k=>(j.rows.find(r=>r.key===k)||{}).value||'';
+    $('#view').innerHTML=`<div class="panel"><div style="padding:20px;display:grid;gap:14px" id="sf"><div class="grid2">${keys.map(k=>{const long=['about','registration_note'].includes(k);
+      return `<label${long?' style="grid-column:1/-1"':''}>${esc(LABELS[k]||k)}${long?`<textarea data-k="${k}" ${canW?'':'disabled'}>${esc(val(k))}</textarea>`:`<input data-k="${k}" value="${esc(val(k))}" ${canW?'':'disabled'}>`}</label>`;}).join('')}</div>
+      ${canW?'<div><button class="btn red" id="sSave">Save settings</button></div>':''}</div></div>`;
+    if(canW) $('#sSave').onclick=async()=>{await api('saveSettings',{settings:readForm($('#sf'))});toast('Settings saved. The website updates within 5 minutes.');};
+    if(ME.role==='super') zohoPanel();
+  },
+
+  async admins(){
+    const j=await api('list',{module:'admins'}); const L=j.lists; let q='';
+    const isSuper=ME.role==='super';
+    searchBox('Search users…',v=>{q=v;paint();}); addBtn(isSuper?'+ Add user':'+ Add member',()=>edit({active:'TRUE',role:'member'}));
+    const paint=()=>{const rows=j.rows.filter(r=>match(r,q));
+      $('#view').innerHTML=(isSuper?'':`<div class="banner">As department head you can add and manage <b>team members</b> of your department. They sign in here to see their tasks.</div>`)+
+      `<div class="panel">${tableHTML(rows,[['name','Name',(v,_,r)=>`<b>${esc(v)}</b>${truthy(r.registrar)?' <span class="badge" style="background:#101B3D;color:#fff">Registrar</span>':''}${/idc_chair/.test(r.bodies||'')?' <span class="badge" style="background:#E62B1E;color:#fff">IDC Chair</span>':/idc_member/.test(r.bodies||'')?' <span class="badge" style="background:#FFC83D;color:#101B3D">IDC</span>':''}${/senior_advisor/.test(r.bodies||'')?' <span class="badge" style="background:#e8f0fe;color:#1a56db">Senior Advisor</span>':''}${window.lockBadge?lockBadge(r):''}<div class="muted">${esc(r.email)}</div>`],['role','Role',badge],['department_id','Department',v=>esc((L.departments.find(d=>d.id===v)||{}).name||'')],['scopes','Access',(v,_,r)=>r.role==='super'?'Everything':r.role==='member'?'My tasks':esc(String(v).replace(/,/g,', '))],['active','Active',v=>badge(truthy(v)?'yes':'no')],['last_login','Last sign-in',fmt]],L,true)}</div>`;
+      $('#view').querySelectorAll('tr[data-i]').forEach(tr=>tr.onclick=()=>edit(rows[tr.dataset.i]));};
+    const edit=rec=>{const isNew=!rec.created_at;const sc=String(rec.scopes||'').split(',');
+      const body=`<div class="grid2"><label>Email<input data-k="email" type="email" value="${esc(rec.email||'')}" ${isNew?'':'disabled'}></label><label>Name<input data-k="name" value="${esc(rec.name||'')}"></label>
+        ${isSuper?`<label>Role<select data-k="role" id="rSel">${L.roles.map(r=>`<option value="${r}" ${r===rec.role?'selected':''}>${ROLE_LABEL[r]}</option>`).join('')}</select></label>
+        <label>Department<select data-k="department_id"><option value="">— None —</option>${L.departments.map(d=>`<option value="${esc(d.id)}" ${d.id===rec.department_id?'selected':''}>${esc(d.name)}</option>`).join('')}</select></label>`:''}
+        <label class="chk"><input type="checkbox" data-k="active" ${truthy(rec.active)?'checked':''}> Active</label>
+        ${isSuper&&rec.role!=='super'?`<label class="chk" style="grid-column:1/-1"><input type="checkbox" data-k="registrar" ${truthy(rec.registrar)?'checked':''}> Registrar of TEDxThaltej Youth (issues letters, certificates and IDs; verifies counts). Any role can hold this office.</label>`:''}
+        ${isSuper&&!isNew&&rec.role!=='super'?`<div style="grid-column:1/-1;border-top:1px solid var(--line);padding-top:8px"><b style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">Charter offices</b>
+          <label class="chk"><input type="checkbox" class="bk" value="senior_advisor" ${String(rec.bodies||'').includes('senior_advisor')?'checked':''}> Senior Advisor to the Organizer (Art. 24)</label>
+          <label class="chk"><input type="checkbox" class="bk" value="idc_chair" ${String(rec.bodies||'').includes('idc_chair')?'checked':''}> Chairperson, Internal Disciplinary Committee (must also be a Senior Advisor)</label>
+          <label class="chk"><input type="checkbox" class="bk" value="idc_member" ${String(rec.bodies||'').includes('idc_member')?'checked':''}> Member, Internal Disciplinary Committee (up to 5)</label></div>`:''}
+        ${rec.locked_until&&rec.locked_until>new Date(Date.now()+19800000).toISOString()?`<div class="banner" style="grid-column:1/-1">⏸ Access paused until ${esc(String(rec.locked_until).replace('T',' ').slice(0,16))} IST${rec.lock_reason?' · '+esc(rec.lock_reason):''}</div>`:''}</div>
+        ${isSuper?`<div class="presets" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="muted" style="font-size:12px">Quick setup:</span><button type="button" class="btn sm light" onclick="applyPreset('ais')">AIS Head</button><button type="button" class="btn sm light" onclick="applyPreset('recruit')">Recruitment lead</button><button type="button" class="btn sm light" onclick="applyPreset('dept')">Department head</button><button type="button" class="btn sm light" onclick="applyPreset('member')">Team member</button></div><div style="margin-top:10px"><b style="font-size:12px">Also part of these teams</b><div class="scopes" style="margin-top:6px">${L.departments.map(d=>`<label class="chk"><input type="checkbox" class="xd" value="${esc(d.id)}" ${String(rec.extra_departments||'').split(',').includes(d.id)?'checked':''}> ${esc(d.name)}</label>`).join('')}</div><p class="muted" style="font-size:12px;margin-top:4px">They see the tasks, meetings, Team Mail and approvals of every team they are part of.</p></div>
+        <div id="scBox"><b style="font-size:12px">Pages this user can open</b><p class="muted" style="font-size:12px;margin:2px 0 6px">Any member can be given any page. <b>Edit</b> lets them change it; <b>View</b> is read-only.</p><div class="scopes" style="margin-top:8px">${L.scopes.map(s=>{const lv=sc.includes(s)?'edit':sc.includes(s+':view')?'view':'';return `<label style="display:flex;gap:6px;align-items:center;font-size:13px;text-transform:capitalize"><select class="sc" data-s="${s}" style="width:auto;padding:4px 6px"><option value="" ${!lv?'selected':''}>—</option><option value="view" ${lv==='view'?'selected':''}>View</option><option value="edit" ${lv==='edit'?'selected':''}>Edit</option></select>${s}</label>`;}).join('')}</div>
+        <p class="muted" style="font-size:12px;margin-top:8px">Department heads automatically get Task allocation and can add members to their department. If a department is set, Team, Tasks and Inbox show only that department.</p></div>`:''}
+        ${isNew?'<p class="muted" style="font-size:12px">A temporary password will be emailed to them.</p>':''}`;
+      modal(isNew?'Add user':'Edit user',body,[
+        !isNew&&rec.email!==ME.email&&['Delete',async()=>{if(!confirm('Remove this user’s access?'))return;await api('remove',{module:'admins',id:rec.email});toast('User removed');closeM();go('admins');},'bad left'],
+        !isNew&&['Reset password',async()=>{await api('resetAdmin',{email:rec.email});toast('New temporary password emailed');},'light'],
+        !isNew&&isSuper&&rec.email!==ME.email&&window.lockDialog&&['⏸ Pause access',()=>lockDialog('admins',rec.email,rec,()=>go('admins')),'light'],
+        ['Save',async()=>{const f=readForm($('#mBox'));if(!isNew)f.email=rec.email;f.scopes=[...$('#mBox').querySelectorAll('select.sc')].filter(c=>c.value).map(c=>c.value==='view'?c.dataset.s+':view':c.dataset.s).join(',');if($('#mBox .xd'))f.extra_departments=[...$('#mBox').querySelectorAll('.xd:checked')].map(c=>c.value).join(',');
+          const r=await api('save',{module:'admins',record:f});
+          const bk=[...$('#mBox').querySelectorAll('.bk:checked')].map(x=>x.value);if($('#mBox .bk')&&bk.sort().join()!==String(rec.bodies||'').split(',').filter(String).sort().join())await api('bodiesSet',{email:rec.email,bodies:bk});toast(r.invited?'User added & invited by email':r.activated?(r.emailed?'Activated · email sent ✓':'Activated, but the email failed: '+(r.email_error||'')):'Saved',r.activated&&!r.emailed?1:0);closeM();go('admins');}]]);
+      const rs=$('#rSel'),sb=$('#scBox'); if(rs&&sb){const t=()=>sb.classList.toggle('hide',rs.value==='super');rs.onchange=t;t();}};
+    paint();
+  },
+};
+VIEWS.editions=VIEWS.sponsors=VIEWS.departments=VIEWS.team=VIEWS.stewards=VIEWS.audit=VIEWS.generic;
+
+/* ─────────── EMAIL · ZOHO MAIL (Self Client) ─────────── */
+async function zohoPanel(){
+  const box=document.createElement('div'); box.className='panel'; box.style.marginBottom='16px'; $('#view').prepend(box);
+  const copy=(t)=>{try{navigator.clipboard.writeText(t);toast('Copied');}catch(e){prompt('Copy this:',t);}};
+  const draw=(z)=>{
+    const dc=z.dcs.find(d=>d.id===z.dc)||z.dcs[0];
+    if(z.connected){
+      box.innerHTML=`<h3>Email · Zoho Mail <span class="badge b-yes" style="margin-left:8px">Connected</span></h3><div style="padding:16px 18px;display:grid;gap:12px">
+        <div>All site emails go out from <b>${esc(z.fromName)} &lt;${esc(z.from)}&gt;</b> through Zoho Mail (${esc(dc.label)}). This includes OTP codes, tickets, Steward and speaker emails, signed PDFs and task alerts. If Zoho ever fails, the site falls back to Gmail so no email is lost.</div>
+        ${z.lastError?`<div class="banner" style="margin:0">Last Zoho problem (Gmail was used instead): ${esc(z.lastError)}</div>`:''}
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><input id="zTo" placeholder="Send a test to (default: you)" style="width:280px"><button class="btn" id="zTest">Send test email</button><button class="btn light" id="zOff">Disconnect</button></div></div>`;
+      $('#zTest').onclick=async function(){this.disabled=true;try{const r=await api('zohoTest',{to:$('#zTo').value});toast('Test sent to '+r.to);}catch(e){toast(e.message,1);}this.disabled=false;};
+      $('#zOff').onclick=async()=>{if(!confirm('Disconnect Zoho Mail? Emails will go through Gmail until you reconnect.'))return;draw(await api('zohoDisconnect'));toast('Disconnected');};
+      return;
+    }
+    box.innerHTML=`<h3>Email · Connect Zoho Mail</h3><div style="padding:16px 18px;display:grid;gap:14px">
+      <p class="muted" style="font-size:13px">Until you connect, emails go out from the Google account that owns the Apps Script. It takes about 3 minutes, and the code from step 3 expires, so keep this page open.</p>
+      <label>1 · Your Zoho data centre <span class="muted" style="font-weight:400">(the address you log in to Zoho Mail at)</span><select id="zDc">${z.dcs.map(d=>`<option value="${d.id}" ${d.id===z.dc?'selected':''}>${esc(d.label)}</option>`).join('')}</select></label>
+      <div class="log" style="white-space:normal;max-height:none;font-size:14px;line-height:1.6">
+        <b>2 · Create a Self Client.</b> Open <a id="zCon" href="${dc.console}" target="_blank" rel="noopener">${dc.console.replace('https://','')}</a> and sign in with the Zoho account that owns the From address. Click <b>Add Client → Self Client → Create → OK</b>. Then open the <b>Client Secret</b> tab and copy the <b>Client ID</b> and <b>Client Secret</b> into the boxes below.<br><br>
+        <b>3 · Generate a code.</b> In the same Self Client, open the <b>Generate Code</b> tab. In <b>Scope</b>, paste:
+        <div style="display:flex;gap:8px;align-items:center;margin:6px 0"><code class="mono" style="background:#fff;border:1px solid var(--line);padding:6px 10px;border-radius:8px;flex:1;word-break:break-all">${esc(z.scope)}</code><button class="btn sm light" type="button" id="zCopy">Copy</button></div>
+        Set <b>Time Duration</b> to <b>10 minutes</b>, write a <b>Scope Description</b> such as <i>TEDxThaltej Youth website</i>, and click <b>Create</b>. If Zoho asks, pick your organisation. Copy the code it shows (it starts with <span class="mono">1000.</span>) and paste it below <b>straight away</b>.
+      </div>
+      <div class="grid2"><label>Client ID<input id="zId" placeholder="1000.XXXXXXXXXX" autocomplete="off"></label><label>Client Secret<input id="zSec" type="password" autocomplete="off"></label>
+        <label style="grid-column:1/-1">Code from “Generate Code”<input id="zCode" placeholder="1000.xxxxxxxx.xxxxxxxx" autocomplete="off"></label>
+        <label>From address<input id="zFrom" value="${esc(z.from||'info@tedxthaltejyouth.in')}"></label><label>From name<input id="zName" value="${esc(z.fromName||'TEDxThaltej Youth')}"></label></div>
+      <p class="muted" style="font-size:12px">The From address must be the Zoho mailbox you signed in with, or one of its aliases. The Client Secret and tokens are stored in the script’s private properties, never in the Sheet.</p>
+      <div><button class="btn red" id="zGo">4 · Connect Zoho Mail</button></div></div>`;
+    $('#zCopy').onclick=()=>copy(z.scope);
+    $('#zDc').onchange=e=>{const d=z.dcs.find(x=>x.id===e.target.value);$('#zCon').href=d.console;$('#zCon').textContent=d.console.replace('https://','');};
+    $('#zGo').onclick=async function(){this.disabled=true;this.textContent='Connecting…';
+      try{const r=await api('zohoConnect',{dc:$('#zDc').value,clientId:$('#zId').value,clientSecret:$('#zSec').value,code:$('#zCode').value,fromAddress:$('#zFrom').value,fromName:$('#zName').value});draw(r);toast('Zoho Mail connected. Send a test email to check.');}
+      catch(e){toast(e.message,1);this.disabled=false;this.textContent='4 · Connect Zoho Mail';}};
+  };
+  try{draw(await api('zohoStatus'));}catch(e){box.innerHTML=`<div class="empty">${esc(e.message)}</div>`;}
+}
+
+/* ─────────── SPEAKERS: invite, ambassador, agreements, drafts ─────────── */
+function sigPad(c){const x=c.getContext('2d');let on=false,last=null,dirty=false;const r=()=>c.getBoundingClientRect();
+  const size=()=>{const b=r();c.width=b.width*2;c.height=b.height*2;x.setTransform(2,0,0,2,0,0);x.lineWidth=2.4;x.lineCap='round';x.strokeStyle='#111';dirty=false;};
+  const pt=e=>[e.clientX-r().left,e.clientY-r().top];
+  c.onpointerdown=e=>{on=true;last=pt(e);c.setPointerCapture(e.pointerId);};c.onpointermove=e=>{if(!on)return;const p=pt(e);x.beginPath();x.moveTo(...last);x.lineTo(...p);x.stroke();last=p;dirty=true;};
+  c.onpointerup=c.onpointercancel=()=>on=false;setTimeout(size,0);
+  return {clear:size,empty:()=>!dirty,data:()=>{const o=document.createElement('canvas');o.width=600;o.height=200;o.getContext('2d').drawImage(c,0,0,600,200);return o.toDataURL('image/png');}};}
+function dlPdf(r){const a=document.createElement('a');a.href='data:application/pdf;base64,'+r.base64;a.download=r.name;a.click();}
+VIEWS.speakers=async function(){
+  const j=await api('spkList'); const L=j.lists, P=j.people||[]; let q='',ed='',st='';
+  const edName=id=>((L.editions.find(e=>e.id===id)||{}).name||'').replace(/ — .*/,'');
+  const pName=e=>(P.find(p=>p.email===String(e||'').toLowerCase())||{}).name||e||'—';
+  $('#ttl').textContent=j.canWrite?'Speakers':'My speakers';
+  searchBox('Search speakers…',v=>{q=v;paint();});
+  selectBox(L.editions.map(e=>e.name.replace(/ — .*/,'')),v=>{ed=(L.editions.find(e=>e.name.replace(/ — .*/,'')===v)||{}).id||'';paint();},'All editions');
+  selectBox(['Not invited','Interview scheduled','Interviewed','Not selected','Invited','Agreements signed','Countersigned','Draft submitted','Changes requested','Approved'],v=>{st=v;paint();},'All stages');
+  if(j.canWrite) addBtn('+ Add speaker',()=>edit({published:'FALSE',edition_id:(L.editions[L.editions.length-1]||{}).id}));
+  const paint=()=>{const rows=j.rows.filter(r=>match(r,q)&&(!ed||r.edition_id===ed)&&(!st||(r.stage||'Not invited')===st));
+    $('#view').innerHTML=`<div class="panel">${tableHTML(rows,[['name','Speaker',(v,_,r)=>`<b>${esc(v)}</b><div class="muted">${esc(r.email||'no email yet')}</div>`],['edition_id','Edition',v=>esc(edName(v))],['ambassador_email','Ambassador',v=>esc(pName(v))],['stage','Stage',v=>badge(v||'Not invited')],['agreement','Agreements',v=>v?badge(v.status):'<span class="muted">—</span>'],['versions','Drafts',v=>v?'v'+v:'—']],L,true)}</div>`;
+    $('#view').querySelectorAll('tr[data-i]').forEach(tr=>tr.onclick=()=>open(rows[tr.dataset.i]));};
+  const edit=rec=>{
+    const fields=[['name','Name'],['designation','One-line description (public)'],['email','Email (for the speaker portal)'],['phone','Phone'],['edition_id','Edition','select',0,opt(L.editions)],
+      ['ambassador_email','Speaker Ambassador','select',0,[{v:'',t:'— Not assigned —'}].concat(P.map(p=>({v:p.email,t:p.name})))],['talk_title','Talk title',null,1],['photo_url','Photo URL'],['video_url','Talk video URL'],['sort','Order','number'],
+      ['bio','Bio (public)','textarea',1],['portal_active','Speaker portal access','bool'],['published','Show on website','bool']];
+    modal(rec.id?'Edit speaker':'Add speaker',formHTML(fields,Object.assign({portal_active:'TRUE'},rec)),[
+      ['Save',async()=>{const r=await api('save',{module:'speakers',record:Object.assign({id:rec.id},readForm($('#mBox')))});toast('Saved');closeM();go('speakers');}]]);};
+  const open=async row=>{
+    const d=await api('spkDetail',{id:row.id}); const sp=d.speaker, ag=d.agreement; let tab=ag&&ag.status!=='Countersigned'&&d.isSuper?'ag':d.versions.length?'dr':'ov';
+    modal(sp.name,'<div id="spBody"></div>',[]); $('#mBox').classList.add('wide');
+    const draw=()=>{const B=$('#spBody');
+      B.innerHTML=`<div class="tabsx">${[['ov','Overview'],['ag','Agreements'],['dr','Drafts'+(d.versions.length?' ('+d.versions.length+')':'')],['rh','Rehearsals']].map(t=>`<button data-t="${t[0]}" class="${tab===t[0]?'on':''}">${t[1]}</button>`).join('')}</div><div id="spTab"></div>`;
+      B.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{tab=b.dataset.t;draw();});
+      const T=$('#spTab');
+      if(tab==='rh'){ if(window.spkAvailHTML)T.insertAdjacentHTML('beforebegin',window.spkAvailHTML(sp,true)); if(window.rehTab) window.rehTab(T,sp); return; }
+      if(tab==='ov'){
+        T.innerHTML=`<dl class="kv" style="margin-top:10px"><dt>Stage</dt><dd>${badge(sp.stage||'Not invited')}</dd><dt>Email</dt><dd>${esc(sp.email||'—')}</dd><dt>Phone</dt><dd>${esc(sp.phone||'—')}</dd><dt>Address</dt><dd>${esc(sp.address||'—')}</dd><dt>Edition</dt><dd>${esc(edName(sp.edition_id))}</dd><dt>Talk</dt><dd>${esc(sp.talk_title||'—')}</dd><dt>Ambassador</dt><dd>${esc(pName(sp.ambassador_email))}</dd><dt>Under 18</dt><dd>${truthy(sp.under_18)?'Yes':'No'}</dd><dt>Invite</dt><dd>${sp.invite_expires?'Sent · link valid until '+fmt(sp.invite_expires):sp.last_login?'Signed in '+fmt(sp.last_login):'Not sent'}</dd></dl>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">${j.canWrite?`<button class="btn" id="spEdit">Edit details</button><button class="btn red" id="spInv">${sp.last_login?'Resend portal invitation':'Invite to speaker portal'}</button>`:''}${d.isSuper&&window.lockDialog?`<button class="btn light" id="spLock">${sp.locked_until&&sp.locked_until>new Date(Date.now()+19800000).toISOString()?'⏸ Paused · change':'⏸ Pause portal access'}</button>`:''}</div>`;
+        if($('#spLock'))$('#spLock').onclick=()=>lockDialog('speakers',sp.id,sp,()=>open(row));
+        if(j.canWrite){$('#spEdit').onclick=()=>{closeM();edit(sp);};
+          $('#spInv').onclick=async function(){this.disabled=true;try{await api('spkInvite',{id:sp.id});toast('Invitation emailed to '+sp.email);}catch(e){toast(e.message,1);}this.disabled=false;};}
+        if(window.spkOverviewPlus) window.spkOverviewPlus(T,sp,d,j,()=>open(row));
+      }
+      if(tab==='ag'){
+        if(!ag){T.innerHTML='<div class="empty">Not signed yet. The speaker signs all four agreements in their portal, and you’ll get an email to countersign.</div>';return;}
+        T.innerHTML=`<dl class="kv" style="margin-top:10px"><dt>Status</dt><dd>${badge(ag.status)}</dd><dt>Signed by</dt><dd>${esc(ag.speaker_name)} · ${fmt(ag.signed_at)}</dd>${truthy(ag.under_18)?`<dt>Guardian</dt><dd>${esc(ag.guardian_name)}</dd>`:''}${ag.countersigned_at?`<dt>Countersigned</dt><dd>${esc(ag.countersigned_by)} · ${fmt(ag.countersigned_at)}</dd>`:''}</dl>
+          <p class="muted" style="font-size:13px;margin-top:8px">TED Speaker Release · Speaker Confirmation and Agreement Form · Organizer Protection and Extended Agreement · Issue & Insurer Protection Agreement</p>
+          <div style="margin-top:14px"><button class="btn light" id="agPdf">Download ${ag.status==='Countersigned'?'final':'speaker-signed'} PDF</button></div>
+          ${ag.status!=='Countersigned'&&d.isSuper?`<div class="panel" style="margin-top:16px;padding:16px"><b>Countersign as organizer</b><p class="muted" style="font-size:13px;margin:4px 0 10px">The final PDF, signed by both of you, is emailed to the speaker and saved to Drive.</p>
+            ${d.hasSavedSignature?'<label class="chk"><input type="checkbox" id="useSaved" checked> Use my saved signature</label>':''}<div id="padWrap" ${d.hasSavedSignature?'hidden':''} style="margin-top:8px"><canvas class="sigpad" id="orgPad"></canvas><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--mute)"><span>Draw your signature</span><button class="link" id="orgClear">Clear</button></div></div>
+            <button class="btn red" id="cs" style="margin-top:12px">Countersign</button></div>`:''}`;
+        $('#agPdf').onclick=async()=>{try{dlPdf(await api('spkPdf',{id:ag.id}));}catch(e){toast(e.message,1);}};
+        if($('#cs')){const pad=window.TXSign?TXSign.widget($('#orgPad'),{name:()=>ME.name}):sigPad($('#orgPad'));$('#orgClear').onclick=()=>pad.clear();
+          if($('#useSaved')) $('#useSaved').onchange=e=>{$('#padWrap').hidden=e.target.checked;if(!e.target.checked)setTimeout(pad.clear,0);};
+          $('#cs').onclick=async function(){const saved=$('#useSaved')&&$('#useSaved').checked;if(!saved&&pad.empty())return toast('Draw your signature first',1);
+            this.disabled=true;try{const ev=window.TXSign?await TXSign.evidence({title:'Confirm it’s you before countersigning'}):null;if(ev)ev.sig_method=saved?'upload':pad.method;this.textContent='Countersigning…';await api('spkCountersign',{id:ag.id,signature:saved?'':pad.data(),evidence:ev});toast('Countersigned · final PDF emailed');closeM();go('speakers');}catch(e){toast(e.message,1);this.disabled=false;this.textContent='Countersign';}};}
+      }
+      if(tab==='dr'){
+        if(!d.versions.length){T.innerHTML='<div class="empty">No draft submitted yet.</div>';return;}
+        let vi=0; const vsel=()=>`<select id="vSel" style="width:auto">${d.versions.map((v,i)=>`<option value="${i}" ${i===vi?'selected':''}>v${v.version} · ${esc(v.status)} · ${fmt(v.submitted_at)}</option>`).join('')}</select>`;
+        const show=()=>{const v=d.versions[vi], ps=String(v.body||'').split(/\n\s*\n/).map(x=>x.trim()).filter(String), fc=v.factcheck, src=v.sources||{}, cms=[];
+          const words=(v.body.match(/\S+/g)||[]).length; const editable=d.canReview&&v.status==='Submitted'&&vi===0;
+          T.innerHTML=`<div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0">${vsel()}<span class="muted" style="font-size:13px">${window.curationReport?`<button class="btn sm red" data-cur="${esc(v.id)}" type="button" style="margin-right:8px">🔎 Curation report</button>`:''}${words} words · ~${Math.round(words/130*10)/10} min ${v.doc_url?`· <a href="${esc(v.doc_url)}" target="_blank" rel="noopener">Open Google Doc copy ↗</a>`:''}</span></div>
+            <div class="two" style="align-items:start"><div class="panel" style="padding:14px 18px"><h3 style="font-size:20px;letter-spacing:-.02em;border:0;padding:0 0 6px">${esc(v.title)}</h3><div id="paras"></div></div>
+            <div style="display:grid;gap:12px">
+              ${fc?`<div class="panel"><h3>Facts and sources (${fc.claims.length})</h3><div style="padding:10px 14px;display:grid;gap:8px;max-height:320px;overflow:auto">${(fc.flags||[]).map(f=>`<div class="banner" style="margin:0">⚠ ${esc(f.guideline)} · ¶${f.paragraph}: “${esc(f.quote)}”</div>`).join('')}${fc.claims.map(c=>{const r=src[c.id]||{};return `<div style="font-size:13px;border-bottom:1px solid var(--line);padding-bottom:8px"><b style="color:var(--red)">${c.id} · ¶${c.paragraph}</b> “${esc(c.quote)}”<div>${r.kind==='personal'?'<i>Speaker: personal experience</i>':r.kind==='remove'?'<i>Speaker: will remove</i>':String(r.links||'').split(/\s+/).filter(Boolean).map(u=>/^https?:\/\//.test(u)?`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\//,'').slice(0,60))}</a>`:esc(u)).join('<br>')||'<span style="color:var(--bad)">No source</span>'}</div></div>`;}).join('')}</div></div>`:'<div class="banner">This version was submitted without an AI fact check (no fact-check key was set).</div>'}
+              ${v.reviewed_at?`<div class="panel" style="padding:12px 14px"><b>${badge(v.status)} by ${esc(v.reviewed_by)}</b> <span class="muted">${fmt(v.reviewed_at)}</span>${v.feedback?`<div class="log" style="margin-top:8px">${esc(v.feedback)}</div>`:''}</div>`:''}
+              ${editable?`<div class="panel" style="padding:12px 14px;display:grid;gap:10px"><b>Your feedback</b><textarea id="fbT" placeholder="Overall feedback for the speaker"></textarea><p class="muted" style="font-size:12px">Tip: use “+ comment” next to a paragraph for line-by-line notes.</p><div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn bad" id="rq">Request changes</button><button class="btn ok" id="ap">Approve</button></div></div>`:''}
+            </div></div>`;
+          const paint=()=>{$('#paras').innerHTML=ps.map((p,i)=>`<div class="para"><b>¶${i+1}</b><div>${esc(p)}</div>${editable?`<button class="link add" data-p="${i+1}">+ comment</button>`:''}${(editable?cms:v.comments).filter(c=>c.para===i+1).map((c,k)=>`<div class="pcm"><span>${esc(c.text)}</span>${editable?`<button class="link" data-del="${cms.indexOf(c)}">remove</button>`:''}</div>`).join('')}</div>`).join('');
+            $('#paras').querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{const t=prompt('Comment on paragraph '+b.dataset.p);if(t){cms.push({para:+b.dataset.p,text:t});paint();}});
+            $('#paras').querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{cms.splice(+b.dataset.del,1);paint();});};
+          paint();
+          $('#vSel').onchange=e=>{vi=+e.target.value;show();};
+          const send=async(dec,btn)=>{btn.disabled=true;try{await api('spkReview',{id:v.id,decision:dec,feedback:$('#fbT').value,comments:cms});toast(dec==='Approved'?'Approved · speaker emailed':'Feedback sent');closeM();go('speakers');}catch(e){toast(e.message,1);btn.disabled=false;}};
+          if(editable){$('#rq').onclick=function(){send('Changes requested',this);};$('#ap').onclick=function(){if(confirm('Approve this talk for rehearsal?'))send('Approved',this);};}
+        };
+        show();
+      }
+    };
+    draw();
+  };
+  paint();
+};
+
+/* AIS referrals: read the three answers, move the status along (the Steward is emailed on each change) */
+VIEWS.referrals=async function(){
+  const j=await api('list',{module:'referrals'}); const L=j.lists; const S=L.referralStatuses||['Received','Listening','In development','Passed to curation','Closed']; let q='',st='';
+  searchBox('Search referrals…',v=>{q=v;paint();}); selectBox(S,v=>{st=v;paint();},'All statuses');
+  const ex=document.createElement('button');ex.className='btn light';ex.textContent='Export CSV';ex.onclick=()=>csv('ais-referrals',j.rows);$('#tools').appendChild(ex);
+  const paint=()=>{const rows=j.rows.filter(r=>match(r,q)&&(!st||r.status===st)).reverse();
+    $('#view').innerHTML=`<div class="banner">AIS is a pathway, not the gate. Moving a referral to “Passed to curation” shares it as one input among many. It is never a selection to speak.</div><div class="panel">${tableHTML(rows,[['ref','Ref',v=>`<span class="mono">${esc(v)}</span>`],['person_name','Person',(v,_,r)=>`<b>${esc(v)}</b><div class="muted">${esc(r.person_role)} · ${esc(r.age_group)}</div>`],['language','Language'],['steward_email','Steward'],['status','Status',badge],['created_at','Received',fmt]],L,true)}</div>`;
+    $('#view').querySelectorAll('tr[data-i]').forEach(tr=>tr.onclick=()=>open(rows[tr.dataset.i]));};
+  const open=r=>{
+    const Q=[['Substance','What is the idea, and what has this person actually done with it?','q1'],['Relevance','Why does it matter to Amdavad?','q2'],['Originality','What would the city miss if no one listened?','q3']];
+    modal(`${r.ref} · ${r.person_name}`,`<dl class="kv"><dt>Who</dt><dd>${esc(r.person_role)} · ${esc(r.age_group)} · prefers ${esc(r.language)}</dd><dt>Reach them</dt><dd>${r.age_group==='Under 18'?'Under 18: only through the Steward and a parent or guardian'+(truthy(r.guardian_aware)?' (guardian aware)':''):esc(r.contact)||'Through the Steward'}</dd><dt>Steward</dt><dd>${esc(r.steward_id)} · <a href="mailto:${esc(r.steward_email)}">${esc(r.steward_email)}</a></dd><dt>Cycle</dt><dd>${esc(r.cycle)}</dd></dl>
+      ${Q.map(x=>`<div><b style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--red)">${x[0]}</b><div style="font-weight:700;margin:4px 0 6px">${x[1]}</div><div class="log">${esc(r[x[2]])}</div></div>`).join('')}
+      ${j.canWrite?`<div class="grid2"><label>Status<select id="rs">${S.map(s=>`<option ${s===r.status?'selected':''}>${s}</option>`).join('')}</select></label><div class="muted" style="font-size:12px;align-self:end">Changing the status emails the Steward a short update.</div></div><label>Internal notes<textarea id="rn">${esc(r.notes)}</textarea></label>`:`<div>${badge(r.status)}</div>${r.notes?`<div class="log">${esc(r.notes)}</div>`:''}`}`,
+      j.canWrite?[['Save',async()=>{await api('save',{module:'referrals',record:{ref:r.ref,status:$('#rs').value,notes:$('#rn').value}});toast($('#rs').value!==r.status?'Saved · Steward emailed':'Saved');closeM();go('referrals');}]]:[]);
+  };
+  paint();
+};
+
+function taskCard(t,i,L){const over=t.status!=='Done'&&t.due_date&&t.due_date<today();
+  return `<div class="stat" style="cursor:pointer${over?';border-left:3px solid var(--bad)':''}" data-i="${i}"><div style="display:flex;gap:6px;flex-wrap:wrap">${badge(t.status)}${badge(t.priority)}</div>
+  <b style="font-size:17px;letter-spacing:-.01em;margin:8px 0 4px">${esc(t.title)}</b><span>${t.due_date?(over?'⚠ Overdue · ':'Due ')+fmt(t.due_date):'No due date'}${t.department_id?' · '+esc((L.departments.find(d=>d.id===t.department_id)||{}).name||''):''}</span>
+  ${t.description?`<p class="muted" style="margin-top:8px;font-size:13px">${esc(String(t.description).slice(0,140))}</p>`:''}</div>`;}
+
+function openMyTask(t,S){
+  modal(t.title,`${t.description?`<p style="white-space:pre-wrap">${esc(t.description)}</p>`:''}
+    <dl class="kv"><dt>Due</dt><dd>${t.due_date?fmt(t.due_date):'—'}</dd><dt>Priority</dt><dd>${badge(t.priority)}</dd><dt>Assigned by</dt><dd>${esc(t.assigned_by)}</dd></dl>
+    <label>Status<select id="ms">${S.map(s=>`<option ${s===t.status?'selected':''}>${s}</option>`).join('')}</select></label>
+    <label>Update / comment<textarea id="mc" placeholder="What’s the progress? Anything blocking you?"></textarea></label>
+    ${t.comments?`<div><b style="font-size:12px">History</b><div class="log">${esc(t.comments)}</div></div>`:''}`,
+    [['Save update',async()=>{const s=$('#ms').value,c=$('#mc').value;if(s===t.status&&!c)return closeM();await api('updateTask',{id:t.id,status:s!==t.status?s:'',comment:c});toast('Updated. Your head has been notified.');closeM();go('mytasks');}]]);
+}
+
+function openReg(r,canW){
+  modal(r.name,`<dl class="kv"><dt>Status</dt><dd>${badge(r.status)}</dd><dt>Email</dt><dd>${esc(r.email)}</dd><dt>Phone</dt><dd>${esc(r.phone)}</dd><dt>Age</dt><dd>${esc(r.age)}</dd>
+    <dt>Institution</dt><dd>${esc(r.institution)}</dd><dt>City</dt><dd>${esc(r.city)}</dd><dt>Ticket</dt><dd class="mono">${esc(r.ticket_code)||'—'}</dd><dt>Checked in</dt><dd>${truthy(r.checked_in)?'Yes ✅':'No'}</dd><dt>Registered</dt><dd>${fmt(r.created_at)}</dd></dl>
+    ${r.why?`<div><b style="font-size:12px">Why they want to attend</b><div class="log">${esc(r.why)}</div></div>`:''}
+    ${canW?'<label>Optional note in the email<textarea id="rn"></textarea></label>':''}`,
+    canW?[
+      ['Reject',()=>dec('Rejected'),'bad left'],['Waitlist',()=>dec('Waitlisted'),'warn'],
+      r.status==='Approved'&&[truthy(r.checked_in)?'Undo check-in':'Check in',async()=>{await api('checkIn',{id:r.id,value:!truthy(r.checked_in)});toast('Done');closeM();go('registrations');},'light'],
+      r.status!=='Approved'&&['Approve & send ticket',()=>dec('Approved'),'ok']]:[]);
+  async function dec(s){await api('decide',{id:r.id,status:s,message:($('#rn')||{}).value||''});toast(s+' · email sent');closeM();go('registrations');}
+}
+
+function openSub(r,L,canW){
+  modal(`${r.type}: ${r.name}`,`<dl class="kv"><dt>Email</dt><dd><a href="mailto:${esc(r.email)}">${esc(r.email)}</a></dd><dt>Phone</dt><dd>${esc(r.phone)}</dd><dt>Organisation</dt><dd>${esc(r.organisation)}</dd><dt>Received</dt><dd>${fmt(r.created_at)} · <span class="mono">${esc(r.id)}</span></dd></dl>
+    ${r.subject?`<b>${esc(r.subject)}</b>`:''}<div class="log">${esc(r.message)}</div>
+    ${canW?`<div class="grid2"><label>Status<select id="ss">${L.submissionStatuses.map(s=>`<option ${s===r.status?'selected':''}>${s}</option>`).join('')}</select></label>
+    <label>Route to department<select id="sd"><option value="">—</option>${L.departments.map(d=>`<option value="${esc(d.id)}" ${d.id===r.department_id?'selected':''}>${esc(d.name)}</option>`).join('')}</select></label></div>
+    <label>Reply by email<textarea id="sr" placeholder="Your reply is emailed to ${esc(r.email)} from TEDxThaltej Youth"></textarea></label>`:''}
+    ${r.notes?`<div><b style="font-size:12px">Internal notes</b><div class="log">${esc(r.notes)}</div></div>`:''}`,
+    canW?[['Delete',async()=>{if(!confirm('Delete this message?'))return;await api('remove',{module:'submissions',id:r.id});toast('Deleted');closeM();go('submissions');},'bad left'],
+      ['Save',async()=>{await api('save',{module:'submissions',record:{id:r.id,status:$('#ss').value,department_id:$('#sd').value}});toast('Saved');closeM();go('submissions');},'light'],
+      ['Send reply',async()=>{const m=$('#sr').value.trim();if(!m)return toast('Write a reply first',1);await api('reply',{id:r.id,message:m});toast('Reply sent');closeM();go('submissions');},'red']]:[]);
+}
+
+function csv(name,rows){if(!rows.length)return toast('Nothing to export',1);const k=Object.keys(rows[0]);
+  const c=[k.join(',')].concat(rows.map(r=>k.map(x=>'"'+String(r[x]??'').replace(/"/g,'""')+'"').join(','))).join('\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:'text/csv'}));a.download=`tedxthaltejyouth-${name}-${today()}.csv`;a.click();}
+
+function modal(title,body,actions){
+  $('#mBox').classList.remove('wide');
+  $('#mBox').innerHTML=`<div class="hd"><h3>${esc(title)}</h3><button class="x" onclick="closeM()">×</button></div><div class="bd">${body}</div><div class="ft"></div>`;
+  const ft=$('#mBox .ft');
+  (actions||[]).filter(Boolean).forEach(([t,fn,cls])=>{const b=document.createElement('button');b.className='btn '+(cls||'red');b.textContent=t;
+    b.onclick=async()=>{b.disabled=true;try{await fn();}catch(e){toast(e.message,1);}b.disabled=false;};ft.appendChild(b);});
+  if(!ft.children.length) ft.remove();
+  $('#modal').classList.add('show');
+}
+function closeM(){$('#modal').classList.remove('show');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM();});
+
+/* ─────────── PREVIEW MOCK (used only when API_URL is empty) ─────────── */
+const MOCK=(()=>{
+  const id=p=>p+'-'+Math.random().toString(36).slice(2,8).toUpperCase(); const now=()=>new Date().toISOString().slice(0,19);
+  const D={
+    departments:[['DP1','Ahmedabad Idea Search (AIS)','Sanskriti Patidar'],['DP2','Curation','Hirva'],['DP3','Speaker Support','Jagruti'],['DP4','Social Media','Kalash'],['DP5','Design & Graphics','Sashwat'],['DP6','Hosting','Aryan (co-lead Kanisha)'],['DP7','Finance','Yashvi Mehta']].map((d,i)=>({id:d[0],name:d[1],lead:d[2],sort:String(i+1),description:''})),
+    editions:[{id:'ED-2025',number:'01',date:'2025-06-15',title:'The Future of Education: A Light Towards Wisdom',theme:'A Light Towards Wisdom',page_url:'/2025',published:'TRUE'},{id:'ED-2026',number:'02',date:'2026-06-25',title:'The Kaleidoscope of Perspectives',theme:'The Kaleidoscope of Perspectives',page_url:'/2026',published:'TRUE'},{id:'ED-2027',number:'03',date:'2027-06-26',title:'The Zenith — Where the Unseen Connects',theme:'The Zenith',page_url:'/2027',published:'TRUE'}],
+    speakers:[{id:'SP-017',name:'Kiran Desai',designation:'Founder, Jal Labs',edition_id:'ED-2027',email:'kiran@example.com',stage:'Interview scheduled',selection:'interview',interview_at:'2026-12-02T17:00',interview_minutes:'30',interview_link:'https://meet.google.com/xyz-abcd-efg',talk_title:'Water stories',bio:'Kiran Desai builds open maps of groundwater for 300 villages in Kutch.',photo_url:'',published:'FALSE',
+      availability_json:JSON.stringify({grid:{Mon:['18–20','20–22'],Wed:['18–20'],Sat:['10–12','12–14','14–16'],Sun:['10–12']},away:[{from:'2027-05-20',to:'2027-05-24',why:'Travel'}],note:'Back in India on 24 May',online:true,inperson:true,updated_at:'2026-11-12T09:00'})},
+      {id:'SP-016',name:'Asha Rao',designation:'Science teacher',edition_id:'ED-2027',email:'asha@example.com',phone:'+91 90000 00000',address:'Thaltej, Ahmedabad',ambassador_email:'demo@tedxthaltejyouth.in',stage:'Draft submitted',talk_title:'Maps of the unseen',last_login:now(),portal_active:'TRUE',published:'FALSE'},
+      {id:'SP-017',name:'Kabir Shah',designation:'Student',edition_id:'ED-2027',email:'kabir@example.com',stage:'Invited',invite_expires:'2026-11-25T10:00:00',portal_active:'TRUE',published:'FALSE'}],sponsors:[],
+    team:[{id:'TM-1',name:'Hirva',role:'Lead',department_id:'DP2',published:'TRUE'},{id:'TM-2',name:'Kalash',role:'Lead',department_id:'DP4',published:'TRUE'}],
+    admins:[{email:'demo@tedxthaltejyouth.in',name:'Fenil Pritesh Shah',role:'super',scopes:'all',department_id:'',active:'TRUE',last_login:now(),created_at:now()},
+      {email:'kalash@example.com',name:'Kalash',role:'lead',scopes:'team',department_id:'DP4',active:'TRUE',created_at:now()},
+      {email:'member1@example.com',name:'Sample Member',role:'member',scopes:'',department_id:'DP4',active:'TRUE',created_at:now()}],
+    tasks:[{id:'TS-1',title:'Draft speaker invitation template',description:'One-page invite for invited speakers.',department_id:'DP2',assigned_to:'demo@tedxthaltejyouth.in',assigned_by:'demo@tedxthaltejyouth.in',priority:'High',due_date:'2026-11-20',status:'In progress',comments:'',created_at:now()},
+      {id:'TS-2',title:'Plan Zenith teaser reel',department_id:'DP4',assigned_to:'member1@example.com',assigned_by:'kalash@example.com',priority:'Medium',due_date:'2026-11-30',status:'To do',comments:'',created_at:now()}],
+    submissions:[{id:'SB-1',type:'Volunteer',name:'Sample Volunteer',email:'volunteer@example.com',subject:'Social Media',message:'I would love to help with reels for The Zenith.',status:'New',department_id:'',notes:'',created_at:now()}],
+    registrations:[{id:'RG-1',name:'Sample Attendee',email:'attendee@example.com',phone:'+91 90000 00000',age:'17',institution:'Sample School',city:'Ahmedabad',why:'I want to hear new ideas.',status:'Pending',ticket_code:'',checked_in:'FALSE',created_at:now()}],
+    settings:[['event_name','TEDxThaltej Youth 2027'],['event_date','2027-06-26'],['event_time','10:00'],['theme','The Zenith'],['tagline','Where the Unseen Connects'],['venue','Ahmedabad, Gujarat'],['registration_open','TRUE'],['capacity','100']].map(([key,value])=>({key,value})),
+    audit:[{time:now(),email:'demo@tedxthaltejyouth.in',action:'login',detail:''}],
+    stewards:[{id:'AIS-S-0001',name:'Sample Steward',email:'steward@example.com',phone:'+91 90000 00000',city:'Ahmedabad',community:'Sample School',active:'TRUE',created_at:now(),last_login:now()}],
+    referrals:[{ref:'AIS-2627-0001',cycle:'2627',steward_id:'AIS-S-0001',steward_email:'steward@example.com',person_name:'Sample Person',person_role:'Educator',age_group:'26+',language:'Gujarati',contact:'Through the Steward',
+      q1:'A science teacher who built low-cost lab kits from scrap with her students, and has run them for three years.',q2:'Most government schools in the old city have no lab at all.',q3:'That a lab can be built from what a neighbourhood throws away.',guardian_aware:'',status:'Received',notes:'',created_at:now()}],
+  };
+  const L=()=>({departments:D.departments.map(d=>({id:d.id,name:d.name})),editions:D.editions.map(e=>({id:e.id,name:'Edition '+e.number+' — '+e.title})),
+    submissionTypes:['Contact','Volunteer','Partner','Sponsor','Media'],submissionStatuses:['New','In progress','Replied','Closed'],regStatuses:['Pending','Approved','Waitlisted','Rejected','Cancelled'],
+    referralStatuses:['Received','Listening','In development','Passed to curation','Closed'],taskStatuses:['To do','In progress','Blocked','Submitted','Awaiting approval','Done'],taskPriorities:['Low','Medium','High','Urgent'],roles:['super','lead','editor','viewer','member'],
+    scopes:['settings','editions','speakers','sponsors','departments','team','tasks','submissions','registrations','stewards','referrals','recruit','events','news','finance','design'],sponsorTiers:['Title','Platinum','Gold','Silver','Partner','In-kind','Media']});
+  const me={email:'demo@tedxthaltejyouth.in',name:'Fenil Pritesh Shah',role:'super',registrar:true,scopes:['settings','editions','speakers','sponsors','departments','team','tasks','submissions','registrations','stewards','referrals','recruit','events','news','finance','design','admins','audit'],department_id:''};
+  const key=m=>m==='admins'?'email':m==='settings'?'key':m==='referrals'?'ref':'id';
+  return async b=>{await new Promise(r=>setTimeout(r,150));const a=b.action;
+    if(a==='login'||a==='loginGoogle'){return {ok:true,token:'demo',me,mustChange:false};}
+    if(a==='googleLink'){me.google_email='fenil.preview@gmail.com';me.needs_google=false;return {ok:true,me};}
+    if(a==='googleSettings'){D._g=D._g||{client_id:'123-preview.apps.googleusercontent.com',required:true};if(b.client_id!=null)D._g.client_id=b.client_id;if(b.required!=null)D._g.required=b.required;if(b.required===false)me.needs_google=false;return {ok:true,client_id:D._g.client_id,required:D._g.required,linked:14,total:24};}
+    if(a==='forgot'||a==='reset'||a==='logout'||a==='changePassword'||a==='resetAdmin') return {ok:true};
+    if(a==='me') return {ok:true,me};
+    if(a==='dashboard'){const c={};['editions','speakers','sponsors','departments','team','tasks','submissions','registrations','stewards','referrals'].forEach(m=>c[m]={total:D[m].length});
+      c.referrals.new=D.referrals.filter(r=>r.status==='Received').length;
+      c.submissions.new=D.submissions.filter(s=>s.status==='New').length;c.submissions.recent=D.submissions.slice(-5).reverse();
+      ['Pending','Approved'].forEach(s=>c.registrations[s]=D.registrations.filter(r=>r.status===s).length);c.registrations.recent=D.registrations.slice(-5).reverse();
+      c.tasks.Done=D.tasks.filter(t=>t.status==='Done').length;c.tasks.overdue=D.tasks.filter(t=>t.status!=='Done'&&t.due_date<today()).length;
+      const mine=D.tasks.filter(t=>t.assigned_to===me.email);return {ok:true,counts:c,myTasks:{open:mine.filter(t=>t.status!=='Done').length,done:mine.filter(t=>t.status==='Done').length},event:{name:'TEDxThaltej Youth 2027',date:'2027-06-26',capacity:'100'}};}
+    if(a==='list') return {ok:true,rows:JSON.parse(JSON.stringify(D[b.module]||[])),canWrite:b.module!=='audit',lists:L(),assignees:D.admins.map(u=>({email:u.email,name:u.name,department_id:u.department_id}))};
+    if(a==='myTasks') return {ok:true,rows:D.tasks.filter(t=>t.assigned_to===me.email),lists:L()};
+    if(a==='save'){const m=b.module,k=key(m),r=b.record;const ex=D[m].find(x=>x[k]===r[k]&&r[k]);
+      if(ex){Object.assign(ex,r,{updated_at:now()});return {ok:true,id:ex[k]};}
+      const n=Object.assign({},r,{[k]:r[k]||id(m.slice(0,2).toUpperCase()),created_at:now()});if(m==='tasks'){n.assigned_by=me.email;n.status=n.status||'To do';}D[m].push(n);return {ok:true,id:n[k],invited:m==='admins'};}
+    if(a==='remove'){const k=key(b.module);D[b.module]=D[b.module].filter(x=>x[k]!==b.id);return {ok:true};}
+    if(a==='saveSettings'){Object.entries(b.settings).forEach(([k,v])=>{const ex=D.settings.find(s=>s.key===k);ex?ex.value=v:D.settings.push({key:k,value:v});});return {ok:true};}
+    if(a==='updateTask'){const t=D.tasks.find(x=>x.id===b.id);if(b.status)t.status=b.status;t.comments=(t.comments?t.comments+'\n':'')+'['+now().replace('T',' ').slice(0,16)+'] '+me.name+': '+(b.status?'('+b.status+') ':'')+(b.comment||'');return {ok:true};}
+    if(a==='decide'){const r=D.registrations.find(x=>x.id===b.id);r.status=b.status;if(b.status==='Approved'&&!r.ticket_code)r.ticket_code='TXTY-'+Math.random().toString(36).slice(2,8).toUpperCase();return {ok:true};}
+    if(a==='checkIn'){D.registrations.find(x=>x.id===b.id).checked_in=b.value?'TRUE':'FALSE';return {ok:true};}
+    if(a==='reply'){const s=D.submissions.find(x=>x.id===b.id);s.status='Replied';s.notes=(s.notes||'')+'['+now()+'] replied: '+b.message;return {ok:true};}
+    if(a==='spkList') return {ok:true,canWrite:true,isSuper:true,lists:L(),people:D.admins.map(u=>({email:u.email,name:u.name})),rows:D.speakers.map(s=>Object.assign({},s,{agreement:s.id==='SP-016'?{id:'AG-1',status:'Awaiting organizer',signed_at:now()}:null,versions:s.id==='SP-016'?1:0}))};
+    if(a==='spkDetail'){const sp=D.speakers.find(s=>s.id===b.id);return {ok:true,speaker:sp,isSuper:true,canReview:true,hasSavedSignature:false,
+      agreement:sp.id==='SP-016'?{id:'AG-1',status:D._cs?'Countersigned':'Awaiting organizer',signed_at:now(),speaker_name:sp.name,under_18:'FALSE',countersigned_by:D._cs?'Fenil Pritesh Shah':'',countersigned_at:D._cs?now():''}:null,
+      versions:sp.id==='SP-016'?[{id:'DR-1',version:'1',status:D._rv||'Submitted',title:'Maps of the unseen',submitted_at:now(),body:'Seventy percent of students in the old city have never seen a science lab.\n\nThree years ago, my students and I built one from scrap. Einstein said imagination is more important than knowledge.\n\nToday, forty schools use our kits.',
+        factcheck:{claims:[{id:'C1',paragraph:1,quote:'Seventy percent of students in the old city have never seen a science lab.',type:'statistic'},{id:'C2',paragraph:2,quote:'Einstein said imagination is more important than knowledge.',type:'quote'},{id:'C3',paragraph:3,quote:'forty schools use our kits',type:'statistic'}],flags:[]},
+        sources:{C1:{kind:'link',links:'https://example.org/survey-2024'},C2:{kind:'link',links:'https://example.org/quote-source'},C3:{kind:'personal'}},comments:[],feedback:'',doc_url:'#'}]:[]};}
+    if(a==='zohoStatus'||a==='zohoDisconnect'){if(a==='zohoDisconnect')D._z=0;return {ok:true,connected:!!D._z,dc:'in',from:D._z?'info@tedxthaltejyouth.in':'',fromName:'TEDxThaltej Youth',scope:'ZohoMail.messages.CREATE,ZohoMail.accounts.READ',lastError:'',
+      dcs:[['in','India (zoho.in)'],['com','United States (zoho.com)'],['eu','Europe (zoho.eu)'],['com.au','Australia (zoho.com.au)'],['jp','Japan (zoho.jp)']].map(x=>({id:x[0],label:x[1],console:'https://api-console.zoho.'+x[0]}))};}
+    if(a==='zohoConnect'){if(!/^1000\./.test(b.code||''))return {ok:false,error:'Paste the code from “Generate Code” (it starts with "1000.").'};D._z=1;return MOCK({action:'zohoStatus'});}
+    if(a==='zohoTest') return {ok:true,to:b.to||me.email};
+    if(a==='spkInvite') return {ok:true};
+    if(a==='spkReview'){D._rv=b.decision;return {ok:true};}
+    if(a==='spkCountersign'){D._cs=1;return {ok:true};}
+    if(a==='spkPdf') return {ok:true,name:'preview.pdf',base64:''};
+    if(window.MOCK_PLUS){const r=window.MOCK_PLUS(b,me,D);if(r)return r;}
+    return {ok:false,error:'Not in preview'};
+  };
+})();
+
+</script>
+<script src="/assets/md.js"></script>
+<script src="/assets/sign.js"></script>
+<script src="/portal/portal-plus.js"></script>
+<script src="/portal/portal-content.js"></script>
+<script src="/portal/portal-gov.js"></script>
+<script src="/portal/portal-fin.js"></script>
+<script src="/portal/portal-bodies.js"></script>
+<script src="/portal/portal-design.js"></script>
+<script src="/portal/portal-pay.js"></script>
+<script src="/portal/portal-mail.js"></script>
+<script>
+/* start */
+if(TOKEN) boot(); else show('vLogin');
+if(!API_URL){ const f=$('#fLogin'); f.email.value='demo@tedxthaltejyouth.in'; f.password.value='preview'; $('#eLogin').style.color='#6b6b6b'; $('#eLogin').textContent='Preview mode: any password works.'; }
+</script>
+</body>
+</html>
