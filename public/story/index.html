@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Story of an Idea · TED, TEDx and TEDxThaltej Youth</title>
+<meta name="description" content="An illustrated scroll story that explains what TED is, what TEDx is, and what TEDxThaltej Youth does. In English, Gujarati and Hindi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Gujarati:wght@300;400;500;700;900&family=Noto+Sans+Devanagari:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#EB0028;--ease:cubic-bezier(.2,.7,.1,1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#101B3D;color:#fff}
+  body{font-family:'Inter',Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body.lang-gu{font-family:'Noto Sans Gujarati','Inter',Arial,sans-serif}
+  body.lang-hi{font-family:'Noto Sans Devanagari','Inter',Arial,sans-serif}
+  body.locked{overflow:hidden}
+  button,input{font-family:inherit}
+  svg text{font-family:inherit}
+  a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+  .nm{color:var(--red)}
+
+  /* ============ GATE ============ */
+  #gate{position:fixed;inset:0;z-index:100;background:#101B3D;display:flex;align-items:center;justify-content:center;padding:28px;overflow-y:auto;transition:opacity 1s var(--ease),visibility 1s}
+  #gate.hide{opacity:0;visibility:hidden}
+  #gate .spark{position:absolute;left:50%;top:14%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--red);box-shadow:0 0 30px 10px rgba(235,0,40,.55),0 0 90px 30px rgba(235,0,40,.25);animation:breathe 3.2s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.35);box-shadow:0 0 40px 14px rgba(235,0,40,.6),0 0 120px 44px rgba(235,0,40,.25)}}
+  .gcard{position:relative;width:min(560px,100%);margin-top:60px}
+  .gk{font-size:12px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#8c8c8c;text-align:center}
+  .gcard h1{margin-top:16px;text-align:center;font-size:clamp(34px,5.6vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+  .gcard .gs{margin-top:14px;text-align:center;font-size:17px;color:#a6a6a6;line-height:1.6}
+  .fld{margin-top:40px}
+  .fld label{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;color:#bdbdbd;margin-bottom:10px}
+  .fld input{width:100%;font-size:26px;font-weight:600;padding:14px 2px;border:0;border-bottom:2px solid #444;background:transparent;color:#fff;transition:border-color .3s;border-radius:0}
+  .fld input:focus{outline:none;border-bottom-color:var(--red)}
+  .fld input::placeholder{color:#555}
+  .err{margin-top:8px;font-size:14px;color:#ff5c75;min-height:20px}
+  .langs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .langs button{cursor:pointer;background:transparent;color:#fff;border:1px solid #3a3a3a;border-radius:12px;padding:16px 8px;transition:all .3s var(--ease)}
+  .langs button b{display:block;font-size:20px;font-weight:700}
+  .langs button span{display:block;margin-top:4px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#777}
+  .langs button[aria-pressed="true"]{border-color:#fff;background:#fff;color:#000}
+  .langs .gu b{font-family:'Noto Sans Gujarati',sans-serif}.langs .hi b{font-family:'Noto Sans Devanagari',sans-serif}
+  .go{margin-top:40px;width:100%;cursor:pointer;background:var(--red);color:#fff;border:0;border-radius:999px;padding:18px;font-size:17px;font-weight:700;letter-spacing:.02em;transition:transform .3s var(--ease),box-shadow .3s}
+  .go:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(235,0,40,.7)}
+  .gf{margin-top:22px;text-align:center;font-size:12px;color:#6b6b6b}
+
+  /* ============ TOP ============ */
+  #top{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 26px;pointer-events:none}
+  #top > *{pointer-events:auto}
+  .brand{font-size:14px;font-weight:700;letter-spacing:.01em;color:#fff;opacity:.9}
+  .tr{display:flex;align-items:center;gap:14px}
+  .lsw{display:flex;gap:2px;background:rgba(255,255,255,.08);border-radius:999px;padding:3px}
+  .lsw button{cursor:pointer;border:0;background:transparent;color:#bdbdbd;font-size:12px;font-weight:700;padding:6px 11px;border-radius:999px;transition:all .25s}
+  .lsw button[aria-pressed="true"]{background:#fff;color:#000}
+  .lsw .gu{font-family:'Noto Sans Gujarati',sans-serif}.lsw .hi{font-family:'Noto Sans Devanagari',sans-serif}
+  .ed{cursor:pointer;border:0;background:none;color:#8c8c8c;font-size:12px;font-weight:600;letter-spacing:.04em}
+  .ed:hover{color:#fff}
+  @media (max-width:600px){#top{padding:14px 16px}.brand{font-size:12px}.ed{display:none}}
+
+  /* ============ STORY ============ */
+  #story{position:relative}
+  .stage{position:sticky;top:0;height:100vh;overflow:hidden}
+  #art{position:absolute;top:0;right:110px;width:calc(64% - 110px);height:100%}
+  #art svg{width:100%;height:100%;display:block}
+  .narr{position:absolute;left:max(28px,calc((100vw - 1320px)/2));top:0;bottom:0;width:min(36%,520px);display:flex;align-items:center;pointer-events:none}
+  .beat{position:absolute;left:0;right:0;opacity:0;transform:translateY(24px);will-change:opacity,transform}
+  .beat .k{font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red)}
+  .lang-gu .beat .k,.lang-hi .beat .k{letter-spacing:.08em}
+  .beat .l{margin-top:16px;font-size:clamp(30px,3.5vw,54px);font-weight:700;letter-spacing:-.025em;line-height:1.1}
+  .lang-gu .beat .l,.lang-hi .beat .l{letter-spacing:0;line-height:1.32}
+  .beat .s{margin-top:18px;font-size:clamp(16px,1.35vw,20px);font-weight:400;color:#a6a6a6;line-height:1.6;max-width:460px}
+  .beat .cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px;pointer-events:auto}
+  .beat .cta a,.beat .cta button{cursor:pointer;font-size:15px;font-weight:700;text-decoration:none;padding:13px 20px;border-radius:999px;border:1px solid #fff;background:transparent;color:#fff;transition:all .25s}
+  .beat .cta .p{background:var(--red);border-color:var(--red)}
+  .beat .cta a:hover,.beat .cta button:hover{transform:translateY(-2px)}
+  .rail{position:absolute;right:26px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:18px;z-index:3}
+  .rail button{cursor:pointer;background:none;border:0;display:flex;align-items:center;justify-content:flex-end;gap:12px;color:#6b6b6b;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:color .3s}
+  .rail button i{width:22px;height:2px;background:#3a3a3a;transition:all .4s var(--ease)}
+  .rail button.on{color:#fff}.rail button.on i{width:40px;background:var(--red)}
+  .rail button span{opacity:0;transition:opacity .3s}
+  .rail:hover button span{opacity:1}
+  .hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#8c8c8c;transition:opacity .5s}
+  .hint i{width:1px;height:40px;background:linear-gradient(#fff,transparent);animation:drop 2s var(--ease) infinite;transform-origin:top}
+  @keyframes drop{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+  .bar{position:absolute;left:0;bottom:0;height:2px;background:var(--red);width:0}
+  @media (max-width:900px){
+    #art{width:100%;height:60%;top:48px;right:0}
+    .narr{left:0;right:0;width:auto;top:auto;bottom:0;height:44%;align-items:flex-start;padding:0 20px;background:linear-gradient(rgba(16,27,61,0),#000 20%)}
+    .beat{top:30px;left:20px;right:20px}
+    .beat .l{font-size:26px;margin-top:10px}
+    .beat .s{font-size:15px;margin-top:10px}
+    .beat .cta{margin-top:16px}.beat .cta a,.beat .cta button{font-size:13px;padding:10px 14px}
+    .rail{display:none}.hint{display:none}
+  }
+  footer{background:#101B3D;border-top:1px solid #1f1f1f;padding:40px 26px 46px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;align-items:center}
+  footer b{font-size:16px}
+  footer p{font-size:13px;color:#bdbdbd}
+  @media (prefers-reduced-motion:reduce){#gate .spark,.hint i{animation:none}}
+</style>
+<script src="/assets/site.js" defer data-hide="body > footer"></script>
+</head>
+<body class="locked">
+
+<!-- ================= GATE ================= -->
+<div id="gate" role="dialog" aria-modal="true" aria-labelledby="gT">
+  <div class="spark" aria-hidden="true"></div>
+  <form class="gcard" id="gF" novalidate>
+    <p class="gk" data-t="g_k"></p>
+    <h1 id="gT" data-t="g_t"></h1>
+    <p class="gs" data-t="g_s"></p>
+    <div class="fld">
+      <label for="gN" data-t="g_n"></label>
+      <input id="gN" type="text" maxlength="24" autocomplete="given-name">
+      <p class="err" id="gE" aria-live="polite"></p>
+    </div>
+    <div class="fld" style="margin-top:22px">
+      <label id="gL" data-t="g_l"></label>
+      <div class="langs" role="group" aria-labelledby="gL">
+        <button type="button" data-lang="en" aria-pressed="true"><b>English</b><span>English</span></button>
+        <button type="button" class="gu" data-lang="gu" aria-pressed="false"><b>ગુજરાતી</b><span>Gujarati</span></button>
+        <button type="button" class="hi" data-lang="hi" aria-pressed="false"><b>हिन्दी</b><span>Hindi</span></button>
+      </div>
+    </div>
+    <button class="go" type="submit" data-t="g_go"></button>
+    <p class="gf" data-t="g_f"></p>
+  </form>
+</div>
+
+<header id="top">
+  <a class="brand" href="/" style="text-decoration:none">TEDxThaltej Youth</a>
+  <div class="tr">
+    <div class="lsw" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" class="gu" data-lang="gu" aria-pressed="false">ગુ</button>
+      <button type="button" class="hi" data-lang="hi" aria-pressed="false">हि</button>
+    </div>
+    <button class="ed" type="button" id="ed" data-t="edit"></button>
+  </div>
+</header>
+
+<main id="story">
+  <div class="stage">
+    <div id="art" aria-hidden="true"><svg id="svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet"></svg></div>
+    <div class="narr" id="narr" aria-live="polite"></div>
+    <nav class="rail" id="rail" aria-label="Chapters"></nav>
+    <div class="hint" id="hint"><i></i><span data-t="hint"></span></div>
+    <div class="bar" id="bar"></div>
+  </div>
+</main>
+
+<footer>
+  <div><b>TEDxThaltej Youth</b><p data-t="f_l"></p></div>
+  <p>This independent TEDx event is operated under license from TED.</p>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* =====================================================================
+     TEXT (English · Gujarati · Hindi). {name} = the visitor's name.
+     Written to stay true every year: no edition dates, themes or venues.
+     ===================================================================== */
+  var T={
+    g_k:{en:'An illustrated story',gu:'એક ચિત્રમય વાર્તા',hi:'एक चित्रमय कहानी'},
+    g_t:{en:'The story of an idea',gu:'એક વિચારની વાર્તા',hi:'एक विचार की कहानी'},
+    g_s:{en:'What is TED? What is TEDx? And what is TEDxThaltej Youth? Scroll through the story and see.',gu:'TED શું છે? TEDx શું છે? અને TEDxThaltej Youth શું છે? વાર્તામાં સ્ક્રોલ કરો અને જુઓ.',hi:'TED क्या है? TEDx क्या है? और TEDxThaltej Youth क्या है? कहानी में स्क्रॉल कीजिए और देखिए।'},
+    g_n:{en:'Your name',gu:'તમારું નામ',hi:'आपका नाम'},
+    g_ph:{en:'Type your name',gu:'તમારું નામ લખો',hi:'अपना नाम लिखिए'},
+    g_e:{en:'Please enter your name to begin.',gu:'શરૂ કરવા માટે કૃપા કરીને તમારું નામ લખો.',hi:'शुरू करने के लिए कृपया अपना नाम लिखिए।'},
+    g_l:{en:'Language',gu:'ભાષા',hi:'भाषा'},
+    g_go:{en:'Begin',gu:'શરૂ કરો',hi:'शुरू करें'},
+    g_f:{en:'Your name stays on your device and is used only in this story.',gu:'તમારું નામ ફક્ત તમારા ઉપકરણ પર રહે છે અને ફક્ત આ વાર્તામાં વપરાય છે.',hi:'आपका नाम सिर्फ़ आपके डिवाइस पर रहता है और सिर्फ़ इस कहानी में इस्तेमाल होता है।'},
+    edit:{en:'Change name',gu:'નામ બદલો',hi:'नाम बदलें'},
+    hint:{en:'Scroll',gu:'સ્ક્રોલ કરો',hi:'स्क्रॉल करें'},
+    f_l:{en:'Ahmedabad, India',gu:'અમદાવાદ, ભારત',hi:'अहमदाबाद, भारत'},
+    ch1:{en:'TED',gu:'TED',hi:'TED'}, ch2:{en:'TEDx',gu:'TEDx',hi:'TEDx'}, ch3:{en:'TEDxThaltej Youth',gu:'TEDxThaltej Youth',hi:'TEDxThaltej Youth'}, ch4:{en:'You',gu:'તમે',hi:'आप'},
+    p1:{en:'Talks',gu:'ટૉક્સ',hi:'टॉक्स'}, p2:{en:'Virasat',gu:'વિરાસત',hi:'विरासत'}, p3:{en:'Idea Search',gu:'આઇડિયા સર્ચ',hi:'आइडिया सर्च'}, p4:{en:'Youth team',gu:'યુવા ટીમ',hi:'युवा टीम'},
+    n1:{en:'independently organised TED event',gu:'સ્વતંત્ર રીતે આયોજિત TED કાર્યક્રમ',hi:'स्वतंत्र रूप से आयोजित TED कार्यक्रम'},
+    n2:{en:'our neighbourhood in Ahmedabad',gu:'અમદાવાદમાં અમારો વિસ્તાર',hi:'अहमदाबाद में हमारा इलाका'},
+    n3:{en:'organised by young people',gu:'યુવાનો દ્વારા આયોજિત',hi:'युवाओं द्वारा आयोजित'},
+    city:{en:'Ahmedabad',gu:'અમદાવાદ',hi:'अहमदाबाद'},
+    r1:{en:'No selling',gu:'વેચાણ નહીં',hi:'बिक्री नहीं'}, r2:{en:'No agendas',gu:'એજન્ડા નહીં',hi:'एजेंडा नहीं'}, r3:{en:'Just ideas',gu:'ફક્ત વિચારો',hi:'सिर्फ़ विचार'},
+    tw:{en:'Technology',gu:'ટેક્નોલોજી',hi:'टेक्नोलॉजी'}, ew:{en:'Entertainment',gu:'મનોરંજન',hi:'मनोरंजन'}, dw:{en:'Design',gu:'ડિઝાઇન',hi:'डिज़ाइन'},
+    cta1:{en:'Share an idea with us',gu:'અમને તમારો વિચાર જણાવો',hi:'हमें अपना विचार बताइए'},
+    cta2:{en:'Share this story',gu:'આ વાર્તા શેર કરો',hi:'यह कहानी शेयर करें'},
+    cta3:{en:'Watch again',gu:'ફરીથી જુઓ',hi:'फिर से देखें'},
+    copied:{en:'Link copied',gu:'લિંક કૉપી થઈ',hi:'लिंक कॉपी हुआ'}
+  };
+  var BEATS=[
+    {k:{en:'An idea’s journey',gu:'એક વિચારની સફર',hi:'एक विचार का सफ़र'},
+      l:{en:'{name}, this is the story of an idea.',gu:'{name}, આ એક વિચારની વાર્તા છે.',hi:'{name}, यह एक विचार की कहानी है।'},
+      s:{en:'Scroll slowly, and let it unfold.',gu:'ધીમે ધીમે સ્ક્રોલ કરો, અને વાર્તાને ખુલવા દો.',hi:'धीरे-धीरे स्क्रॉल कीजिए, और कहानी को खुलने दीजिए।'}},
+    {l:{en:'Every idea begins inside one person.',gu:'દરેક વિચાર કોઈ એક વ્યક્તિની અંદર જન્મે છે.',hi:'हर विचार किसी एक इंसान के भीतर जन्म लेता है।'},
+      s:{en:'A question. A discovery. A new way of seeing something familiar.',gu:'એક પ્રશ્ન. એક શોધ. જાણીતી વસ્તુને જોવાની એક નવી નજર.',hi:'एक सवाल। एक खोज। किसी जानी-पहचानी चीज़ को देखने का एक नया नज़रिया।'}},
+    {l:{en:'But an idea that stays inside one mind cannot change very much.',gu:'પણ જે વિચાર એક જ મનમાં રહી જાય, તે બહુ કંઈ બદલી શકતો નથી.',hi:'लेकिन जो विचार एक ही मन में रह जाए, वह ज़्यादा कुछ नहीं बदल सकता।'},
+      s:{en:'It needs a stage.',gu:'તેને એક મંચ જોઈએ.',hi:'उसे एक मंच चाहिए।'}},
+    {k:{en:'Chapter one · TED',gu:'પ્રકરણ એક · TED',hi:'अध्याय एक · TED'},
+      l:{en:'In 1984, a conference gave ideas that stage.',gu:'1984માં, એક કૉન્ફરન્સે વિચારોને એ મંચ આપ્યો.',hi:'1984 में, एक कॉन्फ़्रेंस ने विचारों को वह मंच दिया।'},
+      s:{en:'It was called TED.',gu:'તેનું નામ હતું TED.',hi:'उसका नाम था TED।'}},
+    {l:{en:'Technology. Entertainment. Design.',gu:'ટેક્નોલોજી. મનોરંજન. ડિઝાઇન.',hi:'टेक्नोलॉजी। मनोरंजन। डिज़ाइन।'},
+      s:{en:'Three worlds that met in one room, and three letters that became a name.',gu:'ત્રણ દુનિયાઓ જે એક રૂમમાં મળી, અને ત્રણ અક્ષરો જે એક નામ બન્યા.',hi:'तीन दुनियाएँ जो एक कमरे में मिलीं, और तीन अक्षर जो एक नाम बन गए।'}},
+    {l:{en:'Today, TED is a nonprofit with one purpose: ideas worth spreading.',gu:'આજે TED એક નૉન-પ્રોફિટ સંસ્થા છે, જેનો એક જ હેતુ છે: ફેલાવવા લાયક વિચારો.',hi:'आज TED एक नॉन-प्रॉफ़िट संस्था है, जिसका एक ही उद्देश्य है: फैलाने लायक विचार।'},
+      s:{en:'Short, powerful talks, usually 18 minutes or less.',gu:'ટૂંકી અને અસરકારક ટૉક્સ, સામાન્ય રીતે 18 મિનિટ કે તેથી ઓછી.',hi:'छोटी और असरदार टॉक्स, आमतौर पर 18 मिनट या उससे कम।'}},
+    {l:{en:'Each talk is recorded and shared online, for free.',gu:'દરેક ટૉક રેકોર્ડ થાય છે અને ઑનલાઇન મફતમાં શેર થાય છે.',hi:'हर टॉक रिकॉर्ड होती है और ऑनलाइन मुफ़्त में शेयर होती है।'},
+      s:{en:'One voice, in one room, can now reach anyone with a screen.',gu:'એક રૂમમાં બોલાયેલો એક અવાજ હવે સ્ક્રીન ધરાવતી કોઈ પણ વ્યક્તિ સુધી પહોંચી શકે છે.',hi:'एक कमरे में बोली गई एक आवाज़ अब स्क्रीन वाले किसी भी व्यक्ति तक पहुँच सकती है।'}},
+    {l:{en:'And so, ideas began to travel the world.',gu:'અને આમ, વિચારો દુનિયાભરમાં ફરવા લાગ્યા.',hi:'और इस तरह, विचार दुनिया भर में सफ़र करने लगे।'}},
+    {k:{en:'Chapter two · TEDx',gu:'પ્રકરણ બે · TEDx',hi:'अध्याय दो · TEDx'},
+      l:{en:'But one conference cannot be in every city.',gu:'પણ એક કૉન્ફરન્સ દરેક શહેરમાં ન હોઈ શકે.',hi:'लेकिन एक कॉन्फ़्रेंस हर शहर में नहीं हो सकती।'},
+      s:{en:'So TED invited communities everywhere to bring the idea home.',gu:'એટલે TED એ દરેક જગ્યાના સમુદાયોને આ વિચાર પોતાના ઘરે લાવવા આમંત્રણ આપ્યું.',hi:'इसलिए TED ने हर जगह के समुदायों को यह विचार अपने घर लाने का न्योता दिया।'}},
+    {l:{en:'That is TEDx. The x means independently organised.',gu:'એ છે TEDx. x એટલે સ્વતંત્ર રીતે આયોજિત.',hi:'यही है TEDx। x का मतलब है स्वतंत्र रूप से आयोजित।'},
+      s:{en:'Local teams run their own TED-style events, under a free licence from TED.',gu:'સ્થાનિક ટીમો TED પાસેથી મફત લાઇસન્સ લઈને પોતાના TED જેવા કાર્યક્રમો યોજે છે.',hi:'स्थानीय टीमें TED से मुफ़्त लाइसेंस लेकर अपने TED जैसे कार्यक्रम करती हैं।'}},
+    {l:{en:'Every TEDx event keeps the same spirit.',gu:'દરેક TEDx કાર્યક્રમ એ જ ભાવના જાળવે છે.',hi:'हर TEDx कार्यक्रम वही भावना बनाए रखता है।'},
+      s:{en:'No selling. No political or religious agendas. Just ideas.',gu:'કોઈ વેચાણ નહીં. કોઈ રાજકીય કે ધાર્મિક એજન્ડા નહીં. ફક્ત વિચારો.',hi:'कोई बिक्री नहीं। कोई राजनीतिक या धार्मिक एजेंडा नहीं। सिर्फ़ विचार।'}},
+    {l:{en:'Today, TEDx events happen in cities, schools and communities across the world.',gu:'આજે દુનિયાભરના શહેરો, શાળાઓ અને સમુદાયોમાં TEDx કાર્યક્રમો થાય છે.',hi:'आज दुनिया भर के शहरों, स्कूलों और समुदायों में TEDx कार्यक्रम होते हैं।'}},
+    {k:{en:'Chapter three · TEDxThaltej Youth',gu:'પ્રકરણ ત્રણ · TEDxThaltej Youth',hi:'अध्याय तीन · TEDxThaltej Youth'},
+      l:{en:'One of those communities is right here, in Ahmedabad.',gu:'એમાંનો એક સમુદાય અહીં જ છે, અમદાવાદમાં.',hi:'उनमें से एक समुदाय यहीं है, अहमदाबाद में।'}},
+    {l:{en:'TEDxThaltej Youth.',gu:'TEDxThaltej Youth.',hi:'TEDxThaltej Youth.'},
+      s:{en:'A TEDx event from Thaltej, Ahmedabad, organised by young people.',gu:'થલતેજ, અમદાવાદનો TEDx કાર્યક્રમ, જે યુવાનો દ્વારા આયોજિત છે.',hi:'थलतेज, अहमदाबाद का एक TEDx कार्यक्रम, जिसे युवा आयोजित करते हैं।'}},
+    {l:{en:'We bring ideas worth spreading to our city’s stage.',gu:'અમે અમારા શહેરના મંચ પર ફેલાવવા લાયક વિચારો લાવીએ છીએ.',hi:'हम अपने शहर के मंच पर फैलाने लायक विचार लाते हैं।'},
+      s:{en:'Talks that spread ideas. Virasat, performances that carry our heritage. Ahmedabad Idea Search, listening for ideas all year. And a team of young people learning to build something real.',gu:'વિચારો ફેલાવતી ટૉક્સ. વિરાસત, આપણો વારસો રજૂ કરતી પ્રસ્તુતિઓ. અમદાવાદ આઇડિયા સર્ચ, આખું વર્ષ વિચારોને સાંભળતી પહેલ. અને કંઈક સાચું બનાવતા શીખતા યુવાનોની ટીમ.',hi:'विचार फैलाने वाली टॉक्स। विरासत, हमारी धरोहर को आगे ले जाती प्रस्तुतियाँ। अहमदाबाद आइडिया सर्च, पूरे साल विचारों को सुनने की पहल। और कुछ असली बनाना सीखते युवाओं की टीम।'}},
+    {l:{en:'Because every city is full of ideas.',gu:'કારણ કે દરેક શહેર વિચારોથી ભરેલું છે.',hi:'क्योंकि हर शहर विचारों से भरा है।'},
+      s:{en:'Most of them are simply waiting to be heard.',gu:'તેમાંના મોટા ભાગના બસ સાંભળવામાં આવે તેની રાહ જુએ છે.',hi:'उनमें से ज़्यादातर बस सुने जाने का इंतज़ार कर रहे हैं।'}},
+    {k:{en:'Chapter four · You',gu:'પ્રકરણ ચાર · તમે',hi:'अध्याय चार · आप'},
+      l:{en:'{name}, the next idea worth spreading could be yours.',gu:'{name}, ફેલાવવા લાયક આગળનો વિચાર તમારો હોઈ શકે.',hi:'{name}, फैलाने लायक अगला विचार आपका हो सकता है।'},
+      s:{en:'Share an idea with us, or pass this story on to someone who should know it.',gu:'અમને તમારો વિચાર જણાવો, અથવા આ વાર્તા એવી વ્યક્તિ સુધી પહોંચાડો જેણે તે જાણવી જોઈએ.',hi:'हमें अपना विचार बताइए, या यह कहानी किसी ऐसे व्यक्ति तक पहुँचाइए जिसे यह जाननी चाहिए।'},
+      end:true}
+  ];
+  var N=BEATS.length;
+
+  var state={name:'',lang:'en'};
+  try{ var sv=JSON.parse(localStorage.getItem('tty_idea')||'null'); if(sv){ if(sv.lang) state.lang=sv.lang; if(sv.name) state.name=sv.name; } }catch(e){}
+  function save(){ try{ localStorage.setItem('tty_idea',JSON.stringify(state)); }catch(e){} }
+  function pick(o){ return o ? (o[state.lang]||o.en) : ''; }
+  function put(node, str, plain){ node.textContent=''; var parts=str.split('{name}'); parts.forEach(function(p,i){ node.appendChild(document.createTextNode(p)); if(i<parts.length-1){ if(plain) node.appendChild(document.createTextNode(state.name)); else { var s=document.createElement('span'); s.className='nm'; s.textContent=state.name; node.appendChild(s);} } }); }
+
+  /* =====================================================================
+     THE ART: one continuous illustration, keyframed to the scroll
+     ===================================================================== */
+  var NS='http://www.w3.org/2000/svg', svg=document.getElementById('svg');
+  function S(tag,a,p,html){ var e=document.createElementNS(NS,tag); for(var k in a) e.setAttribute(k,a[k]); if(html!=null) e.innerHTML=html; if(p) p.appendChild(e); return e; }
+  function clamp(v,a,b){ return v<a?a:v>b?b:v; }
+  function sm(t){ t=clamp(t,0,1); return t*t*(3-2*t); }
+  function K(P,pts){ if(P<=pts[0][0]) return pts[0][1]; for(var i=1;i<pts.length;i++){ if(P<=pts[i][0]){ var a=pts[i-1],b=pts[i],t=sm((P-a[0])/(b[0]-a[0])); return a[1]+(b[1]-a[1])*t; } } return pts[pts.length-1][1]; }
+  function win(P,a,b,f){ f=f||0.35; return Math.min(sm((P-a+f)/f), sm((b+f-P)/f)); }
+  function rnd(seed){ return function(){ seed=(seed*16807)%2147483647; return (seed-1)/2147483646; }; }
+
+  S('defs',{},svg,
+    '<radialGradient id="glow"><stop offset="0" stop-color="#EB0028" stop-opacity=".9"/><stop offset=".35" stop-color="#EB0028" stop-opacity=".35"/><stop offset="1" stop-color="#EB0028" stop-opacity="0"/></radialGradient>'+
+    '<radialGradient id="glowW"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>'+
+    '<radialGradient id="stageG" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#ff2a4c"/><stop offset="1" stop-color="#A8001C"/></radialGradient>'+
+    '<linearGradient id="spot" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".0"/><stop offset=".4" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity=".2"/></linearGradient>'+
+    '<filter id="soft"><feGaussianBlur stdDeviation="8"/></filter>');
+
+  var stars=S('g',{},svg); (function(){ var r=rnd(1234); for(var i=0;i<110;i++) S('circle',{cx:(r()*1000).toFixed(0),cy:(r()*1000).toFixed(0),r:(r()*1.3+0.3).toFixed(2),fill:'#fff',opacity:(r()*0.35+0.06).toFixed(2)},stars); })();
+
+  // HEAD (profile facing right)
+  var headD='M430 760 L432 668 C360 648 318 580 322 500 C326 392 404 314 506 310 C612 306 678 378 684 462 C686 492 698 510 718 540 C726 552 720 562 708 564 L690 568 C694 584 690 596 682 602 C690 614 684 630 668 634 C660 656 638 666 606 662 L574 658 L572 760';
+  var headG=S('g',{},svg);
+  var headGlow=S('circle',{cx:510,cy:480,r:260,fill:'url(#glowW)',opacity:0},headG);
+  var head=S('path',{d:headD,fill:'none',stroke:'#fff','stroke-width':3.5,'stroke-linecap':'round','stroke-linejoin':'round',pathLength:1,'stroke-dasharray':1,'stroke-dashoffset':1},headG);
+  var neurons=S('g',{opacity:0},headG); (function(){ var P=[[420,430],[470,380],[540,380],[600,430],[620,490],[570,530],[500,550],[440,510],[480,460],[550,460]]; var L=[[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,0],[8,9],[0,8],[2,9],[5,9],[7,8],[8,6],[9,3]]; L.forEach(function(l){ S('line',{x1:P[l[0]][0],y1:P[l[0]][1],x2:P[l[1]][0],y2:P[l[1]][1],stroke:'#fff','stroke-width':1,'stroke-opacity':.22},neurons); }); P.forEach(function(p){ S('circle',{cx:p[0],cy:p[1],r:3,fill:'#fff',opacity:.5},neurons); }); })();
+
+  // STAGE (the red circle) + speaker
+  var stageG=S('g',{opacity:0},svg);
+  S('path',{d:'M455 80 L545 80 L790 770 L210 770 Z',fill:'url(#spot)'},stageG);
+  S('ellipse',{cx:500,cy:800,rx:310,ry:44,fill:'#000',opacity:.7,filter:'url(#soft)'},stageG);
+  S('ellipse',{cx:500,cy:778,rx:300,ry:64,fill:'#6b0012'},stageG);
+  S('ellipse',{cx:500,cy:768,rx:300,ry:64,fill:'url(#stageG)'},stageG);
+  S('ellipse',{cx:500,cy:768,rx:300,ry:64,fill:'none',stroke:'#fff','stroke-opacity':.16,'stroke-width':2},stageG);
+  var speaker=S('g',{opacity:0},svg,'<circle cx="500" cy="606" r="22" fill="#fff"/><path d="M468 748 L472 668 Q500 650 528 668 L532 748 Z" fill="#fff"/><path d="M472 672 Q444 700 436 660" stroke="#fff" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M478 748 V770 M522 748 V770" stroke="#fff" stroke-width="12" stroke-linecap="round"/>');
+
+  // TED letters
+  var tedG=S('g',{opacity:0},svg), tedL=[];
+  ['T','E','D'].forEach(function(ch,i){ var g=S('g',{},tedG); var t=S('text',{x:310+i*190,y:320,'text-anchor':'middle','font-size':210,'font-weight':900,fill:'#EB0028','font-family':'Inter,Arial,sans-serif'},g); t.textContent=ch; var w=S('text',{x:310+i*190,y:384,'text-anchor':'middle','font-size':26,'font-weight':600,fill:'#fff'},g); w.dataset.t=['tw','ew','dw'][i]; tedL.push(g); });
+  var yearT=S('text',{x:500,y:120,'text-anchor':'middle','font-size':28,'font-weight':700,fill:'#8c8c8c','letter-spacing':8,'font-family':'Inter,Arial,sans-serif',opacity:0},svg); yearT.textContent='1984';
+
+  // screens + copies
+  var screensG=S('g',{},svg), copiesG=S('g',{},svg), screens=[], copies=[];
+  var NSC=14;
+  for (var i=0;i<NSC;i++){
+    var a=-Math.PI*0.97 + (i/(NSC-1))*Math.PI*0.94;
+    var R=(i%2?370:290);
+    var tx=500+Math.cos(a)*R*1.12, ty=600+Math.sin(a)*R*1.0;
+    var kind=i%3;
+    var sc=S('g',{transform:'translate('+tx.toFixed(0)+' '+ty.toFixed(0)+')',opacity:0},screensG, kind===0
+      ? '<rect x="-16" y="-28" width="32" height="56" rx="6" fill="#000" stroke="#fff" stroke-width="2.5"/><rect x="-11" y="-21" width="22" height="38" rx="2" fill="#fff" opacity=".12"/><circle r="6" fill="#EB0028"/>'
+      : kind===1 ? '<rect x="-34" y="-24" width="68" height="44" rx="4" fill="#000" stroke="#fff" stroke-width="2.5"/><path d="M-44 24 H44" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><rect x="-28" y="-18" width="56" height="32" fill="#fff" opacity=".12"/><circle cy="-2" r="6" fill="#EB0028"/>'
+      : '<rect x="-40" y="-28" width="80" height="50" rx="4" fill="#000" stroke="#fff" stroke-width="2.5"/><path d="M-10 30 H10 M0 22 V30" stroke="#fff" stroke-width="2.5"/><rect x="-34" y="-22" width="68" height="38" fill="#fff" opacity=".12"/><circle cy="-3" r="6" fill="#EB0028"/>');
+    screens.push({el:sc,x:tx,y:ty});
+    copies.push({el:S('g',{opacity:0},copiesG,'<circle r="18" fill="url(#glow)"/><circle r="5" fill="#EB0028"/>'),x:tx,y:ty});
+  }
+
+  // GLOBE
+  var GX=500, GY=480, GR=250;
+  var globeG=S('g',{opacity:0},svg);
+  S('circle',{cx:GX,cy:GY,r:GR+60,fill:'url(#glowW)',opacity:.3},globeG);
+  S('circle',{cx:GX,cy:GY,r:GR,fill:'#050505',stroke:'#fff','stroke-width':2.5},globeG);
+  [-60,-30,0,30,60].forEach(function(lt){ var y=GY-GR*Math.sin(lt*Math.PI/180), rx=GR*Math.cos(lt*Math.PI/180); S('ellipse',{cx:GX,cy:y,rx:rx,ry:rx*0.12,fill:'none',stroke:'#fff','stroke-opacity':.2,'stroke-width':1.4},globeG); });
+  var meridians=[]; for (var m=0;m<6;m++) meridians.push(S('ellipse',{cx:GX,cy:GY,rx:GR,ry:GR,fill:'none',stroke:'#fff','stroke-opacity':.2,'stroke-width':1.4},globeG));
+  var pinsG=S('g',{},globeG), gpins=[];
+  (function(){ var r=rnd(77); for (var i=0;i<46;i++){ var lat=(r()*120-55)*Math.PI/180, lon=r()*Math.PI*2; gpins.push({el:S('g',{},pinsG,'<circle r="14" fill="url(#glow)"/><circle r="3.6" fill="#EB0028"/>'),lat:lat,lon:lon}); } })();
+  var arcs=[]; for (var q=0;q<10;q++) arcs.push(S('path',{fill:'none',stroke:'#EB0028','stroke-width':1.6,'stroke-linecap':'round',pathLength:1,'stroke-dasharray':'0.25 0.75','stroke-dashoffset':'1'},globeG));
+
+  // TEDx (typographic, not the logo)
+  var xG=S('g',{opacity:0},svg);
+  var xTED=S('text',{x:470,y:170,'text-anchor':'middle','font-size':150,'font-weight':900,fill:'#fff','font-family':'Inter,Arial,sans-serif'},xG); xTED.textContent='TED';
+  var xX=S('text',{x:617,y:112,'font-size':110,'font-weight':900,fill:'#EB0028','font-family':'Inter,Arial,sans-serif'},xG); xX.textContent='x';
+
+  // rules
+  var rulesG=S('g',{opacity:0},svg), rules=[];
+  [['r1','<text x="0" y="12" text-anchor="middle" font-size="34" font-weight="800" fill="#fff" font-family="Inter,Arial,sans-serif">₹</text><path d="M-26 -26 L26 26" stroke="#EB0028" stroke-width="5" stroke-linecap="round"/>'],
+   ['r2','<path d="M-18 -6 L10 -20 V20 L-18 6 Z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/><rect x="-26" y="-7" width="8" height="14" fill="#fff"/><path d="M-26 -26 L26 26" stroke="#EB0028" stroke-width="5" stroke-linecap="round"/>'],
+   ['r3','<circle cx="0" cy="-4" r="13" fill="none" stroke="#fff" stroke-width="3"/><path d="M-6 12 H6 M-4 18 H4" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="0" cy="-4" r="4" fill="#EB0028"/>']
+  ].forEach(function(r,i){ var x=240+i*260, g=S('g',{transform:'translate('+x+' 850)'},rulesG); S('circle',{r:40,fill:'#000',stroke:'#fff','stroke-width':2},g); S('g',{},g,r[1]); var t=S('text',{x:0,y:76,'text-anchor':'middle','font-size':22,'font-weight':700,fill:'#fff'},g); t.dataset.t=r[0]; rules.push(g); });
+
+  // CITY: Ahmedabad heritage skyline in line art
+  var cityG=S('g',{opacity:0},svg);
+  var cityD='M110 760 V620 H170 V760 M170 760 V590 H236 V760 M110 620 L140 600 L170 620 M170 590 L203 566 L236 590'+
+    ' M124 660 h20 v24 h-20 Z M186 630 h34 v26 h-34 Z M196 680 h14 v28 h-14 Z'+
+    ' M270 760 V520 M300 760 V520 M262 520 H308 M270 520 Q285 488 300 520 M285 488 V470 M262 600 H308 M262 680 H308'+
+    ' M300 760 V640 H420 V760 M420 760 V520 M450 760 V520 M412 520 H458 M420 520 Q435 488 450 520 M435 488 V470 M412 600 H458 M412 680 H458'+
+    ' M330 760 V700 Q360 660 390 700 V760'+
+    ' M470 760 V600 H610 V760 M470 600 H610 M490 760 V680 Q540 620 590 680 V760'+
+    ' M640 760 V650 H720 V760 M652 650 L680 520 L708 650 M662 610 H698 M668 580 H692 M680 520 V496 M680 496 L700 504 L680 512'+
+    ' M750 760 V470 H810 V760 M810 760 V560 H860 V760 M760 500 H800 M760 530 H800 M760 560 H800 M760 590 H800 M760 620 H800 M820 590 H850 M820 620 H850'+
+    ' M870 760 V610 H920 V760';
+  var cityPath=S('path',{d:cityD,fill:'none',stroke:'#fff','stroke-width':2.4,'stroke-linejoin':'round','stroke-linecap':'round',pathLength:1,'stroke-dasharray':1,'stroke-dashoffset':1},cityG);
+  // jali tracery inside the mosque arch
+  var jali=S('g',{opacity:0,stroke:'#EB0028','stroke-width':1.6,fill:'none'},cityG,'<path d="M540 740 V690 M540 710 q-18 -6 -26 -22 M540 710 q18 -6 26 -22 M540 695 q-10 -8 -12 -20 M540 695 q10 -8 12 -20 M504 740 q18 -20 36 -20 q18 0 36 20"/>');
+  S('path',{d:'M60 760 H940',stroke:'#fff','stroke-width':2.4},cityG);
+  var wins=[]; (function(){ var W=[[140,672],[203,643],[203,694],[285,560],[285,640],[435,560],[435,640],[360,730],[680,625],[680,595],[780,515],[780,545],[780,575],[780,605],[835,605],[895,650],[895,690],[140,720],[520,640],[560,640],[230,730],[330,610],[860,700],[700,720],[740,720],[610,720],[250,650],[470,720]];
+    var r=rnd(5); W.forEach(function(w){ wins.push({el:S('g',{transform:'translate('+w[0]+' '+w[1]+')',opacity:0},cityG,'<circle r="12" fill="url(#glow)"/><circle r="3.4" fill="'+(r()<0.35?'#fff':'#EB0028')+'"/>'),o:r()}); }); })();
+  var cityPin=S('g',{opacity:0},svg,'<circle cy="-40" r="56" fill="url(#glow)"/><path d="M0 0 C-18 -24 -22 -34 -22 -44 A22 22 0 1 1 22 -44 C22 -34 18 -24 0 0 Z" fill="#EB0028"/><circle cx="0" cy="-44" r="8" fill="#000"/>');
+  var cityName=S('text',{x:500,y:830,'text-anchor':'middle','font-size':30,'font-weight':700,fill:'#fff','letter-spacing':3,opacity:0},svg); cityName.dataset.t='city';
+
+  // name breakdown
+  var nameG=S('g',{opacity:0},svg), nameParts=[];
+  [['TEDx',210,'n1'],['Thaltej',500,'n2'],['Youth',790,'n3']].forEach(function(n){
+    var g=S('g',{},nameG);
+    var t=S('text',{x:n[1],y:220,'text-anchor':'middle','font-size':66,'font-weight':800,fill:'#fff','font-family':'Inter,Arial,sans-serif'},g); t.textContent=n[0];
+    S('rect',{x:n[1]-18,y:244,width:36,height:4,fill:'#EB0028'},g);
+    var fo=S('foreignObject',{x:n[1]-125,y:262,width:250,height:80},g); var d=document.createElement('div'); d.style.cssText='font-size:20px;line-height:1.3;text-align:center;color:#bdbdbd'; d.dataset.t=n[2]; fo.appendChild(d);
+    nameParts.push(g);
+  });
+
+  // pillars
+  var pillG=S('g',{opacity:0},svg), pills=[];
+  var PI=[
+    '<ellipse cx="0" cy="18" rx="26" ry="6" fill="#EB0028"/><circle cx="0" cy="-14" r="8" fill="#fff"/><path d="M-9 16 L-8 -2 Q0 -6 8 -2 L9 16 Z" fill="#fff"/>',
+    '<g fill="#EB0028">'+[0,1,2,3,4,5,6,7].map(function(k){return '<ellipse cx="0" cy="-14" rx="5" ry="10" transform="rotate('+(k*45)+')"/>';}).join('')+'</g><circle r="6" fill="#fff"/>',
+    '<circle cx="-4" cy="-4" r="14" fill="none" stroke="#fff" stroke-width="3.5"/><path d="M6 6 L18 18" stroke="#fff" stroke-width="5" stroke-linecap="round"/><circle cx="-4" cy="-4" r="4.5" fill="#EB0028"/>',
+    '<circle cx="-14" cy="-6" r="7" fill="#fff"/><circle cx="14" cy="-6" r="7" fill="#fff"/><circle cx="0" cy="-10" r="8" fill="#EB0028"/><path d="M-26 18 Q-14 2 -2 18 Z M2 18 Q14 2 26 18 Z" fill="#fff"/><path d="M-12 18 Q0 -2 12 18 Z" fill="#EB0028"/>'
+  ];
+  var pillLines=S('g',{opacity:0},svg);
+  [[190,300,'p1'],[395,200,'p2'],[605,200,'p3'],[810,300,'p4']].forEach(function(p,i){ S('path',{d:'M'+p[0]+' '+(p[1]+120)+' Q'+((p[0]+500)/2)+' '+(p[1]+260)+' 500 560',fill:'none',stroke:'#EB0028','stroke-width':1.2,'stroke-dasharray':'3 6','stroke-opacity':.6},pillLines); var g=S('g',{transform:'translate('+p[0]+' '+p[1]+')'},pillG); S('circle',{r:56,fill:'#000',stroke:'#fff','stroke-width':2},g); S('circle',{r:66,fill:'none',stroke:'#EB0028','stroke-width':1.5,'stroke-dasharray':'2 6'},g); S('g',{},g,PI[i]); var t=S('text',{x:0,y:98,'text-anchor':'middle','font-size':22,'font-weight':700,fill:'#fff'},g); t.dataset.t=p[2]; pills.push({el:g,x:p[0],y:p[1]}); });
+
+  // final network
+  var netG=S('g',{opacity:0},svg), nets=[];
+  (function(){ var r=rnd(909); for (var i=0;i<24;i++){ var a=r()*Math.PI*2, rr=300+r()*170; var x=510+Math.cos(a)*rr, y=480+Math.sin(a)*rr*0.85; nets.push({l:S('line',{x1:540,y1:450,x2:x.toFixed(0),y2:y.toFixed(0),stroke:'#EB0028','stroke-width':1,'stroke-opacity':.35,pathLength:1,'stroke-dasharray':1,'stroke-dashoffset':1},netG),d:S('g',{transform:'translate('+x.toFixed(0)+' '+y.toFixed(0)+')',opacity:0},netG,'<circle r="12" fill="url(#glow)"/><circle r="3.4" fill="'+(r()<0.4?'#fff':'#EB0028')+'"/>'),o:r()}); } })();
+
+  // THE SPARK (the idea: our main character)
+  var spark=S('g',{},svg);
+  var sparkHalo=S('circle',{r:90,fill:'url(#glow)'},spark);
+  var sparkCore=S('circle',{r:12,fill:'#EB0028'},spark);
+  S('circle',{r:5,fill:'#fff',opacity:.85},spark);
+
+  function render(P, now){
+    var t=reduce?0:now;
+    // head
+    head.setAttribute('stroke-dashoffset',(1-K(P,[[0.4,0],[1.1,1],[2.6,1],[3.2,0],[15.3,0],[16,1]])).toFixed(3));
+    headG.setAttribute('opacity',K(P,[[0.4,0],[0.8,1],[2.6,1],[3.2,0],[15.3,0],[15.8,1]]).toFixed(3));
+    neurons.setAttribute('opacity',K(P,[[0.9,0],[1.4,1],[2.2,1],[2.7,0.25],[3.2,0],[15.6,0],[16.2,1]]).toFixed(3));
+    headGlow.setAttribute('opacity',(K(P,[[15.6,0],[16.3,1]])*0.9).toFixed(3));
+    // stage
+    stageG.setAttribute('opacity',win(P,3,6.4,0.5).toFixed(3));
+    stageG.setAttribute('transform','translate(0 '+K(P,[[2.6,140],[3.4,0]]).toFixed(1)+')');
+    speaker.setAttribute('opacity',win(P,3.2,6.3,0.4).toFixed(3));
+    // TED
+    tedG.setAttribute('opacity',win(P,3.8,5.5,0.4).toFixed(3));
+    tedL.forEach(function(g,i){ var s=sm((P-3.7-i*0.12)/0.35); g.setAttribute('transform','translate(0 '+((1-s)*40).toFixed(1)+')'); g.setAttribute('opacity',s.toFixed(3)); });
+    yearT.setAttribute('opacity',win(P,3,4.4,0.35).toFixed(3));
+    // copies and screens
+    var cp=clamp((P-6)/0.85,0,1), gather=sm((P-7)/0.6);
+    copies.forEach(function(c,i){
+      var loc=sm((cp-i*0.03)/0.55);
+      var x=500+(c.x-500)*loc, y=640+(c.y-640)*loc - Math.sin(loc*Math.PI)*90;
+      var gx=GX+Math.cos(i*0.9)*GR*0.7, gy=GY+Math.sin(i*1.3)*GR*0.55;
+      x+= (gx-x)*gather; y+=(gy-y)*gather;
+      c.el.setAttribute('transform','translate('+x.toFixed(1)+' '+y.toFixed(1)+')');
+      c.el.setAttribute('opacity',(loc>0.01 ? 1-sm((P-7.5)/0.5) : 0).toFixed(3));
+    });
+    screens.forEach(function(s,i){ s.el.setAttribute('opacity',(sm((cp-0.3-i*0.03)/0.3)*(1-sm((P-6.9)/0.4))).toFixed(3)); });
+    // globe
+    globeG.setAttribute('opacity',win(P,7.1,12.1,0.45).toFixed(3));
+    var gS=K(P,[[6.8,0.6],[7.4,1],[11.6,1],[12.4,0.3]]), gY=K(P,[[11.6,0],[12.4,-60]]);
+    globeG.setAttribute('transform','translate('+GX+' '+(GY+gY)+') scale('+gS.toFixed(3)+') translate('+(-GX)+' '+(-GY)+')');
+    var rot=P*0.55 + t*0.00008;
+    meridians.forEach(function(m,i){ m.setAttribute('rx',(Math.abs(Math.cos(rot+i*Math.PI/6))*GR).toFixed(1)); });
+    var pinCount=K(P,[[7.2,0],[8.5,6],[9.4,10],[11.3,46]]);
+    function proj(g){ var lon=g.lon+rot; return [GX+GR*Math.cos(g.lat)*Math.sin(lon), GY-GR*Math.sin(g.lat), Math.cos(g.lat)*Math.cos(lon)]; }
+    gpins.forEach(function(g,i){ var p=proj(g), vis=(i<pinCount?clamp(pinCount-i,0,1):0)*(p[2]>0?clamp(p[2]*3,0,1):0); g.el.setAttribute('transform','translate('+p[0].toFixed(1)+' '+p[1].toFixed(1)+') scale('+(0.6+0.4*Math.max(0,p[2])).toFixed(2)+')'); g.el.setAttribute('opacity',vis.toFixed(3)); });
+    var arcOn=win(P,7.6,11.6,0.4);
+    arcs.forEach(function(a,i){ var A=proj(gpins[(i*7)%46]), B=proj(gpins[(i*11+5)%46]); if(A[2]<0.1||B[2]<0.1||(i*7)%46>=pinCount||(i*11+5)%46>=pinCount){ a.setAttribute('stroke-opacity',0); return; } var mx=(A[0]+B[0])/2, my=(A[1]+B[1])/2-70; a.setAttribute('d','M'+A[0].toFixed(1)+' '+A[1].toFixed(1)+' Q'+mx.toFixed(1)+' '+my.toFixed(1)+' '+B[0].toFixed(1)+' '+B[1].toFixed(1)); a.setAttribute('stroke-dashoffset',(1-((t*0.0004+i*0.13)%1)).toFixed(3)); a.setAttribute('stroke-opacity',(0.85*arcOn*Math.min(1,Math.min(A[2],B[2])*3)).toFixed(3)); });
+    // TEDx
+    xG.setAttribute('opacity',win(P,8.8,10.2,0.4).toFixed(3));
+    var xs=sm((P-8.9)/0.45); xX.setAttribute('x',(900-(900-617)*xs).toFixed(1)); xX.setAttribute('opacity',xs.toFixed(3));
+    rulesG.setAttribute('opacity',win(P,10,10.9,0.35).toFixed(3));
+    rules.forEach(function(g,i){ g.setAttribute('opacity',sm((P-9.8-i*0.15)/0.3).toFixed(3)); });
+    // city
+    cityG.setAttribute('opacity',win(P,12,15.4,0.45).toFixed(3));
+    cityPath.setAttribute('stroke-dashoffset',(1-K(P,[[11.8,0],[12.7,1]])).toFixed(3));
+    jali.setAttribute('opacity',sm((P-12.6)/0.3).toFixed(3));
+    var drop=sm((P-12.2)/0.45);
+    cityPin.setAttribute('opacity',(drop*win(P,12.2,13.4,0.35)).toFixed(3));
+    cityPin.setAttribute('transform','translate(540 '+K(P,[[12.2,160],[12.7,660]]).toFixed(1)+')');
+    cityName.setAttribute('opacity',win(P,12.5,13.4,0.35).toFixed(3));
+    nameG.setAttribute('opacity',win(P,13,13.9,0.35).toFixed(3));
+    nameParts.forEach(function(g,i){ var s=sm((P-12.9-i*0.14)/0.3); g.setAttribute('opacity',s.toFixed(3)); g.setAttribute('transform','translate(0 '+((1-s)*20).toFixed(1)+')'); });
+    pillG.setAttribute('opacity',win(P,14,14.9,0.35).toFixed(3));
+    pillLines.setAttribute('opacity',win(P,14.1,14.9,0.35).toFixed(3));
+    pills.forEach(function(p,i){ var s=sm((P-13.9-i*0.12)/0.3); p.el.setAttribute('transform','translate('+p.x+' '+(p.y+(1-s)*30).toFixed(1)+') scale('+(0.8+0.2*s).toFixed(3)+')'); p.el.setAttribute('opacity',s.toFixed(3)); });
+    var wl=K(P,[[14.7,0],[15.4,1]]);
+    wins.forEach(function(w){ var on=clamp((wl-w.o*0.8)/0.2,0,1), tw=reduce?1:0.75+0.25*Math.sin(t*0.003+w.o*20); w.el.setAttribute('opacity',(on*tw).toFixed(3)); });
+    // final
+    netG.setAttribute('opacity',K(P,[[15.8,0],[16.3,1]]).toFixed(3));
+    nets.forEach(function(n){ var d=sm((P-15.9-n.o*0.4)/0.35), tw=reduce?1:0.7+0.3*Math.sin(t*0.003+n.o*30); n.l.setAttribute('stroke-dashoffset',(1-d).toFixed(3)); n.d.setAttribute('opacity',(sm((d-0.7)/0.3)*tw).toFixed(3)); });
+    // spark
+    var sx=K(P,[[0,500],[0.9,500],[1.3,540],[2.7,540],[3.4,500],[6,500],[6.8,500],[7.4,GX],[11.8,GX],[12.5,540],[13.2,540],[13.8,500],[15.6,500],[16.2,540]]);
+    var sy=K(P,[[0,500],[0.9,500],[1.3,450],[2.7,450],[3.4,640],[6,640],[6.8,560],[7.4,GY],[11.8,GY],[12.5,600],[13.2,600],[13.8,570],[15.6,570],[16.2,450]]);
+    var ss=K(P,[[0,1.6],[1,1],[2,0.7],[2.6,0.45],[3.4,1.1],[5.5,1.4],[6.2,1],[7.3,0.6],[11.5,0.6],[12.4,0],[13.6,0],[14,0.9],[15.5,1],[16.2,1.5]]);
+    var pulse=reduce?1:1+0.08*Math.sin(t*0.004);
+    spark.setAttribute('transform','translate('+sx.toFixed(1)+' '+sy.toFixed(1)+') scale('+(ss*pulse).toFixed(3)+')');
+    sparkHalo.setAttribute('opacity',K(P,[[2,1],[2.6,0.35],[3.3,1]]).toFixed(3));
+    sparkCore.setAttribute('opacity',K(P,[[2,1],[2.6,0.5],[3.3,1]]).toFixed(3));
+    stars.setAttribute('opacity',(0.45+0.55*K(P,[[6,0],[8,1],[12,1],[13,0.4]])).toFixed(3));
+  }
+
+  /* =====================================================================
+     NARRATION + CHAPTERS
+     ===================================================================== */
+  var narr=document.getElementById('narr'), beatEls=[];
+  BEATS.forEach(function(b){
+    var d=document.createElement('div'); d.className='beat';
+    d.innerHTML=(b.k?'<p class="k"></p>':'')+'<p class="l"></p>'+(b.s?'<p class="s"></p>':'')+(b.end?'<div class="cta"><a class="p" href="/ais/apply" data-t="cta1"></a><button type="button" id="shr" data-t="cta2"></button><button type="button" id="rep" data-t="cta3"></button></div>':'');
+    narr.appendChild(d); beatEls.push(d);
+  });
+  var rail=document.getElementById('rail'), railBtns=[];
+  [{b:3,k:'ch1'},{b:8,k:'ch2'},{b:12,k:'ch3'},{b:16,k:'ch4'}].forEach(function(c){
+    var btn=document.createElement('button'); btn.type='button'; btn.innerHTML='<span data-t="'+c.k+'"></span><i></i>';
+    btn.addEventListener('click',function(){ jumpTo(c.b); });
+    rail.appendChild(btn); railBtns.push({el:btn,b:c.b});
+  });
+  var story=document.getElementById('story');
+  story.style.height=((N+0.6)*100)+'vh';
+  function jumpTo(b){ var total=story.offsetHeight-innerHeight; window.scrollTo({top:story.offsetTop+total*((b+0.65)/N),behavior:reduce?'auto':'smooth'}); }
+
+  function paint(){
+    document.documentElement.lang=state.lang;
+    document.body.classList.remove('lang-en','lang-gu','lang-hi'); document.body.classList.add('lang-'+state.lang);
+    document.querySelectorAll('[data-t]').forEach(function(n){ put(n,pick(T[n.dataset.t]),n.namespaceURI===NS); });
+    document.getElementById('gN').placeholder=pick(T.g_ph);
+    BEATS.forEach(function(b,i){ var d=beatEls[i]; if(b.k) put(d.querySelector('.k'),pick(b.k)); put(d.querySelector('.l'),pick(b.l)); if(b.s) put(d.querySelector('.s'),pick(b.s)); });
+    document.querySelectorAll('[data-lang]').forEach(function(b){ b.setAttribute('aria-pressed',b.dataset.lang===state.lang?'true':'false'); });
+    document.title=state.lang==='gu'?'એક વિચારની વાર્તા · TED, TEDx અને TEDxThaltej Youth':state.lang==='hi'?'एक विचार की कहानी · TED, TEDx और TEDxThaltej Youth':'The Story of an Idea · TED, TEDx and TEDxThaltej Youth';
+  }
+
+  var gate=document.getElementById('gate'), gN=document.getElementById('gN'), gE=document.getElementById('gE');
+  gN.value=state.name;
+  document.querySelectorAll('[data-lang]').forEach(function(b){ b.addEventListener('click',function(){ state.lang=b.dataset.lang; save(); paint(); }); });
+  document.getElementById('gF').addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=gN.value.replace(/\s+/g,' ').trim().slice(0,24);
+    if(!n){ gE.textContent=pick(T.g_e); gN.focus(); return; }
+    gE.textContent=''; state.name=n; save(); paint();
+    gate.classList.add('hide'); document.body.classList.remove('locked');
+    window.scrollTo({top:0,behavior:'auto'});
+  });
+  document.getElementById('ed').addEventListener('click',function(){ gN.value=state.name; gate.classList.remove('hide'); document.body.classList.add('locked'); setTimeout(function(){gN.focus();},50); });
+  document.addEventListener('click',function(e){
+    var s=e.target.closest&&e.target.closest('#shr'), r=e.target.closest&&e.target.closest('#rep');
+    if(r) window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+    if(s){ var url=location.href.split('#')[0]; if(navigator.share){ navigator.share({title:document.title,url:url}).catch(function(){}); } else if(navigator.clipboard){ navigator.clipboard.writeText(url).then(function(){ s.textContent=pick(T.copied); setTimeout(function(){ put(s,pick(T.cta2),true); },1800); }); } }
+  });
+  paint();
+  setTimeout(function(){ gN.focus(); },400);
+
+  var hint=document.getElementById('hint'), bar=document.getElementById('bar');
+  function frame(now){
+    var r=story.getBoundingClientRect(), total=story.offsetHeight-innerHeight;
+    var pr=clamp(-r.top/total,0,1), P=pr*N-0.15;
+    render(P,now);
+    beatEls.forEach(function(d,i){
+      var c=i+0.5, dist=Math.abs(P-c);
+      var o = i===N-1 ? sm((P-(N-1)+0.25)/0.4) : clamp(1-(dist-0.28)/0.2,0,1);
+      if(i===0&&P<0.5) o=1;
+      d.style.opacity=o.toFixed(3);
+      d.style.transform='translateY('+((P<c?1:-1)*(1-o)*24).toFixed(1)+'px)';
+      d.style.visibility=o>0.01?'visible':'hidden';
+    });
+    var cur=Math.floor(clamp(P,0,N-0.01));
+    railBtns.forEach(function(b,i){ var next=railBtns[i+1]?railBtns[i+1].b:99; b.el.classList.toggle('on',cur>=b.b&&cur<next); });
+    hint.style.opacity=pr<0.02?1:0;
+    bar.style.width=(pr*100)+'%';
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

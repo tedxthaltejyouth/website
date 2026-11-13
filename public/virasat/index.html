@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Virasat — The Arts and Culture Space at TEDxThaltej Youth</title>
+<meta name="description" content="Virasat, the Arts and Culture Space at TEDxThaltej Youth, gives our local heritage and art forms a bigger stage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* Brand tokens — TEDxThaltej Youth Brand Guidelines v1.0. Black, white and TED red only. */
+  :root{--red:#EB0028;--black:#101B3D;--white:#FFFFFF;--ease:cubic-bezier(.2,.7,.1,1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--white);color:var(--black);font-family:'Inter',Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6;font-size:18px}
+  a{color:inherit}
+  a:focus-visible{outline:3px solid var(--red);outline-offset:4px;border-radius:2px}
+  .wrap{width:min(1160px,100% - 40px);margin:0 auto}
+  .dark{background:var(--black);color:var(--white)}
+  .light{background:var(--white);color:var(--black)}
+  section{position:relative}
+  .pad{padding:clamp(88px,12vw,150px) 0}
+  .label{display:block;font-size:13px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--red)}
+  h2{font-size:clamp(34px,5vw,64px);font-weight:700;letter-spacing:0;line-height:1.08;margin-top:18px}
+  .rule{width:56px;height:6px;background:var(--red);margin-top:26px}
+  .rv{opacity:0;transform:translateY(36px);transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  .d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}
+
+  /* block-print bands (patterns generated in script) */
+  .band{height:64px;background-repeat:repeat-x;background-size:auto 64px;background-position:center}
+  .band.thin{height:40px;background-size:auto 40px}
+
+  /* ============ 1. HERO: THE DANCE ============ */
+  #hero{height:420vh}
+  #hero .stick{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:24px;padding:40px max(20px,calc((100vw - 1160px)/2)) 40px}
+  .htext{position:relative;z-index:2}
+  .htext h1{font-size:clamp(72px,12vw,176px);font-weight:700;letter-spacing:0;line-height:.95;color:var(--white)}
+  .htext h1 .dot{color:var(--red)}
+  .htext .sub{margin-top:22px;font-size:clamp(19px,2vw,28px);font-weight:400;line-height:1.35;max-width:540px}
+  .htext .rule{margin-top:28px}
+  .forms{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+  .forms span{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:9px 14px;border:2px solid rgba(255,255,255,.35);color:rgba(255,255,255,.55);transition:all .5s var(--ease)}
+  .forms span.on{border-color:var(--white);color:var(--black);background:var(--white)}
+  .logo-zone{margin-top:36px;padding:20px 0}
+  .logo-zone img{display:block;width:240px;max-width:100%;height:auto}
+  .stage{position:relative;height:min(90vh,820px);display:flex;justify-content:center;align-items:center}
+  .stage svg{height:100%;width:auto;max-width:100%;overflow:visible}
+  .hband{position:absolute;left:0;right:0;bottom:0;z-index:3}
+  .cue{position:absolute;right:max(20px,calc((100vw - 1160px)/2));top:30px;font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;display:flex;align-items:center;gap:10px;z-index:4}
+  .cue i{width:8px;height:8px;border-radius:50%;background:var(--red);animation:blink 1.4s infinite}
+  @keyframes blink{50%{opacity:.2}}
+  @media (max-width:860px){
+    #hero .stick{grid-template-columns:1fr;grid-template-rows:auto 1fr;padding:30px 20px 70px;gap:0}
+    .htext h1{font-size:64px}.htext .sub{font-size:17px;margin-top:10px}
+    .htext .rule{display:none}.logo-zone{margin-top:12px;padding:8px 0}.logo-zone img{width:180px}
+    .forms{margin-top:14px;gap:6px}.forms span{font-size:11px;padding:6px 9px}
+    .stage{height:auto;min-height:0}
+    .stage svg{height:auto;width:min(92vw,420px)}
+    .cue{display:none}
+  }
+
+  /* ============ 2. WHAT VIRASAT MEANS ============ */
+  .means .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,7vw,110px);align-items:start;margin-top:clamp(40px,5vw,72px)}
+  .word{border-top:3px solid var(--black);padding-top:28px}
+  .word .w{font-size:clamp(54px,8vw,110px);font-weight:700;line-height:1}
+  .word .pos{margin-top:14px;font-size:18px}
+  .word .pos b{color:var(--red)}
+  .word ol{margin-top:22px;list-style:none;counter-reset:m}
+  .word li{counter-increment:m;display:flex;gap:16px;padding:12px 0;border-top:1px solid var(--black);font-size:20px}
+  .word li:before{content:counter(m);font-size:13px;font-weight:700;color:var(--red);padding-top:5px}
+  .means p.big{font-size:clamp(26px,3.3vw,44px);font-weight:500;line-height:1.28}
+  .means p.big strong{font-weight:700}
+  @media (max-width:800px){.means .grid{grid-template-columns:1fr}}
+
+  /* ============ STAMP WALL (block printing) ============ */
+  .wall{padding:clamp(70px,9vw,120px) 0;overflow:hidden}
+  .wall .head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+  .wall .head p{max-width:460px;font-size:18px}
+  .stamps{margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:0;border:2px solid var(--black)}
+  .stamp{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-right:1px dashed rgba(16,27,61,.18);border-bottom:1px dashed rgba(16,27,61,.18)}
+  .stamp svg{width:78%;height:78%;opacity:0;transform:scale(1.35) rotate(-6deg);filter:blur(1px)}
+  .stamp.pressed svg{animation:press .55s var(--ease) forwards}
+  @keyframes press{0%{opacity:0;transform:scale(1.35) rotate(-6deg);filter:blur(1px)}60%{opacity:1;transform:scale(.94) rotate(0);filter:blur(0)}100%{opacity:1;transform:scale(1) rotate(0);filter:blur(0)}}
+  .blockhand{position:fixed;left:0;top:0;width:86px;height:86px;pointer-events:none;z-index:40;opacity:0;transition:opacity .3s}
+
+  /* ============ 3. WHY VIRASAT EXISTS ============ */
+  .why .statement{margin-top:40px;font-size:clamp(34px,5.4vw,78px);font-weight:700;line-height:1.05;max-width:1080px}
+  .why .statement em{font-style:normal;color:var(--red)}
+  .why .cols{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .why .col{border-top:2px solid var(--white);padding-top:22px}
+  .why .col b{display:block;font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+  .why .col p{margin-top:10px;font-size:clamp(20px,2vw,26px);font-weight:500;line-height:1.35}
+  .why .close{margin-top:clamp(48px,6vw,72px);border-left:8px solid var(--red);padding:4px 0 4px clamp(20px,3vw,40px);font-size:clamp(20px,2.2vw,28px);line-height:1.5;max-width:960px}
+  @media (max-width:800px){.why .cols{grid-template-columns:1fr}}
+
+  /* ============ 4. WHAT WE DO ============ */
+  .do .blocks{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .block{position:relative;border:2px solid var(--black);padding:clamp(30px,4vw,52px);transition:background .4s,color .4s;overflow:hidden}
+  .block .corner{position:absolute;right:-18px;top:-18px;width:120px;height:120px;opacity:.9}
+  .block:hover{background:var(--black);color:var(--white)}
+  .block:hover .s{stroke:var(--white)}
+  .block svg.ic{width:64px;height:64px;display:block}
+  .block .s{stroke:var(--black);transition:stroke .4s}
+  .block h3{margin-top:28px;font-size:clamp(26px,2.6vw,36px);font-weight:700;line-height:1.1}
+  .block p{margin-top:14px;font-size:clamp(18px,1.6vw,21px);line-height:1.6}
+  @media (max-width:780px){.do .blocks{grid-template-columns:1fr}}
+
+  /* ============ 5. OUR STANDARD ============ */
+  .std .list{margin-top:clamp(48px,6vw,80px);border-top:2px solid var(--white)}
+  .std .item{display:grid;grid-template-columns:90px 1fr;gap:24px;align-items:baseline;padding:clamp(28px,4vw,52px) 0;border-bottom:2px solid var(--white)}
+  .std .n{font-size:14px;font-weight:700;letter-spacing:.2em;color:var(--red)}
+  .std .item p{font-size:clamp(38px,6.6vw,96px);font-weight:700;line-height:1.02}
+  .std .item p .never{color:var(--red)}
+  @media (max-width:600px){.std .item{grid-template-columns:1fr;gap:10px}}
+
+  /* ============ 6. OUR JOURNEY ============ */
+  .journey .tl{position:relative;margin-top:clamp(48px,6vw,80px);padding-left:44px}
+  .journey .track{position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:var(--black);opacity:.15}
+  .journey .fill{position:absolute;left:11px;top:8px;width:2px;height:0;background:var(--red)}
+  .entry{position:relative;display:grid;grid-template-columns:220px 1fr;gap:28px;padding:0 0 clamp(40px,5vw,64px)}
+  .entry:last-child{padding-bottom:0}
+  .entry:before{content:"";position:absolute;left:-44px;top:6px;width:24px;height:24px;border-radius:50%;background:var(--white);border:3px solid var(--black);transition:background .5s,border-color .5s}
+  .entry.in:before{background:var(--red);border-color:var(--red)}
+  .entry.upcoming:before{border-style:dashed}
+  .entry .date{font-size:clamp(22px,2.2vw,28px);font-weight:700;line-height:1.2}
+  .entry .edition{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;border:2px solid var(--black);padding:6px 10px}
+  .entry.upcoming .edition{background:var(--black);color:var(--white)}
+  .entry .desc{font-size:clamp(22px,2.6vw,34px);font-weight:500;line-height:1.3}
+  @media (max-width:700px){.entry{grid-template-columns:1fr;gap:8px}}
+
+  /* ============ 7. FOOTER ============ */
+  footer{padding:64px 0 60px}
+  footer .row{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap}
+  footer .name{font-size:24px;font-weight:700}
+  footer .name span{display:block;font-size:16px;font-weight:400;margin-top:4px}
+  footer .contact{font-size:16px}
+  footer .contact a{font-weight:700;text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:4px}
+  footer .lic{margin-top:40px;padding-top:24px;border-top:1px solid var(--white);font-size:16px;font-weight:600}
+
+  @media (prefers-reduced-motion:reduce){
+    .rv{opacity:1;transform:none;transition:none}
+    .stamp svg{opacity:1;transform:none;filter:none;animation:none!important}
+    .cue i{animation:none}
+  }
+</style>
+<script src="/assets/site.js" defer data-hide="body > footer" data-contact="website@tedxthaltejyouth.in"></script>
+</head>
+<body>
+
+<!-- Block-print motifs (used by the stamp wall, bands and corners) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="m-flower" viewBox="0 0 100 100">
+      <g fill="currentColor"><ellipse cx="50" cy="22" rx="10" ry="18"/><ellipse cx="50" cy="78" rx="10" ry="18"/><ellipse cx="22" cy="50" rx="18" ry="10"/><ellipse cx="78" cy="50" rx="18" ry="10"/>
+      <ellipse cx="30" cy="30" rx="9" ry="16" transform="rotate(-45 30 30)"/><ellipse cx="70" cy="70" rx="9" ry="16" transform="rotate(-45 70 70)"/><ellipse cx="70" cy="30" rx="9" ry="16" transform="rotate(45 70 30)"/><ellipse cx="30" cy="70" rx="9" ry="16" transform="rotate(45 30 70)"/></g>
+      <circle cx="50" cy="50" r="13" fill="var(--bg,#fff)"/><circle cx="50" cy="50" r="7" fill="currentColor"/>
+    </symbol>
+    <symbol id="m-buta" viewBox="0 0 100 100">
+      <path d="M48 90 C22 90 12 62 26 44 C38 28 58 34 62 16 C74 40 80 90 48 90 Z" fill="currentColor"/>
+      <path d="M46 78 C32 78 28 62 36 54 C44 46 54 50 56 40 C62 56 62 78 46 78 Z" fill="var(--bg,#fff)"/>
+      <circle cx="46" cy="66" r="6" fill="currentColor"/>
+      <circle cx="76" cy="84" r="4" fill="currentColor"/><circle cx="20" cy="28" r="4" fill="currentColor"/>
+    </symbol>
+    <symbol id="m-star" viewBox="0 0 100 100">
+      <path d="M50 6 L60 34 L88 24 L72 50 L88 76 L60 66 L50 94 L40 66 L12 76 L28 50 L12 24 L40 34 Z" fill="currentColor"/>
+      <circle cx="50" cy="50" r="12" fill="var(--bg,#fff)"/><circle cx="50" cy="50" r="5" fill="currentColor"/>
+    </symbol>
+    <symbol id="m-dots" viewBox="0 0 100 100">
+      <g fill="currentColor"><circle cx="50" cy="50" r="10"/><circle cx="50" cy="18" r="7"/><circle cx="50" cy="82" r="7"/><circle cx="18" cy="50" r="7"/><circle cx="82" cy="50" r="7"/>
+      <path d="M26 26 q10 -2 12 12 q-14 -2 -12 -12Z"/><path d="M74 26 q-10 -2 -12 12 q14 -2 12 -12Z"/><path d="M26 74 q10 2 12 -12 q-14 2 -12 12Z"/><path d="M74 74 q-10 2 -12 -12 q14 2 12 12Z"/></g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ================= 1. HERO: THE DANCE ================= -->
+<section id="hero" class="dark" aria-labelledby="virasat-title">
+  <div class="stick">
+    <div class="htext">
+      <span class="label">The Arts and Culture Space</span>
+      <h1 id="virasat-title">Virasat<span class="dot" aria-hidden="true">.</span></h1>
+      <p class="sub">Virasat, the Arts and Culture Space at TEDxThaltej Youth.</p>
+      <div class="rule"></div>
+      <div class="forms" id="forms" aria-label="Art forms on our stage"><span>Kathak</span><span>Bharatanatyam</span><span>Drumming</span><span>Song</span></div>
+      <!-- Logo: replace src with the hosted URL of the supplied logo-white.png (solid black background only; 240px default width). -->
+      <div class="logo-zone"><img src="/assets/logo-white.png" alt="TEDxThaltej Youth" width="240" onerror="this.parentNode.style.display='none'"></div>
+    </div>
+    <div class="stage" aria-hidden="true"><svg id="rangoli" viewBox="-10 -10 820 820"></svg></div>
+    <div class="cue" aria-hidden="true"><i></i>Scroll to draw the rangoli</div>
+    <div class="band hband" data-band="dark" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ================= 2. WHAT VIRASAT MEANS ================= -->
+<section class="means light pad" aria-labelledby="means-title">
+  <div class="wrap">
+    <span class="label rv">The name</span>
+    <h2 id="means-title" class="rv d1">What Virasat Means</h2>
+    <div class="rule rv d1"></div>
+    <div class="grid">
+      <div class="word rv">
+        <div class="w">Virasat</div>
+        <div class="pos"><b>noun</b> · a common word across Indian languages</div>
+        <ol><li>Heritage.</li><li>Legacy — something kept, and carried forward.</li></ol>
+      </div>
+      <p class="big rv d1">Virasat means heritage — something kept, and carried forward. <strong>This is where TEDxThaltej Youth shares its cultural heritage with the world, alongside its ideas.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STAMP WALL ================= -->
+<section class="wall light" aria-labelledby="wall-title">
+  <div class="band thin" data-band="light" aria-hidden="true"></div>
+  <div class="wrap" style="padding-top:clamp(56px,7vw,90px)">
+    <div class="head">
+      <div>
+        <span class="label rv">Pressed by hand</span>
+        <h2 id="wall-title" class="rv d1">Heritage, block by block</h2>
+      </div>
+      <p class="rv d2">Like a block print, heritage is made one careful impression at a time — pressed, repeated and carried forward until it becomes a pattern a whole community recognises.</p>
+    </div>
+    <div class="stamps" id="stamps" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ================= 3. WHY VIRASAT EXISTS ================= -->
+<section class="why dark pad" aria-labelledby="why-title">
+  <div class="wrap">
+    <span class="label rv">Our purpose</span>
+    <h2 id="why-title" class="rv d1">Why Virasat Exists</h2>
+    <p class="statement rv d2">To give our local heritage and art forms <em>a bigger stage.</em></p>
+    <div class="cols">
+      <div class="col rv"><b>What we think</b><p>TEDxThaltej Youth was built around ideas worth spreading.</p></div>
+      <div class="col rv d1"><b>What we keep</b><p>But a community is not only what it thinks. It is also what it keeps, what it celebrates and what it passes on.</p></div>
+      <div class="col rv d2"><b>What we share</b><p>Our cultural heritage is among the richest things we have to offer.</p></div>
+    </div>
+    <p class="close rv">Virasat exists to share that heritage with the world, alongside our ideas: a dedicated space with its own team and its own standard, so that the art forms of our community are not an afterthought between talks, but a full part of the stage.</p>
+  </div>
+</section>
+
+<!-- ================= 4. WHAT WE DO ================= -->
+<section class="do light pad" aria-labelledby="do-title">
+  <div class="band thin" data-band="light" aria-hidden="true" style="position:absolute;left:0;right:0;top:0"></div>
+  <div class="wrap">
+    <span class="label rv">Two kinds of work</span>
+    <h2 id="do-title" class="rv d1">What We Do</h2>
+    <div class="rule rv d1"></div>
+    <div class="blocks">
+      <article class="block rv">
+        <svg class="corner" style="color:#EB0028" aria-hidden="true"><use href="#m-flower"/></svg>
+        <svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><path class="s" d="M6 58 V26 C6 14 18 6 32 4 C46 6 58 14 58 26 V58" fill="none" stroke-width="3"/><path class="s" d="M2 58 H62" fill="none" stroke-width="3"/><circle cx="32" cy="34" r="6" fill="#EB0028"/></svg>
+        <h3>On the stage</h3>
+        <p>Performances take their place in the middle of our events. The best performers we can find, with music that is entirely their own.</p>
+      </article>
+      <article class="block rv d1">
+        <svg class="corner" style="color:#EB0028" aria-hidden="true"><use href="#m-buta"/></svg>
+        <svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><circle class="s" cx="22" cy="32" r="14" fill="none" stroke-width="3"/><circle class="s" cx="42" cy="32" r="14" fill="none" stroke-width="3"/><circle cx="32" cy="32" r="5" fill="#EB0028"/></svg>
+        <h3>Beyond the stage</h3>
+        <p>Culture is also the bonds we build — with our speakers, and within our own team. Virasat brings the team together, not only the audience.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. OUR STANDARD ================= -->
+<section class="std dark pad" aria-labelledby="std-title">
+  <div class="wrap">
+    <span class="label rv">No exceptions</span>
+    <h2 id="std-title" class="rv d1">Our Standard</h2>
+    <div class="list">
+      <div class="item rv"><span class="n">01</span><p>The best performers.</p></div>
+      <div class="item rv d1"><span class="n">02</span><p>Original music, made from scratch. <span class="never">Never AI.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6. OUR JOURNEY ================= -->
+<section class="journey light pad" aria-labelledby="journey-title">
+  <div class="band thin" data-band="light" aria-hidden="true" style="position:absolute;left:0;right:0;top:0"></div>
+  <div class="wrap">
+    <span class="label rv">Since the first edition</span>
+    <h2 id="journey-title" class="rv d1">Our Journey</h2>
+    <div class="rule rv d1"></div>
+    <div class="tl" id="timeline">
+      <div class="track"></div><div class="fill" id="tlFill"></div>
+
+      <!-- TIMELINE ENTRY — to add a new edition, copy one <article class="entry"> block and edit its three lines.
+           For a future edition, add class "upcoming". -->
+      <article class="entry">
+        <div><div class="date">15 June 2025</div><span class="edition">First edition</span></div>
+        <p class="desc">Bharatanatyam, a drumming session, and a soulful singing performance.</p>
+      </article>
+
+      <article class="entry">
+        <div><div class="date">25 June 2026</div><span class="edition">Second edition</span></div>
+        <p class="desc">Kathak and Bharatanatyam.</p>
+      </article>
+
+      <article class="entry upcoming">
+        <div><div class="date">26 June 2027</div><span class="edition">Next edition</span></div>
+        <p class="desc">Programme to be announced.</p>
+      </article>
+      <!-- END TIMELINE ENTRIES -->
+    </div>
+  </div>
+</section>
+
+<!-- ================= 7. FOOTER ================= -->
+<footer class="dark">
+  <div class="band" data-band="dark" aria-hidden="true" style="margin:-64px 0 56px"></div>
+  <div class="wrap">
+    <div class="row">
+      <div class="name">TEDxThaltej Youth<span>Virasat, the Arts and Culture Space at TEDxThaltej Youth</span></div>
+      <p class="contact">Questions about this page: <a href="mailto:website@tedxthaltejyouth.in">website@tedxthaltejyouth.in</a></p>
+    </div>
+    <p class="lic">This independent TEDx event is operated under license from TED.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS='http://www.w3.org/2000/svg';
+  function el(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+  function clamp(v,a,b){return v<a?a:v>b?b:v;}
+  function rng(seed){return function(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646;};}
+
+  /* ================= BLOCK-PRINT BANDS ================= */
+  function bandSVG(dark){
+    var fg = dark ? '#FFFFFF' : '#000000', bg = dark ? '#000000' : '#FFFFFF', red='#EB0028';
+    var flower='<g fill="'+red+'"><ellipse cx="40" cy="22" rx="6" ry="11"/><ellipse cx="40" cy="58" rx="6" ry="11"/><ellipse cx="22" cy="40" rx="11" ry="6"/><ellipse cx="58" cy="40" rx="11" ry="6"/></g><circle cx="40" cy="40" r="8" fill="'+bg+'"/><circle cx="40" cy="40" r="4" fill="'+red+'"/>';
+    var buta='<path d="M118 62 C100 62 94 44 104 32 C112 22 126 26 128 14 C136 30 140 62 118 62 Z" fill="'+fg+'"/><path d="M117 54 C108 54 106 44 111 39 C116 34 122 36 123 30 C127 40 127 54 117 54 Z" fill="'+bg+'"/><circle cx="117" cy="46" r="3.4" fill="'+red+'"/>';
+    var dots='<circle cx="80" cy="10" r="3" fill="'+fg+'"/><circle cx="80" cy="70" r="3" fill="'+fg+'"/><circle cx="160" cy="10" r="3" fill="'+fg+'"/><circle cx="160" cy="70" r="3" fill="'+fg+'"/>';
+    var edge='<path d="M0 3 H160 M0 77 H160" stroke="'+fg+'" stroke-width="2"/><path d="M0 8 H160 M0 72 H160" stroke="'+fg+'" stroke-width="1" stroke-dasharray="2 4"/>';
+    return 'url("data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="160" height="80" viewBox="0 0 160 80"><rect width="160" height="80" fill="'+bg+'"/>'+edge+flower+buta+dots+'</svg>')+'")';
+  }
+  var bDark=bandSVG(true), bLight=bandSVG(false);
+  document.querySelectorAll('[data-band]').forEach(function(b){ b.style.backgroundImage = b.getAttribute('data-band')==='dark'?bDark:bLight; });
+
+  /* ================= THE RANGOLI (hero) ================= */
+  var svg=document.getElementById('rangoli'), C=400;
+  var R_=rng(3);
+  var root=el('g',{transform:'translate('+C+' '+C+')'},svg);
+  var W='#FFFFFF', RED='#EB0028', BLK='#000000';
+
+  function petal(len,w,fill,stroke,sw){ return '<path d="M0 0 C'+w+' '+(-len*0.3)+' '+(w*0.85)+' '+(-len*0.78)+' 0 '+(-len)+' C'+(-w*0.85)+' '+(-len*0.78)+' '+(-w)+' '+(-len*0.3)+' 0 0 Z" fill="'+fill+'"'+(stroke?' stroke="'+stroke+'" stroke-width="'+(sw||1.5)+'"':'')+'/>'; }
+  function leaf(len,w,fill,stroke){ return '<path d="M0 0 Q'+w+' '+(-len*0.5)+' 0 '+(-len)+' Q'+(-w)+' '+(-len*0.5)+' 0 0 Z" fill="'+fill+'"'+(stroke?' stroke="'+stroke+'" stroke-width="1.6"':'')+'/><path d="M0 -4 V'+(-len+6)+'" stroke="'+(fill===W?BLK:W)+'" stroke-width="1.2" opacity=".6"/>'; }
+  function buta(fill,inner){ return '<g transform="translate(-26 -70) scale(.56)"><path d="M48 90 C22 90 12 62 26 44 C38 28 58 34 62 16 C74 40 80 90 48 90 Z" fill="'+fill+'"/><path d="M46 78 C32 78 28 62 36 54 C44 46 54 50 56 40 C62 56 62 78 46 78 Z" fill="'+inner+'"/><circle cx="46" cy="66" r="6" fill="'+fill+'"/></g>'; }
+  function diya(){ return '<path d="M-20 -8 Q0 16 20 -8 Z" fill="'+W+'"/><path d="M-22 -9 H22" stroke="'+W+'" stroke-width="3" stroke-linecap="round"/><path d="M0 -12 C8 -20 6 -32 0 -42 C-6 -32 -8 -20 0 -12 Z" fill="'+RED+'"/><path d="M0 -16 C3 -21 2 -27 0 -32 C-2 -27 -3 -21 0 -16 Z" fill="'+W+'"/>'; }
+  function arch(w,h,stroke){ return '<path d="M'+(-w/2)+' 0 V'+(-h*0.45)+' C'+(-w/2)+' '+(-h*0.8)+' '+(-w*0.2)+' '+(-h*0.92)+' 0 '+(-h)+' C'+(w*0.2)+' '+(-h*0.92)+' '+(w/2)+' '+(-h*0.8)+' '+(w/2)+' '+(-h*0.45)+' V0" fill="none" stroke="'+stroke+'" stroke-width="2.2"/>'; }
+  function dot(r,fill){ return '<circle cx="0" cy="0" r="'+r+'" fill="'+fill+'"/>'; }
+
+  // Each ring: n motifs placed at radius r; they fly in from further out and merge into place as you scroll.
+  var rings=[], order=0;
+  function ring(n, r, html, start, spin, fly, phase){
+    var g=el('g',{},root), items=[];
+    for (var i=0;i<n;i++){
+      var a=(i/n)*360+(phase||0);
+      var it=el('g',{},g); it.innerHTML=typeof html==='function'?html(i):html;
+      items.push({el:it,a:a,d:(fly||140)*(0.7+R_()*0.6),tw:(R_()-.5)*80});
+    }
+    rings.push({g:g,items:items,r:r,start:start,spin:spin});
+  }
+  function circleRing(r,stroke,sw,dash,start){
+    var g=el('g',{},root); g.innerHTML='<circle r="'+r+'" fill="none" stroke="'+stroke+'" stroke-width="'+sw+'"'+(dash?' stroke-dasharray="'+dash+'"':'')+' pathLength="1000"/>';
+    rings.push({g:g,circle:g.firstChild,start:start,spin:0,isCircle:true,dashed:!!dash});
+  }
+
+  // --- the design, from the centre outwards ---
+  ring(8, 0, petal(62,24,RED), 0.00, 0.10, 60);
+  ring(8, 0, petal(40,14,W), 0.02, 0.10, 60, 22.5);
+  ring(1, 0, dot(16,W)+dot(9,RED)+dot(4,W), 0.00, 0, 0);
+  circleRing(78, W, 2, null, 0.06);
+  ring(16, 84, petal(58,17,W,RED,1.6), 0.08, -0.16, 160);
+  ring(16, 84, dot(4,RED), 0.12, -0.16, 120, 11.25);
+  circleRing(150, W, 1.4, '4 8', 0.16);
+  ring(8, 160, function(i){ return buta(i%2?RED:W, BLK); }, 0.20, 0.22, 200, 22.5);
+  ring(8, 156, leaf(76,22,RED), 0.24, 0.22, 200);
+  ring(24, 236, dot(4.5,W), 0.30, -0.12, 160);
+  circleRing(250, RED, 3, null, 0.34);
+  ring(32, 256, function(i){ return petal(34,10,i%2?W:RED); }, 0.38, 0.14, 180);
+  ring(8, 296, diya(), 0.46, -0.2, 240, 22.5);
+  ring(24, 300, arch(38,50,W), 0.52, -0.2, 220, 7.5);
+  circleRing(352, W, 1.4, null, 0.58);
+  ring(48, 360, function(i){ return i%3===0?dot(5,RED):dot(3,W); }, 0.62, 0.08, 150);
+  ring(16, 372, petal(22,9,W), 0.68, 0.08, 150, 11.25);
+  circleRing(390, W, 1, '2 6', 0.72);
+
+  function e3(t){ return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2; }
+  var hero=document.getElementById('hero'), forms=[].slice.call(document.querySelectorAll('#forms span'));
+  function heroP(){ var r=hero.getBoundingClientRect(), total=hero.offsetHeight-innerHeight; return clamp(-r.top/total,0,1); }
+
+  function frame(now){
+    var p = reduce ? 1 : heroP();
+    var idle = reduce ? 0 : now*0.004;
+    rings.forEach(function(rg){
+      var t=e3(clamp((p*1.1 + 0.2 - rg.start)/0.22,0,1));
+      if (rg.isCircle){
+        if (rg.dashed){ rg.g.setAttribute('opacity',t.toFixed(3)); rg.g.setAttribute('transform','scale('+(1.25-0.25*t).toFixed(3)+')'); }
+        else { rg.circle.setAttribute('stroke-dasharray',(t*1000).toFixed(1)+' 1000'); rg.g.setAttribute('transform','rotate(-90)'); }
+        return;
+      }
+      var rot = rg.spin*(p*360 + idle);
+      rg.g.setAttribute('transform','rotate('+rot.toFixed(2)+')');
+      rg.items.forEach(function(it){
+        var d=(1-t)*it.d, tw=(1-t)*it.tw;
+        it.el.setAttribute('transform','rotate('+(it.a+tw).toFixed(2)+') translate(0 '+(-(rg.r+d)).toFixed(1)+')');
+        it.el.setAttribute('opacity',t.toFixed(3));
+      });
+    });
+    // gentle breathing once complete
+    var done=clamp((p-0.85)/0.15,0,1);
+    root.setAttribute('transform','translate('+C+' '+C+') scale('+(1+done*0.02*Math.sin(now*0.002)).toFixed(4)+')');
+    var idx = Math.min(3, Math.floor(p*4.2));
+    forms.forEach(function(f,i){ f.classList.toggle('on', i===idx && p>0.02 && !reduce); });
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* ================= STAMP WALL ================= */
+  var stamps=document.getElementById('stamps'), MOT=['m-flower','m-buta','m-star','m-dots'], RS=rng(7);
+  function buildStamps(){
+    stamps.innerHTML='';
+    var cols=Math.max(3,Math.floor(stamps.clientWidth/96)), n=cols*3;
+    for (var i=0;i<n;i++){
+      var d=document.createElement('div'); d.className='stamp';
+      var red = (i*7)%5===0 || (i%cols)%3===1;
+      d.innerHTML='<svg style="color:'+(red?'#EB0028':'#000000')+'"><use href="#'+MOT[(i+Math.floor(i/cols))%MOT.length]+'"/></svg>';
+      stamps.appendChild(d);
+    }
+    order=[].slice.call(stamps.children).map(function(e,i){return {e:e,r:RS()};}).sort(function(a,b){return a.r-b.r;});
+  }
+  var order=[]; buildStamps();
+  function stampUpdate(){
+    var r=stamps.getBoundingClientRect(), vh=innerHeight;
+    var t=clamp((vh*0.95 - r.top)/(r.height+vh*0.35),0,1);
+    var n=Math.round(t*order.length*1.15);
+    order.forEach(function(o,i){ if(i<n) o.e.classList.add('pressed'); });
+  }
+  if (reduce) order.forEach(function(o){o.e.classList.add('pressed');});
+  else { addEventListener('scroll',stampUpdate,{passive:true}); stampUpdate(); }
+  var rsT; addEventListener('resize',function(){ clearTimeout(rsT); rsT=setTimeout(function(){ buildStamps(); stampUpdate(); },200); });
+
+  /* ================= REVEALS ================= */
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.2,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv, .entry').forEach(function(x){io.observe(x);});
+  if (reduce) document.querySelectorAll('.entry').forEach(function(x){x.classList.add('in');});
+
+  /* ================= JOURNEY LINE ================= */
+  var tl=document.getElementById('timeline'), fill=document.getElementById('tlFill');
+  function tlUpdate(){ var r=tl.getBoundingClientRect(), vh=innerHeight; var t=clamp((vh*0.7-r.top)/r.height,0,1); fill.style.height=(t*(r.height-16))+'px'; }
+  if (reduce) fill.style.height='calc(100% - 16px)'; else { addEventListener('scroll',tlUpdate,{passive:true}); addEventListener('resize',tlUpdate); tlUpdate(); }
+})();
+</script>
+</body>
+</html>
