@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /portal/
-Disallow: /speaker/
-
-Sitemap: https://tedxthaltejyouth.in/sitemap.xml
