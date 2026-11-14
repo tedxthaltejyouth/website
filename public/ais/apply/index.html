@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steward Desk — Ahmedabad Idea Search</title>
+<meta name="description" content="Become an Idea Steward of Ahmedabad Idea Search and point us to ideas growing in your community. AIS is a pathway, not a gate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Gujarati:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#EB0028; --ink:#15120F; --sand:#F6ECDA; --stone:#E6CC9C; --stone-d:#C79E62; --stone-dd:#8C6A3C;
+    --indigo:#1B2150; --indigo-d:#0F1336; --marigold:#F5A524; --terra:#B4452A; --teal:#0E7F82; --pink:#D93B74; --leaf:#2F7D4F;
+    --field:#FBF6EC; --line:#E8D8B8; --ease:cubic-bezier(.2,.7,.1,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',Helvetica,Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden;
+    background-color:var(--sand);background-image:radial-gradient(circle at 50% 50%,rgba(180,69,42,.13) 1.5px,transparent 2px);background-size:24px 24px}
+  a{color:inherit}
+  button{font:inherit}
+  [hidden]{display:none!important}
+  .gu{font-family:'Noto Sans Gujarati','Inter',sans-serif}
+  .hi{font-family:'Noto Sans Devanagari','Inter',sans-serif}
+  .wrap{width:min(1080px,100% - 32px);margin:0 auto}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--red)}
+  .eyebrow:before{content:"";width:9px;height:9px;background:currentColor;transform:rotate(45deg)}
+  h2.big{margin-top:16px;font-size:clamp(32px,4.6vw,62px);font-weight:900;letter-spacing:-.045em;line-height:1;color:var(--indigo)}
+  h2.big em{font-style:normal;color:var(--red)}
+  .lead{margin-top:18px;font-size:clamp(16px,1.4vw,19px);line-height:1.65;color:#5a4630;max-width:760px}
+  section.block{margin-top:clamp(64px,8vw,110px)}
+
+  .toran{height:46px}
+  .toran svg{width:100%;height:100%;display:block}
+
+  /* HERO */
+  .hero{color:#fff;padding-bottom:clamp(56px,8vw,100px);
+    background-color:var(--indigo);background-image:radial-gradient(circle at 50% 50%,rgba(245,165,36,.22) 1.6px,transparent 2.2px),radial-gradient(circle at 50% 50%,rgba(235,0,40,.2) 1.6px,transparent 2.2px);background-size:26px 26px,26px 26px;background-position:0 0,13px 13px}
+  .bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0}
+  .brand b{display:block;font-size:16px;font-weight:900;letter-spacing:-.015em}
+  .brand span{display:block;font-size:12px;color:#c9cbe4;font-weight:500}
+  .bar a{font-size:13px;font-weight:700;color:var(--marigold);text-decoration:none;white-space:nowrap}
+  .hero .eyebrow{color:var(--marigold);margin-top:clamp(36px,6vw,64px)}
+  .hero h1{margin-top:18px;font-size:clamp(40px,6.4vw,88px);font-weight:900;letter-spacing:-.05em;line-height:.95;max-width:920px}
+  .hero h1 em{font-style:normal;color:var(--marigold)}
+  .hero p.sub{margin-top:22px;font-size:clamp(17px,1.6vw,21px);line-height:1.6;color:#d8d9ea;max-width:740px}
+  .hero .ctas{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+  .hero .pg{margin-top:26px;display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,.08);border:2px solid rgba(245,165,36,.5);border-radius:999px;padding:9px 18px 9px 10px;font-size:14px;font-weight:700}
+  .hero .pg i{font-style:normal;background:var(--marigold);color:var(--ink);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:900}
+
+  /* BUTTONS */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:14px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border:0;cursor:pointer;padding:16px 26px;border-radius:999px;text-decoration:none;transition:transform .3s,background .3s,color .3s,opacity .3s}
+  .btn.red{background:var(--red);color:#fff;box-shadow:0 10px 24px -10px rgba(235,0,40,.7)}
+  .btn.red:hover{transform:translateY(-2px);background:var(--indigo)}
+  .hero .btn.red:hover{background:var(--marigold);color:var(--ink)}
+  .btn.light{background:#fff;color:var(--indigo)}
+  .btn.light:hover{transform:translateY(-2px);background:var(--marigold)}
+  .btn.ghost{background:transparent;color:var(--indigo);border:2px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--indigo)}
+  .btn.full{width:100%}
+  .btn[disabled]{opacity:.55;pointer-events:none}
+  .link{background:none;border:0;padding:0;color:var(--indigo);font-weight:700;font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+  .link:hover{color:var(--red)}
+
+  /* PATHWAY NOT GATE */
+  .gate .cards{margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:stretch}
+  .gate .c{border-radius:24px;padding:28px 28px 30px;color:#fff}
+  .gate .c.ais{background:var(--teal)}
+  .gate .c.tedx{background:var(--ink)}
+  .gate .c .k{font-size:11px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:var(--marigold)}
+  .gate .c h3{margin-top:10px;font-size:clamp(22px,2.4vw,30px);font-weight:900;letter-spacing:-.03em;line-height:1.1}
+  .gate .c p{margin-top:10px;font-size:15px;line-height:1.6;opacity:.92}
+  .gate .c ul{margin-top:14px;list-style:none;display:grid;gap:8px;font-size:15px}
+  .gate .c li{display:flex;gap:10px;align-items:flex-start}
+  .gate .c li:before{content:"";flex:none;width:8px;height:8px;margin-top:8px;background:var(--marigold);transform:rotate(45deg)}
+  .gate .bridge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:0 6px;text-align:center;max-width:170px}
+  .gate .bridge svg{width:120px;height:auto}
+  .gate .bridge b{font-size:13px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+  .gate .bridge span{font-size:13px;color:#6b5438;line-height:1.45}
+  .gate .means{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .gate .m{background:#fff;border-radius:24px;padding:26px 28px;box-shadow:0 20px 40px -30px rgba(90,60,20,.6)}
+  .gate .m h4{font-size:18px;font-weight:900;letter-spacing:-.02em;color:var(--indigo)}
+  .gate .m ul{margin-top:14px;list-style:none;display:grid;gap:10px}
+  .gate .m li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:#3b2d1d;line-height:1.5}
+  .gate .m li i{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:900;font-size:13px;color:#fff;margin-top:1px}
+  .gate .m.yes li i{background:var(--leaf)}
+  .gate .m.no li i{background:var(--red)}
+  .gate .quote{margin-top:18px;background:var(--marigold);border-radius:24px;padding:26px 30px;font-size:clamp(20px,2.4vw,30px);font-weight:900;letter-spacing:-.03em;line-height:1.2;color:var(--ink)}
+  .gate .quote em{font-style:normal;background:var(--red);color:#fff;padding:0 .18em;border-radius:.12em}
+  @media (max-width:860px){.gate .cards{grid-template-columns:1fr}.gate .bridge{max-width:none;flex-direction:row;padding:4px 0}.gate .bridge svg{width:70px;transform:rotate(90deg)}.gate .means{grid-template-columns:1fr}}
+
+  /* PRINCIPLES + HOW */
+  .princ{margin-top:clamp(28px,4vw,44px);display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .pc{background:#fff;border-radius:22px;padding:24px 24px 26px;box-shadow:0 20px 40px -28px rgba(90,60,20,.55);border-top:8px solid var(--c)}
+  .pc .k{font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--c)}
+  .pc h3{margin-top:8px;font-size:20px;font-weight:900;letter-spacing:-.025em;line-height:1.15;color:var(--indigo)}
+  .pc p{margin-top:8px;font-size:15px;color:#5a4630;line-height:1.55}
+  .how{margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .how>div{display:flex;gap:14px;align-items:flex-start;background:var(--indigo);color:#fff;border-radius:20px;padding:20px 22px}
+  .how b{flex:none;width:34px;height:34px;border-radius:50%;background:var(--marigold);color:var(--ink);display:grid;place-items:center;font-weight:900}
+  .how h4{font-size:17px;font-weight:900;letter-spacing:-.02em}
+  .how p{margin-top:4px;font-size:14px;color:#c9cbe4;line-height:1.5}
+  @media (max-width:820px){.princ,.how{grid-template-columns:1fr}}
+
+  /* DESK */
+  .desk{margin-top:clamp(56px,7vw,90px);background:#fff;border-radius:28px;box-shadow:0 30px 60px -36px rgba(27,33,80,.55);overflow:hidden;scroll-margin-top:16px}
+  .pad{padding:clamp(26px,4vw,52px)}
+  .desk h2{font-size:clamp(26px,3.2vw,40px);font-weight:900;letter-spacing:-.04em;line-height:1.05;color:var(--indigo)}
+  .desk h2 em{font-style:normal;color:var(--red)}
+  .desk .intro{margin-top:10px;color:#5a4630;font-size:16px;max-width:680px}
+
+  .tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--indigo)}
+  .tabs button{border:0;background:none;color:rgba(255,255,255,.6);padding:20px 16px;font-size:15px;font-weight:800;cursor:pointer;border-bottom:4px solid transparent;transition:color .3s,background .3s,border-color .3s}
+  .tabs button.on{color:#fff;background:rgba(255,255,255,.07);border-bottom-color:var(--marigold)}
+  .auth-grid{display:grid;grid-template-columns:1.15fr .85fr}
+  .auth-side{background:var(--field);padding:clamp(26px,4vw,48px);border-left:2px dashed var(--line)}
+  .auth-side h4{font-size:17px;font-weight:900;color:var(--indigo);letter-spacing:-.02em}
+  .auth-side ul{margin-top:14px;list-style:none;display:grid;gap:12px}
+  .auth-side li{display:flex;gap:12px;font-size:14px;color:#3b2d1d;line-height:1.5}
+  .auth-side li:before{content:"";flex:none;width:8px;height:8px;margin-top:7px;background:var(--red);transform:rotate(45deg)}
+  @media (max-width:860px){.auth-grid{grid-template-columns:1fr}.auth-side{border-left:0;border-top:2px dashed var(--line)}}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px;margin-top:26px}
+  .full{grid-column:1/-1}
+  @media (max-width:640px){.grid2{grid-template-columns:1fr}}
+  .f{display:block;font-size:14px;font-weight:800;color:var(--indigo);margin-bottom:8px}
+  .f small{font-weight:500;color:var(--stone-dd)}
+  input[type=text],input[type=email],input[type=tel],input[type=password],textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--field);border:2px solid var(--line);border-radius:14px;padding:13px 15px;transition:border-color .2s,background .2s}
+  textarea{min-height:150px;resize:vertical;line-height:1.55}
+  input:focus,textarea:focus{outline:none;border-color:var(--indigo);background:#fff}
+  .pw{position:relative}
+  .pw input{padding-right:70px}
+  .pw button{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:#fff;color:var(--indigo);font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border-radius:999px;cursor:pointer}
+  .rules{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+  .rules span{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:#F1E6D1;color:var(--stone-dd);transition:all .2s}
+  .rules span.ok{background:#DDEFE5;color:var(--leaf)}
+  .otp{font-size:30px!important;font-weight:900;letter-spacing:.5em;text-align:center;font-family:Menlo,Consolas,monospace!important}
+  .row-links{margin-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+
+  .checks{margin-top:24px;display:grid;gap:10px}
+  .checks label{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:#3b2d1d;line-height:1.5;cursor:pointer;background:var(--field);padding:13px 15px;border-radius:14px;border:2px solid transparent}
+  .checks label:has(input:checked){border-color:#9FD1B8;background:#EEF7F2}
+  .checks input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--leaf)}
+
+  .err,.msg{display:none;margin-top:18px;border-radius:14px;padding:13px 16px;font-size:15px;font-weight:600}
+  .err{background:#FDE8EC;color:#8a0019}
+  .msg{background:#E8F4EF;color:#1f5a3a}
+  .err.on,.msg.on{display:block}
+  .demo{margin-top:18px;font-size:13px;background:#FFF4D6;border:1px dashed var(--marigold);padding:10px 14px;border-radius:12px;color:#6b4a0a}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  /* SIGNED-IN */
+  .sbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--indigo);color:#fff;padding:18px clamp(20px,3vw,32px)}
+  .who{display:flex;align-items:center;gap:14px}
+  .who .av{width:46px;height:46px;border-radius:50%;background:var(--marigold);color:var(--ink);display:grid;place-items:center;font-size:20px;font-weight:900;flex:none}
+  .who b{display:block;font-size:17px;font-weight:900;letter-spacing:-.015em}
+  .who span{display:block;font-size:13px;color:#c9cbe4}
+  .sact{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .timer{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;background:rgba(255,255,255,.1);padding:9px 14px;border-radius:999px;font-variant-numeric:tabular-nums}
+  .timer i{width:8px;height:8px;border-radius:50%;background:#6FD39B}
+  .timer.low{background:var(--red)}
+  .timer.low i{background:#fff;animation:blink 1s infinite}
+  @keyframes blink{50%{opacity:.2}}
+  .sbtn{border:2px solid rgba(255,255,255,.3);background:none;color:#fff;font-size:13px;font-weight:800;padding:8px 14px;border-radius:999px;cursor:pointer}
+  .sbtn:hover{border-color:var(--marigold);color:var(--marigold)}
+
+  .pwpanel{background:var(--field);border-bottom:2px dashed var(--line)}
+  .quota{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px;font-size:14px;font-weight:700;color:var(--indigo)}
+  .dots{display:flex;gap:6px}
+  .dots i{width:14px;height:14px;transform:rotate(45deg);border:2px solid var(--marigold);display:block}
+  .dots i.used{background:var(--marigold)}
+
+  .steps{display:grid;grid-template-columns:1fr 1fr;margin-top:28px;border-radius:16px;overflow:hidden;background:var(--field)}
+  .steps div{padding:14px 16px;display:flex;align-items:center;gap:12px;color:var(--stone-dd);font-size:14px;font-weight:800}
+  .steps div b{width:28px;height:28px;flex:none;display:grid;place-items:center;border-radius:50%;border:2px solid currentColor;font-size:13px}
+  .steps div.on{color:var(--indigo);background:#F1E6D1}
+  .steps div.on b{background:var(--marigold);border-color:var(--marigold);color:var(--ink)}
+  .steps div.done{color:var(--leaf)}
+  .stage{display:none}
+  .stage.on{display:block;animation:rise .5s var(--ease)}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  .pills{display:flex;flex-wrap:wrap;gap:8px}
+  .pills label{cursor:pointer}
+  .pills input{position:absolute;opacity:0;pointer-events:none}
+  .pills span{display:inline-block;padding:9px 15px;border-radius:999px;border:2px solid var(--line);background:var(--field);font-size:14px;font-weight:700;color:var(--indigo);transition:all .2s}
+  .pills input:checked + span{background:var(--indigo);border-color:var(--indigo);color:#fff}
+  .pills input:focus-visible + span{outline:3px solid var(--marigold);outline-offset:2px}
+
+  .q{margin-top:26px;padding:24px 24px 22px;border-radius:20px;background:var(--field);border-left:8px solid var(--c)}
+  .q .qh{display:flex;gap:14px;align-items:flex-start}
+  .q .n{width:40px;height:40px;flex:none;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font-weight:900}
+  .q .tag{font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--c)}
+  .q h3{margin-top:4px;font-size:clamp(19px,2vw,24px);font-weight:900;letter-spacing:-.025em;line-height:1.2;color:var(--indigo)}
+  .q .tr{margin-top:6px;font-size:14px;color:#6b5438;line-height:1.6}
+  .q .help{margin:14px 0 12px;font-size:15px;color:#5a4630}
+  .q textarea{background:#fff}
+  .q .wc{margin-top:6px;font-size:13px;color:var(--stone-dd);text-align:right}
+  .q .wc.ok{color:var(--leaf)}
+  .actions{margin-top:30px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+
+  .done{text-align:center;padding:10px 0}
+  .seal{width:84px;height:84px;margin:0 auto;transform:rotate(45deg);background:var(--marigold);border-radius:18px;display:grid;place-items:center}
+  .seal b{transform:rotate(-45deg);font-size:34px}
+  .done h2{margin-top:28px}
+  .refpill{margin-top:16px;display:inline-block;font-size:clamp(22px,3vw,32px);font-weight:900;background:var(--indigo);color:#fff;padding:10px 22px;border-radius:999px}
+  .nextl{margin:30px auto 0;max-width:680px;text-align:left;display:grid;gap:10px}
+  .nextl div{display:flex;gap:14px;align-items:flex-start;background:var(--field);border-radius:16px;padding:15px 18px;font-size:15px;color:#3b2d1d}
+  .nextl b{flex:none;width:28px;height:28px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font-size:13px}
+  .full-quota{margin-top:26px;background:var(--field);border-radius:20px;padding:26px;text-align:center;color:#3b2d1d}
+  .full-quota b{display:block;font-size:22px;font-weight:900;color:var(--indigo);letter-spacing:-.02em}
+
+  .mine{border-top:2px dashed var(--line)}
+  .mine h3{font-size:22px;font-weight:900;letter-spacing:-.025em;color:var(--indigo)}
+  .reflist{margin-top:16px;display:grid;gap:10px}
+  .ri{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:var(--field);border-radius:16px;padding:14px 18px}
+  .ri code{font-family:Menlo,Consolas,monospace;font-size:13px;font-weight:700;color:var(--indigo)}
+  .ri b{display:block;font-size:15px;color:var(--ink)}
+  .ri small{font-size:13px;color:var(--stone-dd)}
+  .ri span{font-size:12px;font-weight:800;padding:6px 11px;border-radius:999px;background:#fff;color:var(--teal);white-space:nowrap}
+  .empty{margin-top:14px;font-size:15px;color:var(--stone-dd)}
+  @media (max-width:560px){.ri{grid-template-columns:1fr}}
+
+  .aside{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .aside div{border-radius:22px;padding:24px 26px;color:#fff}
+  .aside div:first-child{background:var(--terra)}
+  .aside div:last-child{background:var(--pink)}
+  .aside h4{font-size:19px;font-weight:900;letter-spacing:-.02em}
+  .aside p{margin-top:8px;font-size:15px;line-height:1.55;opacity:.95}
+  .aside a{font-weight:800;color:#FFE7A8}
+  @media (max-width:760px){.aside{grid-template-columns:1fr}}
+
+  footer{margin-top:clamp(60px,8vw,100px);background:var(--indigo-d);color:#fff;padding:44px 0 48px}
+  footer .row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:14px;color:#c9cbe4}
+  footer b{color:#fff;font-size:17px}
+  footer a{text-decoration:none}footer a:hover{color:var(--marigold)}
+  footer .lic{margin-top:24px;font-size:13px;font-weight:600}
+
+  /* overlay + toast */
+  .overlay{position:fixed;inset:0;z-index:90;background:rgba(15,19,54,.7);backdrop-filter:blur(4px);display:grid;place-items:center;padding:20px}
+  .overlay .box{background:#fff;border-radius:26px;max-width:460px;width:100%;padding:34px 30px;text-align:center;box-shadow:0 40px 80px -30px rgba(0,0,0,.6)}
+  .overlay .box .seal{background:var(--red);width:64px;height:64px;border-radius:14px}
+  .overlay .box .seal b{color:#fff;font-size:26px}
+  .overlay h3{margin-top:24px;font-size:26px;font-weight:900;letter-spacing:-.03em;color:var(--indigo)}
+  .overlay p{margin-top:10px;color:#5a4630;font-size:15px}
+  .overlay .btn{margin-top:22px}
+  .toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,140%);z-index:80;background:var(--ink);color:#fff;border-radius:16px;padding:14px 20px;font-size:14px;font-weight:600;max-width:min(560px,calc(100vw - 32px));box-shadow:0 20px 40px -16px rgba(0,0,0,.6);transition:transform .5s var(--ease),visibility .5s;visibility:hidden}
+  .toast.on{transform:translate(-50%,0);visibility:visible}
+  .toast b{color:var(--marigold)}
+
+  @media (prefers-reduced-motion:reduce){.stage.on{animation:none}.btn,.toast{transition:none}.timer.low i{animation:none}}
+</style>
+<script src="/assets/site.js" defer data-hide="header.hero .bar, body > footer" data-title="AIS · Steward Desk" data-sub="header.hero .bar" data-cta="About AIS|/ais" data-contact="ais@tedxthaltejyouth.in"></script>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="bar">
+      <div class="brand"><b>Ahmedabad Idea Search</b><span>Idea Steward Desk</span></div>
+      <a href="/ais" target="_top">About AIS →</a>
+    </div>
+    <span class="eyebrow">Become an Idea Steward</span>
+    <h1>Help Amdavad <em>hear its own ideas.</em></h1>
+    <p class="sub">Anyone can become an Idea Steward: a teacher, a student, a researcher, an artisan, a neighbour, or an institution. Register once, sign in, and point us to an idea growing in your community, in Gujarati, Hindi or English.</p>
+    <div class="ctas">
+      <button class="btn red" data-goto="register">Become a Steward →</button>
+      <button class="btn light" data-goto="login">Sign in</button>
+    </div>
+    <div class="pg"><i>!</i>AIS is a pathway, not the gate. It is separate from TEDxThaltej Youth.</div>
+  </div>
+</header>
+<div class="toran" data-toran></div>
+
+<main class="wrap">
+
+  <!-- ============ PATHWAY, NOT THE GATE ============ -->
+  <section class="gate block" aria-labelledby="gateH">
+    <span class="eyebrow">Please read this first</span>
+    <h2 class="big" id="gateH">AIS is a pathway. <em>It is never the gate.</em></h2>
+    <p class="lead">Ahmedabad Idea Search and TEDxThaltej Youth are two different things. AIS listens to the city all year. The TEDx event is one day, with its own independent curation. An idea can travel from one to the other, but AIS never decides who speaks, and nobody needs AIS to be considered.</p>
+
+    <div class="cards">
+      <div class="c ais">
+        <div class="k">Ahmedabad Idea Search</div>
+        <h3>Listens, discovers, nurtures.</h3>
+        <p>A year-round framework for finding the ideas already growing in Ahmedabad's classrooms, labs, studios, workshops and neighbourhoods.</p>
+        <ul><li>Open to everyone as a Steward</li><li>Conversations in any language</li><li>Valuable even if an idea never reaches a stage</li></ul>
+      </div>
+      <div class="bridge" aria-hidden="false">
+        <svg viewBox="0 0 120 60" aria-hidden="true"><path d="M4 50 Q60 -6 116 50" fill="none" stroke="#B4452A" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/><path d="M104 40 L116 50 L100 54" fill="none" stroke="#B4452A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <b>A pathway</b>
+        <span>Only with consent, and only as one input among many.</span>
+      </div>
+      <div class="c tedx">
+        <div class="k">TEDxThaltej Youth</div>
+        <h3>Curates, selects, amplifies.</h3>
+        <p>An independently organised TEDx event, operated under licence from TED. Its curation team alone selects speakers, under TED's rules.</p>
+        <ul><li>Its own independent curation process</li><li>Considers ideas from many sources</li><li>AIS referrals get no priority</li></ul>
+      </div>
+    </div>
+
+    <div class="means">
+      <div class="m yes">
+        <h4>Becoming a Steward means</h4>
+        <ul>
+          <li><i>✓</i>You can point us to ideas from your own community.</li>
+          <li><i>✓</i>The AIS team may reach out to listen, and help an idea develop.</li>
+          <li><i>✓</i>You can follow what happens to each idea you referred.</li>
+        </ul>
+      </div>
+      <div class="m no">
+        <h4>It does not mean</h4>
+        <ul>
+          <li><i>✕</i>That you, or anyone you refer, will speak at TEDxThaltej Youth.</li>
+          <li><i>✕</i>Any priority, ticket, role or membership at the TEDx event.</li>
+          <li><i>✕</i>That AIS is the only way to reach the TEDx curation team.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="quote">Most ideas we discover will not become talks. <em>That is intentional.</em></p>
+  </section>
+
+  <!-- ============ WHAT WE LISTEN FOR ============ -->
+  <section class="block" aria-labelledby="listenH">
+    <span class="eyebrow">What we listen for</span>
+    <h2 class="big" id="listenH">Three simple <em>questions.</em></h2>
+    <div class="princ">
+      <div class="pc" style="--c:#EB0028"><div class="k">Substance</div><h3>Is there something real here?</h3><p>A question someone keeps returning to, backed by work, research, an experiment or lived experience.</p></div>
+      <div class="pc" style="--c:#0E7F82"><div class="k">Relevance</div><h3>Does it grow from Amdavad?</h3><p>An idea rooted in a community, place or problem in this city.</p></div>
+      <div class="pc" style="--c:#D93B74"><div class="k">Originality</div><h3>Would it otherwise go unseen?</h3><p>Something the city has not noticed yet, from someone who might never have applied on their own.</p></div>
+    </div>
+    <div class="how">
+      <div><b>1</b><div><h4>Register</h4><p>Name, email, phone and city. We confirm your email with a 6-digit code.</p></div></div>
+      <div><b>2</b><div><h4>Sign in</h4><p>Each session lasts up to 25 minutes, then signs you out for your safety.</p></div></div>
+      <div><b>3</b><div><h4>Refer an idea</h4><p>Answer three questions. Follow your referrals from your desk.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ============ DESK ============ -->
+  <section class="desk" id="desk" aria-label="Steward Desk">
+
+    <!-- ---------- SIGNED OUT ---------- -->
+    <div id="authView">
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" data-tab="login" class="on">Sign in</button>
+        <button type="button" role="tab" data-tab="register">Register as a Steward</button>
+      </div>
+      <div class="auth-grid">
+        <div class="pad">
+
+          <!-- login -->
+          <form data-view="login" novalidate>
+            <h2>Welcome back, <em>Steward.</em></h2>
+            <p class="intro">Sign in to refer an idea or follow your referrals.</p>
+            <div class="grid2">
+              <div class="full"><label class="f" for="liEmail">Email</label><input type="email" id="liEmail" name="email" autocomplete="username"></div>
+              <div class="full"><label class="f" for="liPw">Password</label><div class="pw"><input type="password" id="liPw" name="password" autocomplete="current-password"><button type="button" data-show>Show</button></div></div>
+            </div>
+            <div class="msg"></div><div class="err"></div>
+            <div class="actions"><button type="button" class="link" data-view-go="forgot">Forgot password?</button><button type="submit" class="btn red">Sign in →</button></div>
+            <div class="row-links"><span style="font-size:14px;color:#5a4630">New to AIS?</span><button type="button" class="link" data-view-go="register">Register as an Idea Steward</button></div>
+          </form>
+
+          <!-- register -->
+          <form data-view="register" novalidate hidden>
+            <h2>Become an <em>Idea Steward.</em></h2>
+            <p class="intro">It takes a minute. We will email you a code to confirm your address.</p>
+            <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+            <div class="grid2">
+              <div class="full"><label class="f" for="rgName">Full name</label><input type="text" id="rgName" name="name" autocomplete="name"></div>
+              <div><label class="f" for="rgEmail">Email</label><input type="email" id="rgEmail" name="email" autocomplete="email"></div>
+              <div><label class="f" for="rgPhone">Phone number</label><input type="tel" id="rgPhone" name="phone" autocomplete="tel" placeholder="+91 98765 43210"></div>
+              <div><label class="f" for="rgCity">City of residence</label><input type="text" id="rgCity" name="city" autocomplete="address-level2" placeholder="Ahmedabad"></div>
+              <div><label class="f" for="rgComm">Community or institution <small>optional</small></label><input type="text" id="rgComm" name="community" placeholder="A school, lab, pol, group…"></div>
+              <div><label class="f" for="rgPw">Create a password</label><div class="pw"><input type="password" id="rgPw" name="password" autocomplete="new-password" data-rules="rgRules"><button type="button" data-show>Show</button></div>
+                <div class="rules" id="rgRules"><span data-r="len">8+ characters</span><span data-r="let">a letter</span><span data-r="num">a number</span></div></div>
+              <div><label class="f" for="rgPw2">Confirm password</label><div class="pw"><input type="password" id="rgPw2" name="password2" autocomplete="new-password"><button type="button" data-show>Show</button></div></div>
+            </div>
+            <div class="checks">
+              <label><input type="checkbox" name="agreePathway"><span>I understand that <b>AIS is a pathway, not a gate.</b> It is separate from TEDxThaltej Youth, and being a Steward or referring someone never means selection to speak.</span></label>
+              <label><input type="checkbox" name="agreeData"><span>I agree that AIS may keep these details to run the Steward programme and contact me about my referrals. They will not be shared outside the AIS and TEDxThaltej Youth team.</span></label>
+              <label><input type="checkbox" name="agreeAge"><span>I am 18 or older, or I am registering with my parent or guardian's knowledge.</span></label>
+            </div>
+            <div class="msg"></div><div class="err"></div>
+            <div class="actions"><button type="button" class="link" data-view-go="login">I already have an account</button><button type="submit" class="btn red">Create account →</button></div>
+          </form>
+
+          <!-- verify email -->
+          <form data-view="verify" novalidate hidden>
+            <h2>Check your <em>inbox.</em></h2>
+            <p class="intro">We sent a 6-digit code to <b data-email></b>. It expires in 10 minutes. If you cannot find it, check Spam or Promotions.</p>
+            <div class="grid2"><div class="full"><label class="f" for="vfCode">Verification code</label><input type="text" id="vfCode" name="code" class="otp" inputmode="numeric" autocomplete="one-time-code" maxlength="6"></div></div>
+            <div class="msg"></div><div class="err"></div>
+            <div class="actions"><button type="button" class="link" data-resend="register">Send a new code</button><button type="submit" class="btn red">Confirm &amp; sign in →</button></div>
+            <div class="row-links"><button type="button" class="link" data-view-go="register">← Use a different email</button></div>
+          </form>
+
+          <!-- forgot -->
+          <form data-view="forgot" novalidate hidden>
+            <h2>Forgot your <em>password?</em></h2>
+            <p class="intro">Enter the email you registered with. If it has an account, we will send a 6-digit code to reset your password.</p>
+            <div class="grid2"><div class="full"><label class="f" for="fgEmail">Email</label><input type="email" id="fgEmail" name="email" autocomplete="email"></div></div>
+            <div class="msg"></div><div class="err"></div>
+            <div class="actions"><button type="button" class="link" data-view-go="login">← Back to sign in</button><button type="submit" class="btn red">Send reset code →</button></div>
+          </form>
+
+          <!-- reset -->
+          <form data-view="reset" novalidate hidden>
+            <h2>Set a new <em>password.</em></h2>
+            <p class="intro">If <b data-email></b> has an account, we have sent a 6-digit code to it. The code expires in 10 minutes.</p>
+            <div class="grid2">
+              <div class="full"><label class="f" for="rsCode">Reset code</label><input type="text" id="rsCode" name="code" class="otp" inputmode="numeric" autocomplete="one-time-code" maxlength="6"></div>
+              <div><label class="f" for="rsPw">New password</label><div class="pw"><input type="password" id="rsPw" name="password" autocomplete="new-password" data-rules="rsRules"><button type="button" data-show>Show</button></div>
+                <div class="rules" id="rsRules"><span data-r="len">8+ characters</span><span data-r="let">a letter</span><span data-r="num">a number</span></div></div>
+              <div><label class="f" for="rsPw2">Confirm new password</label><div class="pw"><input type="password" id="rsPw2" name="password2" autocomplete="new-password"><button type="button" data-show>Show</button></div></div>
+            </div>
+            <div class="msg"></div><div class="err"></div>
+            <div class="actions"><button type="button" class="link" data-resend="reset">Send a new code</button><button type="submit" class="btn red">Save new password →</button></div>
+            <div class="row-links"><button type="button" class="link" data-view-go="login">← Back to sign in</button></div>
+          </form>
+
+          <div class="demo" id="demoNote" hidden>Preview mode: the Google Sheet is not connected yet. Accounts live only in this page, and every code is <b>123456</b>.</div>
+        </div>
+
+        <aside class="auth-side">
+          <h4>Good to know</h4>
+          <ul>
+            <li>Anyone can register. You do not need to belong to an institution.</li>
+            <li>You need to be signed in to refer an idea, so we can reach you and keep referrals trustworthy.</li>
+            <li>For your safety, each session lasts at most 25 minutes. Answers you are typing stay on the page if you are signed out.</li>
+            <li>Your password is never stored or seen by the team. Forgot it? Reset it with a code sent to your email.</li>
+            <li>Being a Steward is separate from TEDxThaltej Youth. It is a pathway, not the gate.</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+
+    <!-- ---------- SIGNED IN ---------- -->
+    <div id="appView" hidden>
+      <div class="sbar">
+        <div class="who"><div class="av" id="uAv">A</div><div><b id="uName">—</b><span id="uMeta">—</span></div></div>
+        <div class="sact">
+          <span class="timer" id="timer" title="Sessions end automatically 25 minutes after sign-in"><i></i><span id="timerTxt">25:00</span> left</span>
+          <button type="button" class="sbtn" id="pwToggle">Change password</button>
+          <button type="button" class="sbtn" id="signOut">Sign out</button>
+        </div>
+      </div>
+
+      <form class="pwpanel pad" id="pwForm" novalidate hidden>
+        <h2 style="font-size:26px">Change your <em>password.</em></h2>
+        <p class="intro">Other devices signed in to your account will be signed out. Your current session keeps its time.</p>
+        <div class="grid2">
+          <div class="full"><label class="f" for="cpCur">Current password</label><div class="pw"><input type="password" id="cpCur" name="current" autocomplete="current-password"><button type="button" data-show>Show</button></div></div>
+          <div><label class="f" for="cpNew">New password</label><div class="pw"><input type="password" id="cpNew" name="password" autocomplete="new-password" data-rules="cpRules"><button type="button" data-show>Show</button></div>
+            <div class="rules" id="cpRules"><span data-r="len">8+ characters</span><span data-r="let">a letter</span><span data-r="num">a number</span></div></div>
+          <div><label class="f" for="cpNew2">Confirm new password</label><div class="pw"><input type="password" id="cpNew2" name="password2" autocomplete="new-password"><button type="button" data-show>Show</button></div></div>
+        </div>
+        <div class="msg"></div><div class="err"></div>
+        <div class="actions"><button type="button" class="link" id="pwCancel">Cancel</button><button type="submit" class="btn red">Update password</button></div>
+      </form>
+
+      <div class="pad">
+        <span class="eyebrow">Refer an idea</span>
+        <h2 style="margin-top:12px">Whose idea should Amdavad <em>hear?</em></h2>
+        <div class="quota"><span id="quotaTxt">—</span><span class="dots" id="dots"></span></div>
+
+        <div id="fullQuota" class="full-quota" hidden><b>You have shared all your referrals for this cycle.</b><p style="margin-top:8px">Thank you for listening so carefully. If there is an idea we must hear, write to <a href="mailto:ais@tedxthaltejyouth.in">ais@tedxthaltejyouth.in</a>.</p></div>
+
+        <form id="refForm" novalidate>
+          <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+          <div class="steps" aria-hidden="true"><div data-s="1" class="on"><b>1</b><span>The person</span></div><div data-s="2"><b>2</b><span>The idea</span></div></div>
+
+          <div class="stage on" data-stage="1">
+            <p class="intro" style="margin-top:22px">An idea may exist long before its author thinks of themselves as a speaker. They do not need a polished pitch, and they do not need to speak English.</p>
+            <div class="grid2">
+              <div class="full"><label class="f" for="personName">Their name</label><input type="text" id="personName" name="personName"></div>
+              <div class="full"><span class="f">They are</span>
+                <div class="pills" role="radiogroup" aria-label="They are">
+                  <label><input type="radio" name="personRole" value="Student"><span>A student</span></label>
+                  <label><input type="radio" name="personRole" value="Educator"><span>An educator</span></label>
+                  <label><input type="radio" name="personRole" value="Researcher"><span>A researcher</span></label>
+                  <label><input type="radio" name="personRole" value="Practitioner / Professional"><span>A practitioner</span></label>
+                  <label><input type="radio" name="personRole" value="Artist / Cultural practitioner"><span>An artist or artisan</span></label>
+                  <label><input type="radio" name="personRole" value="Entrepreneur / Innovator"><span>An entrepreneur</span></label>
+                  <label><input type="radio" name="personRole" value="Community member"><span>A community member</span></label>
+                  <label><input type="radio" name="personRole" value="Myself"><span>Myself</span></label>
+                </div>
+              </div>
+              <div><span class="f">Age group</span>
+                <div class="pills" role="radiogroup" aria-label="Age group">
+                  <label><input type="radio" name="ageGroup" value="Under 18"><span>Under 18</span></label>
+                  <label><input type="radio" name="ageGroup" value="18-25"><span>18–25</span></label>
+                  <label><input type="radio" name="ageGroup" value="26+"><span>26 and above</span></label>
+                </div>
+              </div>
+              <div><span class="f">They express themselves best in</span>
+                <div class="pills" role="radiogroup" aria-label="Preferred language">
+                  <label><input type="radio" name="language" value="Gujarati"><span class="gu">ગુજરાતી</span></label>
+                  <label><input type="radio" name="language" value="Hindi"><span class="hi">हिन्दी</span></label>
+                  <label><input type="radio" name="language" value="English"><span>English</span></label>
+                  <label><input type="radio" name="language" value="Other"><span>Another</span></label>
+                </div>
+              </div>
+              <div class="full" id="contactWrap"><label class="f" for="contact">How can we reach them? <small>optional · we will always contact you first</small></label><input type="text" id="contact" name="contact"></div>
+              <div class="full" id="minorNote" hidden><p style="font-size:14px;background:#FFF4D6;padding:12px 14px;border-radius:12px;color:#6b4a0a">For anyone under 18, we do not collect personal contact details. The AIS team will reach them only through you and their parent or guardian.</p></div>
+            </div>
+            <div class="err" data-err="1"></div>
+            <div class="actions"><span></span><button type="button" class="btn red" id="toIdea">Continue →</button></div>
+          </div>
+
+          <div class="stage" data-stage="2">
+            <p class="intro" style="margin-top:22px">Write the way you would explain it to a friend over chai. Plain words are better than polished ones. Around 60–150 words each is plenty.</p>
+            <div class="q" style="--c:#EB0028">
+              <div class="qh"><span class="n">1</span><div><div class="tag">Substance</div><h3>What is the idea, and what has this person actually done with it?</h3>
+                <p class="tr"><span class="gu">આ વિચાર શું છે, અને આ વ્યક્તિએ તેના પર ખરેખર શું કર્યું છે?</span><br><span class="hi">यह विचार क्या है, और इस व्यक्ति ने इस पर वास्तव में क्या किया है?</span></p></div></div>
+              <p class="help">The question they keep returning to, and the experiment, research, work or lived experience behind it.</p>
+              <textarea name="q1" data-wc></textarea><div class="wc">0 words</div>
+            </div>
+            <div class="q" style="--c:#0E7F82">
+              <div class="qh"><span class="n">2</span><div><div class="tag">Relevance</div><h3>Why does it matter to Amdavad?</h3>
+                <p class="tr"><span class="gu">આ વિચાર અમદાવાદ માટે કેમ મહત્વનો છે?</span><br><span class="hi">यह विचार अमदावाद के लिए क्यों महत्वपूर्ण है?</span></p></div></div>
+              <p class="help">Which community, place, practice or problem in the city does it grow from or speak to?</p>
+              <textarea name="q2" data-wc></textarea><div class="wc">0 words</div>
+            </div>
+            <div class="q" style="--c:#D93B74">
+              <div class="qh"><span class="n">3</span><div><div class="tag">Originality</div><h3>What would the city miss if no one listened?</h3>
+                <p class="tr"><span class="gu">જો કોઈએ સાંભળ્યું ન હોત, તો શહેર શું ગુમાવત?</span><br><span class="hi">अगर कोई न सुनता, तो शहर क्या खो देता?</span></p></div></div>
+              <p class="help">What does this person see, know or question that others have not yet noticed?</p>
+              <textarea name="q3" data-wc></textarea><div class="wc">0 words</div>
+            </div>
+            <div class="checks">
+              <label><input type="checkbox" name="consentAware"><span>This person knows I am referring their idea and has agreed to be contacted by the AIS team. <small style="color:#8C6A3C">(If it is your own idea, simply tick this.)</small></span></label>
+              <label id="guardianRow" hidden><input type="checkbox" name="consentGuardian"><span>Because they are under 18, their parent or guardian is aware of this referral.</span></label>
+              <label><input type="checkbox" name="consentNotSelection"><span>I understand AIS is a pathway, not a gate: this referral is not an application to speak, and TEDxThaltej Youth's curation team selects speakers independently.</span></label>
+            </div>
+            <div class="err" data-err="2"></div>
+            <div class="actions"><button type="button" class="btn ghost" data-back="1">← Back</button><button type="submit" class="btn red" id="submitBtn">Send to AIS →</button></div>
+          </div>
+
+          <div class="stage done" data-stage="3">
+            <div class="seal"><b>✓</b></div>
+            <h2>Thank you for <em>listening with us.</em></h2>
+            <p class="intro" style="margin:12px auto 0">Your referral has reached the AIS team. A confirmation is on its way to your email.</p>
+            <div class="refpill" id="refId">AIS-0000</div>
+            <div class="nextl">
+              <div style="--c:#EB0028"><b>1</b><span>Every referral is read carefully, in the language it was written in.</span></div>
+              <div style="--c:#0E7F82"><b>2</b><span>We may reach out to you first, and then, with consent, to the person whose idea it is.</span></div>
+              <div style="--c:#D93B74"><b>3</b><span>Most ideas we discover will not become TEDx talks. That is intentional: discovery is valuable on its own.</span></div>
+            </div>
+            <div class="actions" style="justify-content:center"><button type="button" class="btn red" id="another">Refer another idea</button></div>
+          </div>
+        </form>
+      </div>
+
+      <div class="mine pad">
+        <h3>Your referrals</h3>
+        <div class="reflist" id="refList"></div>
+        <p class="empty" id="refEmpty">You have not referred an idea yet.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="aside">
+    <div><h4>Institutions and communities</h4><p>Schools, universities, labs, studios and community groups are welcome to register too, or to invite AIS for a visit. Write to <a href="mailto:ais@tedxthaltejyouth.in?subject=Inviting%20AIS%20to%20listen">ais@tedxthaltejyouth.in</a>.</p></div>
+    <div><h4>Trouble signing in?</h4><p>Use “Forgot password” to reset it with an emailed code. Still stuck? Write to <a href="mailto:ais@tedxthaltejyouth.in?subject=Steward%20Desk%20help">ais@tedxthaltejyouth.in</a>.</p></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div><b>Ahmedabad Idea Search</b><br>Listening to Amdavad. Discovering its Ideas.<br>A year-round initiative of TEDxThaltej Youth.</div>
+      <div style="text-align:right"><a href="mailto:ais@tedxthaltejyouth.in">ais@tedxthaltejyouth.in</a><br><a href="/ais" target="_top">About Ahmedabad Idea Search →</a><br><a href="/2027" target="_top">The Zenith · TEDxThaltej Youth 2027 →</a></div>
+    </div>
+    <p class="lic">This independent TEDx event is operated under license from TED.</p>
+  </div>
+</footer>
+
+<div class="overlay" id="expired" hidden role="dialog" aria-modal="true" aria-labelledby="expH">
+  <div class="box">
+    <div class="seal"><b>⏱</b></div>
+    <h3 id="expH">Your session has ended</h3>
+    <p>For your safety, sessions last at most 25 minutes. Anything you were typing is still on this page. Sign in again to continue.</p>
+    <button type="button" class="btn red" id="reSignIn">Sign in again</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="/assets/config.js"></script>
+<script>
+(function(){
+  /* ====== CONFIG: paste your Apps Script Web App URL (ends in /exec) ====== */
+  /* One shared backend for the whole site (set in /assets/config.js). Until it is set, the old AIS script keeps working. */
+  var UNIFIED = !!window.TXTY_API;
+  var ENDPOINT = window.TXTY_API || 'https://script.google.com/macros/s/AKfycbzHZXRNCaD0amefbI5oytGQWH5i2ksd0S0-sdTH1AjRf3z3i0TIJM7AC51UiOwARIZP/exec';
+  var DEMO = !ENDPOINT;
+  var SESSION_MIN = 25;
+
+  /* ---------------- toran ---------------- */
+  var NS='http://www.w3.org/2000/svg';
+  function el(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+  document.querySelectorAll('[data-toran]').forEach(function(t){
+    var svg=el('svg',{viewBox:'0 0 1200 46',preserveAspectRatio:'none'},t);
+    el('path',{d:'M0 4 Q600 16 1200 4',stroke:'#C79E62','stroke-width':'2',fill:'none'},svg);
+    var cols=['#EB0028','#F5A524','#0E7F82','#D93B74','#2F7D4F','#1B2150'];
+    for(var i=0;i<40;i++){var x=i*30+15,y=4+12*(1-Math.pow((x-600)/600,2))*0.6;
+      el('path',{d:'M'+(x-12)+' '+y+' L'+(x+12)+' '+y+' L'+x+' '+(y+26)+' Z',fill:cols[i%cols.length]},svg);}
+  });
+
+  /* ---------------- helpers ---------------- */
+  function $(s,r){return (r||document).querySelector(s);}
+  function $$(s,r){return [].slice.call((r||document).querySelectorAll(s));}
+  function words(s){return (String(s).trim().match(/\S+/g)||[]).length;}
+  function isEmail(s){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s);}
+  function isPhone(s){return /^\+?\d{10,15}$/.test(String(s).replace(/[\s\-().]/g,''));}
+  function pwOk(s){return s.length>=8&&/[A-Za-z]/.test(s)&&/\d/.test(s);}
+  var PW_RULE='Use at least 8 characters, with at least one letter and one number.';
+  function fv(form,name){var f=form.elements[name];if(!f)return '';if(f.length&&f[0]&&f[0].type==='radio'){var c=form.querySelector('input[name="'+name+'"]:checked');return c?c.value:'';}if(f.type==='checkbox')return f.checked;return (f.value||'').trim();}
+  function say(form,kind,text){var e=$('.'+kind,form);if(!e)return;e.textContent=text||'';e.classList.toggle('on',!!text);if(text){var o=$(kind==='err'?'.msg':'.err',form);if(o){o.textContent='';o.classList.remove('on');}}}
+  function busy(btn,on,label){if(!btn)return;if(on){btn.dataset.l=btn.innerHTML;btn.disabled=true;btn.textContent=label||'Please wait…';}else{btn.disabled=false;if(btn.dataset.l)btn.innerHTML=btn.dataset.l;}}
+  var toastT;function toast(html,ms){var t=$('#toast');t.innerHTML=html;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on');},ms||6000);}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+  /* show/hide password + live rules */
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-show]');if(!b)return;var i=b.parentNode.querySelector('input');i.type=i.type==='password'?'text':'password';b.textContent=i.type==='password'?'Show':'Hide';});
+  $$('input[data-rules]').forEach(function(i){var box=document.getElementById(i.dataset.rules);i.addEventListener('input',function(){var v=i.value;
+    $('[data-r=len]',box).classList.toggle('ok',v.length>=8);$('[data-r=let]',box).classList.toggle('ok',/[A-Za-z]/.test(v));$('[data-r=num]',box).classList.toggle('ok',/\d/.test(v));});});
+  $$('.otp').forEach(function(i){i.addEventListener('input',function(){i.value=i.value.replace(/\D/g,'').slice(0,6);});});
+
+  /* ---------------- API (real or preview) ---------------- */
+  var S={token:null,exp:0,user:null,timer:null,warned:false};
+  function call(action,data){
+    data=data||{};data.action=(UNIFIED?'ais_':'')+action;
+    if(S.token&&!data.token)data.token=S.token;
+    var p=DEMO?mock(action,data):fetch(ENDPOINT,{method:'POST',body:JSON.stringify(data)}).then(function(r){return r.json();});
+    return p.then(function(r){if(r&&r.code==='AUTH'&&S.token)expire();return r;})
+            .catch(function(){return {ok:false,error:'We could not reach the Steward Desk. Please check your connection and try again.'};});
+  }
+
+  /* ---------------- auth views ---------------- */
+  var desk=$('#desk'), pending={email:''};
+  function view(name,opts){
+    $$('#authView form[data-view]').forEach(function(f){f.hidden=f.dataset.view!==name;});
+    $$('.tabs [data-tab]').forEach(function(t){t.classList.toggle('on',t.dataset.tab===(name==='register'||name==='verify'?'register':'login'));});
+    $$('[data-email]').forEach(function(b){b.textContent=pending.email;});
+    var f=$('#authView form[data-view="'+name+'"]');
+    if(opts&&opts.msg)say(f,'msg',opts.msg);
+    if(opts&&opts.scroll)desk.scrollIntoView({behavior:'smooth',block:'start'});
+    var first=$('input:not([type=hidden]):not([tabindex="-1"])',f);if(first&&opts&&opts.focus)setTimeout(function(){first.focus({preventScroll:true});},300);
+  }
+  $$('.tabs [data-tab]').forEach(function(t){t.addEventListener('click',function(){view(t.dataset.tab);});});
+  $$('[data-view-go]').forEach(function(b){b.addEventListener('click',function(){view(b.dataset.viewGo,{focus:true});});});
+  $$('[data-goto]').forEach(function(b){b.addEventListener('click',function(){if(S.token){desk.scrollIntoView({behavior:'smooth'});return;}view(b.dataset.goto,{scroll:true,focus:true});});});
+  if(DEMO)$('#demoNote').hidden=false;
+
+  function onSubmit(name,fn){var f=$('#authView form[data-view="'+name+'"]');f.addEventListener('submit',function(e){e.preventDefault();say(f,'err');say(f,'msg');fn(f,$('button[type=submit]',f));});}
+
+  onSubmit('login',function(f,btn){
+    var email=fv(f,'email'),pw=f.elements.password.value;
+    if(!isEmail(email)||!pw)return say(f,'err','Please enter your email and password.');
+    busy(btn,true,'Signing in…');
+    call('login',{email:email,password:pw}).then(function(r){busy(btn,false);if(!r.ok)return say(f,'err',r.error);f.reset();startSession(r);});
+  });
+
+  onSubmit('register',function(f,btn){
+    var d={name:fv(f,'name'),email:fv(f,'email').toLowerCase(),phone:fv(f,'phone'),city:fv(f,'city'),community:fv(f,'community'),
+      password:f.elements.password.value,agreePathway:fv(f,'agreePathway'),agreeData:fv(f,'agreeData'),agreeAge:fv(f,'agreeAge'),website:f.elements.website.value};
+    if(d.name.length<2)return say(f,'err','Please enter your full name.');
+    if(!isEmail(d.email))return say(f,'err','Please enter a valid email address.');
+    if(!isPhone(d.phone))return say(f,'err','Please enter a valid phone number, for example +91 98765 43210.');
+    if(d.city.length<2)return say(f,'err','Please enter your city of residence.');
+    if(!pwOk(d.password))return say(f,'err',PW_RULE);
+    if(d.password!==f.elements.password2.value)return say(f,'err','The two passwords do not match.');
+    if(!d.agreePathway||!d.agreeData||!d.agreeAge)return say(f,'err','Please confirm the three statements above.');
+    busy(btn,true,'Sending your code…');
+    call('register',d).then(function(r){busy(btn,false);if(!r.ok)return say(f,'err',r.error);
+      pending.email=d.email;view('verify',{scroll:true,focus:true});cooldown('register');});
+  });
+
+  onSubmit('verify',function(f,btn){
+    var code=fv(f,'code');if(!/^\d{6}$/.test(code))return say(f,'err','Please enter the 6-digit code from your email.');
+    busy(btn,true,'Confirming…');
+    call('verifyEmail',{email:pending.email,code:code}).then(function(r){busy(btn,false);if(!r.ok)return say(f,'err',r.error);
+      f.reset();$('#authView form[data-view="register"]').reset();$$('.rules span').forEach(function(s){s.classList.remove('ok');});
+      startSession(r);toast('<b>Welcome, Idea Steward.</b> Your Steward ID is '+esc(r.user.id)+'. A welcome email is on its way.',8000);});
+  });
+
+  onSubmit('forgot',function(f,btn){
+    var email=fv(f,'email').toLowerCase();if(!isEmail(email))return say(f,'err','Please enter a valid email address.');
+    busy(btn,true,'Sending…');
+    call('forgot',{email:email}).then(function(r){busy(btn,false);if(!r.ok)return say(f,'err',r.error);
+      pending.email=email;view('reset',{focus:true});cooldown('reset');});
+  });
+
+  onSubmit('reset',function(f,btn){
+    var code=fv(f,'code'),pw=f.elements.password.value;
+    if(!/^\d{6}$/.test(code))return say(f,'err','Please enter the 6-digit code from your email.');
+    if(!pwOk(pw))return say(f,'err',PW_RULE);
+    if(pw!==f.elements.password2.value)return say(f,'err','The two passwords do not match.');
+    busy(btn,true,'Saving…');
+    call('reset',{email:pending.email,code:code,password:pw}).then(function(r){busy(btn,false);if(!r.ok)return say(f,'err',r.error);
+      f.reset();$('#liEmail').value=pending.email;view('login',{msg:'Your password has been reset. Please sign in with your new password.',focus:true});});
+  });
+
+  /* resend with 60s cooldown */
+  var cdT={};
+  function cooldown(purpose){var b=$('[data-resend="'+purpose+'"]'),n=60;clearInterval(cdT[purpose]);b.disabled=true;b.textContent='Send a new code ('+n+'s)';
+    cdT[purpose]=setInterval(function(){n--;if(n<=0){clearInterval(cdT[purpose]);b.disabled=false;b.textContent='Send a new code';}else b.textContent='Send a new code ('+n+'s)';},1000);}
+  $$('[data-resend]').forEach(function(b){b.addEventListener('click',function(){var f=b.closest('form'),purpose=b.dataset.resend;say(f,'err');
+    call('resendCode',{email:pending.email,purpose:purpose}).then(function(r){if(!r.ok)return say(f,'err',r.error);say(f,'msg',r.message||'A new code is on its way.');cooldown(purpose);});});});
+
+  /* ---------------- session ---------------- */
+  function store(){try{if(S.token)sessionStorage.setItem('ais_s',JSON.stringify({t:S.token,e:S.exp}));else sessionStorage.removeItem('ais_s');}catch(e){}}
+  function startSession(r){
+    S.token=r.token;S.exp=Date.now()+r.expiresIn*1000;S.warned=false;
+    setUser(r.user);store();
+    $('#expired').hidden=true;$('#authView').hidden=true;$('#appView').hidden=false;
+    clearInterval(S.timer);tick();S.timer=setInterval(tick,1000);
+    loadRefs();desk.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  function setUser(u){
+    S.user=u;
+    $('#uAv').textContent=(u.name||'?').trim().charAt(0).toUpperCase();
+    $('#uName').textContent=u.name;
+    $('#uMeta').textContent=u.id+' · '+u.city+(u.community?' · '+u.community:'');
+    var used=Math.max(0,u.limit-u.remaining);
+    $('#quotaTxt').textContent=u.remaining>0?'You can refer '+u.remaining+' more idea'+(u.remaining===1?'':'s')+' this cycle':'No referrals left this cycle';
+    $('#dots').innerHTML='';for(var i=0;i<u.limit;i++){var d=document.createElement('i');if(i<used)d.className='used';$('#dots').appendChild(d);}
+    var full=u.remaining<=0&&!$('.stage.done').classList.contains('on');
+    $('#fullQuota').hidden=!full;$('#refForm').hidden=full;
+  }
+  function tick(){
+    var left=Math.max(0,Math.round((S.exp-Date.now())/1000));
+    $('#timerTxt').textContent=Math.floor(left/60)+':'+String(left%60).padStart(2,'0');
+    $('#timer').classList.toggle('low',left<=120);
+    if(left<=120&&left>0&&!S.warned){S.warned=true;toast('<b>2 minutes left in this session.</b> Send your referral now, or your answers will wait here until you sign in again.',9000);}
+    if(left<=0)expire();
+  }
+  function clearSession(){if(S.token)call('logout',{token:S.token});clearInterval(S.timer);S.token=null;S.exp=0;store();}
+  function expire(){if(!S.token)return;var email=S.user&&S.user.email;clearSession();$('#expired').hidden=false;if(email)$('#liEmail').value=email;}
+  $('#reSignIn').addEventListener('click',function(){$('#expired').hidden=true;$('#appView').hidden=true;$('#authView').hidden=false;view('login',{scroll:true,focus:true});});
+  $('#signOut').addEventListener('click',function(){
+    clearSession();S.user=null;resetRefForm();
+    $('#pwForm').hidden=true;$('#appView').hidden=true;$('#authView').hidden=false;
+    view('login',{msg:'You have signed out. See you soon.',scroll:true});
+  });
+  (function restore(){try{var s=JSON.parse(sessionStorage.getItem('ais_s')||'null');if(!s||s.e<=Date.now())return;
+    call('me',{token:s.t}).then(function(r){if(r.ok)startSession({token:s.t,expiresIn:r.expiresIn,user:r.user});else{S.token=null;store();}});}catch(e){}})();
+
+  /* ---------------- change password ---------------- */
+  var pwForm=$('#pwForm');
+  $('#pwToggle').addEventListener('click',function(){pwForm.hidden=!pwForm.hidden;if(!pwForm.hidden){say(pwForm,'err');say(pwForm,'msg');pwForm.elements.current.focus();}});
+  $('#pwCancel').addEventListener('click',function(){pwForm.reset();pwForm.hidden=true;});
+  pwForm.addEventListener('submit',function(e){
+    e.preventDefault();say(pwForm,'err');var btn=$('button[type=submit]',pwForm);
+    var cur=pwForm.elements.current.value,pw=pwForm.elements.password.value;
+    if(!cur)return say(pwForm,'err','Please enter your current password.');
+    if(!pwOk(pw))return say(pwForm,'err',PW_RULE);
+    if(pw!==pwForm.elements.password2.value)return say(pwForm,'err','The two new passwords do not match.');
+    busy(btn,true,'Updating…');
+    call('changePassword',{current:cur,password:pw}).then(function(r){busy(btn,false);if(!r.ok)return say(pwForm,'err',r.error);
+      S.token=r.token;S.exp=Date.now()+r.expiresIn*1000;store();pwForm.reset();$$('#cpRules span').forEach(function(s){s.classList.remove('ok');});
+      say(pwForm,'msg',r.message||'Password changed.');setTimeout(function(){pwForm.hidden=true;say(pwForm,'msg');},3500);
+      toast('<b>Password changed.</b> A confirmation has been sent to your email.');});
+  });
+
+  /* ---------------- referral form ---------------- */
+  var rf=$('#refForm'), stages=$$('.stage',rf), dots=$$('.steps div',rf);
+  function go(n){stages.forEach(function(s){s.classList.toggle('on',+s.dataset.stage===n);});
+    dots.forEach(function(d){var s=+d.dataset.s;d.classList.toggle('on',s===n);d.classList.toggle('done',s<n||n===3);});
+    rf.scrollIntoView({behavior:'smooth',block:'start'});}
+  function rerr(n,msg){var e=$('[data-err="'+n+'"]',rf);e.textContent=msg||'';e.classList.toggle('on',!!msg);}
+  rf.addEventListener('change',function(e){if(e.target.name==='ageGroup'){var minor=e.target.value==='Under 18';
+    $('#contactWrap').hidden=minor;$('#minorNote').hidden=!minor;$('#guardianRow').hidden=!minor;if(minor)rf.elements.contact.value='';}});
+  $('#toIdea').addEventListener('click',function(){rerr(1);
+    if(!fv(rf,'personName'))return rerr(1,'Please add their name.');
+    if(!fv(rf,'personRole'))return rerr(1,'Please tell us who they are.');
+    if(!fv(rf,'ageGroup'))return rerr(1,'Please choose an age group.');
+    if(!fv(rf,'language'))return rerr(1,'Please choose the language they are most comfortable in.');
+    go(2);});
+  $$('[data-back]',rf).forEach(function(b){b.addEventListener('click',function(){go(+b.dataset.back);});});
+  $$('textarea[data-wc]',rf).forEach(function(t){var wc=t.nextElementSibling;t.addEventListener('input',function(){var n=words(t.value);
+    wc.textContent=n+' word'+(n===1?'':'s')+(n>200?' · a little shorter would help':'');wc.classList.toggle('ok',n>=15&&n<=200);});});
+
+  rf.addEventListener('submit',function(e){
+    e.preventDefault();rerr(2);var btn=$('#submitBtn');
+    for(var i=1;i<=3;i++){if(words(fv(rf,'q'+i))<10)return rerr(2,'Please answer question '+i+' in a little more detail (a few sentences).');}
+    var minor=fv(rf,'ageGroup')==='Under 18';
+    if(!fv(rf,'consentAware'))return rerr(2,'Please confirm that the person knows about this referral.');
+    if(minor&&!fv(rf,'consentGuardian'))return rerr(2,'For anyone under 18, please confirm that a parent or guardian is aware.');
+    if(!fv(rf,'consentNotSelection'))return rerr(2,'Please confirm that you understand AIS is a pathway, not a gate.');
+    var d={personName:fv(rf,'personName'),personRole:fv(rf,'personRole'),ageGroup:fv(rf,'ageGroup'),language:fv(rf,'language'),
+      contact:minor?'':fv(rf,'contact'),q1:fv(rf,'q1'),q2:fv(rf,'q2'),q3:fv(rf,'q3'),
+      consentAware:true,consentGuardian:minor,consentNotSelection:true,website:rf.elements.website.value};
+    busy(btn,true,'Sending…');
+    call('refer',d).then(function(r){busy(btn,false);if(!r.ok){if(r.code!=='AUTH')rerr(2,r.error);return;}
+      $('#refId').textContent=r.ref;go(3);S.user.remaining=r.remaining;setUser(S.user);loadRefs();});
+  });
+  function resetRefForm(){rf.reset();$$('.wc',rf).forEach(function(w){w.textContent='0 words';w.classList.remove('ok');});
+    $('#contactWrap').hidden=false;$('#minorNote').hidden=true;$('#guardianRow').hidden=true;rerr(1);rerr(2);
+    stages.forEach(function(s){s.classList.toggle('on',s.dataset.stage==='1');});dots.forEach(function(d){d.classList.toggle('on',d.dataset.s==='1');d.classList.remove('done');});}
+  $('#another').addEventListener('click',function(){resetRefForm();setUser(S.user);if(S.user.remaining>0)go(1);});
+
+  function loadRefs(){call('myReferrals').then(function(r){if(!r.ok)return;var list=$('#refList');list.innerHTML='';
+    $('#refEmpty').hidden=r.items.length>0;
+    r.items.forEach(function(it){var d=document.createElement('div');d.className='ri';
+      d.innerHTML='<code>'+esc(it.ref)+'</code><div><b>'+esc(it.person)+'</b><small>Referred '+esc(it.date)+'</small></div><span>'+esc(it.status)+'</span>';list.appendChild(d);});});}
+
+  /* ---------------- preview backend (only when ENDPOINT is empty) ---------------- */
+  var M={users:{},pending:{},sessions:{},refs:[]};
+  function mock(a,d){return new Promise(function(res){setTimeout(function(){res(mockRun(a,d));},450);});}
+  function mSess(u,exp){var t=Math.random().toString(36).slice(2)+Date.now().toString(36);exp=exp||Date.now()+SESSION_MIN*60000;M.sessions[t]={u:u,exp:exp};
+    return {ok:true,token:t,expiresIn:Math.ceil((exp-Date.now())/1000),user:mProf(u)};}
+  function mProf(u){var used=M.refs.filter(function(r){return r.id===u.id;}).length;return {id:u.id,name:u.name,email:u.email,city:u.city,community:u.community,limit:5,remaining:5-used};}
+  function mAuth(t){var s=M.sessions[t];if(!s||Date.now()>=s.exp)return null;return s;}
+  var AUTH={ok:false,code:'AUTH',error:'Your session has ended. Please sign in again.'};
+  function mockRun(a,d){
+    var e=String(d.email||'').trim().toLowerCase(),s;
+    switch(a){
+      case 'register': if(M.users[e])return {ok:false,error:'An account with this email already exists. Please sign in, or use “Forgot password”.'};M.pending[e]=d;return {ok:true,step:'verify',email:e};
+      case 'verifyEmail': if(!M.pending[e])return {ok:false,error:'This code has expired. Please register again.'};if(d.code!=='123456')return {ok:false,error:'That code is not right. (Preview code: 123456)'};
+        var p=M.pending[e];M.users[e]={id:'AIS-S-'+String(Object.keys(M.users).length+1).padStart(4,'0'),name:p.name,email:e,city:p.city,community:p.community,pw:p.password};delete M.pending[e];return mSess(M.users[e]);
+      case 'resendCode': return {ok:true,message:'A new code is on its way. (Preview code: 123456)'};
+      case 'login': var u=M.users[e];if(!u||u.pw!==d.password)return {ok:false,error:'That email and password do not match. Please try again.'};return mSess(u);
+      case 'forgot': return {ok:true,step:'reset',email:e};
+      case 'reset': if(d.code!=='123456')return {ok:false,error:'That code is not right. (Preview code: 123456)'};if(M.users[e])M.users[e].pw=d.password;return {ok:true};
+      case 'me': s=mAuth(d.token);return s?{ok:true,user:mProf(s.u),expiresIn:Math.ceil((s.exp-Date.now())/1000)}:AUTH;
+      case 'logout': delete M.sessions[d.token];return {ok:true};
+      case 'changePassword': s=mAuth(d.token);if(!s)return AUTH;if(s.u.pw!==d.current)return {ok:false,error:'Your current password is not right.'};
+        s.u.pw=d.password;delete M.sessions[d.token];var r=mSess(s.u,s.exp);r.message='Password changed. Any other sign-ins have been ended.';return r;
+      case 'refer': s=mAuth(d.token);if(!s)return AUTH;var left=mProf(s.u).remaining;if(left<=0)return {ok:false,error:'You have used all your referrals for this cycle.'};
+        M.refs.push({id:s.u.id,ref:'AIS-2627-'+String(M.refs.length+1).padStart(4,'0'),person:d.personName,date:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})});
+        return {ok:true,ref:M.refs[M.refs.length-1].ref,remaining:left-1};
+      case 'myReferrals': s=mAuth(d.token);if(!s)return AUTH;return {ok:true,items:M.refs.filter(function(r){return r.id===s.u.id;}).map(function(r){return {ref:r.ref,date:r.date,person:r.person,status:'Received'};}).reverse()};
+    }
+    return {ok:false,error:'Unknown action.'};
+  }
+})();
+</script>
+</body>
+</html>

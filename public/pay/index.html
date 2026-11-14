@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Payment — TEDxThaltej Youth</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/config.js"></script>
+<script src="/assets/site.js" defer></script>
+<script src="/assets/qr.js" defer></script>
+<script src="/assets/pay.js" defer></script>
+<style>
+  body{margin:0;font-family:Inter,Helvetica,Arial,sans-serif;color:#101B3D;background:#FFF4E2}
+  main{width:min(620px,100% - 32px);margin:0 auto;padding:clamp(30px,6vw,70px) 0 80px}
+  .k{font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+  h1{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(44px,8vw,80px);line-height:.92;margin:10px 0 22px}
+  .bad{background:#ffe1e6;color:#b00020;border-radius:16px;padding:16px;font-weight:700}
+</style>
+</head>
+<body>
+<main>
+  <span class="k">TEDxThaltej Youth</span>
+  <h1>Complete your payment</h1>
+  <div id="p">Loading…</div>
+</main>
+<script>
+window.addEventListener('DOMContentLoaded',function(){
+  var API=window.TXTY_API||'',q=new URLSearchParams(location.search),el=document.getElementById('p');
+  var demo={id:'PAY/2026-27/0012',token:'x',title:'Ticket: TEDxThaltej Youth 2027',amount:1000,status:'Awaiting payment',upi:'8980005283@idfcfirst',upi_name:'Shah Fenil Pritesh',
+    link:'upi://pay?pa=8980005283%40idfcfirst&pn=Shah%20Fenil%20Pritesh&am=1000.00&cu=INR&tn=TEDxThaltej%20Youth%20PAY%2F2026-27%2F0012',expires_at:new Date(Date.now()+1728e5).toISOString()};
+  (API?fetch(API,{method:'POST',body:JSON.stringify({action:'pay_get',id:q.get('p'),t:q.get('t')})}).then(function(r){return r.json();}):Promise.resolve({ok:true,payment:demo}))
+    .then(function(j){ if(!j.ok) throw new Error(j.error); TXPAY.render(el,j.payment); })
+    .catch(function(e){ el.innerHTML='<div class="bad"></div>'; el.firstChild.textContent=e.message||'We could not load this payment. Please open the link from your email again.'; });
+});
+</script>
+</body>
+</html>
