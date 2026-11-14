@@ -1,0 +1,17 @@
+{
+  // Cloudflare Workers — serves the /public folder as the website (_redirects and _headers inside /public are honoured).
+  // worker.js only handles /t/* (email open tracking); every other request goes straight to the static files.
+  "name": "website",
+  "main": "worker.js",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": ["/t/*"]
+  },
+  "vars": {
+    // The Apps Script web app URL (same as public/assets/config.js). Update both if you redeploy to a new URL.
+    "TXTY_API": "https://script.google.com/macros/s/AKfycbyGwkK2_O5I4yaxxZfHpjymqQP1teW6Vpv171JcpLRy4XeMjj_YyiyNuP4l9XB5lQZH/exec"
+  }
+}
